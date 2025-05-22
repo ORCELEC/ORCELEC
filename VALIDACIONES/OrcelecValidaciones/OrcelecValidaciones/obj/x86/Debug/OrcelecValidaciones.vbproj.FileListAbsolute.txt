@@ -1,0 +1,28 @@
+C:\Users\ANALISISUNO\Documents\ORCELEC\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.Resources.resources
+C:\Users\ANALISISUNO\Documents\ORCELEC\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.Validaciones.resources
+C:\Users\ANALISISUNO\Documents\ORCELEC\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.vbproj.GenerateResource.Cache
+C:\Users\ANALISISUNO\Documents\ORCELEC\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\OrcelecValidaciones.exe
+C:\Users\ANALISISUNO\Documents\ORCELEC\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\OrcelecValidaciones.pdb
+C:\Users\ANALISISUNO\Documents\ORCELEC\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\OrcelecValidaciones.xml
+C:\Users\ANALISISUNO\Documents\ORCELEC\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.exe
+C:\Users\ANALISISUNO\Documents\ORCELEC\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.xml
+C:\Users\ANALISISUNO\Documents\ORCELEC\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.pdb
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.xml
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.pdb
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\OrcelecValidaciones.exe
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\OrcelecValidaciones.pdb
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\OrcelecValidaciones.xml
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.Resources.resources
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.Validaciones.resources
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.vbproj.GenerateResource.Cache
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.exe
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\OrcelecValidaciones.exe.config
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\MailKit.dll
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\MimeKit.dll
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\MailKit.xml
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\MimeKit.xml
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\OrcelecValidaciones.exe.manifest
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\OrcelecValidaciones.application
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.exe.manifest
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\obj\x86\Debug\OrcelecValidaciones.application
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\VALIDACIONES\OrcelecValidaciones\OrcelecValidaciones\bin\Debug\PRODUCC.INI

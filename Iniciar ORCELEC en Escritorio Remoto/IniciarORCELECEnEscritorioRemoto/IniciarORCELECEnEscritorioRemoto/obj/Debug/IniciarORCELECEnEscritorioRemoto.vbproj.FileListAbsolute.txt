@@ -1,0 +1,18 @@
+C:\Users\ANALISISUNO\AppData\Local\Temporary Projects\IniciarORCELECEnEscritorioRemoto\bin\Debug\IniciarORCELECEnEscritorioRemoto.exe.config
+C:\Users\ANALISISUNO\AppData\Local\Temporary Projects\IniciarORCELECEnEscritorioRemoto\bin\Debug\IniciarORCELECEnEscritorioRemoto.exe
+C:\Users\ANALISISUNO\AppData\Local\Temporary Projects\IniciarORCELECEnEscritorioRemoto\bin\Debug\IniciarORCELECEnEscritorioRemoto.pdb
+C:\Users\ANALISISUNO\AppData\Local\Temporary Projects\IniciarORCELECEnEscritorioRemoto\bin\Debug\IniciarORCELECEnEscritorioRemoto.xml
+C:\Users\ANALISISUNO\AppData\Local\Temporary Projects\IniciarORCELECEnEscritorioRemoto\obj\Debug\IniciarORCELECEnEscritorioRemoto.Resources.resources
+C:\Users\ANALISISUNO\AppData\Local\Temporary Projects\IniciarORCELECEnEscritorioRemoto\obj\Debug\IniciarORCELECEnEscritorioRemoto.vbproj.GenerateResource.Cache
+C:\Users\ANALISISUNO\AppData\Local\Temporary Projects\IniciarORCELECEnEscritorioRemoto\obj\Debug\IniciarORCELECEnEscritorioRemoto.exe
+C:\Users\ANALISISUNO\AppData\Local\Temporary Projects\IniciarORCELECEnEscritorioRemoto\obj\Debug\IniciarORCELECEnEscritorioRemoto.xml
+C:\Users\ANALISISUNO\AppData\Local\Temporary Projects\IniciarORCELECEnEscritorioRemoto\obj\Debug\IniciarORCELECEnEscritorioRemoto.pdb
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\Iniciar ORCELEC en Escritorio Remoto\IniciarORCELECEnEscritorioRemoto\IniciarORCELECEnEscritorioRemoto\bin\Debug\IniciarORCELECEnEscritorioRemoto.exe.config
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\Iniciar ORCELEC en Escritorio Remoto\IniciarORCELECEnEscritorioRemoto\IniciarORCELECEnEscritorioRemoto\obj\Debug\IniciarORCELECEnEscritorioRemoto.exe
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\Iniciar ORCELEC en Escritorio Remoto\IniciarORCELECEnEscritorioRemoto\IniciarORCELECEnEscritorioRemoto\obj\Debug\IniciarORCELECEnEscritorioRemoto.xml
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\Iniciar ORCELEC en Escritorio Remoto\IniciarORCELECEnEscritorioRemoto\IniciarORCELECEnEscritorioRemoto\obj\Debug\IniciarORCELECEnEscritorioRemoto.pdb
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\Iniciar ORCELEC en Escritorio Remoto\IniciarORCELECEnEscritorioRemoto\IniciarORCELECEnEscritorioRemoto\bin\Debug\IniciarORCELECEnEscritorioRemoto.exe
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\Iniciar ORCELEC en Escritorio Remoto\IniciarORCELECEnEscritorioRemoto\IniciarORCELECEnEscritorioRemoto\bin\Debug\IniciarORCELECEnEscritorioRemoto.pdb
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\Iniciar ORCELEC en Escritorio Remoto\IniciarORCELECEnEscritorioRemoto\IniciarORCELECEnEscritorioRemoto\bin\Debug\IniciarORCELECEnEscritorioRemoto.xml
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\Iniciar ORCELEC en Escritorio Remoto\IniciarORCELECEnEscritorioRemoto\IniciarORCELECEnEscritorioRemoto\obj\Debug\IniciarORCELECEnEscritorioRemoto.Resources.resources
+C:\Users\ANALISISUNO\Documents\ORCELEC Act VS 2012\Iniciar ORCELEC en Escritorio Remoto\IniciarORCELECEnEscritorioRemoto\IniciarORCELECEnEscritorioRemoto\obj\Debug\IniciarORCELECEnEscritorioRemoto.vbproj.GenerateResource.Cache

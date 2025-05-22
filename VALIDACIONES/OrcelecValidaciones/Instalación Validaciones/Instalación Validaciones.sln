@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Instalación Validaciones", "Instalación Validaciones\Instalación Validaciones.vdproj", "{44CB3F35-EFAA-4C1C-BFA3-8E655164C49C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44CB3F35-EFAA-4C1C-BFA3-8E655164C49C}.Debug|Default.ActiveCfg = Debug
+		{44CB3F35-EFAA-4C1C-BFA3-8E655164C49C}.Debug|Default.Build.0 = Debug
+		{44CB3F35-EFAA-4C1C-BFA3-8E655164C49C}.Release|Default.ActiveCfg = Release
+		{44CB3F35-EFAA-4C1C-BFA3-8E655164C49C}.Release|Default.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,14 @@
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\obj\x86\Debug\SepararPaginasPDF.Resources.resources
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\bin\Debug\SepararPaginasPDF.exe
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\bin\Debug\SepararPaginasPDF.pdb
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\bin\Debug\SepararPaginasPDF.xml
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\bin\Debug\itextsharp.dll
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\obj\x86\Debug\SepararPaginasPDF.exe
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\obj\x86\Debug\SepararPaginasPDF.xml
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\obj\x86\Debug\SepararPaginasPDF.pdb
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\obj\x86\Debug\SepararPaginasPDF.FrmSepararArchivosPDF.resources
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\obj\x86\Debug\SepararPaginasPDF.vbprojResolveAssemblyReference.cache
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\obj\x86\Debug\SepararPaginasPDF.vbproj.GenerateResource.Cache
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\obj\x86\Debug\Interop.CrystalActiveXReportViewerLib13.dll
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\obj\x86\Debug\SepararPaginasPDF.vbproj.ResolveComReference.cache
+C:\Users\ANALISISUNO\Documents\ORCELEC\SEPARARPAGINASPDF\SepararPaginasPDF\bin\Debug\SepararPaginasPDF.exe.config

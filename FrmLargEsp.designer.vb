@@ -1,0 +1,231 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class FrmLargEsp
+    Inherits System.Windows.Forms.Form
+
+    'Form reemplaza a Dispose para limpiar la lista de componentes.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Requerido por el Diseñador de Windows Forms
+    Private components As System.ComponentModel.IContainer
+
+    'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
+    'Se puede modificar usando el Diseñador de Windows Forms.  
+    'No lo modifique con el editor de código.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmLargEsp))
+        Me.PanelEx1 = New DevComponents.DotNetBar.PanelEx()
+        Me.ListLE = New System.Windows.Forms.ListBox()
+        Me.TxtDescripcionLE = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TxtCveLE = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.BtnNuevo = New System.Windows.Forms.ToolStripButton()
+        Me.BtnEditar = New System.Windows.Forms.ToolStripButton()
+        Me.BtnGuardar = New System.Windows.Forms.ToolStripButton()
+        Me.BtnCancelar = New System.Windows.Forms.ToolStripButton()
+        Me.BtnBaja = New System.Windows.Forms.ToolStripButton()
+        Me.ReflectionLabel1 = New DevComponents.DotNetBar.Controls.ReflectionLabel()
+        Me.PanelEx1.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'PanelEx1
+        '
+        Me.PanelEx1.CanvasColor = System.Drawing.SystemColors.Control
+        Me.PanelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.PanelEx1.Controls.Add(Me.ListLE)
+        Me.PanelEx1.Controls.Add(Me.TxtDescripcionLE)
+        Me.PanelEx1.Controls.Add(Me.TxtCveLE)
+        Me.PanelEx1.Controls.Add(Me.LabelX3)
+        Me.PanelEx1.Controls.Add(Me.LabelX1)
+        Me.PanelEx1.Controls.Add(Me.ToolStrip1)
+        Me.PanelEx1.Controls.Add(Me.ReflectionLabel1)
+        Me.PanelEx1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelEx1.Name = "PanelEx1"
+        Me.PanelEx1.Size = New System.Drawing.Size(397, 243)
+        Me.PanelEx1.Style.Alignment = System.Drawing.StringAlignment.Center
+        Me.PanelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.PanelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.PanelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.PanelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.PanelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.PanelEx1.Style.GradientAngle = 90
+        Me.PanelEx1.TabIndex = 0
+        '
+        'ListLE
+        '
+        Me.ListLE.FormattingEnabled = True
+        Me.ListLE.Location = New System.Drawing.Point(12, 38)
+        Me.ListLE.Name = "ListLE"
+        Me.ListLE.Size = New System.Drawing.Size(374, 108)
+        Me.ListLE.TabIndex = 35
+        '
+        'TxtDescripcionLE
+        '
+        '
+        '
+        '
+        Me.TxtDescripcionLE.Border.Class = "TextBoxBorder"
+        Me.TxtDescripcionLE.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtDescripcionLE.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtDescripcionLE.FocusHighlightEnabled = True
+        Me.TxtDescripcionLE.Location = New System.Drawing.Point(159, 211)
+        Me.TxtDescripcionLE.Name = "TxtDescripcionLE"
+        Me.TxtDescripcionLE.Size = New System.Drawing.Size(227, 20)
+        Me.TxtDescripcionLE.TabIndex = 34
+        '
+        'TxtCveLE
+        '
+        '
+        '
+        '
+        Me.TxtCveLE.Border.Class = "TextBoxBorder"
+        Me.TxtCveLE.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtCveLE.Enabled = False
+        Me.TxtCveLE.FocusHighlightEnabled = True
+        Me.TxtCveLE.Location = New System.Drawing.Point(159, 185)
+        Me.TxtCveLE.Name = "TxtCveLE"
+        Me.TxtCveLE.ReadOnly = True
+        Me.TxtCveLE.Size = New System.Drawing.Size(71, 20)
+        Me.TxtCveLE.TabIndex = 33
+        '
+        'LabelX3
+        '
+        '
+        '
+        '
+        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX3.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelX3.Location = New System.Drawing.Point(12, 211)
+        Me.LabelX3.Name = "LabelX3"
+        Me.LabelX3.Size = New System.Drawing.Size(147, 20)
+        Me.LabelX3.TabIndex = 32
+        Me.LabelX3.Text = "Descripción de LE:"
+        '
+        'LabelX1
+        '
+        '
+        '
+        '
+        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX1.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelX1.Location = New System.Drawing.Point(12, 185)
+        Me.LabelX1.Name = "LabelX1"
+        Me.LabelX1.Size = New System.Drawing.Size(107, 20)
+        Me.LabelX1.TabIndex = 31
+        Me.LabelX1.Text = "Clave de LE:"
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BtnNuevo, Me.BtnEditar, Me.BtnGuardar, Me.BtnCancelar, Me.BtnBaja})
+        Me.ToolStrip1.Location = New System.Drawing.Point(228, 157)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(127, 25)
+        Me.ToolStrip1.TabIndex = 30
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'BtnNuevo
+        '
+        Me.BtnNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BtnNuevo.Image = Global.ORCELEC.My.Resources.Resources.book_add
+        Me.BtnNuevo.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BtnNuevo.Name = "BtnNuevo"
+        Me.BtnNuevo.Size = New System.Drawing.Size(23, 22)
+        Me.BtnNuevo.Text = "&New"
+        Me.BtnNuevo.ToolTipText = "Agregar"
+        '
+        'BtnEditar
+        '
+        Me.BtnEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BtnEditar.Image = CType(resources.GetObject("BtnEditar.Image"), System.Drawing.Image)
+        Me.BtnEditar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BtnEditar.Name = "BtnEditar"
+        Me.BtnEditar.Size = New System.Drawing.Size(23, 22)
+        Me.BtnEditar.Text = "&New"
+        Me.BtnEditar.ToolTipText = "Editar"
+        '
+        'BtnGuardar
+        '
+        Me.BtnGuardar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BtnGuardar.Image = CType(resources.GetObject("BtnGuardar.Image"), System.Drawing.Image)
+        Me.BtnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BtnGuardar.Name = "BtnGuardar"
+        Me.BtnGuardar.Size = New System.Drawing.Size(23, 22)
+        Me.BtnGuardar.Text = "&Save"
+        Me.BtnGuardar.ToolTipText = "Guardar"
+        '
+        'BtnCancelar
+        '
+        Me.BtnCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BtnCancelar.Image = CType(resources.GetObject("BtnCancelar.Image"), System.Drawing.Image)
+        Me.BtnCancelar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BtnCancelar.Name = "BtnCancelar"
+        Me.BtnCancelar.Size = New System.Drawing.Size(23, 22)
+        Me.BtnCancelar.Text = "&Cancelar Movimiento"
+        Me.BtnCancelar.ToolTipText = "Cancelar Movimiento"
+        '
+        'BtnBaja
+        '
+        Me.BtnBaja.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BtnBaja.Image = CType(resources.GetObject("BtnBaja.Image"), System.Drawing.Image)
+        Me.BtnBaja.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BtnBaja.Name = "BtnBaja"
+        Me.BtnBaja.Size = New System.Drawing.Size(23, 22)
+        Me.BtnBaja.Text = "Baja Registro"
+        '
+        'ReflectionLabel1
+        '
+        '
+        '
+        '
+        Me.ReflectionLabel1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ReflectionLabel1.BackgroundStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.ReflectionLabel1.Location = New System.Drawing.Point(3, 3)
+        Me.ReflectionLabel1.Name = "ReflectionLabel1"
+        Me.ReflectionLabel1.Size = New System.Drawing.Size(421, 38)
+        Me.ReflectionLabel1.TabIndex = 0
+        Me.ReflectionLabel1.Text = "<b><font size=""+6""><u>Largos Especiales</u><font color=""#B02B2C""></font></font></" & _
+            "b>"
+        '
+        'FrmLargEsp
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(398, 244)
+        Me.Controls.Add(Me.PanelEx1)
+        Me.Name = "FrmLargEsp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.PanelEx1.ResumeLayout(False)
+        Me.PanelEx1.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
+        Me.ResumeLayout(False)
+
+    End Sub
+    Friend WithEvents PanelEx1 As DevComponents.DotNetBar.PanelEx
+    Friend WithEvents ReflectionLabel1 As DevComponents.DotNetBar.Controls.ReflectionLabel
+    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
+    Friend WithEvents BtnNuevo As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BtnEditar As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BtnGuardar As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BtnCancelar As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BtnBaja As System.Windows.Forms.ToolStripButton
+    Friend WithEvents TxtDescripcionLE As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents TxtCveLE As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents ListLE As System.Windows.Forms.ListBox
+End Class
