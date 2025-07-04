@@ -1021,7 +1021,10 @@ Public Class GeneraFactura
                     CuerpoLayout.Append(Trim(BDReader("LugarDeEntrega")) & String.Concat(Enumerable.Repeat(" ", 20 - Len(Trim(BDReader("LugarDeEntrega")))))) 'ArchivoCabFac.Write String(20, " ")  'CODIGO
                     CuerpoLayout.Append(String.Concat(Enumerable.Repeat(" ", 10))) 'ArchivoCabFac.Write String(10, " ") 'SUFIJO
                     CuerpoLayout.Append(Trim(BDReader("NombreLugarDeEntrega")) & String.Concat(Enumerable.Repeat(" ", 150 - Len(Trim(BDReader("NombreLugarDeEntrega")))))) 'ArchivoCabFac.Write GR_Facturas("NOMBRE_REM") & String(150 - Len(GR_Facturas("NOMBRE_REM")), " ") 'NOMBRE
-                    CuerpoLayout.Append(Trim(BDReader("LugarDeEntregaCalle")) & String.Concat(Enumerable.Repeat(" ", 50 - Len(Trim(BDReader("LugarDeEntregaCalle")))))) 'ArchivoCabFac.Write Trim(GR_Facturas("CALLENUM_REM")) & String(50 - Len(Trim(GR_Facturas("CALLENUM_REM"))), " ") 'CALLE
+                    Dim calle As String = Trim(BDReader("LugarDeEntregaCalle").ToString())
+                    If calle.Length > 50 Then calle = calle.Substring(0, 50)
+                    CuerpoLayout.Append(calle & New String(" "c, 50 - calle.Length))
+                    'CuerpoLayout.Append(Trim(BDReader("LugarDeEntregaCalle")) & String.Concat(Enumerable.Repeat(" ", 50 - Len(Trim(BDReader("LugarDeEntregaCalle").ToString.Substring(1, 50)))))) 'ArchivoCabFac.Write Trim(GR_Facturas("CALLENUM_REM")) & String(50 - Len(Trim(GR_Facturas("CALLENUM_REM"))), " ") 'CALLE
                     If BDReader("LugarDeEntregaNoExterior") IsNot DBNull.Value Then
                         CuerpoLayout.Append(Trim(BDReader("LugarDeEntregaNoExterior")) & String.Concat(Enumerable.Repeat(" ", 20 - Len(Trim(BDReader("LugarDeEntregaNoExterior")))))) 'ArchivoCabFac.Write String(20, " ") 'NOEXTERIOR
                     Else
