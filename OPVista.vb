@@ -802,9 +802,9 @@ Public Class OPVista
                             DGVVistaTomaMedida.Columns.Add("COL_" & Talla, Talla)
                         Next
 
-                        Dim Liberaciones = From r In TablaLiberaciones.AsEnumerable()
-                                           Group r By ID = r.Field(Of Guid)("ID_Liberacion") Into grp = Group
-                                           Order By grp.Min(Function(x) x.Field(Of Date)("FechaHora"))
+                        Dim Liberaciones = From r In TablaLiberaciones.AsEnumerable() _
+                                           Group r By ID = r.Field(Of Guid)("ID_Liberacion") Into grp = Group _
+                                           Order By grp.Min(Function(x) x.Field(Of Date)("FechaHora")) _
                                            Select ID, grp
                         For Each lib In Liberaciones
                             Dim nRow As Integer = DGVVistaTomaMedida.Rows.Add()
