@@ -1,0 +1,189 @@
+USE [NORCELEC]
+GO
+
+/****** Object:  StoredProcedure [dbo].[CONSULTA_OP_TALLAS_CANTIDADES]    Script Date: 09/07/2025 05:40:39 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[CONSULTA_OP_TALLAS_CANTIDADES]
+--DECLARE
+	@EMPRESA BIGINT,
+	@NO_OP BIGINT
+AS
+BEGIN
+--SET	@EMPRESA = 1
+--SET	@NO_OP = 2623
+
+	-- Crear tabla temporal para almacenar las tallas
+CREATE TABLE #TEMP
+(
+	PARTIDA BIGINT,
+	TALLA NVARCHAR(50)
+);
+
+INSERT INTO #TEMP (PARTIDA, TALLA)
+SELECT 
+	TG.Partida,
+	PIT.Talla
+FROM 
+	PEDIDO_INTERNO PI,
+	TALLAS_GENERALES TG,
+	PEDIDO_INTERNO_TALLAS PIT
+	LEFT JOIN
+		RESERVADO_INVENTARIO_PRODUCTO_TERMINADO RIPT
+	ON
+		RIPT.Empresa = PIT.Empresa
+	AND RIPT.No_Pedido = PIT.No_Pedido
+	AND RIPT.Partida = PIT.Partida
+	AND RIPT.Cve_Prenda = PIT.Cve_Prenda
+	AND RIPT.LugarDeEntrega = PIT.LugarDeEntrega
+	AND RIPT.Prioridad = PIT.Prioridad
+	AND RIPT.Talla = PIT.Talla
+WHERE 
+	PI.Empresa = @EMPRESA
+AND PIT.No_OP = @NO_OP
+AND PIT.Empresa = PI.Empresa
+AND PIT.No_Pedido = PI.No_Pedido
+AND TG.Talla = PIT.Talla
+AND (PIT.Cantidad - ISNULL(RIPT.Cantidad, 0)) > 0
+GROUP BY
+	TG.Partida,
+	PIT.Talla
+ORDER BY
+	TG.Partida;
+
+-- Crear tabla temporal para almacenar las partidas del pedido
+CREATE TABLE #PEDIDO_PARTIDAS
+(
+	NO_PEDIDO BIGINT,
+	CVE_PRENDA NUMERIC(18,0),
+	DESCRIPCIONPRENDA NVARCHAR(1000),
+	LUGARDEENTREGA NUMERIC(18,0),
+	NOMBRELUGARDEENTREGA NVARCHAR(1000),
+	FECHAVENCIMIENTO DATETIME,
+	PRIORIDAD BIGINT,
+	MOTIVOPRIORIDAD NVARCHAR(1000),
+	PARTIDA BIGINT,
+	TALLA NVARCHAR(100),
+	CANTIDAD NUMERIC(18,0)
+);
+
+INSERT INTO #PEDIDO_PARTIDAS
+(
+	NO_PEDIDO,
+	CVE_PRENDA,
+	DESCRIPCIONPRENDA,
+	LUGARDEENTREGA,
+	NOMBRELUGARDEENTREGA,
+	FECHAVENCIMIENTO,
+	PRIORIDAD,
+	MOTIVOPRIORIDAD,
+	PARTIDA,
+	TALLA,
+	CANTIDAD
+)
+SELECT 
+	PI.No_Pedido,
+	PIT.Cve_Prenda,
+	PIT.DescripcionPrenda,
+	PIT.LugarDeEntrega,
+	PIT.NombreLugarDeEntrega,
+	PIT.FechaVencimiento,
+	PIT.Prioridad,
+	PIT.MotivoPrioridad,
+	TG.Partida,
+	PIT.Talla,
+	PIT.Cantidad - ISNULL(RIPT.Cantidad, 0)
+FROM 
+	PEDIDO_INTERNO PI,
+	TALLAS_GENERALES TG,
+	PEDIDO_INTERNO_TALLAS PIT
+	LEFT JOIN
+		RESERVADO_INVENTARIO_PRODUCTO_TERMINADO RIPT
+	ON
+		RIPT.Empresa = PIT.Empresa
+	AND RIPT.No_Pedido = PIT.No_Pedido
+	AND RIPT.Partida = PIT.Partida
+	AND RIPT.Cve_Prenda = PIT.Cve_Prenda
+	AND RIPT.LugarDeEntrega = PIT.LugarDeEntrega
+	AND RIPT.Prioridad = PIT.Prioridad
+	AND RIPT.Talla = PIT.Talla
+WHERE 
+	PI.Empresa = @EMPRESA
+AND PIT.No_OP = @NO_OP
+AND PIT.Empresa = PI.Empresa
+AND PIT.No_Pedido = PI.No_Pedido
+AND TG.Talla = PIT.Talla;
+
+-- Obtener lista de tallas dinámicamente
+DECLARE @cols AS NVARCHAR(MAX);
+DECLARE @sql AS NVARCHAR(MAX);
+
+SELECT @cols = (
+	SELECT DISTINCT QUOTENAME(Talla) + ', '
+	FROM #TEMP
+	FOR XML PATH(''), TYPE).value('.', 'NVARCHAR(MAX)');
+
+-- Remover la última coma y espacio
+SELECT @cols = LEFT(@cols, LEN(@cols) - 1);
+
+-- Generar consulta dinámica con PIVOT
+SET @sql = 'SELECT 
+				  NO_PEDIDO,
+				  CVE_PRENDA,
+				  DESCRIPCIONPRENDA,
+				  LUGARDEENTREGA,
+				  NOMBRELUGARDEENTREGA,
+				  FECHAVENCIMIENTO,
+				  PRIORIDAD,
+				  MOTIVOPRIORIDAD,
+				  ' + @cols + ',
+				  ISNULL(Total, 0) AS Total
+			FROM 
+			(
+			  SELECT 
+				NO_PEDIDO,
+				CVE_PRENDA,
+				DESCRIPCIONPRENDA,
+				LUGARDEENTREGA,
+				NOMBRELUGARDEENTREGA,
+				FECHAVENCIMIENTO,
+				PRIORIDAD,
+				MOTIVOPRIORIDAD,
+				TALLA AS talla_column,
+				SUM(CANTIDAD) AS cantidad_total,
+				SUM(SUM(CANTIDAD)) OVER (PARTITION BY NO_PEDIDO, CVE_PRENDA, LUGARDEENTREGA, PRIORIDAD) AS Total
+			  FROM #PEDIDO_PARTIDAS
+			  GROUP BY 
+				NO_PEDIDO,
+				CVE_PRENDA,
+				DESCRIPCIONPRENDA,
+				LUGARDEENTREGA,
+				NOMBRELUGARDEENTREGA,
+				FECHAVENCIMIENTO,
+				PRIORIDAD,
+				MOTIVOPRIORIDAD,
+				TALLA
+			) x
+			PIVOT 
+			(
+			  SUM(cantidad_total)
+			  FOR talla_column IN (' + @cols + ')
+			) p';
+
+-- Ejecutar consulta dinámica
+EXEC sp_executesql @sql;
+
+-- Eliminar tablas temporales
+DROP TABLE #PEDIDO_PARTIDAS;
+DROP TABLE #TEMP;
+END
+
+--select * from PEDIDO_INTERNO where No_Pedido = 1
+--select * from CLIENTES where Cve_Cliente = 10
+--exec CONSULTA_OP_TALLAS_CANTIDADES 1,1361
+GO
+
