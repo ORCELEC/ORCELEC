@@ -1,6 +1,5 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
-Imports System.Linq
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 
@@ -778,8 +777,8 @@ Public Class OPVista
                 Next
 
                 BDComando.Parameters.Clear()
-                BDComando.CommandType = CommandType.Text
-                BDComando.CommandText = "SELECT ID_Liberacion,No_Liberacion,Talla,Cantidad,FechaHora,Observaciones FROM OP_LIBERACIONES WHERE Empresa=@EMPRESA AND No_OP=@NO_OP ORDER BY FechaHora,Talla"
+                BDComando.CommandType = CommandType.StoredProcedure
+                BDComando.CommandText = "SP_OP_CONSULTA_LIBERACIONES"
                 BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt)
                 BDComando.Parameters.Add("@NO_OP", SqlDbType.BigInt)
 
@@ -793,30 +792,37 @@ Public Class OPVista
                     Adapter.Fill(TablaLiberaciones)
 
                     If TablaLiberaciones.Rows.Count > 0 Then
-                        Dim Tallas = (From r In TablaLiberaciones.AsEnumerable() Select r.Field(Of String)("Talla")).Distinct().OrderBy(Function(t) t).ToList()
-
-                        DGVVistaTomaMedida.Columns.Add("ColNoLiberacion", "No Liberación")
-                        DGVVistaTomaMedida.Columns.Add("ColFecha", "Fecha")
+                        DGVVistaTomaMedida.Columns.Add("ColNoLiberacion", "No. de Liberación")
+                        DGVVistaTomaMedida.Columns("ColNoLiberacion").Width = 60
+                        DGVVistaTomaMedida.Columns.Add("ColFecha", "Fecha y hora")
                         DGVVistaTomaMedida.Columns.Add("ColObservaciones", "Observaciones")
-                        For Each Talla In Tallas
-                            DGVVistaTomaMedida.Columns.Add("COL_" & Talla, Talla)
+                        For Each col As DataColumn In TablaLiberaciones.Columns
+                            If col.ColumnName <> "ID_Liberacion" AndAlso col.ColumnName <> "No_Liberacion" AndAlso col.ColumnName <> "FechaHora" AndAlso col.ColumnName <> "Observaciones" Then
+                                DGVVistaTomaMedida.Columns.Add("COL_" & col.ColumnName, col.ColumnName)
+                            End If
                         Next
 
-                        Dim Liberaciones = From r In TablaLiberaciones.AsEnumerable() _
-                                           Group r By ID = r.Field(Of Guid)("ID_Liberacion") Into grp = Group _
-                                           Order By grp.Min(Function(x) x.Field(Of Date)("FechaHora")) _
-                                           Select ID, grp
-                        For Each lib In Liberaciones
+                        For Each reg As DataRow In TablaLiberaciones.Rows
                             Dim nRow As Integer = DGVVistaTomaMedida.Rows.Add()
-                            Dim firstRow = lib.grp.First()
-                            DGVVistaTomaMedida.Rows(nRow).Cells("ColNoLiberacion").Value = firstRow.Field(Of Integer)("No_Liberacion")
-                            DGVVistaTomaMedida.Rows(nRow).Cells("ColFecha").Value = firstRow.Field(Of Date)("FechaHora")
-                            DGVVistaTomaMedida.Rows(nRow).Cells("ColObservaciones").Value = firstRow.Field(Of String)("Observaciones")
+                            Dim noLib As Object = reg("No_Liberacion")
+                            If IsDBNull(noLib) OrElse Convert.ToInt32(noLib) = 0 Then
+                                DGVVistaTomaMedida.Rows(nRow).Cells("ColNoLiberacion").Value = ""
+                            Else
+                                DGVVistaTomaMedida.Rows(nRow).Cells("ColNoLiberacion").Value = noLib
+                            End If
 
-                            For Each fila In lib.grp
-                                Dim colName As String = "COL_" & fila.Field(Of String)("Talla")
-                                If DGVVistaTomaMedida.Columns.Contains(colName) Then
-                                    DGVVistaTomaMedida.Rows(nRow).Cells(colName).Value = fila.Field(Of Integer)("Cantidad")
+                            If Not IsDBNull(reg("FechaHora")) Then
+                                Dim fecha As Date = CDate(reg("FechaHora"))
+                                DGVVistaTomaMedida.Rows(nRow).Cells("ColFecha").Value = fecha.ToString("dd/MM/yyyy HH:mm")
+                            End If
+                            DGVVistaTomaMedida.Rows(nRow).Cells("ColObservaciones").Value = reg("Observaciones")
+
+                            For Each col As DataColumn In TablaLiberaciones.Columns
+                                If col.ColumnName <> "ID_Liberacion" AndAlso col.ColumnName <> "No_Liberacion" AndAlso col.ColumnName <> "FechaHora" AndAlso col.ColumnName <> "Observaciones" Then
+                                    Dim colName As String = "COL_" & col.ColumnName
+                                    If DGVVistaTomaMedida.Columns.Contains(colName) Then
+                                        DGVVistaTomaMedida.Rows(nRow).Cells(colName).Value = reg(col.ColumnName)
+                                    End If
                                 End If
                             Next
                         Next
