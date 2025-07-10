@@ -336,8 +336,8 @@ Partial Class FrmPedidoAltaEdicion
         Me.TabPrincipal.ControlBox.Name = ""
         Me.TabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TabPrincipal.ControlBox.MenuBox, Me.TabPrincipal.ControlBox.CloseBox})
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel3)
-        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel9)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel1)
+        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel9)
         Me.TabPrincipal.Location = New System.Drawing.Point(12, 115)
         Me.TabPrincipal.Name = "TabPrincipal"
         Me.TabPrincipal.ReorderTabsEnabled = True
@@ -1183,9 +1183,9 @@ Partial Class FrmPedidoAltaEdicion
         '
         Me.SuperTabControlPanel9.Controls.Add(Me.GroupPanel1)
         Me.SuperTabControlPanel9.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 25)
+        Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControlPanel9.Name = "SuperTabControlPanel9"
-        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 448)
+        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 473)
         Me.SuperTabControlPanel9.TabIndex = 0
         Me.SuperTabControlPanel9.TabItem = Me.TabNotas
         '
