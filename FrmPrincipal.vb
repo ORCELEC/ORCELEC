@@ -752,4 +752,9 @@ Public Class FrmPrincipal
         CalculoPorcentajeConsumoAnualPorDescripcionPrenda.MdiParent = Me
         CalculoPorcentajeConsumoAnualPorDescripcionPrenda.Show()
     End Sub
+
+    Private Sub ButtonItem4_Click(sender As Object, e As EventArgs) Handles ButtonItem4.Click
+        SeguimientoALiberaciones.MdiParent = Me
+        SeguimientoALiberaciones.Show()
+    End Sub
 End Class

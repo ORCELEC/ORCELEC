@@ -35,20 +35,6 @@ Partial Class FrmPrincipal
         Me.RibbonTabItem1 = New DevComponents.DotNetBar.RibbonTabItem()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonControl1 = New DevComponents.DotNetBar.RibbonControl()
-        Me.RibbonPanel13 = New DevComponents.DotNetBar.RibbonPanel()
-        Me.RibbonBar13 = New DevComponents.DotNetBar.RibbonBar()
-        Me.ButtonItem179 = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmReqSisUIC = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtnControlUsuarios = New DevComponents.DotNetBar.ButtonItem()
-        Me.RibbonPanel14 = New DevComponents.DotNetBar.RibbonPanel()
-        Me.RibbonBar14 = New DevComponents.DotNetBar.RibbonBar()
-        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmAutorizaDescripcionPrenda = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmAutorizarPedidoInterno = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmAutorizaOrdenCompra = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmAutorizaOP = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmDirSegProgProd = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmReasignacion = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonPanel2 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar3 = New DevComponents.DotNetBar.RibbonBar()
         Me.ButtonItem25 = New DevComponents.DotNetBar.ButtonItem()
@@ -69,6 +55,40 @@ Partial Class FrmPrincipal
         Me.BtmIPRAF = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem41 = New DevComponents.DotNetBar.ButtonItem()
         Me.BtmRepCalculoPorcentajeAnualPorCvePrenda = New DevComponents.DotNetBar.ButtonItem()
+        Me.RibbonPanel1 = New DevComponents.DotNetBar.RibbonPanel()
+        Me.RibbonBar1 = New DevComponents.DotNetBar.RibbonBar()
+        Me.ButtonItem15 = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmConFacDia = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmDeResProTer = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmAsigFol = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmRelFolUIC = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmCancFolios = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmRelClien = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmRelPedInt = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmAuditoriaVentas = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmDatIMSSCon = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem17 = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmRutTraVehUIC = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmSegConEmb = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem20 = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmAutCanOrdPro = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmAutAjusInv = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmOrdProEsp = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmSegMuestras = New DevComponents.DotNetBar.ButtonItem()
+        Me.RibbonPanel13 = New DevComponents.DotNetBar.RibbonPanel()
+        Me.RibbonBar13 = New DevComponents.DotNetBar.RibbonBar()
+        Me.ButtonItem179 = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmReqSisUIC = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtnControlUsuarios = New DevComponents.DotNetBar.ButtonItem()
+        Me.RibbonPanel14 = New DevComponents.DotNetBar.RibbonPanel()
+        Me.RibbonBar14 = New DevComponents.DotNetBar.RibbonBar()
+        Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmAutorizaDescripcionPrenda = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmAutorizarPedidoInterno = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmAutorizaOrdenCompra = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmAutorizaOP = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmDirSegProgProd = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmReasignacion = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonPanel6 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar7 = New DevComponents.DotNetBar.RibbonBar()
         Me.ButtonItem96 = New DevComponents.DotNetBar.ButtonItem()
@@ -101,26 +121,6 @@ Partial Class FrmPrincipal
         Me.BtmFactuReci = New DevComponents.DotNetBar.ButtonItem()
         Me.BtmAntiSaldos = New DevComponents.DotNetBar.ButtonItem()
         Me.BtmConseFactu = New DevComponents.DotNetBar.ButtonItem()
-        Me.RibbonPanel1 = New DevComponents.DotNetBar.RibbonPanel()
-        Me.RibbonBar1 = New DevComponents.DotNetBar.RibbonBar()
-        Me.ButtonItem15 = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmConFacDia = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmDeResProTer = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmAsigFol = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmRelFolUIC = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmCancFolios = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmRelClien = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmRelPedInt = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmAuditoriaVentas = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmDatIMSSCon = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem17 = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmRutTraVehUIC = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmSegConEmb = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem20 = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmAutCanOrdPro = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmAutAjusInv = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmOrdProEsp = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmSegMuestras = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonPanel3 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar4 = New DevComponents.DotNetBar.RibbonBar()
         Me.ButtonItem43 = New DevComponents.DotNetBar.ButtonItem()
@@ -268,17 +268,18 @@ Partial Class FrmPrincipal
         Me.SistemasBar = New DevComponents.DotNetBar.RibbonTabItem()
         Me.DireccionBar = New DevComponents.DotNetBar.RibbonTabItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.ButtonItem4 = New DevComponents.DotNetBar.ButtonItem()
         CType(Me.SBBDUnidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SBUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SBFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SBHora, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RibbonControl1.SuspendLayout()
+        Me.RibbonPanel2.SuspendLayout()
+        Me.RibbonPanel1.SuspendLayout()
         Me.RibbonPanel13.SuspendLayout()
         Me.RibbonPanel14.SuspendLayout()
-        Me.RibbonPanel2.SuspendLayout()
         Me.RibbonPanel6.SuspendLayout()
         Me.RibbonPanel7.SuspendLayout()
-        Me.RibbonPanel1.SuspendLayout()
         Me.RibbonPanel3.SuspendLayout()
         Me.RibbonPanel11.SuspendLayout()
         Me.RibbonPanel10.SuspendLayout()
@@ -348,6 +349,7 @@ Partial Class FrmPrincipal
         Me.RibbonControl1.BackgroundStyle.Class = "RibbonGalleryContainer"
         Me.RibbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonControl1.CaptionVisible = True
+        Me.RibbonControl1.Controls.Add(Me.RibbonPanel11)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel2)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel1)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel13)
@@ -355,7 +357,6 @@ Partial Class FrmPrincipal
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel6)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel7)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel3)
-        Me.RibbonControl1.Controls.Add(Me.RibbonPanel11)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel10)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel4)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel5)
@@ -392,6 +393,336 @@ Partial Class FrmPrincipal
         Me.RibbonControl1.TabGroupHeight = 1
         Me.RibbonControl1.TabIndex = 14
         Me.RibbonControl1.TitleText = "ORCELEC (Organizador Corporativo Electronico)"
+        '
+        'RibbonPanel2
+        '
+        Me.RibbonPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.RibbonPanel2.Controls.Add(Me.RibbonBar3)
+        Me.RibbonPanel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RibbonPanel2.Location = New System.Drawing.Point(0, 43)
+        Me.RibbonPanel2.Margin = New System.Windows.Forms.Padding(2)
+        Me.RibbonPanel2.Name = "RibbonPanel2"
+        Me.RibbonPanel2.Padding = New System.Windows.Forms.Padding(2, 0, 2, 2)
+        Me.RibbonPanel2.Size = New System.Drawing.Size(795, 56)
+        '
+        '
+        '
+        Me.RibbonPanel2.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonPanel2.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonPanel2.TabIndex = 2
+        Me.RibbonPanel2.Visible = False
+        '
+        'RibbonBar3
+        '
+        Me.RibbonBar3.AutoOverflowEnabled = True
+        '
+        '
+        '
+        Me.RibbonBar3.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar3.ContainerControlProcessDialogKey = True
+        Me.RibbonBar3.Dock = System.Windows.Forms.DockStyle.Left
+        Me.RibbonBar3.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem25, Me.BtmDesPreUIC, Me.ButtonItem38, Me.ButtonItem41})
+        Me.RibbonBar3.Location = New System.Drawing.Point(2, 0)
+        Me.RibbonBar3.Margin = New System.Windows.Forms.Padding(2)
+        Me.RibbonBar3.Name = "RibbonBar3"
+        Me.RibbonBar3.Size = New System.Drawing.Size(918, 54)
+        Me.RibbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.RibbonBar3.TabIndex = 0
+        Me.RibbonBar3.Text = "Modulo de Ventas"
+        '
+        '
+        '
+        Me.RibbonBar3.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar3.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'ButtonItem25
+        '
+        Me.ButtonItem25.AutoExpandOnClick = True
+        Me.ButtonItem25.Name = "ButtonItem25"
+        Me.ButtonItem25.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmClientes, Me.BtmDivisiones, Me.BtmRemisionados, Me.BtmPrendas, Me.BtnSufijosTela, Me.BtnSufijosLogo, Me.BtnLargosEspeciales})
+        Me.ButtonItem25.SubItemsExpandWidth = 14
+        Me.ButtonItem25.Text = "Catálogo"
+        '
+        'BtmClientes
+        '
+        Me.BtmClientes.Name = "BtmClientes"
+        Me.BtmClientes.Text = "Clientes"
+        '
+        'BtmDivisiones
+        '
+        Me.BtmDivisiones.Name = "BtmDivisiones"
+        Me.BtmDivisiones.Text = "Divisiones"
+        Me.BtmDivisiones.Visible = False
+        '
+        'BtmRemisionados
+        '
+        Me.BtmRemisionados.Name = "BtmRemisionados"
+        Me.BtmRemisionados.Text = "Remisionados"
+        '
+        'BtmPrendas
+        '
+        Me.BtmPrendas.Name = "BtmPrendas"
+        Me.BtmPrendas.Text = "Prendas"
+        '
+        'BtnSufijosTela
+        '
+        Me.BtnSufijosTela.Name = "BtnSufijosTela"
+        Me.BtnSufijosTela.Text = "Sufijos Tela"
+        '
+        'BtnSufijosLogo
+        '
+        Me.BtnSufijosLogo.Name = "BtnSufijosLogo"
+        Me.BtnSufijosLogo.Text = "Sufijos de Logotipo"
+        '
+        'BtnLargosEspeciales
+        '
+        Me.BtnLargosEspeciales.Name = "BtnLargosEspeciales"
+        Me.BtnLargosEspeciales.Text = "Largos Especiales"
+        Me.BtnLargosEspeciales.Visible = False
+        '
+        'BtmDesPreUIC
+        '
+        Me.BtmDesPreUIC.AutoExpandOnClick = True
+        Me.BtmDesPreUIC.Name = "BtmDesPreUIC"
+        Me.BtmDesPreUIC.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmDesPrenUIC, Me.BtmSelDatPedInt, Me.BtmConsultaPedidos})
+        Me.BtmDesPreUIC.SubItemsExpandWidth = 14
+        Me.BtmDesPreUIC.Text = "Pedidos"
+        '
+        'BtmDesPrenUIC
+        '
+        Me.BtmDesPrenUIC.Name = "BtmDesPrenUIC"
+        Me.BtmDesPrenUIC.Text = "Descripción de Prendas UIC-REP-04-24"
+        '
+        'BtmSelDatPedInt
+        '
+        Me.BtmSelDatPedInt.Name = "BtmSelDatPedInt"
+        Me.BtmSelDatPedInt.Text = "Captura de Pedido Interno"
+        '
+        'BtmConsultaPedidos
+        '
+        Me.BtmConsultaPedidos.Name = "BtmConsultaPedidos"
+        Me.BtmConsultaPedidos.Text = "Consulta de Pedido Interno"
+        '
+        'ButtonItem38
+        '
+        Me.ButtonItem38.AutoExpandOnClick = True
+        Me.ButtonItem38.Name = "ButtonItem38"
+        Me.ButtonItem38.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmRutaTrabVeh, Me.BtmDatosIMSSCon, Me.BtmIPRAF})
+        Me.ButtonItem38.SubItemsExpandWidth = 14
+        Me.ButtonItem38.Text = "Movimiento"
+        '
+        'BtmRutaTrabVeh
+        '
+        Me.BtmRutaTrabVeh.Name = "BtmRutaTrabVeh"
+        Me.BtmRutaTrabVeh.Text = "Ruta de Trabajo de Vehiculos UIC-F-07-10-00"
+        Me.BtmRutaTrabVeh.Visible = False
+        '
+        'BtmDatosIMSSCon
+        '
+        Me.BtmDatosIMSSCon.Name = "BtmDatosIMSSCon"
+        Me.BtmDatosIMSSCon.Text = "Datos IMSS Consulta"
+        Me.BtmDatosIMSSCon.Visible = False
+        '
+        'BtmIPRAF
+        '
+        Me.BtmIPRAF.Name = "BtmIPRAF"
+        Me.BtmIPRAF.Text = "Generación de IPRAF"
+        '
+        'ButtonItem41
+        '
+        Me.ButtonItem41.AutoExpandOnClick = True
+        Me.ButtonItem41.Name = "ButtonItem41"
+        Me.ButtonItem41.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmRepCalculoPorcentajeAnualPorCvePrenda})
+        Me.ButtonItem41.SubItemsExpandWidth = 14
+        Me.ButtonItem41.Text = "Consultas"
+        '
+        'BtmRepCalculoPorcentajeAnualPorCvePrenda
+        '
+        Me.BtmRepCalculoPorcentajeAnualPorCvePrenda.Name = "BtmRepCalculoPorcentajeAnualPorCvePrenda"
+        Me.BtmRepCalculoPorcentajeAnualPorCvePrenda.Text = "Cálculo de Porcentaje de Consumo Anual por Descripción de Prenda"
+        '
+        'RibbonPanel1
+        '
+        Me.RibbonPanel1.AutoSize = True
+        Me.RibbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.RibbonPanel1.Controls.Add(Me.RibbonBar1)
+        Me.RibbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RibbonPanel1.Location = New System.Drawing.Point(0, 43)
+        Me.RibbonPanel1.Margin = New System.Windows.Forms.Padding(2)
+        Me.RibbonPanel1.Name = "RibbonPanel1"
+        Me.RibbonPanel1.Padding = New System.Windows.Forms.Padding(2, 0, 2, 2)
+        Me.RibbonPanel1.Size = New System.Drawing.Size(795, 56)
+        '
+        '
+        '
+        Me.RibbonPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonPanel1.TabIndex = 1
+        Me.RibbonPanel1.Visible = False
+        '
+        'RibbonBar1
+        '
+        Me.RibbonBar1.AutoOverflowEnabled = True
+        '
+        '
+        '
+        Me.RibbonBar1.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar1.ContainerControlProcessDialogKey = True
+        Me.RibbonBar1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.RibbonBar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem15, Me.ButtonItem17, Me.ButtonItem20})
+        Me.RibbonBar1.Location = New System.Drawing.Point(2, 0)
+        Me.RibbonBar1.Margin = New System.Windows.Forms.Padding(2)
+        Me.RibbonBar1.Name = "RibbonBar1"
+        Me.RibbonBar1.Size = New System.Drawing.Size(918, 54)
+        Me.RibbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.RibbonBar1.TabIndex = 0
+        Me.RibbonBar1.Text = "Modulo de Administración de Ventas"
+        '
+        '
+        '
+        Me.RibbonBar1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'ButtonItem15
+        '
+        Me.ButtonItem15.AutoExpandOnClick = True
+        Me.ButtonItem15.Name = "ButtonItem15"
+        Me.ButtonItem15.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmConFacDia, Me.BtmDeResProTer, Me.BtmAsigFol, Me.BtmRelFolUIC, Me.BtmCancFolios, Me.BtmRelClien, Me.BtmRelPedInt, Me.BtmAuditoriaVentas, Me.BtmDatIMSSCon})
+        Me.ButtonItem15.SubItemsExpandWidth = 14
+        Me.ButtonItem15.Text = "Consultas"
+        '
+        'BtmConFacDia
+        '
+        Me.BtmConFacDia.Name = "BtmConFacDia"
+        Me.BtmConFacDia.Text = "Consulta Factura Dia"
+        Me.BtmConFacDia.Visible = False
+        '
+        'BtmDeResProTer
+        '
+        Me.BtmDeResProTer.Name = "BtmDeResProTer"
+        Me.BtmDeResProTer.Text = "De Reservados de Producto Terminado"
+        Me.BtmDeResProTer.Visible = False
+        '
+        'BtmAsigFol
+        '
+        Me.BtmAsigFol.Name = "BtmAsigFol"
+        Me.BtmAsigFol.Text = "Asignación de Folios"
+        '
+        'BtmRelFolUIC
+        '
+        Me.BtmRelFolUIC.Name = "BtmRelFolUIC"
+        Me.BtmRelFolUIC.Text = "Relación de Folios UIC-REP-04-13"
+        Me.BtmRelFolUIC.Visible = False
+        '
+        'BtmCancFolios
+        '
+        Me.BtmCancFolios.Name = "BtmCancFolios"
+        Me.BtmCancFolios.Text = "Cancelación de Folios"
+        Me.BtmCancFolios.Visible = False
+        '
+        'BtmRelClien
+        '
+        Me.BtmRelClien.Name = "BtmRelClien"
+        Me.BtmRelClien.Text = "Relación de Clientes"
+        Me.BtmRelClien.Visible = False
+        '
+        'BtmRelPedInt
+        '
+        Me.BtmRelPedInt.Name = "BtmRelPedInt"
+        Me.BtmRelPedInt.Text = "Relación de Pedidos Internos"
+        Me.BtmRelPedInt.Visible = False
+        '
+        'BtmAuditoriaVentas
+        '
+        Me.BtmAuditoriaVentas.Name = "BtmAuditoriaVentas"
+        Me.BtmAuditoriaVentas.Text = "Auditoria de Ventas"
+        Me.BtmAuditoriaVentas.Visible = False
+        '
+        'BtmDatIMSSCon
+        '
+        Me.BtmDatIMSSCon.Name = "BtmDatIMSSCon"
+        Me.BtmDatIMSSCon.Text = "Datos IMSS Consulta"
+        Me.BtmDatIMSSCon.Visible = False
+        '
+        'ButtonItem17
+        '
+        Me.ButtonItem17.AutoExpandOnClick = True
+        Me.ButtonItem17.Name = "ButtonItem17"
+        Me.ButtonItem17.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmRutTraVehUIC, Me.BtmSegConEmb})
+        Me.ButtonItem17.SubItemsExpandWidth = 14
+        Me.ButtonItem17.Text = "Movimientos"
+        Me.ButtonItem17.Visible = False
+        '
+        'BtmRutTraVehUIC
+        '
+        Me.BtmRutTraVehUIC.Name = "BtmRutTraVehUIC"
+        Me.BtmRutTraVehUIC.Text = "Ruta de Trabajo de Vehiculos UIC-F-07-10-00"
+        Me.BtmRutTraVehUIC.Visible = False
+        '
+        'BtmSegConEmb
+        '
+        Me.BtmSegConEmb.Name = "BtmSegConEmb"
+        Me.BtmSegConEmb.Text = "Seguimiento y Control de Embarques"
+        Me.BtmSegConEmb.Visible = False
+        '
+        'ButtonItem20
+        '
+        Me.ButtonItem20.AutoExpandOnClick = True
+        Me.ButtonItem20.Name = "ButtonItem20"
+        Me.ButtonItem20.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmAutCanOrdPro, Me.BtmAutAjusInv, Me.BtmOrdProEsp, Me.BtmSegMuestras})
+        Me.ButtonItem20.SubItemsExpandWidth = 14
+        Me.ButtonItem20.Text = "Herrramientas"
+        '
+        'BtmAutCanOrdPro
+        '
+        Me.BtmAutCanOrdPro.Name = "BtmAutCanOrdPro"
+        Me.BtmAutCanOrdPro.Text = "Autorización para Cancelación de Orden de Producto"
+        Me.BtmAutCanOrdPro.Visible = False
+        '
+        'BtmAutAjusInv
+        '
+        Me.BtmAutAjusInv.Name = "BtmAutAjusInv"
+        Me.BtmAutAjusInv.Text = "Autorización para Ajustes de Inventario"
+        Me.BtmAutAjusInv.Visible = False
+        '
+        'BtmOrdProEsp
+        '
+        Me.BtmOrdProEsp.Name = "BtmOrdProEsp"
+        Me.BtmOrdProEsp.Text = "Orden de Producción Especial"
+        Me.BtmOrdProEsp.Visible = False
+        '
+        'BtmSegMuestras
+        '
+        Me.BtmSegMuestras.Name = "BtmSegMuestras"
+        Me.BtmSegMuestras.Text = "Bitacora de Seguimiento de Muestras"
         '
         'RibbonPanel13
         '
@@ -555,166 +886,6 @@ Partial Class FrmPrincipal
         '
         Me.BtmReasignacion.Name = "BtmReasignacion"
         Me.BtmReasignacion.Text = "Reasignación de Orden de Producción"
-        '
-        'RibbonPanel2
-        '
-        Me.RibbonPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.RibbonPanel2.Controls.Add(Me.RibbonBar3)
-        Me.RibbonPanel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RibbonPanel2.Location = New System.Drawing.Point(0, 43)
-        Me.RibbonPanel2.Margin = New System.Windows.Forms.Padding(2)
-        Me.RibbonPanel2.Name = "RibbonPanel2"
-        Me.RibbonPanel2.Padding = New System.Windows.Forms.Padding(2, 0, 2, 2)
-        Me.RibbonPanel2.Size = New System.Drawing.Size(795, 56)
-        '
-        '
-        '
-        Me.RibbonPanel2.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonPanel2.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonPanel2.TabIndex = 2
-        '
-        'RibbonBar3
-        '
-        Me.RibbonBar3.AutoOverflowEnabled = True
-        '
-        '
-        '
-        Me.RibbonBar3.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonBar3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar3.ContainerControlProcessDialogKey = True
-        Me.RibbonBar3.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar3.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem25, Me.BtmDesPreUIC, Me.ButtonItem38, Me.ButtonItem41})
-        Me.RibbonBar3.Location = New System.Drawing.Point(2, 0)
-        Me.RibbonBar3.Margin = New System.Windows.Forms.Padding(2)
-        Me.RibbonBar3.Name = "RibbonBar3"
-        Me.RibbonBar3.Size = New System.Drawing.Size(918, 54)
-        Me.RibbonBar3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.RibbonBar3.TabIndex = 0
-        Me.RibbonBar3.Text = "Modulo de Ventas"
-        '
-        '
-        '
-        Me.RibbonBar3.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonBar3.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        'ButtonItem25
-        '
-        Me.ButtonItem25.AutoExpandOnClick = True
-        Me.ButtonItem25.Name = "ButtonItem25"
-        Me.ButtonItem25.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmClientes, Me.BtmDivisiones, Me.BtmRemisionados, Me.BtmPrendas, Me.BtnSufijosTela, Me.BtnSufijosLogo, Me.BtnLargosEspeciales})
-        Me.ButtonItem25.SubItemsExpandWidth = 14
-        Me.ButtonItem25.Text = "Catálogo"
-        '
-        'BtmClientes
-        '
-        Me.BtmClientes.Name = "BtmClientes"
-        Me.BtmClientes.Text = "Clientes"
-        '
-        'BtmDivisiones
-        '
-        Me.BtmDivisiones.Name = "BtmDivisiones"
-        Me.BtmDivisiones.Text = "Divisiones"
-        Me.BtmDivisiones.Visible = False
-        '
-        'BtmRemisionados
-        '
-        Me.BtmRemisionados.Name = "BtmRemisionados"
-        Me.BtmRemisionados.Text = "Remisionados"
-        '
-        'BtmPrendas
-        '
-        Me.BtmPrendas.Name = "BtmPrendas"
-        Me.BtmPrendas.Text = "Prendas"
-        '
-        'BtnSufijosTela
-        '
-        Me.BtnSufijosTela.Name = "BtnSufijosTela"
-        Me.BtnSufijosTela.Text = "Sufijos Tela"
-        '
-        'BtnSufijosLogo
-        '
-        Me.BtnSufijosLogo.Name = "BtnSufijosLogo"
-        Me.BtnSufijosLogo.Text = "Sufijos de Logotipo"
-        '
-        'BtnLargosEspeciales
-        '
-        Me.BtnLargosEspeciales.Name = "BtnLargosEspeciales"
-        Me.BtnLargosEspeciales.Text = "Largos Especiales"
-        Me.BtnLargosEspeciales.Visible = False
-        '
-        'BtmDesPreUIC
-        '
-        Me.BtmDesPreUIC.AutoExpandOnClick = True
-        Me.BtmDesPreUIC.Name = "BtmDesPreUIC"
-        Me.BtmDesPreUIC.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmDesPrenUIC, Me.BtmSelDatPedInt, Me.BtmConsultaPedidos})
-        Me.BtmDesPreUIC.SubItemsExpandWidth = 14
-        Me.BtmDesPreUIC.Text = "Pedidos"
-        '
-        'BtmDesPrenUIC
-        '
-        Me.BtmDesPrenUIC.Name = "BtmDesPrenUIC"
-        Me.BtmDesPrenUIC.Text = "Descripción de Prendas UIC-REP-04-24"
-        '
-        'BtmSelDatPedInt
-        '
-        Me.BtmSelDatPedInt.Name = "BtmSelDatPedInt"
-        Me.BtmSelDatPedInt.Text = "Captura de Pedido Interno"
-        '
-        'BtmConsultaPedidos
-        '
-        Me.BtmConsultaPedidos.Name = "BtmConsultaPedidos"
-        Me.BtmConsultaPedidos.Text = "Consulta de Pedido Interno"
-        '
-        'ButtonItem38
-        '
-        Me.ButtonItem38.AutoExpandOnClick = True
-        Me.ButtonItem38.Name = "ButtonItem38"
-        Me.ButtonItem38.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmRutaTrabVeh, Me.BtmDatosIMSSCon, Me.BtmIPRAF})
-        Me.ButtonItem38.SubItemsExpandWidth = 14
-        Me.ButtonItem38.Text = "Movimiento"
-        '
-        'BtmRutaTrabVeh
-        '
-        Me.BtmRutaTrabVeh.Name = "BtmRutaTrabVeh"
-        Me.BtmRutaTrabVeh.Text = "Ruta de Trabajo de Vehiculos UIC-F-07-10-00"
-        Me.BtmRutaTrabVeh.Visible = False
-        '
-        'BtmDatosIMSSCon
-        '
-        Me.BtmDatosIMSSCon.Name = "BtmDatosIMSSCon"
-        Me.BtmDatosIMSSCon.Text = "Datos IMSS Consulta"
-        Me.BtmDatosIMSSCon.Visible = False
-        '
-        'BtmIPRAF
-        '
-        Me.BtmIPRAF.Name = "BtmIPRAF"
-        Me.BtmIPRAF.Text = "Generación de IPRAF"
-        '
-        'ButtonItem41
-        '
-        Me.ButtonItem41.AutoExpandOnClick = True
-        Me.ButtonItem41.Name = "ButtonItem41"
-        Me.ButtonItem41.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmRepCalculoPorcentajeAnualPorCvePrenda})
-        Me.ButtonItem41.SubItemsExpandWidth = 14
-        Me.ButtonItem41.Text = "Consultas"
-        '
-        'BtmRepCalculoPorcentajeAnualPorCvePrenda
-        '
-        Me.BtmRepCalculoPorcentajeAnualPorCvePrenda.Name = "BtmRepCalculoPorcentajeAnualPorCvePrenda"
-        Me.BtmRepCalculoPorcentajeAnualPorCvePrenda.Text = "Cálculo de Porcentaje de Consumo Anual por Descripción de Prenda"
         '
         'RibbonPanel6
         '
@@ -986,175 +1157,6 @@ Partial Class FrmPrincipal
         '
         Me.BtmConseFactu.Name = "BtmConseFactu"
         Me.BtmConseFactu.Text = "Consecutivo de Facturas"
-        '
-        'RibbonPanel1
-        '
-        Me.RibbonPanel1.AutoSize = True
-        Me.RibbonPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.RibbonPanel1.Controls.Add(Me.RibbonBar1)
-        Me.RibbonPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RibbonPanel1.Location = New System.Drawing.Point(0, 43)
-        Me.RibbonPanel1.Margin = New System.Windows.Forms.Padding(2)
-        Me.RibbonPanel1.Name = "RibbonPanel1"
-        Me.RibbonPanel1.Padding = New System.Windows.Forms.Padding(2, 0, 2, 2)
-        Me.RibbonPanel1.Size = New System.Drawing.Size(795, 56)
-        '
-        '
-        '
-        Me.RibbonPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonPanel1.TabIndex = 1
-        Me.RibbonPanel1.Visible = False
-        '
-        'RibbonBar1
-        '
-        Me.RibbonBar1.AutoOverflowEnabled = True
-        '
-        '
-        '
-        Me.RibbonBar1.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonBar1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar1.ContainerControlProcessDialogKey = True
-        Me.RibbonBar1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem15, Me.ButtonItem17, Me.ButtonItem20})
-        Me.RibbonBar1.Location = New System.Drawing.Point(2, 0)
-        Me.RibbonBar1.Margin = New System.Windows.Forms.Padding(2)
-        Me.RibbonBar1.Name = "RibbonBar1"
-        Me.RibbonBar1.Size = New System.Drawing.Size(918, 54)
-        Me.RibbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.RibbonBar1.TabIndex = 0
-        Me.RibbonBar1.Text = "Modulo de Administración de Ventas"
-        '
-        '
-        '
-        Me.RibbonBar1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        'ButtonItem15
-        '
-        Me.ButtonItem15.AutoExpandOnClick = True
-        Me.ButtonItem15.Name = "ButtonItem15"
-        Me.ButtonItem15.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmConFacDia, Me.BtmDeResProTer, Me.BtmAsigFol, Me.BtmRelFolUIC, Me.BtmCancFolios, Me.BtmRelClien, Me.BtmRelPedInt, Me.BtmAuditoriaVentas, Me.BtmDatIMSSCon})
-        Me.ButtonItem15.SubItemsExpandWidth = 14
-        Me.ButtonItem15.Text = "Consultas"
-        '
-        'BtmConFacDia
-        '
-        Me.BtmConFacDia.Name = "BtmConFacDia"
-        Me.BtmConFacDia.Text = "Consulta Factura Dia"
-        Me.BtmConFacDia.Visible = False
-        '
-        'BtmDeResProTer
-        '
-        Me.BtmDeResProTer.Name = "BtmDeResProTer"
-        Me.BtmDeResProTer.Text = "De Reservados de Producto Terminado"
-        Me.BtmDeResProTer.Visible = False
-        '
-        'BtmAsigFol
-        '
-        Me.BtmAsigFol.Name = "BtmAsigFol"
-        Me.BtmAsigFol.Text = "Asignación de Folios"
-        '
-        'BtmRelFolUIC
-        '
-        Me.BtmRelFolUIC.Name = "BtmRelFolUIC"
-        Me.BtmRelFolUIC.Text = "Relación de Folios UIC-REP-04-13"
-        Me.BtmRelFolUIC.Visible = False
-        '
-        'BtmCancFolios
-        '
-        Me.BtmCancFolios.Name = "BtmCancFolios"
-        Me.BtmCancFolios.Text = "Cancelación de Folios"
-        Me.BtmCancFolios.Visible = False
-        '
-        'BtmRelClien
-        '
-        Me.BtmRelClien.Name = "BtmRelClien"
-        Me.BtmRelClien.Text = "Relación de Clientes"
-        Me.BtmRelClien.Visible = False
-        '
-        'BtmRelPedInt
-        '
-        Me.BtmRelPedInt.Name = "BtmRelPedInt"
-        Me.BtmRelPedInt.Text = "Relación de Pedidos Internos"
-        Me.BtmRelPedInt.Visible = False
-        '
-        'BtmAuditoriaVentas
-        '
-        Me.BtmAuditoriaVentas.Name = "BtmAuditoriaVentas"
-        Me.BtmAuditoriaVentas.Text = "Auditoria de Ventas"
-        Me.BtmAuditoriaVentas.Visible = False
-        '
-        'BtmDatIMSSCon
-        '
-        Me.BtmDatIMSSCon.Name = "BtmDatIMSSCon"
-        Me.BtmDatIMSSCon.Text = "Datos IMSS Consulta"
-        Me.BtmDatIMSSCon.Visible = False
-        '
-        'ButtonItem17
-        '
-        Me.ButtonItem17.AutoExpandOnClick = True
-        Me.ButtonItem17.Name = "ButtonItem17"
-        Me.ButtonItem17.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmRutTraVehUIC, Me.BtmSegConEmb})
-        Me.ButtonItem17.SubItemsExpandWidth = 14
-        Me.ButtonItem17.Text = "Movimientos"
-        Me.ButtonItem17.Visible = False
-        '
-        'BtmRutTraVehUIC
-        '
-        Me.BtmRutTraVehUIC.Name = "BtmRutTraVehUIC"
-        Me.BtmRutTraVehUIC.Text = "Ruta de Trabajo de Vehiculos UIC-F-07-10-00"
-        Me.BtmRutTraVehUIC.Visible = False
-        '
-        'BtmSegConEmb
-        '
-        Me.BtmSegConEmb.Name = "BtmSegConEmb"
-        Me.BtmSegConEmb.Text = "Seguimiento y Control de Embarques"
-        Me.BtmSegConEmb.Visible = False
-        '
-        'ButtonItem20
-        '
-        Me.ButtonItem20.AutoExpandOnClick = True
-        Me.ButtonItem20.Name = "ButtonItem20"
-        Me.ButtonItem20.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmAutCanOrdPro, Me.BtmAutAjusInv, Me.BtmOrdProEsp, Me.BtmSegMuestras})
-        Me.ButtonItem20.SubItemsExpandWidth = 14
-        Me.ButtonItem20.Text = "Herrramientas"
-        '
-        'BtmAutCanOrdPro
-        '
-        Me.BtmAutCanOrdPro.Name = "BtmAutCanOrdPro"
-        Me.BtmAutCanOrdPro.Text = "Autorización para Cancelación de Orden de Producto"
-        Me.BtmAutCanOrdPro.Visible = False
-        '
-        'BtmAutAjusInv
-        '
-        Me.BtmAutAjusInv.Name = "BtmAutAjusInv"
-        Me.BtmAutAjusInv.Text = "Autorización para Ajustes de Inventario"
-        Me.BtmAutAjusInv.Visible = False
-        '
-        'BtmOrdProEsp
-        '
-        Me.BtmOrdProEsp.Name = "BtmOrdProEsp"
-        Me.BtmOrdProEsp.Text = "Orden de Producción Especial"
-        Me.BtmOrdProEsp.Visible = False
-        '
-        'BtmSegMuestras
-        '
-        Me.BtmSegMuestras.Name = "BtmSegMuestras"
-        Me.BtmSegMuestras.Text = "Bitacora de Seguimiento de Muestras"
         '
         'RibbonPanel3
         '
@@ -1441,7 +1443,6 @@ Partial Class FrmPrincipal
         '
         Me.RibbonPanel11.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonPanel11.TabIndex = 11
-        Me.RibbonPanel11.Visible = False
         '
         'RibbonBar11
         '
@@ -1675,7 +1676,7 @@ Partial Class FrmPrincipal
         '
         Me.ButtonItem3.AutoExpandOnClick = True
         Me.ButtonItem3.Name = "ButtonItem3"
-        Me.ButtonItem3.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmRutaTrabajo})
+        Me.ButtonItem3.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmRutaTrabajo, Me.ButtonItem4})
         Me.ButtonItem3.SubItemsExpandWidth = 14
         Me.ButtonItem3.Text = "Logística"
         '
@@ -2280,7 +2281,6 @@ Partial Class FrmPrincipal
         '
         'VentasBar
         '
-        Me.VentasBar.Checked = True
         Me.VentasBar.Name = "VentasBar"
         Me.VentasBar.Panel = Me.RibbonPanel2
         Me.VentasBar.Text = "Ventas"
@@ -2337,6 +2337,7 @@ Partial Class FrmPrincipal
         '
         'AdminOperaBar
         '
+        Me.AdminOperaBar.Checked = True
         Me.AdminOperaBar.Name = "AdminOperaBar"
         Me.AdminOperaBar.Panel = Me.RibbonPanel11
         Me.AdminOperaBar.Text = "Operaciones y Logística"
@@ -2362,6 +2363,11 @@ Partial Class FrmPrincipal
         'Timer1
         '
         '
+        'ButtonItem4
+        '
+        Me.ButtonItem4.Name = "ButtonItem4"
+        Me.ButtonItem4.Text = "Seguimiento a Liberaciones"
+        '
         'FrmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2382,12 +2388,12 @@ Partial Class FrmPrincipal
         CType(Me.SBHora, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RibbonControl1.ResumeLayout(False)
         Me.RibbonControl1.PerformLayout()
+        Me.RibbonPanel2.ResumeLayout(False)
+        Me.RibbonPanel1.ResumeLayout(False)
         Me.RibbonPanel13.ResumeLayout(False)
         Me.RibbonPanel14.ResumeLayout(False)
-        Me.RibbonPanel2.ResumeLayout(False)
         Me.RibbonPanel6.ResumeLayout(False)
         Me.RibbonPanel7.ResumeLayout(False)
-        Me.RibbonPanel1.ResumeLayout(False)
         Me.RibbonPanel3.ResumeLayout(False)
         Me.RibbonPanel11.ResumeLayout(False)
         Me.RibbonPanel10.ResumeLayout(False)
@@ -2642,5 +2648,6 @@ Partial Class FrmPrincipal
     Friend WithEvents BtnImportaIMSSAltas As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents BtmReasignacion As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents BtmActualizaFacturas As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
 
 End Class

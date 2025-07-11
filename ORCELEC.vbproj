@@ -781,6 +781,12 @@
     <Compile Include="RutaTrabajo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SeguimientoALiberaciones.Designer.vb">
+      <DependentUpon>SeguimientoALiberaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SeguimientoALiberaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Settings.vb" />
     <Compile Include="SugeridoCompra.Designer.vb">
       <DependentUpon>SugeridoCompra.vb</DependentUpon>
@@ -1105,6 +1111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RutaTrabajo.resx">
       <DependentUpon>RutaTrabajo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeguimientoALiberaciones.resx">
+      <DependentUpon>SeguimientoALiberaciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SugeridoCompra.resx">
       <DependentUpon>SugeridoCompra.vb</DependentUpon>
