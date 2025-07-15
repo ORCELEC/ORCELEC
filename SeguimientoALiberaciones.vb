@@ -5,6 +5,7 @@ Public Class SeguimientoALiberaciones
     Private BDComando As SqlCommand
     Private BDAdapter As SqlDataAdapter
     Private BDTabla As New DataTable
+    Private BDTablaDetalle As New DataTable
 
     Private Sub SeguimientoALiberaciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BDComando = New SqlCommand()
@@ -112,6 +113,94 @@ Public Class SeguimientoALiberaciones
             End If
         Catch ex As Exception
             MessageBox.Show("Se generó un error al consultar las Liberaciones: " & ex.Message, "Liberaciones", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        Finally
+            If BDComando.Connection.State = ConnectionState.Open Then
+                BDComando.Connection.Close()
+            End If
+        End Try
+    End Sub
+
+    Private Sub DGLiberaciones_SelectionChanged(sender As Object, e As EventArgs) Handles DGLiberaciones.SelectionChanged
+        If DGLiberaciones.CurrentRow Is Nothing Then Exit Sub
+        Dim noLiberacion As Integer = 0
+        If Integer.TryParse(DGLiberaciones.CurrentRow.Cells("No_Liberacion").Value.ToString(), noLiberacion) Then
+            CargarLiberacionDetalle(noLiberacion)
+        End If
+    End Sub
+
+    Private Sub CargarLiberacionDetalle(noLiberacion As Integer)
+        BDComando.Parameters.Clear()
+        BDComando.CommandType = CommandType.StoredProcedure
+        BDComando.CommandText = "OP_CONSULTA_LIBERACIONES_DETALLE"
+        BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
+        BDComando.Parameters.Add("@NO_LIBERACION", SqlDbType.Int).Value = noLiberacion
+
+        Try
+            BDTablaDetalle.Rows.Clear()
+            BDTablaDetalle.Columns.Clear()
+            BDAdapter = New SqlDataAdapter(BDComando)
+            BDAdapter.Fill(BDTablaDetalle)
+
+            If BDTablaDetalle.Columns.Contains("Observaciones") Then
+                If BDTablaDetalle.Rows.Count > 0 Then
+                    TxtObservaciones.Text = BDTablaDetalle.Rows(0)("Observaciones").ToString()
+                Else
+                    TxtObservaciones.Clear()
+                End If
+                BDTablaDetalle.Columns.Remove("Observaciones")
+            End If
+
+            DGLiberacionesDetalle.DataSource = BDTablaDetalle
+
+            If DGLiberacionesDetalle.Columns.Contains("Talla") Then
+                DGLiberacionesDetalle.Columns("Talla").HeaderText = "Talla"
+            End If
+
+            If DGLiberacionesDetalle.Columns.Contains("Orden") Then
+                DGLiberacionesDetalle.Columns("Orden").Visible = False
+            End If
+
+            If DGLiberacionesDetalle.Columns.Contains("Cantidad Liberada") Then
+                DGLiberacionesDetalle.Columns("Cantidad Liberada").Width = 50
+            End If
+
+            If DGLiberacionesDetalle.Columns.Contains("Cantidad Recolectada") Then
+                DGLiberacionesDetalle.Columns("Cantidad Recolectada").HeaderText = "Cantidad Recolectada"
+                DGLiberacionesDetalle.Columns("Cantidad Recolectada").Width = 50
+            End If
+            If DGLiberacionesDetalle.Columns.Contains("Quién Recolectó") Then
+                DGLiberacionesDetalle.Columns("Quién Recolectó").HeaderText = "Quién Recolectó"
+                DGLiberacionesDetalle.Columns("Quién Recolectó").Width = 150
+            End If
+            If DGLiberacionesDetalle.Columns.Contains("Fecha y hora de recolección") Then
+                DGLiberacionesDetalle.Columns("Fecha y hora de recolección").HeaderText = "Fecha y hora de Recolección"
+                DGLiberacionesDetalle.Columns("Fecha y hora de recolección").DefaultCellStyle.Format = "dd/MM/yyyy HH:mm"
+                DGLiberacionesDetalle.Columns("Fecha y hora de recolección").Width = 80
+            End If
+            If DGLiberacionesDetalle.Columns.Contains("Cantidad Ingresada") Then
+                DGLiberacionesDetalle.Columns("Cantidad Ingresada").HeaderText = "Cantidad Ingresada al Almacén"
+                DGLiberacionesDetalle.Columns("Cantidad Ingresada").Width = 50
+            End If
+            If DGLiberacionesDetalle.Columns.Contains("Almacén de Ingreso") Then
+                DGLiberacionesDetalle.Columns("Almacén de Ingreso").HeaderText = "Almacén al que se ingreso"
+                DGLiberacionesDetalle.Columns("Almacén de Ingreso").Width = 70
+            End If
+            If DGLiberacionesDetalle.Columns.Contains("Num. de Recepción") Then
+                DGLiberacionesDetalle.Columns("Num. de Recepción").HeaderText = "Num. de Recepción"
+                DGLiberacionesDetalle.Columns("Num. de Recepción").Width = 70
+            End If
+            If DGLiberacionesDetalle.Columns.Contains("Quién Ingreso al Almacén") Then
+                DGLiberacionesDetalle.Columns("Quién Ingreso al Almacén").HeaderText = "Quién Ingreso al Almacén"
+                DGLiberacionesDetalle.Columns("Quién Ingreso al Almacén").Width = 150
+            End If
+            If DGLiberacionesDetalle.Columns.Contains("Fecha y hora de Ingreso al Almacén") Then
+                DGLiberacionesDetalle.Columns("Fecha y hora de Ingreso al Almacén").HeaderText = "Fecha y hora de Ingreso al Almacén"
+                DGLiberacionesDetalle.Columns("Fecha y hora de Ingreso al Almacén").DefaultCellStyle.Format = "dd/MM/yyyy HH:mm"
+                DGLiberacionesDetalle.Columns("Fecha y hora de Ingreso al Almacén").Width = 70
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Error al consultar detalle: " & ex.Message, "Liberaciones", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Finally
             If BDComando.Connection.State = ConnectionState.Open Then
                 BDComando.Connection.Close()
