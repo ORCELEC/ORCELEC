@@ -753,7 +753,7 @@ Public Class FrmPrincipal
         CalculoPorcentajeConsumoAnualPorDescripcionPrenda.Show()
     End Sub
 
-    Private Sub ButtonItem4_Click(sender As Object, e As EventArgs) Handles ButtonItem4.Click
+    Private Sub BtmSeguimientoLiberaciones_Click(sender As Object, e As EventArgs) Handles BtmSeguimientoLiberaciones.Click
         SeguimientoALiberaciones.MdiParent = Me
         SeguimientoALiberaciones.Show()
     End Sub
