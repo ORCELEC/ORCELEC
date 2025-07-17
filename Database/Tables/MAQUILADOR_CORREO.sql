@@ -1,0 +1,25 @@
+USE [NORCELEC]
+GO
+
+/****** Object:  Table [dbo].[MAQUILADOR_CORREO]    Script Date: 17/07/2025 01:43:11 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[MAQUILADOR_CORREO](
+	[Cve_Maquilador] [bigint] NOT NULL,
+	[Consecutivo] [bigint] NOT NULL,
+	[Email] [nvarchar](255) NULL,
+	[USUARIO] [bigint] NULL,
+	[FECHAHORA] [datetime] NULL,
+	[COMPUTADORA] [nvarchar](50) NULL,
+ CONSTRAINT [PK_MAQUILADOR_CORREO] PRIMARY KEY CLUSTERED 
+(
+	[Cve_Maquilador] ASC,
+	[Consecutivo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
