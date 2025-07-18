@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[OP_GENERA_REMISIONES]    Script Date: 17/07/2025 12:08:23 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[OP_GENERA_REMISIONES]    Script Date: 17/07/2025 06:40:04 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
