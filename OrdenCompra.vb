@@ -353,6 +353,8 @@ Public Class OrdenCompra
                         DGVFechasPromesaEntrega.Rows(Fila).Visible = True
                     End If
                 Next
+                PanFechasPromesaEntrega.Width = 950
+                PanFechasPromesaEntrega.Height = 245
 
                 If TipoMovimiento <> "ALTA" Then
                     If DGVOrdenCompra.CurrentRow.Cells("Estatus").Value <> "FINALIZADA" Then

@@ -22,31 +22,31 @@ Partial Class OrdenCompra
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle73 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle76 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle77 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle74 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle75 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle78 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle81 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle82 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle79 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle80 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle83 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle86 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle87 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle84 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle85 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle88 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle90 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle91 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle89 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OrdenCompra))
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle95 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle96 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle92 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle93 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle94 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanPrincipal = New DevComponents.DotNetBar.PanelEx()
         Me.PanDetalle = New DevComponents.DotNetBar.PanelEx()
         Me.BtnImprimirOC = New DevComponents.DotNetBar.ButtonX()
@@ -93,6 +93,19 @@ Partial Class OrdenCompra
         Me.BtnEliminarPartida = New DevComponents.DotNetBar.ButtonX()
         Me.BtnAgregarPartida = New DevComponents.DotNetBar.ButtonX()
         Me.DGVOrdenCompraPartidas = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.AltaPartida = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaNoPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaTipoMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaClaveMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaDescripcionMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaCantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaCveUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaFactorUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaPrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaSubtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaCantidadOriginal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaNo_OP = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LblCondicionesPago = New DevComponents.DotNetBar.LabelX()
         Me.LblViaEmbarque = New DevComponents.DotNetBar.LabelX()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
@@ -127,19 +140,6 @@ Partial Class OrdenCompra
         Me.MandarAAutorizar = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.BtnImprimir = New DevComponents.DotNetBar.ButtonX()
         Me.BtnMandarAAutorizarMasivo = New DevComponents.DotNetBar.ButtonX()
-        Me.AltaPartida = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaNoPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaTipoMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaClaveMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaDescripcionMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaCantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaCveUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaFactorUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaPrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaSubtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaCantidadOriginal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaNo_OP = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PanPrincipal.SuspendLayout()
         Me.PanDetalle.SuspendLayout()
         Me.PanIngresos.SuspendLayout()
@@ -245,7 +245,7 @@ Partial Class OrdenCompra
         Me.PanIngresos.Controls.Add(Me.DGVRecepcionMaterial)
         Me.PanIngresos.Location = New System.Drawing.Point(9, 265)
         Me.PanIngresos.Name = "PanIngresos"
-        Me.PanIngresos.Size = New System.Drawing.Size(253, 144)
+        Me.PanIngresos.Size = New System.Drawing.Size(249, 144)
         Me.PanIngresos.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanIngresos.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
         Me.PanIngresos.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
@@ -276,26 +276,26 @@ Partial Class OrdenCompra
         '
         Me.DGVRecepcionMaterial.AllowUserToAddRows = False
         Me.DGVRecepcionMaterial.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVRecepcionMaterial.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle73.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVRecepcionMaterial.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle73
         Me.DGVRecepcionMaterial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVRecepcionMaterial.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FechaPromesaEntregaReciboPartida, Me.FechaPromesaEntregaReciboParcialidad, Me.FechaPromesaEntregaReciboNoEntrada, Me.FechaPromesaEntregaReciboCantidadRecibida, Me.FechaPromesaEntregaReciboFechaRecepcion, Me.FechaPromesaEntregaReciboFacturaProveedor})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVRecepcionMaterial.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle76.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle76.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle76.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle76.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle76.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle76.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVRecepcionMaterial.DefaultCellStyle = DataGridViewCellStyle76
         Me.DGVRecepcionMaterial.EnableHeadersVisualStyles = False
         Me.DGVRecepcionMaterial.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DGVRecepcionMaterial.Location = New System.Drawing.Point(13, 61)
         Me.DGVRecepcionMaterial.Name = "DGVRecepcionMaterial"
         Me.DGVRecepcionMaterial.RowHeadersVisible = False
         Me.DGVRecepcionMaterial.RowHeadersWidth = 100
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVRecepcionMaterial.RowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle77.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVRecepcionMaterial.RowsDefaultCellStyle = DataGridViewCellStyle77
         Me.DGVRecepcionMaterial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DGVRecepcionMaterial.Size = New System.Drawing.Size(921, 167)
         Me.DGVRecepcionMaterial.TabIndex = 33
@@ -314,18 +314,18 @@ Partial Class OrdenCompra
         '
         'FechaPromesaEntregaReciboNoEntrada
         '
-        DataGridViewCellStyle2.Format = "d"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.FechaPromesaEntregaReciboNoEntrada.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle74.Format = "d"
+        DataGridViewCellStyle74.NullValue = Nothing
+        Me.FechaPromesaEntregaReciboNoEntrada.DefaultCellStyle = DataGridViewCellStyle74
         Me.FechaPromesaEntregaReciboNoEntrada.HeaderText = "No. de Entrada"
         Me.FechaPromesaEntregaReciboNoEntrada.Name = "FechaPromesaEntregaReciboNoEntrada"
         Me.FechaPromesaEntregaReciboNoEntrada.Width = 150
         '
         'FechaPromesaEntregaReciboCantidadRecibida
         '
-        DataGridViewCellStyle3.Format = "N2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.FechaPromesaEntregaReciboCantidadRecibida.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle75.Format = "N2"
+        DataGridViewCellStyle75.NullValue = Nothing
+        Me.FechaPromesaEntregaReciboCantidadRecibida.DefaultCellStyle = DataGridViewCellStyle75
         Me.FechaPromesaEntregaReciboCantidadRecibida.HeaderText = "Cantidad Recibida"
         Me.FechaPromesaEntregaReciboCantidadRecibida.Name = "FechaPromesaEntregaReciboCantidadRecibida"
         Me.FechaPromesaEntregaReciboCantidadRecibida.Width = 80
@@ -405,7 +405,7 @@ Partial Class OrdenCompra
         Me.PanFechasPromesaEntrega.Controls.Add(Me.DGVFechasPromesaEntrega)
         Me.PanFechasPromesaEntrega.Location = New System.Drawing.Point(9, 283)
         Me.PanFechasPromesaEntrega.Name = "PanFechasPromesaEntrega"
-        Me.PanFechasPromesaEntrega.Size = New System.Drawing.Size(950, 245)
+        Me.PanFechasPromesaEntrega.Size = New System.Drawing.Size(302, 245)
         Me.PanFechasPromesaEntrega.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanFechasPromesaEntrega.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
         Me.PanFechasPromesaEntrega.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
@@ -424,26 +424,26 @@ Partial Class OrdenCompra
         '
         Me.DGVFechasPromesaEntregaOriginal.AllowUserToAddRows = False
         Me.DGVFechasPromesaEntregaOriginal.AllowUserToDeleteRows = False
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVFechasPromesaEntregaOriginal.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle78.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVFechasPromesaEntregaOriginal.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle78
         Me.DGVFechasPromesaEntregaOriginal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVFechasPromesaEntregaOriginal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FechasPromesaEntregaPartidaOriginal, Me.NoParcialidadOriginal, Me.FechaPromesaEntregaOriginal, Me.CantidadPromesaOriginal, Me.ConfirmarFechaPromesaOriginal, Me.RecibidoOriginal})
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVFechasPromesaEntregaOriginal.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle81.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle81.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle81.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle81.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle81.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle81.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle81.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVFechasPromesaEntregaOriginal.DefaultCellStyle = DataGridViewCellStyle81
         Me.DGVFechasPromesaEntregaOriginal.EnableHeadersVisualStyles = False
         Me.DGVFechasPromesaEntregaOriginal.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DGVFechasPromesaEntregaOriginal.Location = New System.Drawing.Point(13, 12)
         Me.DGVFechasPromesaEntregaOriginal.Name = "DGVFechasPromesaEntregaOriginal"
         Me.DGVFechasPromesaEntregaOriginal.RowHeadersVisible = False
         Me.DGVFechasPromesaEntregaOriginal.RowHeadersWidth = 100
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVFechasPromesaEntregaOriginal.RowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle82.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVFechasPromesaEntregaOriginal.RowsDefaultCellStyle = DataGridViewCellStyle82
         Me.DGVFechasPromesaEntregaOriginal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DGVFechasPromesaEntregaOriginal.Size = New System.Drawing.Size(127, 34)
         Me.DGVFechasPromesaEntregaOriginal.TabIndex = 40
@@ -463,18 +463,18 @@ Partial Class OrdenCompra
         '
         'FechaPromesaEntregaOriginal
         '
-        DataGridViewCellStyle7.Format = "d"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.FechaPromesaEntregaOriginal.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle79.Format = "d"
+        DataGridViewCellStyle79.NullValue = Nothing
+        Me.FechaPromesaEntregaOriginal.DefaultCellStyle = DataGridViewCellStyle79
         Me.FechaPromesaEntregaOriginal.HeaderText = "Fecha Promesa de Entrega"
         Me.FechaPromesaEntregaOriginal.Name = "FechaPromesaEntregaOriginal"
         Me.FechaPromesaEntregaOriginal.Width = 150
         '
         'CantidadPromesaOriginal
         '
-        DataGridViewCellStyle8.Format = "N2"
-        DataGridViewCellStyle8.NullValue = Nothing
-        Me.CantidadPromesaOriginal.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle80.Format = "N2"
+        DataGridViewCellStyle80.NullValue = Nothing
+        Me.CantidadPromesaOriginal.DefaultCellStyle = DataGridViewCellStyle80
         Me.CantidadPromesaOriginal.HeaderText = "Cantidad"
         Me.CantidadPromesaOriginal.Name = "CantidadPromesaOriginal"
         Me.CantidadPromesaOriginal.Width = 80
@@ -556,26 +556,26 @@ Partial Class OrdenCompra
         '
         Me.DGVFechasPromesaEntrega.AllowUserToAddRows = False
         Me.DGVFechasPromesaEntrega.AllowUserToDeleteRows = False
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVFechasPromesaEntrega.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle83.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVFechasPromesaEntrega.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle83
         Me.DGVFechasPromesaEntrega.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVFechasPromesaEntrega.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FechasPromesaEntregaPartida, Me.NoParcialidad, Me.FechaPromesaEntrega, Me.CantidadPromesa, Me.ConfirmarFechaPromesa, Me.Recibido})
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVFechasPromesaEntrega.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle86.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle86.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle86.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle86.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle86.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle86.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle86.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVFechasPromesaEntrega.DefaultCellStyle = DataGridViewCellStyle86
         Me.DGVFechasPromesaEntrega.EnableHeadersVisualStyles = False
         Me.DGVFechasPromesaEntrega.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DGVFechasPromesaEntrega.Location = New System.Drawing.Point(13, 61)
         Me.DGVFechasPromesaEntrega.Name = "DGVFechasPromesaEntrega"
         Me.DGVFechasPromesaEntrega.RowHeadersVisible = False
         Me.DGVFechasPromesaEntrega.RowHeadersWidth = 100
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVFechasPromesaEntrega.RowsDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle87.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVFechasPromesaEntrega.RowsDefaultCellStyle = DataGridViewCellStyle87
         Me.DGVFechasPromesaEntrega.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DGVFechasPromesaEntrega.Size = New System.Drawing.Size(921, 167)
         Me.DGVFechasPromesaEntrega.TabIndex = 33
@@ -594,18 +594,18 @@ Partial Class OrdenCompra
         '
         'FechaPromesaEntrega
         '
-        DataGridViewCellStyle12.Format = "d"
-        DataGridViewCellStyle12.NullValue = Nothing
-        Me.FechaPromesaEntrega.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle84.Format = "d"
+        DataGridViewCellStyle84.NullValue = Nothing
+        Me.FechaPromesaEntrega.DefaultCellStyle = DataGridViewCellStyle84
         Me.FechaPromesaEntrega.HeaderText = "Fecha Promesa de Entrega"
         Me.FechaPromesaEntrega.Name = "FechaPromesaEntrega"
         Me.FechaPromesaEntrega.Width = 150
         '
         'CantidadPromesa
         '
-        DataGridViewCellStyle13.Format = "N2"
-        DataGridViewCellStyle13.NullValue = Nothing
-        Me.CantidadPromesa.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle85.Format = "N2"
+        DataGridViewCellStyle85.NullValue = Nothing
+        Me.CantidadPromesa.DefaultCellStyle = DataGridViewCellStyle85
         Me.CantidadPromesa.HeaderText = "Cantidad"
         Me.CantidadPromesa.Name = "CantidadPromesa"
         Me.CantidadPromesa.Width = 80
@@ -748,29 +748,126 @@ Partial Class OrdenCompra
         '
         Me.DGVOrdenCompraPartidas.AllowUserToAddRows = False
         Me.DGVOrdenCompraPartidas.AllowUserToDeleteRows = False
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVOrdenCompraPartidas.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle88.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVOrdenCompraPartidas.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle88
         Me.DGVOrdenCompraPartidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVOrdenCompraPartidas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AltaPartida, Me.AltaNoPedido, Me.AltaTipoMaterial, Me.AltaClaveMaterial, Me.AltaDescripcionMaterial, Me.AltaCantidad, Me.AltaUnidad, Me.AltaCveUnidad, Me.AltaFactorUnidad, Me.AltaPrecioUnitario, Me.AltaSubtotal, Me.AltaCantidadOriginal, Me.AltaNo_OP})
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVOrdenCompraPartidas.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle90.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle90.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle90.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle90.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle90.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle90.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle90.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVOrdenCompraPartidas.DefaultCellStyle = DataGridViewCellStyle90
         Me.DGVOrdenCompraPartidas.EnableHeadersVisualStyles = False
         Me.DGVOrdenCompraPartidas.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DGVOrdenCompraPartidas.Location = New System.Drawing.Point(9, 179)
         Me.DGVOrdenCompraPartidas.Name = "DGVOrdenCompraPartidas"
         Me.DGVOrdenCompraPartidas.RowHeadersVisible = False
         Me.DGVOrdenCompraPartidas.RowHeadersWidth = 100
-        DataGridViewCellStyle19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVOrdenCompraPartidas.RowsDefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle91.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVOrdenCompraPartidas.RowsDefaultCellStyle = DataGridViewCellStyle91
         Me.DGVOrdenCompraPartidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DGVOrdenCompraPartidas.Size = New System.Drawing.Size(950, 349)
         Me.DGVOrdenCompraPartidas.TabIndex = 32
+        '
+        'AltaPartida
+        '
+        Me.AltaPartida.HeaderText = "Partida"
+        Me.AltaPartida.Name = "AltaPartida"
+        Me.AltaPartida.ReadOnly = True
+        Me.AltaPartida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaPartida.Width = 60
+        '
+        'AltaNoPedido
+        '
+        Me.AltaNoPedido.HeaderText = "No. Pedido"
+        Me.AltaNoPedido.Name = "AltaNoPedido"
+        Me.AltaNoPedido.ReadOnly = True
+        Me.AltaNoPedido.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaNoPedido.Width = 70
+        '
+        'AltaTipoMaterial
+        '
+        Me.AltaTipoMaterial.HeaderText = "Tipo de Producto"
+        Me.AltaTipoMaterial.Name = "AltaTipoMaterial"
+        Me.AltaTipoMaterial.ReadOnly = True
+        Me.AltaTipoMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaTipoMaterial.Width = 80
+        '
+        'AltaClaveMaterial
+        '
+        Me.AltaClaveMaterial.HeaderText = "Clave de Producto"
+        Me.AltaClaveMaterial.Name = "AltaClaveMaterial"
+        Me.AltaClaveMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'AltaDescripcionMaterial
+        '
+        Me.AltaDescripcionMaterial.HeaderText = "Descripción"
+        Me.AltaDescripcionMaterial.Name = "AltaDescripcionMaterial"
+        Me.AltaDescripcionMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaDescripcionMaterial.Width = 500
+        '
+        'AltaCantidad
+        '
+        Me.AltaCantidad.HeaderText = "Cantidad"
+        Me.AltaCantidad.Name = "AltaCantidad"
+        Me.AltaCantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'AltaUnidad
+        '
+        Me.AltaUnidad.HeaderText = "Unidad"
+        Me.AltaUnidad.Name = "AltaUnidad"
+        Me.AltaUnidad.ReadOnly = True
+        Me.AltaUnidad.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AltaUnidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'AltaCveUnidad
+        '
+        Me.AltaCveUnidad.HeaderText = "CveUnidad"
+        Me.AltaCveUnidad.Name = "AltaCveUnidad"
+        Me.AltaCveUnidad.ReadOnly = True
+        Me.AltaCveUnidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaCveUnidad.Visible = False
+        '
+        'AltaFactorUnidad
+        '
+        Me.AltaFactorUnidad.HeaderText = "FactorUnidad"
+        Me.AltaFactorUnidad.Name = "AltaFactorUnidad"
+        Me.AltaFactorUnidad.ReadOnly = True
+        Me.AltaFactorUnidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaFactorUnidad.Visible = False
+        '
+        'AltaPrecioUnitario
+        '
+        DataGridViewCellStyle89.Format = "C4"
+        DataGridViewCellStyle89.NullValue = Nothing
+        Me.AltaPrecioUnitario.DefaultCellStyle = DataGridViewCellStyle89
+        Me.AltaPrecioUnitario.HeaderText = "Precio Unitario"
+        Me.AltaPrecioUnitario.Name = "AltaPrecioUnitario"
+        Me.AltaPrecioUnitario.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'AltaSubtotal
+        '
+        Me.AltaSubtotal.HeaderText = "Subtotal"
+        Me.AltaSubtotal.Name = "AltaSubtotal"
+        Me.AltaSubtotal.ReadOnly = True
+        Me.AltaSubtotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'AltaCantidadOriginal
+        '
+        Me.AltaCantidadOriginal.HeaderText = "AltaCantidadOriginal"
+        Me.AltaCantidadOriginal.Name = "AltaCantidadOriginal"
+        Me.AltaCantidadOriginal.ReadOnly = True
+        Me.AltaCantidadOriginal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaCantidadOriginal.Visible = False
+        '
+        'AltaNo_OP
+        '
+        Me.AltaNo_OP.HeaderText = "No. OP"
+        Me.AltaNo_OP.Name = "AltaNo_OP"
+        Me.AltaNo_OP.ReadOnly = True
         '
         'LblCondicionesPago
         '
@@ -1103,21 +1200,21 @@ Partial Class OrdenCompra
         Me.DGVOrdenCompra.AllowUserToDeleteRows = False
         Me.DGVOrdenCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVOrdenCompra.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NoOrdenCompra, Me.CveProveedor, Me.Proveedor, Me.Subtotal, Me.IVA, Me.Total, Me.Estatus, Me.MandarAAutorizar})
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVOrdenCompra.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle95.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle95.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle95.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle95.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle95.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle95.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle95.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVOrdenCompra.DefaultCellStyle = DataGridViewCellStyle95
         Me.DGVOrdenCompra.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DGVOrdenCompra.Location = New System.Drawing.Point(10, 165)
         Me.DGVOrdenCompra.Name = "DGVOrdenCompra"
         Me.DGVOrdenCompra.RowHeadersVisible = False
         Me.DGVOrdenCompra.RowHeadersWidth = 50
-        DataGridViewCellStyle24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVOrdenCompra.RowsDefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle96.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVOrdenCompra.RowsDefaultCellStyle = DataGridViewCellStyle96
         Me.DGVOrdenCompra.Size = New System.Drawing.Size(968, 448)
         Me.DGVOrdenCompra.TabIndex = 12
         '
@@ -1140,27 +1237,27 @@ Partial Class OrdenCompra
         '
         'Subtotal
         '
-        DataGridViewCellStyle20.Format = "C4"
-        DataGridViewCellStyle20.NullValue = Nothing
-        Me.Subtotal.DefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle92.Format = "C4"
+        DataGridViewCellStyle92.NullValue = Nothing
+        Me.Subtotal.DefaultCellStyle = DataGridViewCellStyle92
         Me.Subtotal.HeaderText = "Subtotal"
         Me.Subtotal.Name = "Subtotal"
         Me.Subtotal.ReadOnly = True
         '
         'IVA
         '
-        DataGridViewCellStyle21.Format = "C4"
-        DataGridViewCellStyle21.NullValue = Nothing
-        Me.IVA.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle93.Format = "C4"
+        DataGridViewCellStyle93.NullValue = Nothing
+        Me.IVA.DefaultCellStyle = DataGridViewCellStyle93
         Me.IVA.HeaderText = "IVA"
         Me.IVA.Name = "IVA"
         Me.IVA.ReadOnly = True
         '
         'Total
         '
-        DataGridViewCellStyle22.Format = "C4"
-        DataGridViewCellStyle22.NullValue = Nothing
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle94.Format = "C4"
+        DataGridViewCellStyle94.NullValue = Nothing
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle94
         Me.Total.HeaderText = "Total"
         Me.Total.Name = "Total"
         Me.Total.ReadOnly = True
@@ -1200,103 +1297,6 @@ Partial Class OrdenCompra
         Me.BtnMandarAAutorizarMasivo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.BtnMandarAAutorizarMasivo.TabIndex = 37
         Me.BtnMandarAAutorizarMasivo.Text = "Mandar a autorizar"
-        '
-        'AltaPartida
-        '
-        Me.AltaPartida.HeaderText = "Partida"
-        Me.AltaPartida.Name = "AltaPartida"
-        Me.AltaPartida.ReadOnly = True
-        Me.AltaPartida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaPartida.Width = 60
-        '
-        'AltaNoPedido
-        '
-        Me.AltaNoPedido.HeaderText = "No. Pedido"
-        Me.AltaNoPedido.Name = "AltaNoPedido"
-        Me.AltaNoPedido.ReadOnly = True
-        Me.AltaNoPedido.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaNoPedido.Width = 70
-        '
-        'AltaTipoMaterial
-        '
-        Me.AltaTipoMaterial.HeaderText = "Tipo de Producto"
-        Me.AltaTipoMaterial.Name = "AltaTipoMaterial"
-        Me.AltaTipoMaterial.ReadOnly = True
-        Me.AltaTipoMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaTipoMaterial.Width = 80
-        '
-        'AltaClaveMaterial
-        '
-        Me.AltaClaveMaterial.HeaderText = "Clave de Producto"
-        Me.AltaClaveMaterial.Name = "AltaClaveMaterial"
-        Me.AltaClaveMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'AltaDescripcionMaterial
-        '
-        Me.AltaDescripcionMaterial.HeaderText = "Descripción"
-        Me.AltaDescripcionMaterial.Name = "AltaDescripcionMaterial"
-        Me.AltaDescripcionMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaDescripcionMaterial.Width = 500
-        '
-        'AltaCantidad
-        '
-        Me.AltaCantidad.HeaderText = "Cantidad"
-        Me.AltaCantidad.Name = "AltaCantidad"
-        Me.AltaCantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'AltaUnidad
-        '
-        Me.AltaUnidad.HeaderText = "Unidad"
-        Me.AltaUnidad.Name = "AltaUnidad"
-        Me.AltaUnidad.ReadOnly = True
-        Me.AltaUnidad.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.AltaUnidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'AltaCveUnidad
-        '
-        Me.AltaCveUnidad.HeaderText = "CveUnidad"
-        Me.AltaCveUnidad.Name = "AltaCveUnidad"
-        Me.AltaCveUnidad.ReadOnly = True
-        Me.AltaCveUnidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaCveUnidad.Visible = False
-        '
-        'AltaFactorUnidad
-        '
-        Me.AltaFactorUnidad.HeaderText = "FactorUnidad"
-        Me.AltaFactorUnidad.Name = "AltaFactorUnidad"
-        Me.AltaFactorUnidad.ReadOnly = True
-        Me.AltaFactorUnidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaFactorUnidad.Visible = False
-        '
-        'AltaPrecioUnitario
-        '
-        DataGridViewCellStyle17.Format = "C4"
-        DataGridViewCellStyle17.NullValue = Nothing
-        Me.AltaPrecioUnitario.DefaultCellStyle = DataGridViewCellStyle17
-        Me.AltaPrecioUnitario.HeaderText = "Precio Unitario"
-        Me.AltaPrecioUnitario.Name = "AltaPrecioUnitario"
-        Me.AltaPrecioUnitario.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'AltaSubtotal
-        '
-        Me.AltaSubtotal.HeaderText = "Subtotal"
-        Me.AltaSubtotal.Name = "AltaSubtotal"
-        Me.AltaSubtotal.ReadOnly = True
-        Me.AltaSubtotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'AltaCantidadOriginal
-        '
-        Me.AltaCantidadOriginal.HeaderText = "AltaCantidadOriginal"
-        Me.AltaCantidadOriginal.Name = "AltaCantidadOriginal"
-        Me.AltaCantidadOriginal.ReadOnly = True
-        Me.AltaCantidadOriginal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaCantidadOriginal.Visible = False
-        '
-        'AltaNo_OP
-        '
-        Me.AltaNo_OP.HeaderText = "No. OP"
-        Me.AltaNo_OP.Name = "AltaNo_OP"
-        Me.AltaNo_OP.ReadOnly = True
         '
         'OrdenCompra
         '
