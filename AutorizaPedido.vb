@@ -906,7 +906,7 @@ Public Class AutorizaPedido
                         mensaje.From.Add(New MailboxAddress("ORCELEC", ConectaBD.MailUsuario))
 
                         ' Agregar destinatarios principales
-                        Dim destinatariosBase As String = "ch@uet.mx,amm@uet.mx,dpa@uet.mx,lmc@uet.mx,mlg@uet.mx,apm@uet.mx"
+                        Dim destinatariosBase As String = "ch@uet.mx,amm@uet.mx,dpa@uet.mx,lmc@uet.mx,mlg@uet.mx,apm@uet.mx,kvl@uet.mx"
                         Dim todosDestinatarios As String
 
                         If Email <> "" Then
