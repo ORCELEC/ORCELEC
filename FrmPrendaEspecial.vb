@@ -77,7 +77,11 @@ Public Class FrmPrendaEspecial
         LlenaCmbTipoPrenda()
         BDComando.Parameters.Clear()
         BDComando.CommandType = CommandType.Text
-        BDComando.CommandText = "SELECT * FROM PRENDA WHERE CVE_PRENDA = " & Val(Strings.Right(ListDescripcionesPrenda.SelectedItems.Item(0), 4))
+        'BDComando.CommandText = "SELECT * FROM PRENDA WHERE CVE_PRENDA = " & Val(Strings.Right(ListDescripcionesPrenda.SelectedItems.Item(0), 4))
+        Dim textoSeleccionado As String = ListDescripcionesPrenda.SelectedItems.Item(0)
+        Dim partes() As String = textoSeleccionado.Trim().Split(" "c)
+        Dim Cve_Prenda As Integer = Val(partes(partes.Length - 1))
+        BDComando.CommandText = "SELECT * FROM PRENDA WHERE CVE_PRENDA = " & Cve_Prenda
         Try
             BDComando.Connection.Open()
             BDReader = BDComando.ExecuteReader
@@ -114,7 +118,7 @@ Public Class FrmPrendaEspecial
                     BDComando.CommandText = "SP_OBTIENE_PRENDA_PROCESOS"
                     BDComando.Parameters.Add("@CVE_PRENDA", SqlDbType.BigInt)
 
-                    BDComando.Parameters("@CVE_PRENDA").Value = Val(Strings.Right(ListDescripcionesPrenda.SelectedItems.Item(0), 4))
+                    BDComando.Parameters("@CVE_PRENDA").Value = Cve_Prenda
                     If Not BDReader Is Nothing AndAlso Not BDReader.IsClosed Then
                         BDReader.Close()
                     End If
@@ -194,7 +198,7 @@ Public Class FrmPrendaEspecial
 
                 BDComando.Parameters.Clear()
                 BDComando.CommandType = CommandType.Text
-                BDComando.CommandText = "SELECT * FROM PRENDA_LOGOTIPO WHERE CVE_PRENDA = " & Val(Strings.Right(ListDescripcionesPrenda.SelectedItems.Item(0), 4))
+                BDComando.CommandText = "SELECT * FROM PRENDA_LOGOTIPO WHERE CVE_PRENDA = " & Cve_Prenda
                 If Not BDReader Is Nothing AndAlso Not BDReader.IsClosed Then
                     BDReader.Close()
                 End If
@@ -1133,7 +1137,10 @@ Public Class FrmPrendaEspecial
             FrmEstructuraMateriales.ShowDialog(Me)
         ElseIf Bandera = "CONSULTA" Then
             FrmEstructuraMateriales.PrimeraEntrada = True
-            FrmEstructuraMateriales.Cve_Prenda = Val(Strings.Right(ListDescripcionesPrenda.SelectedItems.Item(0), 4))
+            Dim textoSeleccionado As String = ListDescripcionesPrenda.SelectedItems.Item(0)
+            Dim partes() As String = textoSeleccionado.Trim().Split(" "c)
+            Dim Cve_Prenda As Integer = Val(partes(partes.Length - 1))
+            FrmEstructuraMateriales.Cve_Prenda = Cve_Prenda
             FrmEstructuraMateriales.LblAltaDescripcionPrenda.Text = Strings.Right(ListDescripcionesPrenda.SelectedItems.Item(0), 4) & " " & Trim(Strings.Left(ListDescripcionesPrenda.SelectedItems.Item(0), ListDescripcionesPrenda.SelectedItems.Item(0).ToString.Length - 6))
             FrmEstructuraMateriales.TipoEntrada = "CONSULTAEM"
             FrmEstructuraMateriales.CargaEstructuraMateriales()
@@ -1152,7 +1159,10 @@ Public Class FrmPrendaEspecial
             PrendaTMMolde.ShowDialog(Me)
         ElseIf Bandera = "CONSULTA" Then
             PrendaTMMolde.PrimeraEntrada = True
-            PrendaTMMolde.Cve_Prenda = Val(Strings.Right(ListDescripcionesPrenda.SelectedItems.Item(0), 4))
+            Dim textoSeleccionado As String = ListDescripcionesPrenda.SelectedItems.Item(0)
+            Dim partes() As String = textoSeleccionado.Trim().Split(" "c)
+            Dim Cve_Prenda As Integer = Val(partes(partes.Length - 1))
+            PrendaTMMolde.Cve_Prenda = Cve_Prenda
             PrendaTMMolde.LblAltaDescripcionPrenda.Text = Strings.Right(ListDescripcionesPrenda.SelectedItems.Item(0), 4) & " " & Trim(Strings.Left(ListDescripcionesPrenda.SelectedItems.Item(0), ListDescripcionesPrenda.SelectedItems.Item(0).ToString.Length - 6))
             PrendaTMMolde.TipoEntrada = "CONSULTATMMolde"
             PrendaTMMolde.CargarTMMolde()
@@ -1171,7 +1181,10 @@ Public Class FrmPrendaEspecial
             FrmPrendaTablaMedida.ShowDialog(Me)
         ElseIf Bandera = "CONSULTA" Then
             FrmPrendaTablaMedida.PrimeraEntrada = True
-            FrmPrendaTablaMedida.Cve_Prenda = Val(Strings.Right(ListDescripcionesPrenda.SelectedItems.Item(0), 4))
+            Dim textoSeleccionado As String = ListDescripcionesPrenda.SelectedItems.Item(0)
+            Dim partes() As String = textoSeleccionado.Trim().Split(" "c)
+            Dim Cve_Prenda As Integer = Val(partes(partes.Length - 1))
+            FrmPrendaTablaMedida.Cve_Prenda = Cve_Prenda
             FrmPrendaTablaMedida.LblAltaDescripcionPrenda.Text = Strings.Right(ListDescripcionesPrenda.SelectedItems.Item(0), 4) & " " & Trim(Strings.Left(ListDescripcionesPrenda.SelectedItems.Item(0), ListDescripcionesPrenda.SelectedItems.Item(0).ToString.Length - 6))
             FrmPrendaTablaMedida.TipoEntrada = "CONSULTATM"
             FrmPrendaTablaMedida.CargarTablaMedida()
@@ -1792,9 +1805,13 @@ Public Class FrmPrendaEspecial
                 Dim DescripcionPrenda As New DescripcionPrenda
                 Dim RptViewer As New ReportesVisualizador
 
+                Dim textoSeleccionado As String = ListDescripcionesPrenda.SelectedItems.Item(0)
+                Dim partes() As String = textoSeleccionado.Trim().Split(" "c)
+                Dim Cve_Prenda As Integer = Val(partes(partes.Length - 1))
+
                 DescripcionPrenda.SetDatabaseLogon(ConectaBD.UsuarioReportes, ConectaBD.PasswordReportes)
                 DescripcionPrenda.SetParameterValue("@Empresa", ConectaBD.Cve_Empresa)
-                DescripcionPrenda.SetParameterValue("@Cve_Prenda", Val(ListDescripcionesPrenda.SelectedItem.ToString().Substring(Len(ListDescripcionesPrenda.SelectedItem.ToString()) - 6, 6)))
+                DescripcionPrenda.SetParameterValue("@Cve_Prenda", Cve_Prenda)
                 RptViewer.CRV.ReportSource = DescripcionPrenda
                 RptViewer.CRV.ShowCopyButton = False
                 RptViewer.CRV.ShowGroupTreeButton = False

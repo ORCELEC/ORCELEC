@@ -824,6 +824,7 @@ Partial Class FrmPrincipal
         '
         Me.BtmSeguimientoLiberaciones.Name = "BtmSeguimientoLiberaciones"
         Me.BtmSeguimientoLiberaciones.Text = "Seguimiento a Liberaciones"
+        Me.BtmSeguimientoLiberaciones.Visible = False
         '
         'RibbonPanel1
         '
