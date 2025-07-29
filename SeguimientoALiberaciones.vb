@@ -227,7 +227,7 @@ Public Class SeguimientoALiberaciones
             BDComando.Connection.Open()
             BDReader = BDComando.ExecuteReader()
             While BDReader.Read()
-                CmbBuscarPrenda.Items.Add(BDReader("DescripcionPrenda") & " " & Format(BDReader("Cve_Prenda"), "0000"))
+                CmbBuscarPrenda.Items.Add(BDReader("DescripcionPrenda") & " " & Format(BDReader("Cve_Prenda"), "000000"))
             End While
             BDReader.Close()
             BDComando.Connection.Close()
@@ -343,7 +343,7 @@ Public Class SeguimientoALiberaciones
     Private Sub BtnBuscar_Click(sender As Object, e As EventArgs) Handles BtnBuscar.Click
         Dim cveCliente As String = If(CmbBuscarCliente.SelectedIndex >= 0, Strings.Right(CmbBuscarCliente.Text, 4), "")
         Dim cveMaquilador As String = If(CmbBuscarMaquilador.SelectedIndex >= 0, Strings.Right(CmbBuscarMaquilador.Text, 4), "")
-        Dim cvePrenda As String = If(CmbBuscarPrenda.SelectedIndex >= 0, Strings.Right(CmbBuscarPrenda.Text, 4), "")
+        Dim cvePrenda As String = If(CmbBuscarPrenda.SelectedIndex >= 0, Strings.Right(CmbBuscarPrenda.Text, 6), "")
 
         RemoveHandler DGLiberaciones.SelectionChanged, AddressOf DGLiberaciones_SelectionChanged
         CargarLiberaciones(TxtBuscarOP.Text.Trim(), cveCliente, cveMaquilador, cvePrenda, TxtBuscarPedido.Text.Trim())
