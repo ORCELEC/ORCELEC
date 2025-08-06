@@ -349,8 +349,8 @@ Partial Class FrmPrincipal
         Me.RibbonControl1.BackgroundStyle.Class = "RibbonGalleryContainer"
         Me.RibbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonControl1.CaptionVisible = True
-        Me.RibbonControl1.Controls.Add(Me.RibbonPanel11)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel2)
+        Me.RibbonControl1.Controls.Add(Me.RibbonPanel11)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel1)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel13)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel14)
@@ -417,6 +417,7 @@ Partial Class FrmPrincipal
         '
         Me.RibbonPanel11.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonPanel11.TabIndex = 11
+        Me.RibbonPanel11.Visible = False
         '
         'RibbonBar11
         '
@@ -687,7 +688,6 @@ Partial Class FrmPrincipal
         '
         Me.RibbonPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonPanel2.TabIndex = 2
-        Me.RibbonPanel2.Visible = False
         '
         'RibbonBar3
         '
@@ -2286,6 +2286,7 @@ Partial Class FrmPrincipal
         '
         'VentasBar
         '
+        Me.VentasBar.Checked = True
         Me.VentasBar.Name = "VentasBar"
         Me.VentasBar.Panel = Me.RibbonPanel2
         Me.VentasBar.Text = "Ventas"
@@ -2342,7 +2343,6 @@ Partial Class FrmPrincipal
         '
         'AdminOperaBar
         '
-        Me.AdminOperaBar.Checked = True
         Me.AdminOperaBar.Name = "AdminOperaBar"
         Me.AdminOperaBar.Panel = Me.RibbonPanel11
         Me.AdminOperaBar.Text = "Operaciones y Logística"

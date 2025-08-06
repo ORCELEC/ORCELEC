@@ -98,15 +98,6 @@ Partial Class FrmPedidoAltaEdicion
         Me.DataGridViewX2 = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.SuperTabItem6 = New DevComponents.DotNetBar.SuperTabItem()
         Me.TabDatosPedido = New DevComponents.DotNetBar.SuperTabItem()
-        Me.SuperTabControlPanel9 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
-        Me.TxtObservacionesGeneralesFacturacion = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX35 = New DevComponents.DotNetBar.LabelX()
-        Me.TxtObservacionesGeneralesLogistica = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX27 = New DevComponents.DotNetBar.LabelX()
-        Me.TxtObservacionesGeneralesProduccion = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX61 = New DevComponents.DotNetBar.LabelX()
-        Me.TabNotas = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.GPDatosBasicos = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.GPDatosCliente = New DevComponents.DotNetBar.Controls.GroupPanel()
@@ -229,6 +220,15 @@ Partial Class FrmPedidoAltaEdicion
         Me.BtnMostrarInspeccion = New System.Windows.Forms.Button()
         Me.BtnMostrarEntregaParcial = New System.Windows.Forms.Button()
         Me.TabFolio = New DevComponents.DotNetBar.SuperTabItem()
+        Me.SuperTabControlPanel9 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.TxtObservacionesGeneralesFacturacion = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX35 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtObservacionesGeneralesLogistica = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX27 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtObservacionesGeneralesProduccion = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX61 = New DevComponents.DotNetBar.LabelX()
+        Me.TabNotas = New DevComponents.DotNetBar.SuperTabItem()
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.TxtTipoPedido = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.TxtFecPedido = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -258,8 +258,6 @@ Partial Class FrmPedidoAltaEdicion
         CType(Me.DGTelas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControlPanel8.SuspendLayout()
         CType(Me.DataGridViewX2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuperTabControlPanel9.SuspendLayout()
-        Me.GroupPanel1.SuspendLayout()
         Me.SuperTabControlPanel1.SuspendLayout()
         Me.GPDatosBasicos.SuspendLayout()
         Me.GPDatosCliente.SuspendLayout()
@@ -268,6 +266,8 @@ Partial Class FrmPedidoAltaEdicion
         Me.GroupBox8.SuspendLayout()
         Me.GPDatosInspeccion.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        Me.SuperTabControlPanel9.SuspendLayout()
+        Me.GroupPanel1.SuspendLayout()
         Me.GroupPanel2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -335,9 +335,9 @@ Partial Class FrmPedidoAltaEdicion
         Me.TabPrincipal.ControlBox.MenuBox.Name = ""
         Me.TabPrincipal.ControlBox.Name = ""
         Me.TabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TabPrincipal.ControlBox.MenuBox, Me.TabPrincipal.ControlBox.CloseBox})
-        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel3)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel1)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel9)
+        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel3)
         Me.TabPrincipal.Location = New System.Drawing.Point(12, 115)
         Me.TabPrincipal.Name = "TabPrincipal"
         Me.TabPrincipal.ReorderTabsEnabled = True
@@ -1178,166 +1178,6 @@ Partial Class FrmPedidoAltaEdicion
         Me.TabDatosPedido.GlobalItem = False
         Me.TabDatosPedido.Name = "TabDatosPedido"
         Me.TabDatosPedido.Text = "Datos del Pedido"
-        '
-        'SuperTabControlPanel9
-        '
-        Me.SuperTabControlPanel9.Controls.Add(Me.GroupPanel1)
-        Me.SuperTabControlPanel9.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 0)
-        Me.SuperTabControlPanel9.Name = "SuperTabControlPanel9"
-        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 473)
-        Me.SuperTabControlPanel9.TabIndex = 0
-        Me.SuperTabControlPanel9.TabItem = Me.TabNotas
-        '
-        'GroupPanel1
-        '
-        Me.GroupPanel1.CanvasColor = System.Drawing.SystemColors.Control
-        Me.GroupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.GroupPanel1.Controls.Add(Me.TxtObservacionesGeneralesFacturacion)
-        Me.GroupPanel1.Controls.Add(Me.LabelX35)
-        Me.GroupPanel1.Controls.Add(Me.TxtObservacionesGeneralesLogistica)
-        Me.GroupPanel1.Controls.Add(Me.LabelX27)
-        Me.GroupPanel1.Controls.Add(Me.TxtObservacionesGeneralesProduccion)
-        Me.GroupPanel1.Controls.Add(Me.LabelX61)
-        Me.GroupPanel1.Location = New System.Drawing.Point(16, 3)
-        Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(923, 442)
-        '
-        '
-        '
-        Me.GroupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-        Me.GroupPanel1.Style.BackColorGradientAngle = 90
-        Me.GroupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-        Me.GroupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GroupPanel1.Style.BorderBottomWidth = 1
-        Me.GroupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-        Me.GroupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GroupPanel1.Style.BorderLeftWidth = 1
-        Me.GroupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GroupPanel1.Style.BorderRightWidth = 1
-        Me.GroupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GroupPanel1.Style.BorderTopWidth = 1
-        Me.GroupPanel1.Style.CornerDiameter = 4
-        Me.GroupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.GroupPanel1.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
-        Me.GroupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
-        Me.GroupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
-        '
-        '
-        '
-        Me.GroupPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.GroupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanel1.TabIndex = 1
-        Me.GroupPanel1.Text = "Datos Básicos"
-        '
-        'TxtObservacionesGeneralesFacturacion
-        '
-        Me.TxtObservacionesGeneralesFacturacion.AcceptsReturn = True
-        Me.TxtObservacionesGeneralesFacturacion.AcceptsTab = True
-        '
-        '
-        '
-        Me.TxtObservacionesGeneralesFacturacion.Border.Class = "TextBoxBorder"
-        Me.TxtObservacionesGeneralesFacturacion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtObservacionesGeneralesFacturacion.FocusHighlightEnabled = True
-        Me.TxtObservacionesGeneralesFacturacion.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtObservacionesGeneralesFacturacion.Location = New System.Drawing.Point(102, 281)
-        Me.TxtObservacionesGeneralesFacturacion.Multiline = True
-        Me.TxtObservacionesGeneralesFacturacion.Name = "TxtObservacionesGeneralesFacturacion"
-        Me.TxtObservacionesGeneralesFacturacion.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtObservacionesGeneralesFacturacion.Size = New System.Drawing.Size(803, 133)
-        Me.TxtObservacionesGeneralesFacturacion.TabIndex = 89
-        '
-        'LabelX35
-        '
-        '
-        '
-        '
-        Me.LabelX35.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX35.BackgroundStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
-        Me.LabelX35.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX35.Location = New System.Drawing.Point(7, 281)
-        Me.LabelX35.Name = "LabelX35"
-        Me.LabelX35.Size = New System.Drawing.Size(89, 37)
-        Me.LabelX35.TabIndex = 88
-        Me.LabelX35.Text = "Notas Generales para Facturación:"
-        Me.LabelX35.WordWrap = True
-        '
-        'TxtObservacionesGeneralesLogistica
-        '
-        Me.TxtObservacionesGeneralesLogistica.AcceptsReturn = True
-        Me.TxtObservacionesGeneralesLogistica.AcceptsTab = True
-        '
-        '
-        '
-        Me.TxtObservacionesGeneralesLogistica.Border.Class = "TextBoxBorder"
-        Me.TxtObservacionesGeneralesLogistica.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtObservacionesGeneralesLogistica.FocusHighlightEnabled = True
-        Me.TxtObservacionesGeneralesLogistica.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtObservacionesGeneralesLogistica.Location = New System.Drawing.Point(102, 145)
-        Me.TxtObservacionesGeneralesLogistica.Multiline = True
-        Me.TxtObservacionesGeneralesLogistica.Name = "TxtObservacionesGeneralesLogistica"
-        Me.TxtObservacionesGeneralesLogistica.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtObservacionesGeneralesLogistica.Size = New System.Drawing.Size(803, 133)
-        Me.TxtObservacionesGeneralesLogistica.TabIndex = 87
-        '
-        'LabelX27
-        '
-        '
-        '
-        '
-        Me.LabelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX27.BackgroundStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
-        Me.LabelX27.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX27.Location = New System.Drawing.Point(7, 145)
-        Me.LabelX27.Name = "LabelX27"
-        Me.LabelX27.Size = New System.Drawing.Size(89, 37)
-        Me.LabelX27.TabIndex = 86
-        Me.LabelX27.Text = "Notas Generales para Logística:"
-        Me.LabelX27.WordWrap = True
-        '
-        'TxtObservacionesGeneralesProduccion
-        '
-        Me.TxtObservacionesGeneralesProduccion.AcceptsReturn = True
-        Me.TxtObservacionesGeneralesProduccion.AcceptsTab = True
-        '
-        '
-        '
-        Me.TxtObservacionesGeneralesProduccion.Border.Class = "TextBoxBorder"
-        Me.TxtObservacionesGeneralesProduccion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtObservacionesGeneralesProduccion.FocusHighlightEnabled = True
-        Me.TxtObservacionesGeneralesProduccion.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtObservacionesGeneralesProduccion.Location = New System.Drawing.Point(102, 6)
-        Me.TxtObservacionesGeneralesProduccion.Multiline = True
-        Me.TxtObservacionesGeneralesProduccion.Name = "TxtObservacionesGeneralesProduccion"
-        Me.TxtObservacionesGeneralesProduccion.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TxtObservacionesGeneralesProduccion.Size = New System.Drawing.Size(803, 133)
-        Me.TxtObservacionesGeneralesProduccion.TabIndex = 85
-        '
-        'LabelX61
-        '
-        '
-        '
-        '
-        Me.LabelX61.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX61.BackgroundStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
-        Me.LabelX61.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX61.Location = New System.Drawing.Point(7, 6)
-        Me.LabelX61.Name = "LabelX61"
-        Me.LabelX61.Size = New System.Drawing.Size(89, 37)
-        Me.LabelX61.TabIndex = 84
-        Me.LabelX61.Text = "Notas Generales para Producción:"
-        Me.LabelX61.WordWrap = True
-        '
-        'TabNotas
-        '
-        Me.TabNotas.AttachedControl = Me.SuperTabControlPanel9
-        Me.TabNotas.GlobalItem = False
-        Me.TabNotas.Name = "TabNotas"
-        Me.TabNotas.Text = "Notas al Pedido"
         '
         'SuperTabControlPanel1
         '
@@ -3302,6 +3142,166 @@ Partial Class FrmPedidoAltaEdicion
         Me.TabFolio.TabColor = SuperTabItemColorTable1
         Me.TabFolio.Text = "Datos Generales"
         '
+        'SuperTabControlPanel9
+        '
+        Me.SuperTabControlPanel9.Controls.Add(Me.GroupPanel1)
+        Me.SuperTabControlPanel9.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 25)
+        Me.SuperTabControlPanel9.Name = "SuperTabControlPanel9"
+        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 448)
+        Me.SuperTabControlPanel9.TabIndex = 0
+        Me.SuperTabControlPanel9.TabItem = Me.TabNotas
+        '
+        'GroupPanel1
+        '
+        Me.GroupPanel1.CanvasColor = System.Drawing.SystemColors.Control
+        Me.GroupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GroupPanel1.Controls.Add(Me.TxtObservacionesGeneralesFacturacion)
+        Me.GroupPanel1.Controls.Add(Me.LabelX35)
+        Me.GroupPanel1.Controls.Add(Me.TxtObservacionesGeneralesLogistica)
+        Me.GroupPanel1.Controls.Add(Me.LabelX27)
+        Me.GroupPanel1.Controls.Add(Me.TxtObservacionesGeneralesProduccion)
+        Me.GroupPanel1.Controls.Add(Me.LabelX61)
+        Me.GroupPanel1.Location = New System.Drawing.Point(16, 3)
+        Me.GroupPanel1.Name = "GroupPanel1"
+        Me.GroupPanel1.Size = New System.Drawing.Size(923, 442)
+        '
+        '
+        '
+        Me.GroupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.GroupPanel1.Style.BackColorGradientAngle = 90
+        Me.GroupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.GroupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanel1.Style.BorderBottomWidth = 1
+        Me.GroupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.GroupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanel1.Style.BorderLeftWidth = 1
+        Me.GroupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanel1.Style.BorderRightWidth = 1
+        Me.GroupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanel1.Style.BorderTopWidth = 1
+        Me.GroupPanel1.Style.CornerDiameter = 4
+        Me.GroupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.GroupPanel1.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.GroupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.GroupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        '
+        '
+        '
+        Me.GroupPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.GroupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.GroupPanel1.TabIndex = 1
+        Me.GroupPanel1.Text = "Datos Básicos"
+        '
+        'TxtObservacionesGeneralesFacturacion
+        '
+        Me.TxtObservacionesGeneralesFacturacion.AcceptsReturn = True
+        Me.TxtObservacionesGeneralesFacturacion.AcceptsTab = True
+        '
+        '
+        '
+        Me.TxtObservacionesGeneralesFacturacion.Border.Class = "TextBoxBorder"
+        Me.TxtObservacionesGeneralesFacturacion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtObservacionesGeneralesFacturacion.FocusHighlightEnabled = True
+        Me.TxtObservacionesGeneralesFacturacion.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtObservacionesGeneralesFacturacion.Location = New System.Drawing.Point(102, 281)
+        Me.TxtObservacionesGeneralesFacturacion.Multiline = True
+        Me.TxtObservacionesGeneralesFacturacion.Name = "TxtObservacionesGeneralesFacturacion"
+        Me.TxtObservacionesGeneralesFacturacion.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TxtObservacionesGeneralesFacturacion.Size = New System.Drawing.Size(803, 133)
+        Me.TxtObservacionesGeneralesFacturacion.TabIndex = 89
+        '
+        'LabelX35
+        '
+        '
+        '
+        '
+        Me.LabelX35.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX35.BackgroundStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        Me.LabelX35.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX35.Location = New System.Drawing.Point(7, 281)
+        Me.LabelX35.Name = "LabelX35"
+        Me.LabelX35.Size = New System.Drawing.Size(89, 37)
+        Me.LabelX35.TabIndex = 88
+        Me.LabelX35.Text = "Notas Generales para Facturación:"
+        Me.LabelX35.WordWrap = True
+        '
+        'TxtObservacionesGeneralesLogistica
+        '
+        Me.TxtObservacionesGeneralesLogistica.AcceptsReturn = True
+        Me.TxtObservacionesGeneralesLogistica.AcceptsTab = True
+        '
+        '
+        '
+        Me.TxtObservacionesGeneralesLogistica.Border.Class = "TextBoxBorder"
+        Me.TxtObservacionesGeneralesLogistica.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtObservacionesGeneralesLogistica.FocusHighlightEnabled = True
+        Me.TxtObservacionesGeneralesLogistica.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtObservacionesGeneralesLogistica.Location = New System.Drawing.Point(102, 145)
+        Me.TxtObservacionesGeneralesLogistica.Multiline = True
+        Me.TxtObservacionesGeneralesLogistica.Name = "TxtObservacionesGeneralesLogistica"
+        Me.TxtObservacionesGeneralesLogistica.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TxtObservacionesGeneralesLogistica.Size = New System.Drawing.Size(803, 133)
+        Me.TxtObservacionesGeneralesLogistica.TabIndex = 87
+        '
+        'LabelX27
+        '
+        '
+        '
+        '
+        Me.LabelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX27.BackgroundStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        Me.LabelX27.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX27.Location = New System.Drawing.Point(7, 145)
+        Me.LabelX27.Name = "LabelX27"
+        Me.LabelX27.Size = New System.Drawing.Size(89, 37)
+        Me.LabelX27.TabIndex = 86
+        Me.LabelX27.Text = "Notas Generales para Logística:"
+        Me.LabelX27.WordWrap = True
+        '
+        'TxtObservacionesGeneralesProduccion
+        '
+        Me.TxtObservacionesGeneralesProduccion.AcceptsReturn = True
+        Me.TxtObservacionesGeneralesProduccion.AcceptsTab = True
+        '
+        '
+        '
+        Me.TxtObservacionesGeneralesProduccion.Border.Class = "TextBoxBorder"
+        Me.TxtObservacionesGeneralesProduccion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtObservacionesGeneralesProduccion.FocusHighlightEnabled = True
+        Me.TxtObservacionesGeneralesProduccion.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtObservacionesGeneralesProduccion.Location = New System.Drawing.Point(102, 6)
+        Me.TxtObservacionesGeneralesProduccion.Multiline = True
+        Me.TxtObservacionesGeneralesProduccion.Name = "TxtObservacionesGeneralesProduccion"
+        Me.TxtObservacionesGeneralesProduccion.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TxtObservacionesGeneralesProduccion.Size = New System.Drawing.Size(803, 133)
+        Me.TxtObservacionesGeneralesProduccion.TabIndex = 85
+        '
+        'LabelX61
+        '
+        '
+        '
+        '
+        Me.LabelX61.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX61.BackgroundStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        Me.LabelX61.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX61.Location = New System.Drawing.Point(7, 6)
+        Me.LabelX61.Name = "LabelX61"
+        Me.LabelX61.Size = New System.Drawing.Size(89, 37)
+        Me.LabelX61.TabIndex = 84
+        Me.LabelX61.Text = "Notas Generales para Producción:"
+        Me.LabelX61.WordWrap = True
+        '
+        'TabNotas
+        '
+        Me.TabNotas.AttachedControl = Me.SuperTabControlPanel9
+        Me.TabNotas.GlobalItem = False
+        Me.TabNotas.Name = "TabNotas"
+        Me.TabNotas.Text = "Notas al Pedido"
+        '
         'GroupPanel2
         '
         Me.GroupPanel2.CanvasColor = System.Drawing.SystemColors.Control
@@ -3479,8 +3479,6 @@ Partial Class FrmPedidoAltaEdicion
         CType(Me.DGTelas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControlPanel8.ResumeLayout(False)
         CType(Me.DataGridViewX2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SuperTabControlPanel9.ResumeLayout(False)
-        Me.GroupPanel1.ResumeLayout(False)
         Me.SuperTabControlPanel1.ResumeLayout(False)
         Me.GPDatosBasicos.ResumeLayout(False)
         Me.GPDatosCliente.ResumeLayout(False)
@@ -3489,6 +3487,8 @@ Partial Class FrmPedidoAltaEdicion
         Me.GroupBox8.ResumeLayout(False)
         Me.GPDatosInspeccion.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
+        Me.SuperTabControlPanel9.ResumeLayout(False)
+        Me.GroupPanel1.ResumeLayout(False)
         Me.GroupPanel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
