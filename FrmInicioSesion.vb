@@ -9,7 +9,7 @@ Public Class FrmInicioSesion
     Dim AbrirBD As New ConectaBD
 
     Private Sub FrmInicioSesion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'MessageBox.Show(ConectaBD.Desencriptar("ÛÕÓÈÔ³"))
+        'MessageBox.Show(ConectaBD.Desencriptar("×ßÍÉÇÉ¨¦"))
         CrearAccesoDirecto()
         'MessageBox.Show(AbrirBD.Desencriptar("ÝÒÞÖÊÒª«"))
         AbrirBD.ObtenerDirectorioPassword()

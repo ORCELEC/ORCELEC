@@ -22,6 +22,35 @@ Public Class OPVista
 
         BDComando = New SqlCommand
         BDComando.Connection = ConectaBD.BDConexion
+
+        Dim CveCalidadInicial As Long = 0
+        Dim CveCalidadFinal As Long = 99999
+
+        BDComando.CommandType = CommandType.Text
+        BDComando.CommandText = "SELECT PUESTO FROM USUARIOS WHERE CVE_USU = " & ConectaBD.Cve_Usuario
+        Try
+            BDComando.Connection.Open()
+            BDReader = BDComando.ExecuteReader
+            If BDReader.HasRows = True Then
+                BDReader.Read()
+                Dim Puesto As Object = BDReader("PUESTO")
+                If Puesto IsNot Nothing AndAlso Puesto.ToString.Trim.ToUpper() = "CALIDAD" Then
+                    CveCalidadInicial = ConectaBD.Cve_Usuario
+                    CveCalidadFinal = ConectaBD.Cve_Usuario
+                End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Se generó un error al consultar el puesto del usuarios, favor de contactar a sistemas y dar como referencia el siguiente mensaje:" & vbCrLf & "-" & ex.Message, "Seguimiento a la producción", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        Finally
+            ' Asegurarse de que el DataReader y la conexión se cierren.
+            If Not BDReader Is Nothing AndAlso Not BDReader.IsClosed Then
+                BDReader.Close()
+            End If
+            If BDComando.Connection.State = ConnectionState.Open Then
+                BDComando.Connection.Close()
+            End If
+        End Try
+
         BDComando.CommandType = CommandType.StoredProcedure
 
         BDComando.CommandText = "SP_OP_VISTAAVANCE"
@@ -32,8 +61,8 @@ Public Class OPVista
 
         BDComando.Parameters("@EMPRESA").Value = ConectaBD.Cve_Empresa
         BDComando.Parameters("@FINALIZADAS").Value = Filtro
-        BDComando.Parameters("@CVE_USUCALIDADINICIAL").Value = 0
-        BDComando.Parameters("@CVE_USUCALIDADFINAL").Value = 99999
+        BDComando.Parameters("@CVE_USUCALIDADINICIAL").Value = CveCalidadInicial
+        BDComando.Parameters("@CVE_USUCALIDADFINAL").Value = CveCalidadFinal
 
         BDComando.CommandTimeout = 240
         Try
