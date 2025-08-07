@@ -809,179 +809,6 @@ Public Class FrmPedidoAltaEdicion
 
             'If NombreArchivoExcelALeer.FileName.ToString <> "" Then
             Try
-                '**************CÓDIGO ELIMINADO DE IMPORTACIÓN ANTERIOR 23/07/2024
-                'ExcelLibro = ExcelApp.Workbooks.Open(SeleccionarArchivoAImportar.FileName)
-                'For i As Int32 = 1 To ExcelLibro.Sheets.Count
-                '    If ExcelLibro.Sheets(i).Name = "DATOS GENERALES" Then
-                '        DatosGenerales = True
-                '    End If
-                '    If ExcelLibro.Sheets(i).Name = "PARTIDAS" Then
-                '        Partidas = True
-                '    End If
-                'Next
-                'If DatosGenerales = True Then
-                '    ExcelHoja = ExcelLibro.Worksheets("DATOS GENERALES")
-                '    If ExcelHoja.Cells(2, 1).Value.ToString() = "" Then 'Columna tipo de pedido
-                '        MensajesErrorPedidos += "-La Columna A de la hoja DATOS GENERALES debe seleccionar un Tipo de Pedido." & vbCrLf
-                '    End If
-                '    If ExcelHoja.Cells(2, 2).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna B de la hoja DATOS GENERALES debe contener una Clave de Cliente." & vbCrLf
-                '    End If
-                '    If ExcelHoja.Cells(2, 3).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna C de la hoja DATOS GENERALES debe contener un valor." & vbCrLf
-                '    End If
-                '    If ExcelHoja.Cells(2, 4).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna D de la hoja DATOS GENERALES debe contener un Texto." & vbCrLf
-                '    End If
-                '    If ExcelHoja.Cells(2, 5).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna E de la hoja DATOS GENERALES debe contener un Texto." & vbCrLf
-                '    End If
-                '    If ExcelHoja.Cells(2, 6).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna F de la hoja DATOS GENERALES debe contener un Texto." & vbCrLf
-                '    End If
-                '    If ExcelHoja.Cells(2, 7).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna G de la hoja DATOS GENERALES debe contener un Texto." & vbCrLf
-                '    End If
-                '    If ExcelHoja.Cells(2, 8).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna H de la hoja DATOS GENERALES debe contener un Texto." & vbCrLf
-                '    End If
-                '    If ExcelHoja.Cells(2, 9).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna L de la hoja DATOS GENERALES debe contener un SI o NO." & vbCrLf
-                '    Else
-                '        If ExcelHoja.Cells(2, 9).Value.ToString() = "SI" Or ExcelHoja.Cells(2, 12).Value.ToString() = "NO" Then
-                '        Else
-                '            MensajesErrorPedidos += "-La Columna L de la hoja DATOS GENERALES solo acepta los valores SI o NO." & vbCrLf
-                '        End If
-                '        If ExcelHoja.Cells(2, 9).Value.ToString() = "SI" Then
-                '            If ExcelHoja.Cells(2, 10).Value.ToString() = "" Then
-                '                MensajesErrorPedidos += "-La Columna M de la hoja DATOS GENERALES debe contener un valor." & vbCrLf
-                '            End If
-                '            If ExcelHoja.Cells(2, 11).Value.ToString() = "" Then
-                '                MensajesErrorPedidos += "-La Columna N de la hoja DATOS GENERALES debe contener un valor." & vbCrLf
-                '            End If
-                '            If ExcelHoja.Cells(2, 12).Value.ToString() = "" Then
-                '                MensajesErrorPedidos += "-La Columna O de la hoja DATOS GENERALES debe contener un valor." & vbCrLf
-                '            End If
-                '        End If
-                '    End If
-                '    If ExcelHoja.Cells(2, 13).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna P de la hoja DATOS GENERALES debe contener un valor." & vbCrLf
-                '    Else
-                '        If ExcelHoja.Cells(2, 13).Value.ToString() = "SI" Or ExcelHoja.Cells(2, 13).Value.ToString() = "NO" Then
-                '        Else
-                '            MensajesErrorPedidos += "-La Columna P de la hoja DATOS GENERALES solo acepta los valores SI o NO." & vbCrLf
-                '        End If
-                '        If ExcelHoja.Cells(2, 13).Value.ToString() = "SI" Then
-                '            If ExcelHoja.Cells(2, 14).Value.ToString() = "" Then
-                '                MensajesErrorPedidos += "-La Columna Q de la hoja DATOS GENERALES debe contener un valor." & vbCrLf
-                '            End If
-                '            If ExcelHoja.Cells(2, 15).Value.ToString() = "" Then
-                '                MensajesErrorPedidos += "-La Columna R de la hoja DATOS GENERALES debe contener un valor." & vbCrLf
-                '            End If
-                '        End If
-                '    End If
-                '    If ExcelHoja.Cells(2, 16).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna S de la hoja DATOS GENERALES debe contener un valor." & vbCrLf
-                '    End If
-                '    If ExcelHoja.Cells(2, 17).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna T de la hoja DATOS GENERALES debe contener un valor." & vbCrLf
-                '    End If
-                '    If ExcelHoja.Cells(2, 18).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna U de la hoja DATOS GENERALES debe contener un valor." & vbCrLf
-                '    End If
-                '    If ExcelHoja.Cells(2, 19).Value.ToString() = "" Then
-                '        MensajesErrorPedidos += "-La Columna V de la hoja DATOS GENERALES debe contener un valor." & vbCrLf
-                '    End If
-                '    If MensajesErrorPedidos = "" Then
-                '        ExcelHoja = ExcelLibro.Worksheets("DATOS GENERALES")
-
-                '        TipoPedido = UCase(ExcelHoja.Cells(2, 1).Value.ToString)
-                '        'SE VALIDA CLIENTE
-                '        BDComando.Parameters.Clear()
-                '        BDComando.CommandType = CommandType.Text
-                '        BDComando.CommandText = "SELECT * FROM CLIENTES WHERE CVE_CLIENTE = " & ExcelHoja.Cells(2, 2).Value.ToString()
-                '        Try
-                '            BDComando.Connection.Open()
-                '            BDReader = BDComando.ExecuteReader
-                '            If BDReader.HasRows = True Then
-                '                BDReader.Read()
-                '                If BDReader("STATUSCLIENTE") = "CANCELADO" Then
-                '                    MensajesErrorPedidos += "-El Cliente esta dada de baja, Verificar."
-                '                ElseIf BDReader("NOM_CLIENTE") <> ExcelHoja.Cells(2, 3).Value.ToString Then
-                '                    MensajesErrorPedidos += "-La razón social no coindice con el que esta dado de alta en el sistema, Verificar."
-                '                End If
-                '            End If
-                '        Catch ex As Exception
-                '            ExcelHoja = Nothing
-                '            ExcelLibro = Nothing
-                '            ExcelApp.Quit()
-                '            ExcelApp = Nothing
-                '            MessageBox.Show("Se generó un error al momento de validar datos con los Catalogos existentes, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Importación de Pedido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                '        Finally
-                '            ' Asegurarse de que el DataReader y la conexión se cierren.
-                '            If Not BDReader Is Nothing AndAlso Not BDReader.IsClosed Then
-                '                BDReader.Close()
-                '            End If
-                '            If BDComando.Connection.State = ConnectionState.Open Then
-                '                BDComando.Connection.Close()
-                '            End If
-                '        End Try
-
-
-                '        ''SE VALIDA LUGAR DE COBRO esto se quito de la hoja del pedido principal.
-                '        'If ExcelHoja.Cells(2, 8).Value.ToString() <> ExcelHoja.Cells(2, 2).Value.ToString() Then
-                '        '    BDComando.Parameters.Clear()
-                '        '    BDComando.CommandType = CommandType.Text
-                '        '    BDComando.CommandText = "SELECT * FROM REMISIONADO WHERE CVE_REMISIONADO = " & ExcelHoja.Cells(2, 8).Value.ToString()
-                '        '    Try
-                '        '        BDComando.Connection.Open()
-                '        '        BDReader = BDComando.ExecuteReader
-                '        '        If BDReader.HasRows = True Then
-                '        '            BDReader.Read()
-                '        '            If BDReader("STATUS") = False Then
-                '        '                MensajesErrorPedidos += "-El Lugar de Cobro esta dada de baja, Verificar."
-                '        '            ElseIf BDReader("CVE_CLIENTE") <> Int32.Parse(ExcelHoja.Cells(2, 2).Value.ToString()) Then
-                '        '                MensajesErrorPedidos += "-El Lugar de Cobro pertenece a otro Cliente, Verificar."
-                '        '            End If
-                '        '        Else
-                '        '            MensajesErrorPedidos += "-El Lugar de Cobro no existe o pertenece a otro Cliente, Verificar."
-                '        '        End If
-                '        '    Catch ex As Exception
-                '        '        ExcelHoja = Nothing
-                '        '        ExcelLibro = Nothing
-                '        '        ExcelApp.Quit()
-                '        '        ExcelApp = Nothing
-                '        '        MessageBox.Show("Se generó un error al momento de validar datos con los Catalogos existentes, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Importación de Pedido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                '        '    Finally
-                '        '        ' Asegurarse de que el DataReader y la conexión se cierren.
-                '        '        If Not BDReader Is Nothing AndAlso Not BDReader.IsClosed Then
-                '        '            BDReader.Close()
-                '        '        End If
-                '        '        If BDComando.Connection.State = ConnectionState.Open Then
-                '        '            BDComando.Connection.Close()
-                '        '        End If
-                '        '    End Try
-                '        'End If
-                '    End If
-                '    If MensajesErrorPedidos <> "" Then
-                '        ExcelHoja = Nothing
-                '        ExcelLibro.Close(False)
-                '        ExcelLibro = Nothing
-                '        ExcelApp.Quit()
-                '        ExcelApp = Nothing
-                '        MessageBox.Show(MensajesErrorPedidos, "Importación de Pedido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                '        Exit Sub
-                '    End If
-                'Else
-                '    ExcelHoja = Nothing
-                '    ExcelLibro.Close(False)
-                '    ExcelLibro = Nothing
-                '    ExcelApp.Quit()
-                '    ExcelApp = Nothing
-                '    MensajesErrorPedidos += "-El documento debe contener la Hoja 'DATOS GENERALES'." & vbCrLf
-                '    MessageBox.Show(MensajesErrorPedidos, "Importación de Pedido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                'End If
-                '''''*************FIN DE CÓDIGO ELIMINADO
                 '''''*********CÓDIGO NUEVO DE IMPORTACIÓN DE PEDIDO.
                 ExcelLibro = ExcelApp.Workbooks.Open(SeleccionarArchivoAImportar.FileName)
 
@@ -999,9 +826,10 @@ Public Class FrmPedidoAltaEdicion
                     TipoPedido = UCase(ExcelHoja.Cells(2, 1).Value.ToString)
 
                     Dim errores As New List(Of String)
-                    Dim columnas As String() = {"A", "B", "C", "D", "E", "F", "G", "H"}
+                    Dim columnas As String() = {"A", "B", "C", "D", "E", "F", "G", "H", "I"}
                     Dim mensajes As String() = {
                         "seleccionar un Tipo de Pedido.",
+                        "indicar si se debe omitir inventario.",
                         "contener una Clave de Cliente.",
                         "contener un valor.",
                         "contener un Texto.",
@@ -1017,17 +845,22 @@ Public Class FrmPedidoAltaEdicion
                         End If
                     Next
 
-                    ' Validar columnas I a K (columnas 9 a 11 en Excel)
-                    If ExcelHoja.Cells(2, 9).Value Is Nothing OrElse ExcelHoja.Cells(2, 9).Value.ToString() = "" Then
-                        errores.Add("-La Columna I de la hoja DATOS GENERALES debe contener un SI o NO.")
+                    Dim valorB As String = ExcelHoja.Cells(2, 2).Value.ToString().ToUpper()
+                    If valorB <> "SI" AndAlso valorB <> "NO" Then
+                        errores.Add("-La Columna B de la hoja DATOS GENERALES solo acepta los valores SI o NO.")
+                    End If
+
+                    ' Validar columnas J a L (columnas 10 a 12 en Excel)
+                    If ExcelHoja.Cells(2, 10).Value Is Nothing OrElse ExcelHoja.Cells(2, 10).Value.ToString() = "" Then
+                        errores.Add("-La Columna J de la hoja DATOS GENERALES debe contener un SI o NO.")
                     Else
-                        Dim valorI As String = ExcelHoja.Cells(2, 9).Value.ToString()
-                        If valorI <> "SI" AndAlso valorI <> "NO" Then
-                            errores.Add("-La Columna I de la hoja DATOS GENERALES solo acepta los valores SI o NO.")
+                        Dim valorJ As String = ExcelHoja.Cells(2, 10).Value.ToString()
+                        If valorJ <> "SI" AndAlso valorJ <> "NO" Then
+                            errores.Add("-La Columna J de la hoja DATOS GENERALES solo acepta los valores SI o NO.")
                         End If
 
-                        If valorI = "SI" Then
-                            For j As Integer = 10 To 12
+                        If valorJ = "SI" Then
+                            For j As Integer = 11 To 13
                                 If ExcelHoja.Cells(2, j).Value Is Nothing OrElse ExcelHoja.Cells(2, j).Value.ToString() = "" Then
                                     errores.Add(String.Format("-La Columna {0} de la hoja DATOS GENERALES debe contener un valor.", Chr(64 + j)))
                                 End If
@@ -1035,27 +868,27 @@ Public Class FrmPedidoAltaEdicion
                         End If
                     End If
 
-                    ' Validar columnas L a N (columnas 13 a 15 en Excel)
-                    If ExcelHoja.Cells(2, 13).Value Is Nothing OrElse ExcelHoja.Cells(2, 13).Value.ToString() = "" Then
-                        errores.Add("-La Columna L de la hoja DATOS GENERALES debe contener un valor.")
+                    ' Validar columnas M a O (columnas 14 a 16 en Excel)
+                    If ExcelHoja.Cells(2, 14).Value Is Nothing OrElse ExcelHoja.Cells(2, 14).Value.ToString() = "" Then
+                        errores.Add("-La Columna N de la hoja DATOS GENERALES debe contener un valor.")
                     Else
-                        Dim valorL As String = ExcelHoja.Cells(2, 13).Value.ToString()
-                        If valorL <> "SI" AndAlso valorL <> "NO" Then
-                            errores.Add("-La Columna L de la hoja DATOS GENERALES solo acepta los valores SI o NO.")
+                        Dim valorN As String = ExcelHoja.Cells(2, 14).Value.ToString()
+                        If valorN <> "SI" AndAlso valorN <> "NO" Then
+                            errores.Add("-La Columna N de la hoja DATOS GENERALES solo acepta los valores SI o NO.")
                         End If
 
-                        If valorL = "SI" Then
-                            If ExcelHoja.Cells(2, 14).Value Is Nothing OrElse ExcelHoja.Cells(2, 14).Value.ToString() = "" Then
-                                errores.Add("-La Columna N de la hoja DATOS GENERALES debe contener un valor.")
-                            End If
+                        If valorN = "SI" Then
                             If ExcelHoja.Cells(2, 15).Value Is Nothing OrElse ExcelHoja.Cells(2, 15).Value.ToString() = "" Then
                                 errores.Add("-La Columna O de la hoja DATOS GENERALES debe contener un valor.")
+                            End If
+                            If ExcelHoja.Cells(2, 16).Value Is Nothing OrElse ExcelHoja.Cells(2, 16).Value.ToString() = "" Then
+                                errores.Add("-La Columna P de la hoja DATOS GENERALES debe contener un valor.")
                             End If
                         End If
                     End If
 
-                    ' Validar columnas O a R (columnas 16 a 19 en Excel)
-                    For j As Integer = 16 To 19
+                    ' Validar columnas P a S (columnas 17 a 20 en Excel)
+                    For j As Integer = 17 To 20
                         If ExcelHoja.Cells(2, j).Value Is Nothing OrElse ExcelHoja.Cells(2, j).Value.ToString() = "" Then
                             errores.Add(String.Format("-La Columna {0} de la hoja DATOS GENERALES debe contener un valor.", Chr(64 + j)))
                         End If
@@ -1066,7 +899,7 @@ Public Class FrmPedidoAltaEdicion
                         'SE VALIDA CLIENTE
                         BDComando.Parameters.Clear()
                         BDComando.CommandType = CommandType.Text
-                        BDComando.CommandText = "SELECT * FROM CLIENTES WHERE CVE_CLIENTE = " & ExcelHoja.Cells(2, 2).Value.ToString()
+                        BDComando.CommandText = "SELECT * FROM CLIENTES WHERE CVE_CLIENTE = " & ExcelHoja.Cells(2, 3).Value.ToString()
                         Try
                             BDComando.Connection.Open()
                             BDReader = BDComando.ExecuteReader
@@ -1074,7 +907,9 @@ Public Class FrmPedidoAltaEdicion
                                 BDReader.Read()
                                 If BDReader("STATUSCLIENTE") = "CANCELADO" Then
                                     errores.Add("-El Cliente esta dado de baja, Verificar.")
-                                ElseIf BDReader("NOM_CLIENTE").ToString() <> ExcelHoja.Cells(2, 3).Value.ToString() Then
+                                ElseIf BDReader("NOM_CLIENTE").ToString() <> ExcelHoja.Cells(2, 4).Value.ToString() Then
+                                    'MessageBox.Show(BDReader("NOM_CLIENTE").ToString())
+                                    'MessageBox.Show(ExcelHoja.Cells(2, 4).Value.ToString())
                                     errores.Add("-La razón social no coincide con el que está dado de alta en el sistema, Verificar.")
                                 End If
                             End If
@@ -1266,7 +1101,7 @@ Public Class FrmPedidoAltaEdicion
                                                 MensajesErrorPedidos += "-El Remisionado de la Fila " & Fila & " esta dada de baja, Verificar." & vbCrLf
                                             ElseIf BDReader("CVE_REMISIONADO") = 0 Then
 
-                                            ElseIf BDReader("CVE_CLIENTE") <> Int32.Parse(ExcelLibro.Sheets(1).Range("B2").Value.ToString) Then
+                                            ElseIf BDReader("CVE_CLIENTE") <> Int32.Parse(ExcelLibro.Sheets(1).Range("C2").Value.ToString) Then
                                                 MensajesErrorPedidos += "-El Remisionado de la Fila " & Fila & " pertenece a otro Cliente, Verificar." & vbCrLf
                                             Else
                                                 ExcelHoja.Cells(Fila, 4).Value = BDReader("NOMREMISIONADO").ToString()
@@ -1295,7 +1130,7 @@ Public Class FrmPedidoAltaEdicion
                                 'SE VALIDA LOS LUGARES DE COBRO
                                 claveBuscar = ExcelHoja.Cells(Fila, 5).Value.ToString()
                                 If dictLugarCobro.ContainsKey(claveBuscar) = False Then
-                                    If ExcelHoja.Cells(Fila, 5).Value.ToString() <> Int32.Parse(ExcelLibro.Sheets(1).Range("B2").Value.ToString) Then
+                                    If ExcelHoja.Cells(Fila, 5).Value.ToString() <> Int32.Parse(ExcelLibro.Sheets(1).Range("C2").Value.ToString) Then
                                         BDComando.Parameters.Clear()
                                         BDComando.CommandType = CommandType.Text
                                         BDComando.CommandText = "SELECT * FROM REMISIONADO WHERE CVE_REMISIONADO = " & ExcelHoja.Cells(Fila, 5).Value.ToString()
@@ -1308,7 +1143,7 @@ Public Class FrmPedidoAltaEdicion
                                                     MensajesErrorPedidos += "-El lugar de cobro de la Fila " & Fila & " esta dada de baja, Verificar." & vbCrLf
                                                 ElseIf BDReader("CVE_REMISIONADO") = 0 Then
 
-                                                ElseIf BDReader("CVE_CLIENTE") <> Int32.Parse(ExcelLibro.Sheets(1).Range("B2").Value.ToString) Then
+                                                ElseIf BDReader("CVE_CLIENTE") <> Int32.Parse(ExcelLibro.Sheets(1).Range("C2").Value.ToString) Then
                                                     MensajesErrorPedidos += "-El lugar de cobro de la Fila " & Fila & " pertenece a otro Cliente, Verificar." & vbCrLf
                                                 Else
                                                     ExcelHoja.Cells(Fila, 4).Value = BDReader("NOMREMISIONADO").ToString()
@@ -1457,10 +1292,11 @@ Public Class FrmPedidoAltaEdicion
                             ElseIf (UCase(ExcelHoja.Cells(2, 1).Value.ToString) = "MUESTRA") Then
                                 TxtTipoPedido.Text = "MUESTRA"
                             End If
+                            ChkOmitirInventario.Checked = (UCase(ExcelHoja.Cells(2, 2).Value.ToString()) = "NO")
                             'SE RECUPERAN DATOS DEL CLIENTE
                             BDComando.Parameters.Clear()
                             BDComando.CommandType = CommandType.Text
-                            BDComando.CommandText = "SELECT * FROM CLIENTES WHERE CVE_CLIENTE = " & ExcelHoja.Cells(2, 2).Value.ToString()
+                            BDComando.CommandText = "SELECT * FROM CLIENTES WHERE CVE_CLIENTE = " & ExcelHoja.Cells(2, 3).Value.ToString()
                             Try
                                 BDComando.Connection.Open()
                                 BDReader = BDComando.ExecuteReader
@@ -1501,74 +1337,74 @@ Public Class FrmPedidoAltaEdicion
                                     BDComando.Connection.Close()
                                 End If
                             End Try
-                            TxtCveProveedor.Text = ExcelHoja.Cells(2, 4).Value.ToString
-                            TxtPedCliente.Text = ExcelHoja.Cells(2, 6).Value.ToString
-                            TxtContratoCliente.Text = ExcelHoja.Cells(2, 5).Value.ToString
-                            TxtOrdenSurtimiento.Text = ExcelHoja.Cells(2, 7).Value.ToString
-                            If ExcelHoja.Cells(2, 8).Value Is DBNull.Value Then
+                            TxtCveProveedor.Text = ExcelHoja.Cells(2, 5).Value.ToString
+                            TxtPedCliente.Text = ExcelHoja.Cells(2, 7).Value.ToString
+                            TxtContratoCliente.Text = ExcelHoja.Cells(2, 6).Value.ToString
+                            TxtOrdenSurtimiento.Text = ExcelHoja.Cells(2, 8).Value.ToString
+                            If ExcelHoja.Cells(2, 9).Value Is DBNull.Value Then
                                 TxtInstruccionesEntrega.Clear()
                             Else
-                                TxtInstruccionesEntrega.Text = ExcelHoja.Cells(2, 8).Value
+                                TxtInstruccionesEntrega.Text = ExcelHoja.Cells(2, 9).Value
                             End If
                             'If ExcelHoja.Cells(2, 11).Value Is DBNull.Value Then
                             '    TxtInstruccionesCobranza.Clear()
                             'Else
                             '    TxtInstruccionesCobranza.Text = ExcelHoja.Cells(2, 11).Value
                             'End If
-                            TxtInspección.Text = ExcelHoja.Cells(2, 9).Value.ToString()
-                            If ExcelHoja.Cells(2, 9).Value.ToString() = "SI" Then
-                                TxtInspeccionPersona.Text = ExcelHoja.Cells(2, 10).Value.ToString()
-                                TxtInspeccionLugar.Text = ExcelHoja.Cells(2, 11).Value.ToString()
-                                TxtInspeccionHorarios.Text = ExcelHoja.Cells(2, 12).Value.ToString()
+                            TxtInspección.Text = ExcelHoja.Cells(2, 10).Value.ToString()
+                            If ExcelHoja.Cells(2, 10).Value.ToString() = "SI" Then
+                                TxtInspeccionPersona.Text = ExcelHoja.Cells(2, 11).Value.ToString()
+                                TxtInspeccionLugar.Text = ExcelHoja.Cells(2, 12).Value.ToString()
+                                TxtInspeccionHorarios.Text = ExcelHoja.Cells(2, 13).Value.ToString()
                             Else
                                 TxtInspeccionPersona.Clear()
                                 TxtInspeccionLugar.Clear()
                                 TxtInspeccionHorarios.Clear()
                             End If
-                            TxtAdmiteEntregaParcial.Text = ExcelHoja.Cells(2, 13).Value.ToString()
-                            If ExcelHoja.Cells(2, 13).Value.ToString() = "SI" Then
-                                TxtPorcentajeSancionDiaria.Text = ExcelHoja.Cells(2, 14).Value.ToString()
-                                TxtPorcentajeSancionMaxima.Text = ExcelHoja.Cells(2, 15).Value.ToString()
+                            TxtAdmiteEntregaParcial.Text = ExcelHoja.Cells(2, 14).Value.ToString()
+                            If ExcelHoja.Cells(2, 14).Value.ToString() = "SI" Then
+                                TxtPorcentajeSancionDiaria.Text = ExcelHoja.Cells(2, 15).Value.ToString()
+                                TxtPorcentajeSancionMaxima.Text = ExcelHoja.Cells(2, 16).Value.ToString()
                             Else
                                 TxtPorcentajeSancionDiaria.Clear()
                                 TxtPorcentajeSancionMaxima.Clear()
                             End If
-                            If ExcelHoja.Cells(2, 16).Value Is DBNull.Value Then
+                            If ExcelHoja.Cells(2, 17).Value Is DBNull.Value Then
                                 TxtRegimenFiscal.Clear()
                             Else
-                                TxtRegimenFiscal.Text = ExcelHoja.Cells(2, 16).Value
-                            End If
-                            If ExcelHoja.Cells(2, 17).Value Is DBNull.Value Then
-                                TxtUsoCFDI.Clear()
-                            Else
-                                TxtUsoCFDI.Text = ExcelHoja.Cells(2, 17).Value
+                                TxtRegimenFiscal.Text = ExcelHoja.Cells(2, 17).Value
                             End If
                             If ExcelHoja.Cells(2, 18).Value Is DBNull.Value Then
-                                TxtMetodoPago.Clear()
+                                TxtUsoCFDI.Clear()
                             Else
-                                TxtMetodoPago.Text = ExcelHoja.Cells(2, 18).Value
+                                TxtUsoCFDI.Text = ExcelHoja.Cells(2, 18).Value
                             End If
                             If ExcelHoja.Cells(2, 19).Value Is DBNull.Value Then
-                                TxtFormaPago.Clear()
+                                TxtMetodoPago.Clear()
                             Else
-                                TxtFormaPago.Text = ExcelHoja.Cells(2, 19).Value
+                                TxtMetodoPago.Text = ExcelHoja.Cells(2, 19).Value
                             End If
                             If ExcelHoja.Cells(2, 20).Value Is DBNull.Value Then
-                                TxtCuentaPago.Clear()
+                                TxtFormaPago.Clear()
                             Else
-                                TxtCuentaPago.Text = ExcelHoja.Cells(2, 20).Value
+                                TxtFormaPago.Text = ExcelHoja.Cells(2, 20).Value
                             End If
                             If ExcelHoja.Cells(2, 21).Value Is DBNull.Value Then
+                                TxtCuentaPago.Clear()
+                            Else
+                                TxtCuentaPago.Text = ExcelHoja.Cells(2, 21).Value
+                            End If
+                            If ExcelHoja.Cells(2, 22).Value Is DBNull.Value Then
                                 TxtBancoPago.Clear()
                             Else
-                                TxtBancoPago.Text = ExcelHoja.Cells(2, 21).Value
+                                TxtBancoPago.Text = ExcelHoja.Cells(2, 22).Value
                             End If
                             'If ExcelHoja.Cells(2, 25).Value Is DBNull.Value Then
                             '    TxtObservacionesGeneralesProduccion.Clear()
                             'Else
                             '    TxtObservacionesGeneralesProduccion.Text = ExcelHoja.Cells(2, 25).Value.ToString
                             'End If
-                            Dim Texto As Object = ExcelHoja.Cells(2, 22).Value
+                            Dim Texto As Object = ExcelHoja.Cells(2, 23).Value
                             Dim TextoObservaciones As String
                             If Texto IsNot Nothing Then
                                 TextoObservaciones = Texto.ToString().Replace(ControlChars.Lf, vbCrLf)
@@ -1587,7 +1423,7 @@ Public Class FrmPedidoAltaEdicion
                             'Else
                             '    TxtObservacionesGeneralesLogistica.Text = ExcelHoja.Cells(2, 26).Value
                             'End If
-                            Texto = ExcelHoja.Cells(2, 23).Value
+                            Texto = ExcelHoja.Cells(2, 24).Value
                             If Texto IsNot Nothing Then
                                 TextoObservaciones = Texto.ToString().Replace(ControlChars.Lf, vbCrLf)
                             Else
@@ -1605,7 +1441,7 @@ Public Class FrmPedidoAltaEdicion
                             'Else
                             '    TxtObservacionesGeneralesFacturacion.Text = ExcelHoja.Cells(2, 27).Value
                             'End If
-                            Texto = ExcelHoja.Cells(2, 24).Value
+                            Texto = ExcelHoja.Cells(2, 25).Value
                             If Texto IsNot Nothing Then
                                 TextoObservaciones = Texto.ToString().Replace(ControlChars.Lf, vbCrLf)
                             Else
@@ -2790,6 +2626,7 @@ Public Class FrmPedidoAltaEdicion
             BDComando.Parameters.Add("@FORMAPAGO", SqlDbType.NVarChar)
             BDComando.Parameters.Add("@CUENTAPAGO", SqlDbType.NVarChar)
             BDComando.Parameters.Add("@BANCOPAGO", SqlDbType.NVarChar)
+            BDComando.Parameters.Add("@OMITIRINVENTARIO", SqlDbType.Bit)
             BDComando.Parameters.Add("@TIPOPEDIDO", SqlDbType.NVarChar)
             BDComando.Parameters.Add("@CONDICIONESPAGODIAS", SqlDbType.BigInt)
             BDComando.Parameters.Add("@CONDICIONESPAGOTIPODIAS", SqlDbType.NVarChar)
@@ -2836,6 +2673,7 @@ Public Class FrmPedidoAltaEdicion
             BDComando.Parameters("@FORMAPAGO").Value = TxtFormaPago.Text
             BDComando.Parameters("@CUENTAPAGO").Value = TxtCuentaPago.Text
             BDComando.Parameters("@BANCOPAGO").Value = TxtBancoPago.Text
+            BDComando.Parameters("@OMITIRINVENTARIO").Value = ChkOmitirInventario.Checked
             BDComando.Parameters("@TIPOPEDIDO").Value = TxtTipoPedido.Text
             BDComando.Parameters("@CONDICIONESPAGODIAS").Value = CmbCondPagoDias.SelectedItem.ToString()
             BDComando.Parameters("@CONDICIONESPAGOTIPODIAS").Value = CmbCondPagoTipoDia.SelectedItem.ToString()

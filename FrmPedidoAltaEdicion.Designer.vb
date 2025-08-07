@@ -239,6 +239,7 @@ Partial Class FrmPedidoAltaEdicion
         Me.SuperTabControlPanel5 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.SuperTabItem1 = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.ChkOmitirInventario = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.PanPrincipal.SuspendLayout()
         CType(Me.TabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPrincipal.SuspendLayout()
@@ -336,8 +337,8 @@ Partial Class FrmPedidoAltaEdicion
         Me.TabPrincipal.ControlBox.Name = ""
         Me.TabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TabPrincipal.ControlBox.MenuBox, Me.TabPrincipal.ControlBox.CloseBox})
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel1)
-        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel9)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel3)
+        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel9)
         Me.TabPrincipal.Location = New System.Drawing.Point(12, 115)
         Me.TabPrincipal.Name = "TabPrincipal"
         Me.TabPrincipal.ReorderTabsEnabled = True
@@ -352,9 +353,9 @@ Partial Class FrmPedidoAltaEdicion
         '
         Me.SuperTabControlPanel3.Controls.Add(Me.PanDetallePartida)
         Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 25)
+        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
-        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(954, 448)
+        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(954, 473)
         Me.SuperTabControlPanel3.TabIndex = 1
         Me.SuperTabControlPanel3.TabItem = Me.TabDatosPedido
         '
@@ -1193,6 +1194,7 @@ Partial Class FrmPedidoAltaEdicion
         '
         Me.GPDatosBasicos.CanvasColor = System.Drawing.SystemColors.Control
         Me.GPDatosBasicos.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GPDatosBasicos.Controls.Add(Me.ChkOmitirInventario)
         Me.GPDatosBasicos.Controls.Add(Me.GPDatosCliente)
         Me.GPDatosBasicos.Controls.Add(Me.GPDatosLugarCobro)
         Me.GPDatosBasicos.Controls.Add(Me.CmbIVA)
@@ -3146,9 +3148,9 @@ Partial Class FrmPedidoAltaEdicion
         '
         Me.SuperTabControlPanel9.Controls.Add(Me.GroupPanel1)
         Me.SuperTabControlPanel9.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 25)
+        Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControlPanel9.Name = "SuperTabControlPanel9"
-        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 448)
+        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 473)
         Me.SuperTabControlPanel9.TabIndex = 0
         Me.SuperTabControlPanel9.TabItem = Me.TabNotas
         '
@@ -3451,6 +3453,19 @@ Partial Class FrmPedidoAltaEdicion
         Me.SuperTabControlPanel2.TabIndex = 0
         Me.SuperTabControlPanel2.TabItem = Me.SuperTabItem1
         '
+        'ChkOmitirInventario
+        '
+        '
+        '
+        '
+        Me.ChkOmitirInventario.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ChkOmitirInventario.Location = New System.Drawing.Point(799, 35)
+        Me.ChkOmitirInventario.Name = "ChkOmitirInventario"
+        Me.ChkOmitirInventario.Size = New System.Drawing.Size(109, 23)
+        Me.ChkOmitirInventario.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ChkOmitirInventario.TabIndex = 112
+        Me.ChkOmitirInventario.Text = "Omitir Inventario"
+        '
         'FrmPedidoAltaEdicion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3686,4 +3701,5 @@ Partial Class FrmPedidoAltaEdicion
     Friend WithEvents LabelX49 As DevComponents.DotNetBar.LabelX
     Friend WithEvents TxtLugarCobroAtencion As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX48 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents ChkOmitirInventario As DevComponents.DotNetBar.Controls.CheckBoxX
 End Class
