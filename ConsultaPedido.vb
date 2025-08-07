@@ -1,5 +1,8 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
+Imports System.Net
+Imports MimeKit
+Imports MailKit.Security
 
 Public Class ConsultaPedido
     Private BDComando As New SqlCommand
@@ -159,6 +162,8 @@ Public Class ConsultaPedido
         GPGeneral.Visible = False
         TabPrincipal.SelectedTabIndex = 0
         TxtEstatus.Clear()
+        BtnAutorizarPedido.Text = "Mandar a Autorizar"
+        BtnAutorizarPedido.Enabled = True
     End Sub
 
     Private Sub LimpiarDatosRemisionado()
@@ -1119,39 +1124,211 @@ Public Class ConsultaPedido
     Private Sub BtnAutorizarPedido_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAutorizarPedido.Click
         If ListPedidos.Items.Count > 0 Then
             If ListPedidos.SelectedItems.Count > 0 Then
-                If MessageBox.Show("¿Esta seguro de mandar a Autorizar el pedido interno No. " & ListPedidos.SelectedItem.ToString() & "?", "Autorización de pedido interno", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                    BDComando.Parameters.Clear()
-                    BDComando.CommandType = CommandType.StoredProcedure
-                    BDComando.CommandText = "PEDIDO_INTERNO_A_AUTORIZAR"
-                    BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt)
-                    BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.BigInt)
-                    BDComando.Parameters.Add("@USUARIO", SqlDbType.BigInt)
-                    BDComando.Parameters.Add("@COMPUTADORA", SqlDbType.NVarChar)
+                If BtnAutorizarPedido.Text = "Mandar a Autorizar" Then
+                    If MessageBox.Show("¿Esta seguro de mandar a Autorizar el pedido interno No. " & ListPedidos.SelectedItem.ToString() & "?", "Autorización de pedido interno", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                        BDComando.Parameters.Clear()
+                        BDComando.CommandType = CommandType.StoredProcedure
+                        BDComando.CommandText = "PEDIDO_INTERNO_A_AUTORIZAR"
+                        BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt)
+                        BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.BigInt)
+                        BDComando.Parameters.Add("@USUARIO", SqlDbType.BigInt)
+                        BDComando.Parameters.Add("@COMPUTADORA", SqlDbType.NVarChar)
 
-                    BDComando.Parameters("@EMPRESA").Value = ConectaBD.Cve_Empresa
-                    BDComando.Parameters("@NO_PEDIDO").Value = Val(ListPedidos.SelectedItem.ToString())
-                    BDComando.Parameters("@USUARIO").Value = ConectaBD.Cve_Usuario
-                    BDComando.Parameters("@COMPUTADORA").Value = My.Computer.Name
+                        BDComando.Parameters("@EMPRESA").Value = ConectaBD.Cve_Empresa
+                        BDComando.Parameters("@NO_PEDIDO").Value = Val(ListPedidos.SelectedItem.ToString())
+                        BDComando.Parameters("@USUARIO").Value = ConectaBD.Cve_Usuario
+                        BDComando.Parameters("@COMPUTADORA").Value = My.Computer.Name
 
-                    Try
-                        BDComando.Connection.Open()
-                        BDReader = BDComando.ExecuteReader
-                    Catch ex As Exception
-                        MessageBox.Show("Se generó un error al mandar a autorizar el pedido, favor de contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Mandar a autorizar el Pedido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                        Exit Sub
-                    Finally
-                        ' Asegurarse de que el DataReader y la conexión se cierren.
-                        If Not BDReader Is Nothing AndAlso Not BDReader.IsClosed Then
-                            BDReader.Close()
-                        End If
-                        If BDComando.Connection.State = ConnectionState.Open Then
-                            BDComando.Connection.Close()
-                        End If
-                    End Try
+                        Try
+                            BDComando.Connection.Open()
+                            BDReader = BDComando.ExecuteReader
+                        Catch ex As Exception
+                            MessageBox.Show("Se generó un error al mandar a autorizar el pedido, favor de contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Mandar a autorizar el Pedido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                            Exit Sub
+                        Finally
+                            ' Asegurarse de que el DataReader y la conexión se cierren.
+                            If Not BDReader Is Nothing AndAlso Not BDReader.IsClosed Then
+                                BDReader.Close()
+                            End If
+                            If BDComando.Connection.State = ConnectionState.Open Then
+                                BDComando.Connection.Close()
+                            End If
+                        End Try
 
-                    MessageBox.Show("El pedido interno No. " & Val(ListPedidos.SelectedItem.ToString()) & " se mando a autorizar correctamente.", "Mandar a autorizar Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    ReiniciaControles()
-                    ConsultaPedidosAAutorizar()
+                        MessageBox.Show("El pedido interno No. " & Val(ListPedidos.SelectedItem.ToString()) & " se mando a autorizar correctamente.", "Mandar a autorizar Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        ReiniciaControles()
+                        ConsultaPedidosAAutorizar()
+                    End If
+                ElseIf BtnAutorizarPedido.Text = "Autorizar Pedido" Then
+                    Dim Email As String = ""
+                    Dim CuerpoCorreo As String = ""
+                    If MessageBox.Show("¿Esta seguro de Autorizar el pedido interno No. " & ListPedidos.SelectedItem.ToString() & "?", "Autorización de pedido interno", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                        BDComando.Parameters.Clear()
+                        BDComando.CommandType = CommandType.StoredProcedure
+                        BDComando.CommandText = "PEDIDO_INTERNO_AUTORIZAR"
+                        BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt)
+                        BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.BigInt)
+                        BDComando.Parameters.Add("@NOTAS_AL_AUTORIZAR", SqlDbType.NVarChar)
+                        BDComando.Parameters.Add("@USUARIO", SqlDbType.BigInt)
+                        BDComando.Parameters.Add("@COMPUTADORA", SqlDbType.NVarChar)
+
+                        BDComando.Parameters("@EMPRESA").Value = ConectaBD.Cve_Empresa
+                        BDComando.Parameters("@NO_PEDIDO").Value = Val(ListPedidos.SelectedItem.ToString())
+                        BDComando.Parameters("@NOTAS_AL_AUTORIZAR").Value = TxtNotasAlAutorizarCancelar.Text
+                        BDComando.Parameters("@USUARIO").Value = ConectaBD.Cve_Usuario
+                        BDComando.Parameters("@COMPUTADORA").Value = My.Computer.Name
+
+                        BDComando.CommandTimeout = 240
+                        Try
+                            BDComando.Connection.Open()
+                            BDReader = BDComando.ExecuteReader
+                            If Not BDReader Is Nothing AndAlso Not BDReader.IsClosed Then
+                                BDReader.Close()
+                            End If
+                            BDComando.Parameters.Clear()
+                            BDComando.CommandType = CommandType.Text
+                            BDComando.CommandText = "SELECT U.EMAIL,FA.Contrato_Cliente,FA.Cve_PedCliente,FA.Cve_Proveedor,TF.Descripcion as TipoPedido FROM PEDIDO_INTERNO PI,USUARIOS U,FOLIOS_ADMINISTRACION FA,TIPO_FOLIO TF WHERE PI.EMPRESA = " & ConectaBD.Cve_Empresa & " AND PI.NO_PEDIDO = " & Val(ListPedidos.SelectedItem.ToString) & " AND PI.USUARIO = U.CVE_USU AND FA.Empresa = PI.Empresa AND FA.Num_Folio = PI.Num_Folio AND TF.Cve_TipoFolio = FA.TipoPedido"
+                            BDReader = BDComando.ExecuteReader
+                            If BDReader.HasRows = True Then
+                                BDReader.Read()
+                                If IsDBNull(BDReader("EMAIL")) = False Then
+                                    Email = BDReader("EMAIL").ToString()
+                                End If
+                                CuerpoCorreo += "<p>"
+                                CuerpoCorreo += "Tipo de pedido: " & BDReader("TipoPedido")
+                                CuerpoCorreo += "<br>Contrato: " & BDReader("Contrato_Cliente") & "</br>"
+                                CuerpoCorreo += "<br>No. de pedido del cliente: " & BDReader("Cve_PedCliente") & "</br>"
+                                CuerpoCorreo += "<br>No. de proveedor: " & BDReader("Cve_Proveedor") & "</br>"
+                                CuerpoCorreo += "</p>"
+                            Else
+                                Email = ""
+                            End If
+                            If Not BDReader Is Nothing AndAlso Not BDReader.IsClosed Then
+                                BDReader.Close()
+                            End If
+                            BDComando.Parameters.Clear()
+                            BDComando.CommandType = CommandType.Text
+                            BDComando.CommandText = "SELECT PIT.LugarDeEntrega,PIT.NombreLugarDeEntrega,PIT.Cve_Prenda,PIT.DescripcionPrenda,PIT.Prioridad,PIT.MotivoPrioridad,SUM(PIT.Cantidad-ISNULL(RIPT.Cantidad,0)) AS TotalPrendas FROM PEDIDO_INTERNO_TALLAS PIT LEFT JOIN RESERVADO_INVENTARIO_PRODUCTO_TERMINADO RIPT ON RIPT.Empresa = PIT.Empresa AND RIPT.No_Pedido = PIT.No_Pedido AND RIPT.Partida = PIT.Partida AND RIPT.Cve_Prenda = PIT.Cve_Prenda AND RIPT.LugarDeEntrega = PIT.LugarDeEntrega AND RIPT.Prioridad = PIT.Prioridad AND RIPT.Talla = PIT.Talla WHERE PIT.EMPRESA = " & ConectaBD.Cve_Empresa & " AND PIT.NO_PEDIDO = " & Val(ListPedidos.SelectedItem.ToString) & " GROUP BY PIT.LugarDeEntrega,PIT.NombreLugarDeEntrega,PIT.Cve_Prenda,PIT.DescripcionPrenda,PIT.Prioridad,PIT.MotivoPrioridad HAVING SUM(PIT.Cantidad - ISNULL(RIPT.Cantidad, 0)) > 0"
+                            BDComando.CommandTimeout = 240
+                            BDReader = BDComando.ExecuteReader
+                            If BDReader.HasRows = True Then
+                                CuerpoCorreo += "<p>"
+                                CuerpoCorreo += "<h3>Partidas del pedido<h3>"
+                                CuerpoCorreo += "<table border='1'>"
+                                CuerpoCorreo += "<tr>"
+                                CuerpoCorreo += "<th>Lugar de entrega</th>"
+                                CuerpoCorreo += "<th>Descripción de prenda</th>"
+                                CuerpoCorreo += "<th>Prioridad</th>"
+                                CuerpoCorreo += "<th>Motivo de Prioridad</th>"
+                                CuerpoCorreo += "<th>Total de prendas</th>"
+                                CuerpoCorreo += "</tr>"
+                                While BDReader.Read
+                                    CuerpoCorreo += "<tr>"
+                                    CuerpoCorreo += "<td>" & BDReader("NombreLugarDeEntrega") & " (" & BDReader("LugarDeEntrega") & ")" & "</td>"
+                                    CuerpoCorreo += "<td>" & BDReader("DescripcionPrenda") & " (" & BDReader("Cve_Prenda") & ")" & "</td>"
+                                    CuerpoCorreo += "<td>" & BDReader("Prioridad") & "</td>"
+                                    CuerpoCorreo += "<td>" & BDReader("MotivoPrioridad") & "</td>"
+                                    CuerpoCorreo += "<td>" & BDReader("TotalPrendas") & "</td>"
+                                    CuerpoCorreo += "</tr>"
+                                End While
+                                CuerpoCorreo += "</table>"
+                                CuerpoCorreo += "</p>"
+                            End If
+
+                            If Not BDReader Is Nothing AndAlso Not BDReader.IsClosed Then
+                                BDReader.Close()
+                            End If
+
+                            BDComando.Parameters.Clear()
+                            BDComando.CommandType = CommandType.StoredProcedure
+                            BDComando.CommandText = "SUGERIDO_COMPRA_CONSULTA_PARA_CORREO"
+                            BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt)
+                            BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.BigInt)
+
+                            BDComando.Parameters("@EMPRESA").Value = ConectaBD.Cve_Empresa
+                            BDComando.Parameters("@NO_PEDIDO").Value = Val(ListPedidos.SelectedItem.ToString())
+                            BDComando.CommandTimeout = 240
+                            BDReader = BDComando.ExecuteReader
+                            If BDReader.HasRows = True Then
+                                CuerpoCorreo += "<p>"
+                                CuerpoCorreo += "<h3>Sugerido de Compra<h3>"
+                                CuerpoCorreo += "<table border='1'>"
+                                CuerpoCorreo += "<tr>"
+                                CuerpoCorreo += "<th>Tipo de Material</th>"
+                                CuerpoCorreo += "<th>Cve. de Tela o Habilitación</th>"
+                                CuerpoCorreo += "<th>Descripción de Material</th>"
+                                CuerpoCorreo += "<th>Cantidad</th>"
+                                CuerpoCorreo += "<th>Unidad</th>"
+                                CuerpoCorreo += "<th>Inventario</th>"
+                                CuerpoCorreo += "<th>A Comprar</th>"
+                                CuerpoCorreo += "</tr>"
+                                While BDReader.Read
+                                    CuerpoCorreo += "<tr>"
+                                    CuerpoCorreo += "<td>" & BDReader("TipoMaterial") & "</td>"
+                                    CuerpoCorreo += "<td>" & BDReader("Cve_Material") & "</td>"
+                                    CuerpoCorreo += "<td>" & BDReader("DescripcionMaterial") & "</td>"
+                                    CuerpoCorreo += "<td>" & BDReader("Cantidad") & "</td>"
+                                    CuerpoCorreo += "<td>" & BDReader("Unidad") & "</td>"
+                                    CuerpoCorreo += "<td>" & BDReader("Inventario") & "</td>"
+                                    CuerpoCorreo += "<td>" & BDReader("AComprar") & "</td>"
+                                    CuerpoCorreo += "</tr>"
+                                End While
+                                CuerpoCorreo += "</table>"
+                                CuerpoCorreo += "</p>"
+                            End If
+
+                            MessageBox.Show("El pedido interno No. " & Val(ListPedidos.SelectedItem.ToString()) & " se autorizó y explosiono correctamente.", "Autorización de Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Catch ex As Exception
+                            MessageBox.Show("Se generó un error al autorizar el pedido, favor de contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Autorización de Pedido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                            Exit Sub
+                        Finally
+                            ' Asegurarse de que el DataReader y la conexión se cierren.
+                            If Not BDReader Is Nothing AndAlso Not BDReader.IsClosed Then
+                                BDReader.Close()
+                            End If
+                            If BDComando.Connection.State = ConnectionState.Open Then
+                                BDComando.Connection.Close()
+                            End If
+                        End Try
+
+                        Try
+                            Dim mensaje As New MimeMessage()
+                            mensaje.From.Add(New MailboxAddress("ORCELEC", ConectaBD.MailUsuario))
+
+                            'Dim destinatariosBase As String = "ch@uet.mx,amm@uet.mx,dpa@uet.mx,lmc@uet.mx,mlg@uet.mx,apm@uet.mx,kvl@uet.mx"
+                            Dim destinatariosBase As String = "ch@uet.mx"
+                            Dim todosDestinatarios As String
+
+                            If Email <> "" Then
+                                todosDestinatarios = destinatariosBase & "," & Email
+                            Else
+                                todosDestinatarios = destinatariosBase
+                            End If
+
+                            For Each correoDestino As String In todosDestinatarios.Split(","c)
+                                mensaje.To.Add(MailboxAddress.Parse(correoDestino.Trim()))
+                            Next
+
+                            mensaje.Subject = "Autorización de Pedido No. " & ListPedidos.SelectedItem.ToString()
+
+                            Dim builder As New BodyBuilder()
+                            builder.HtmlBody = "<html><body><h2>Se autorizó el pedido interno No. " & Val(ListPedidos.SelectedItem.ToString()) & _
+                                               "</h2><h2>Cliente: " & TxtCliente.Text & "</h2>" & CuerpoCorreo & "</body></html>"
+                            mensaje.Body = builder.ToMessageBody()
+
+                            Using cliente As New MailKit.Net.Smtp.SmtpClient()
+                                cliente.Connect(ConectaBD.MailSMTP, ConectaBD.MailPuerto, SecureSocketOptions.SslOnConnect)
+                                cliente.Authenticate(ConectaBD.MailUsuario, ConectaBD.PasswordCorreo)
+                                cliente.Send(mensaje)
+                                cliente.Disconnect(True)
+                            End Using
+                        Catch ex As Exception
+                            MessageBox.Show("Error general: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
+
+                        ReiniciaControles()
+                        ConsultaPedidosAAutorizar()
+                    End If
                 End If
             Else
                 MessageBox.Show("Debe seleccionar un pedido interno para autorizar.", "Pedido Interno", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -1577,6 +1754,11 @@ Public Class ConsultaPedido
                         BDReader.Read()
                         TxtFolio.Text = BDReader("NUM_FOLIO")
                         TxtTipoPedido.Text = BDReader("DESCRIPCION")
+                        If TxtTipoPedido.Text.Trim().ToUpper() = "FACTURACIÓN" Then
+                            BtnAutorizarPedido.Text = "Autorizar Pedido"
+                        Else
+                            BtnAutorizarPedido.Text = "Mandar a Autorizar"
+                        End If
                         TxtCliente.Text = BDReader("NOM_CLIENTE") & " " & Format(BDReader("CVE_CLIENTE"), "0000")
                         TxtRFC.Text = BDReader("RFC")
                         TxtCalle.Text = BDReader("CALLE")
@@ -1725,6 +1907,11 @@ Public Class ConsultaPedido
                             TxtNotasAlAutorizarCancelar.Clear()
                         End If
                         TxtEstatus.Text = BDReader("EstatusPedido")
+                        If TxtEstatus.Text.Trim().ToUpper() = "AUTORIZADO" Or TxtEstatus.Text.Trim().ToUpper() = "CANCELADO" Then
+                            BtnAutorizarPedido.Enabled = False
+                        Else
+                            BtnAutorizarPedido.Enabled = True
+                        End If
                     End If
                 Catch ex As Exception
                     MessageBox.Show("Se generó un error al consultar los datos del pedido interno, favor de contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Error de consulta de pedido interno", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
