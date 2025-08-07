@@ -1291,6 +1291,8 @@ Public Class FrmPedidoAltaEdicion
                                 TxtTipoPedido.Text = "COMPRA"
                             ElseIf (UCase(ExcelHoja.Cells(2, 1).Value.ToString) = "MUESTRA") Then
                                 TxtTipoPedido.Text = "MUESTRA"
+                            ElseIf (UCase(ExcelHoja.Cells(2, 1).Value.ToString) = "FACTURACIÓN") Then
+                                TxtTipoPedido.Text = "FACTURACIÓN"
                             End If
                             ChkOmitirInventario.Checked = (UCase(ExcelHoja.Cells(2, 2).Value.ToString()) = "NO")
                             'SE RECUPERAN DATOS DEL CLIENTE
