@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[PEDIDO_INTERNO_AUTORIZAR]    Script Date: 07/08/2025 11:56:07 a. m. ******/
+/****** Object:  StoredProcedure [dbo].[PEDIDO_INTERNO_AUTORIZAR]    Script Date: 07/08/2025 05:49:58 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -47,9 +47,8 @@ BEGIN
 
 		SELECT @TIPOPEDIDO = FA.TipoPedido FROM PEDIDO_INTERNO PI,FOLIOS_ADMINISTRACION FA WHERE PI.Empresa = @EMPRESA AND PI.No_Pedido = @NO_PEDIDO AND FA.Empresa = PI.Empresa AND FA.Num_Folio = PI.Num_Folio
 
-		IF @TIPOPEDIDO <> 'C'
-		BEGIN
-
+		IF @TIPOPEDIDO NOT IN ('C','L')
+        BEGIN
 			--Explosiona pedido
 			EXEC SP_EXPLOSION_MATERIALES_SUGERIDO_COMPRA @EMPRESA,@NO_PEDIDO
 		END
