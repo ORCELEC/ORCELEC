@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SP_EXPLOSION_MATERIALES_SUGERIDO_COMPRA]    Script Date: 07/08/2025 05:30:55 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_EXPLOSION_MATERIALES_SUGERIDO_COMPRA]    Script Date: 13/08/2025 11:40:15 a. m. ******/
 SET ANSI_NULLS ON
 GO
 

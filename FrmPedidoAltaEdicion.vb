@@ -1286,7 +1286,7 @@ Public Class FrmPedidoAltaEdicion
                             'Se importan los datos generales.
                             ExcelHoja = ExcelLibro.Worksheets("DATOS GENERALES")
                             If (UCase(ExcelHoja.Cells(2, 1).Value.ToString) = "MAQUILA") Then
-                                TxtTipoPedido.Text = "CON CONTRATO"
+                                TxtTipoPedido.Text = "CONFECCIÓN"
                             ElseIf (UCase(ExcelHoja.Cells(2, 1).Value.ToString) = "COMPRA") Then
                                 TxtTipoPedido.Text = "COMPRA"
                             ElseIf (UCase(ExcelHoja.Cells(2, 1).Value.ToString) = "MUESTRA") Then
@@ -1294,7 +1294,7 @@ Public Class FrmPedidoAltaEdicion
                             ElseIf (UCase(ExcelHoja.Cells(2, 1).Value.ToString) = "FACTURACIÓN") Then
                                 TxtTipoPedido.Text = "FACTURACIÓN"
                             End If
-                            ChkOmitirInventario.Checked = (UCase(ExcelHoja.Cells(2, 2).Value.ToString()) = "NO")
+                            ChkOmitirInventario.Checked = (UCase(ExcelHoja.Cells(2, 2).Value.ToString()) = "SI")
                             'SE RECUPERAN DATOS DEL CLIENTE
                             BDComando.Parameters.Clear()
                             BDComando.CommandType = CommandType.Text

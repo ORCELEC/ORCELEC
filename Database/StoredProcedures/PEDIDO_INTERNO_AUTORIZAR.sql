@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[PEDIDO_INTERNO_AUTORIZAR]    Script Date: 07/08/2025 05:49:58 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[PEDIDO_INTERNO_AUTORIZAR]    Script Date: 13/08/2025 11:39:51 a. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -43,15 +43,87 @@ BEGIN
 		AND No_Pedido = @NO_PEDIDO
 
 		DECLARE
-			@TIPOPEDIDO AS NVARCHAR(10)
+			@TIPOPEDIDO AS NVARCHAR(10),
+			@OMITIRINVENTARIO BIT
 
-		SELECT @TIPOPEDIDO = FA.TipoPedido FROM PEDIDO_INTERNO PI,FOLIOS_ADMINISTRACION FA WHERE PI.Empresa = @EMPRESA AND PI.No_Pedido = @NO_PEDIDO AND FA.Empresa = PI.Empresa AND FA.Num_Folio = PI.Num_Folio
-
-		IF @TIPOPEDIDO NOT IN ('C','L')
+		SELECT 
+			@TIPOPEDIDO = FA.TipoPedido,
+            @OMITIRINVENTARIO = ISNULL(PI.OmitirInventario,0)
+        FROM PEDIDO_INTERNO PI
+        INNER JOIN FOLIOS_ADMINISTRACION FA
+			ON PI.Empresa = FA.Empresa AND PI.Num_Folio = FA.Num_Folio
+			WHERE PI.Empresa = @EMPRESA AND PI.No_Pedido = @NO_PEDIDO
+            
+	    IF @TIPOPEDIDO = 'N' AND @OMITIRINVENTARIO = 0
         BEGIN
-			--Explosiona pedido
-			EXEC SP_EXPLOSION_MATERIALES_SUGERIDO_COMPRA @EMPRESA,@NO_PEDIDO
-		END
+            DECLARE @NO_RESERVADO BIGINT
+
+            SELECT @NO_RESERVADO = ISNULL(MAX(No_Reservado),0)
+            FROM RESERVADO_INVENTARIO_PRODUCTO_TERMINADO
+            WHERE Empresa = @EMPRESA
+
+            ;WITH DISPONIBLE AS (
+                SELECT
+                        PIT.Partida,
+                        PIT.Cve_Prenda,
+                        PIT.LugarDeEntrega,
+                        PIT.Prioridad,
+                        PIT.Talla,
+                        PIT.Cantidad,
+                        ISNULL(IPT.Cantidad,0) AS Disponible
+                FROM PEDIDO_INTERNO_TALLAS PIT
+                LEFT JOIN PRENDA_INVENTARIO IPT
+                    ON IPT.Empresa = PIT.Empresa
+                AND IPT.Cve_Prenda = PIT.Cve_Prenda
+                AND IPT.Talla = PIT.Talla
+                WHERE PIT.Empresa = @EMPRESA AND PIT.No_Pedido = @NO_PEDIDO
+            )
+            INSERT INTO RESERVADO_INVENTARIO_PRODUCTO_TERMINADO
+            (
+                Empresa,
+                No_Reservado,
+                No_Pedido,
+                Partida,
+                Cve_Prenda,
+                LugarDeEntrega,
+                Prioridad,
+                Talla,
+                Cantidad
+            )
+            SELECT
+                @EMPRESA,
+                ROW_NUMBER() OVER (ORDER BY Partida, Talla) + @NO_RESERVADO,
+                @NO_PEDIDO,
+                Partida,
+                Cve_Prenda,
+                LugarDeEntrega,
+                Prioridad,
+                Talla,
+                CASE WHEN Disponible >= Cantidad THEN Cantidad ELSE Disponible END
+            FROM DISPONIBLE
+            WHERE Disponible > 0
+
+            ;WITH RESERVAS AS (
+                SELECT Cve_Prenda, Talla,
+                        SUM(CASE WHEN Disponible >= Cantidad THEN Cantidad ELSE Disponible END) AS Cantidad
+                FROM DISPONIBLE
+                WHERE Disponible > 0
+                GROUP BY Cve_Prenda, Talla
+            )
+            UPDATE IPT
+            SET IPT.Cantidad = IPT.Cantidad - R.Cantidad
+            FROM PRENDA_INVENTARIO IPT
+            INNER JOIN RESERVAS R
+                ON IPT.Empresa = @EMPRESA
+                AND IPT.Cve_Prenda = R.Cve_Prenda
+                AND IPT.Talla = R.Talla
+        END
+
+        IF @TIPOPEDIDO NOT IN ('C','L')
+        BEGIN
+            --Explosiona pedido
+            EXEC SP_EXPLOSION_MATERIALES_SUGERIDO_COMPRA @EMPRESA,@NO_PEDIDO
+        END
 
 		COMMIT TRANSACTION
 		SET @TRAN_STARTED = 0
