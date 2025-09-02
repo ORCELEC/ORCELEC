@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[PEDIDO_INTERNO_AUTORIZAR]    Script Date: 13/08/2025 11:39:51 a. m. ******/
+/****** Object:  StoredProcedure [dbo].[PEDIDO_INTERNO_AUTORIZAR]    Script Date: 02/09/2025 12:20:49 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -54,7 +54,7 @@ BEGIN
 			ON PI.Empresa = FA.Empresa AND PI.Num_Folio = FA.Num_Folio
 			WHERE PI.Empresa = @EMPRESA AND PI.No_Pedido = @NO_PEDIDO
             
-	    IF @TIPOPEDIDO = 'N' AND @OMITIRINVENTARIO = 0
+	    IF @TIPOPEDIDO IN ('N','L')  AND @OMITIRINVENTARIO = 0
         BEGIN
             DECLARE @NO_RESERVADO BIGINT
 
@@ -62,61 +62,70 @@ BEGIN
             FROM RESERVADO_INVENTARIO_PRODUCTO_TERMINADO
             WHERE Empresa = @EMPRESA
 
-            ;WITH DISPONIBLE AS (
-                SELECT
-                        PIT.Partida,
-                        PIT.Cve_Prenda,
-                        PIT.LugarDeEntrega,
-                        PIT.Prioridad,
-                        PIT.Talla,
-                        PIT.Cantidad,
-                        ISNULL(IPT.Cantidad,0) AS Disponible
-                FROM PEDIDO_INTERNO_TALLAS PIT
-                LEFT JOIN PRENDA_INVENTARIO IPT
-                    ON IPT.Empresa = PIT.Empresa
-                AND IPT.Cve_Prenda = PIT.Cve_Prenda
-                AND IPT.Talla = PIT.Talla
-                WHERE PIT.Empresa = @EMPRESA AND PIT.No_Pedido = @NO_PEDIDO
+            DECLARE @DISPONIBLE TABLE(
+                    Partida BIGINT,
+                    Cve_Prenda NVARCHAR(50),
+                    LugarDeEntrega NVARCHAR(50),
+                    Prioridad NVARCHAR(50),
+                    Talla NVARCHAR(50),
+                    Cantidad INT,
+                    Disponible INT
             )
+
+            INSERT INTO @DISPONIBLE
+            SELECT
+                    PIT.Partida,
+                    PIT.Cve_Prenda,
+                    PIT.LugarDeEntrega,
+                    PIT.Prioridad,
+                    PIT.Talla,
+                    PIT.Cantidad,
+                    ISNULL(IPT.Cantidad,0) AS Disponible
+            FROM PEDIDO_INTERNO_TALLAS PIT
+            LEFT JOIN PRENDA_INVENTARIO IPT
+                ON IPT.Empresa = PIT.Empresa
+            AND IPT.Cve_Prenda = PIT.Cve_Prenda
+            AND IPT.Talla = PIT.Talla
+            WHERE PIT.Empresa = @EMPRESA AND PIT.No_Pedido = @NO_PEDIDO
+
             INSERT INTO RESERVADO_INVENTARIO_PRODUCTO_TERMINADO
             (
-                Empresa,
-                No_Reservado,
-                No_Pedido,
-                Partida,
-                Cve_Prenda,
-                LugarDeEntrega,
-                Prioridad,
-                Talla,
-                Cantidad
+                    Empresa,
+                    No_Reservado,
+                    No_Pedido,
+                    Partida,
+                    Cve_Prenda,
+                    LugarDeEntrega,
+                    Prioridad,
+                    Talla,
+                    Cantidad
             )
             SELECT
-                @EMPRESA,
-                ROW_NUMBER() OVER (ORDER BY Partida, Talla) + @NO_RESERVADO,
-                @NO_PEDIDO,
-                Partida,
-                Cve_Prenda,
-                LugarDeEntrega,
-                Prioridad,
-                Talla,
-                CASE WHEN Disponible >= Cantidad THEN Cantidad ELSE Disponible END
-            FROM DISPONIBLE
+                    @EMPRESA,
+                    ROW_NUMBER() OVER (ORDER BY Partida, Talla) + @NO_RESERVADO,
+                    @NO_PEDIDO,
+                    Partida,
+                    Cve_Prenda,
+                    LugarDeEntrega,
+                    Prioridad,
+                    Talla,
+                    CASE WHEN Disponible >= Cantidad THEN Cantidad ELSE Disponible END
+            FROM @DISPONIBLE
             WHERE Disponible > 0
 
-            ;WITH RESERVAS AS (
-                SELECT Cve_Prenda, Talla,
-                        SUM(CASE WHEN Disponible >= Cantidad THEN Cantidad ELSE Disponible END) AS Cantidad
-                FROM DISPONIBLE
-                WHERE Disponible > 0
-                GROUP BY Cve_Prenda, Talla
-            )
             UPDATE IPT
             SET IPT.Cantidad = IPT.Cantidad - R.Cantidad
             FROM PRENDA_INVENTARIO IPT
-            INNER JOIN RESERVAS R
-                ON IPT.Empresa = @EMPRESA
-                AND IPT.Cve_Prenda = R.Cve_Prenda
-                AND IPT.Talla = R.Talla
+            INNER JOIN (
+                    SELECT Cve_Prenda, Talla,
+                            SUM(CASE WHEN Disponible >= Cantidad THEN Cantidad ELSE Disponible END) AS Cantidad
+                    FROM @DISPONIBLE
+                    WHERE Disponible > 0
+                    GROUP BY Cve_Prenda, Talla
+            ) R
+                    ON IPT.Empresa = @EMPRESA
+                    AND IPT.Cve_Prenda = R.Cve_Prenda
+                    AND IPT.Talla = R.Talla
         END
 
         IF @TIPOPEDIDO NOT IN ('C','L')
