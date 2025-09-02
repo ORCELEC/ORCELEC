@@ -1199,6 +1199,7 @@ Public Class ConsultaPedido
                                 CuerpoCorreo += "<br>Contrato: " & BDReader("Contrato_Cliente") & "</br>"
                                 CuerpoCorreo += "<br>No. de pedido del cliente: " & BDReader("Cve_PedCliente") & "</br>"
                                 CuerpoCorreo += "<br>No. de proveedor: " & BDReader("Cve_Proveedor") & "</br>"
+                                CuerpoCorreo += "<br>Quién autorizó: " & ConectaBD.Nom_Usuario & "</br>"
                                 CuerpoCorreo += "</p>"
                             Else
                                 Email = ""
@@ -1239,45 +1240,45 @@ Public Class ConsultaPedido
                                 BDReader.Close()
                             End If
 
-                            BDComando.Parameters.Clear()
-                            BDComando.CommandType = CommandType.StoredProcedure
-                            BDComando.CommandText = "SUGERIDO_COMPRA_CONSULTA_PARA_CORREO"
-                            BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt)
-                            BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.BigInt)
+                            'BDComando.Parameters.Clear()
+                            'BDComando.CommandType = CommandType.StoredProcedure
+                            'BDComando.CommandText = "SUGERIDO_COMPRA_CONSULTA_PARA_CORREO"
+                            'BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt)
+                            'BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.BigInt)
 
-                            BDComando.Parameters("@EMPRESA").Value = ConectaBD.Cve_Empresa
-                            BDComando.Parameters("@NO_PEDIDO").Value = Val(ListPedidos.SelectedItem.ToString())
-                            BDComando.CommandTimeout = 240
-                            BDReader = BDComando.ExecuteReader
-                            If BDReader.HasRows = True Then
-                                CuerpoCorreo += "<p>"
-                                CuerpoCorreo += "<h3>Sugerido de Compra<h3>"
-                                CuerpoCorreo += "<table border='1'>"
-                                CuerpoCorreo += "<tr>"
-                                CuerpoCorreo += "<th>Tipo de Material</th>"
-                                CuerpoCorreo += "<th>Cve. de Tela o Habilitación</th>"
-                                CuerpoCorreo += "<th>Descripción de Material</th>"
-                                CuerpoCorreo += "<th>Cantidad</th>"
-                                CuerpoCorreo += "<th>Unidad</th>"
-                                CuerpoCorreo += "<th>Inventario</th>"
-                                CuerpoCorreo += "<th>A Comprar</th>"
-                                CuerpoCorreo += "</tr>"
-                                While BDReader.Read
-                                    CuerpoCorreo += "<tr>"
-                                    CuerpoCorreo += "<td>" & BDReader("TipoMaterial") & "</td>"
-                                    CuerpoCorreo += "<td>" & BDReader("Cve_Material") & "</td>"
-                                    CuerpoCorreo += "<td>" & BDReader("DescripcionMaterial") & "</td>"
-                                    CuerpoCorreo += "<td>" & BDReader("Cantidad") & "</td>"
-                                    CuerpoCorreo += "<td>" & BDReader("Unidad") & "</td>"
-                                    CuerpoCorreo += "<td>" & BDReader("Inventario") & "</td>"
-                                    CuerpoCorreo += "<td>" & BDReader("AComprar") & "</td>"
-                                    CuerpoCorreo += "</tr>"
-                                End While
-                                CuerpoCorreo += "</table>"
-                                CuerpoCorreo += "</p>"
-                            End If
+                            'BDComando.Parameters("@EMPRESA").Value = ConectaBD.Cve_Empresa
+                            'BDComando.Parameters("@NO_PEDIDO").Value = Val(ListPedidos.SelectedItem.ToString())
+                            'BDComando.CommandTimeout = 240
+                            'BDReader = BDComando.ExecuteReader
+                            'If BDReader.HasRows = True Then
+                            '    CuerpoCorreo += "<p>"
+                            '    CuerpoCorreo += "<h3>Sugerido de Compra<h3>"
+                            '    CuerpoCorreo += "<table border='1'>"
+                            '    CuerpoCorreo += "<tr>"
+                            '    CuerpoCorreo += "<th>Tipo de Material</th>"
+                            '    CuerpoCorreo += "<th>Cve. de Tela o Habilitación</th>"
+                            '    CuerpoCorreo += "<th>Descripción de Material</th>"
+                            '    CuerpoCorreo += "<th>Cantidad</th>"
+                            '    CuerpoCorreo += "<th>Unidad</th>"
+                            '    CuerpoCorreo += "<th>Inventario</th>"
+                            '    CuerpoCorreo += "<th>A Comprar</th>"
+                            '    CuerpoCorreo += "</tr>"
+                            '    While BDReader.Read
+                            '        CuerpoCorreo += "<tr>"
+                            '        CuerpoCorreo += "<td>" & BDReader("TipoMaterial") & "</td>"
+                            '        CuerpoCorreo += "<td>" & BDReader("Cve_Material") & "</td>"
+                            '        CuerpoCorreo += "<td>" & BDReader("DescripcionMaterial") & "</td>"
+                            '        CuerpoCorreo += "<td>" & BDReader("Cantidad") & "</td>"
+                            '        CuerpoCorreo += "<td>" & BDReader("Unidad") & "</td>"
+                            '        CuerpoCorreo += "<td>" & BDReader("Inventario") & "</td>"
+                            '        CuerpoCorreo += "<td>" & BDReader("AComprar") & "</td>"
+                            '        CuerpoCorreo += "</tr>"
+                            '    End While
+                            '    CuerpoCorreo += "</table>"
+                            '    CuerpoCorreo += "</p>"
+                            'End If
 
-                            MessageBox.Show("El pedido interno No. " & Val(ListPedidos.SelectedItem.ToString()) & " se autorizó y explosiono correctamente.", "Autorización de Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            MessageBox.Show("El pedido interno No. " & Val(ListPedidos.SelectedItem.ToString()) & " se autorizó correctamente.", "Autorización de Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         Catch ex As Exception
                             MessageBox.Show("Se generó un error al autorizar el pedido, favor de contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Autorización de Pedido", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                             Exit Sub
@@ -1296,7 +1297,7 @@ Public Class ConsultaPedido
                             mensaje.From.Add(New MailboxAddress("ORCELEC", ConectaBD.MailUsuario))
 
                             'Dim destinatariosBase As String = "ch@uet.mx,amm@uet.mx,dpa@uet.mx,lmc@uet.mx,mlg@uet.mx,apm@uet.mx,kvl@uet.mx"
-                            Dim destinatariosBase As String = "ch@uet.mx"
+                            Dim destinatariosBase As String = "ch@uet.mx,amm@uet.mx,mlg@uet.mx,apm@uet.mx,kvl@uet.mx"
                             Dim todosDestinatarios As String
 
                             If Email <> "" Then
