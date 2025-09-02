@@ -31,6 +31,7 @@ Partial Class FrmInicioSesion
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.TextBoxX1 = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.GrpContraseña.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -38,6 +39,7 @@ Partial Class FrmInicioSesion
         'GrpContraseña
         '
         Me.GrpContraseña.BackColor = System.Drawing.SystemColors.Control
+        Me.GrpContraseña.Controls.Add(Me.TextBoxX1)
         Me.GrpContraseña.Controls.Add(Me.TxtContraseña)
         Me.GrpContraseña.Controls.Add(Me.CmbEmpresas)
         Me.GrpContraseña.Controls.Add(Me.BtnCancelar)
@@ -141,6 +143,24 @@ Partial Class FrmInicioSesion
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
+        'TextBoxX1
+        '
+        '
+        '
+        '
+        Me.TextBoxX1.Border.Class = "TextBoxBorder"
+        Me.TextBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TextBoxX1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TextBoxX1.FocusHighlightEnabled = True
+        Me.TextBoxX1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxX1.Location = New System.Drawing.Point(295, 57)
+        Me.TextBoxX1.MaxLength = 8
+        Me.TextBoxX1.Name = "TextBoxX1"
+        Me.TextBoxX1.Size = New System.Drawing.Size(167, 23)
+        Me.TextBoxX1.TabIndex = 9
+        Me.TextBoxX1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TextBoxX1.Visible = False
+        '
         'FrmInicioSesion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 19.0!)
@@ -170,4 +190,5 @@ Partial Class FrmInicioSesion
     Friend WithEvents BtnCancelar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents CmbEmpresas As DevComponents.DotNetBar.Controls.ComboBoxEx
     Friend WithEvents TxtContraseña As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents TextBoxX1 As DevComponents.DotNetBar.Controls.TextBoxX
 End Class
