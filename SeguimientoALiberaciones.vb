@@ -19,7 +19,9 @@ Public Class SeguimientoALiberaciones
                                    Optional filtroCliente As String = "", _
                                    Optional filtroMaquilador As String = "", _
                                    Optional filtroPrenda As String = "", _
-                                   Optional filtroPedido As String = "")
+                                   Optional filtroPedido As String = "", _
+                                   Optional fechaRecoleccionIni As Date? = Nothing, _
+                                   Optional fechaRecoleccionFin As Date? = Nothing)
         ' Cierra cualquier lector previo asociado al comando principal
         If BDReader IsNot Nothing AndAlso Not BDReader.IsClosed Then
             BDReader.Close()
@@ -70,13 +72,23 @@ Public Class SeguimientoALiberaciones
             Consulta &= "AND PIT.No_Pedido=@NO_PEDIDO "
             BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.Int).Value = Convert.ToInt32(filtroPedido)
         End If
+        If fechaRecoleccionIni.HasValue Then
+            Consulta &= "AND L.FechaHoraRecolecta >= @FECHA_REC_INI "
+            BDComando.Parameters.Add("@FECHA_REC_INI", SqlDbType.DateTime).Value = fechaRecoleccionIni.Value.Date
+        End If
+        If fechaRecoleccionFin.HasValue Then
+            Consulta &= "AND L.FechaHoraRecolecta < DATEADD(DAY,1,@FECHA_REC_FIN) "
+            BDComando.Parameters.Add("@FECHA_REC_FIN", SqlDbType.DateTime).Value = fechaRecoleccionFin.Value.Date
+        End If
 
         ' Si no hay filtros, limitar a las liberaciones pendientes
         If String.IsNullOrWhiteSpace(filtroOP) AndAlso _
            String.IsNullOrWhiteSpace(filtroCliente) AndAlso _
            String.IsNullOrWhiteSpace(filtroMaquilador) AndAlso _
            String.IsNullOrWhiteSpace(filtroPrenda) AndAlso _
-           String.IsNullOrWhiteSpace(filtroPedido) Then
+           String.IsNullOrWhiteSpace(filtroPedido) AndAlso _
+           Not fechaRecoleccionIni.HasValue AndAlso _
+           Not fechaRecoleccionFin.HasValue Then
             Consulta &= "AND (L.Recolectado=0 OR L.Ingresado=0) "
         End If
 
@@ -344,9 +356,11 @@ Public Class SeguimientoALiberaciones
         Dim cveCliente As String = If(CmbBuscarCliente.SelectedIndex >= 0, Strings.Right(CmbBuscarCliente.Text, 4), "")
         Dim cveMaquilador As String = If(CmbBuscarMaquilador.SelectedIndex >= 0, Strings.Right(CmbBuscarMaquilador.Text, 4), "")
         Dim cvePrenda As String = If(CmbBuscarPrenda.SelectedIndex >= 0, Strings.Right(CmbBuscarPrenda.Text, 6), "")
+        Dim fechaIni As Date? = If(DtpFechaRecoleccionIni.Checked, DtpFechaRecoleccionIni.Value.Date, CType(Nothing, Date?))
+        Dim fechaFin As Date? = If(DtpFechaRecoleccionFin.Checked, DtpFechaRecoleccionFin.Value.Date, CType(Nothing, Date?))
 
         RemoveHandler DGLiberaciones.SelectionChanged, AddressOf DGLiberaciones_SelectionChanged
-        CargarLiberaciones(TxtBuscarOP.Text.Trim(), cveCliente, cveMaquilador, cvePrenda, TxtBuscarPedido.Text.Trim())
+        CargarLiberaciones(TxtBuscarOP.Text.Trim(), cveCliente, cveMaquilador, cvePrenda, TxtBuscarPedido.Text.Trim(), fechaIni, fechaFin)
         AddHandler DGLiberaciones.SelectionChanged, AddressOf DGLiberaciones_SelectionChanged
 
         If DGLiberaciones.Rows.Count = 0 OrElse DGLiberaciones.Rows.Cast(Of DataGridViewRow)().All(Function(r) r.IsNewRow) Then
@@ -376,6 +390,8 @@ Public Class SeguimientoALiberaciones
         CmbBuscarCliente.SelectedIndex = -1
         CmbBuscarMaquilador.SelectedIndex = -1
         CmbBuscarPrenda.SelectedIndex = -1
+        DtpFechaRecoleccionIni.Checked = False
+        DtpFechaRecoleccionFin.Checked = False
 
         RemoveHandler DGLiberaciones.SelectionChanged, AddressOf DGLiberaciones_SelectionChanged
         CargarLiberaciones()

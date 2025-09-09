@@ -42,6 +42,9 @@ Partial Class SeguimientoALiberaciones
         Me.TxtBuscarPedido = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LblBuscarPedido = New System.Windows.Forms.Label()
         Me.DGLiberaciones = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.DtpFechaRecoleccionIni = New System.Windows.Forms.DateTimePicker()
+        Me.DtpFechaRecoleccionFin = New System.Windows.Forms.DateTimePicker()
+        Me.LblBuscarFechaRecoleccion = New System.Windows.Forms.Label()
         Me.PanPrincipal.SuspendLayout()
         CType(Me.DGLiberacionesDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGLiberaciones, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -51,6 +54,9 @@ Partial Class SeguimientoALiberaciones
         '
         Me.PanPrincipal.CanvasColor = System.Drawing.SystemColors.Control
         Me.PanPrincipal.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.PanPrincipal.Controls.Add(Me.LblBuscarFechaRecoleccion)
+        Me.PanPrincipal.Controls.Add(Me.DtpFechaRecoleccionFin)
+        Me.PanPrincipal.Controls.Add(Me.DtpFechaRecoleccionIni)
         Me.PanPrincipal.Controls.Add(Me.BtnBuscar)
         Me.PanPrincipal.Controls.Add(Me.LblObservaciones)
         Me.PanPrincipal.Controls.Add(Me.TxtObservaciones)
@@ -160,7 +166,7 @@ Partial Class SeguimientoALiberaciones
         '
         Me.CmbBuscarMaquilador.Location = New System.Drawing.Point(124, 86)
         Me.CmbBuscarMaquilador.Name = "CmbBuscarMaquilador"
-        Me.CmbBuscarMaquilador.Size = New System.Drawing.Size(427, 21)
+        Me.CmbBuscarMaquilador.Size = New System.Drawing.Size(364, 21)
         Me.CmbBuscarMaquilador.TabIndex = 109
         '
         'LblBuscarMaquilador
@@ -268,6 +274,30 @@ Partial Class SeguimientoALiberaciones
         Me.DGLiberaciones.Size = New System.Drawing.Size(939, 169)
         Me.DGLiberaciones.TabIndex = 0
         '
+        'DtpFechaRecoleccionIni
+        '
+        Me.DtpFechaRecoleccionIni.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DtpFechaRecoleccionIni.Location = New System.Drawing.Point(679, 85)
+        Me.DtpFechaRecoleccionIni.Name = "DtpFechaRecoleccionIni"
+        Me.DtpFechaRecoleccionIni.Size = New System.Drawing.Size(100, 20)
+        Me.DtpFechaRecoleccionIni.TabIndex = 111
+        '
+        'DtpFechaRecoleccionFin
+        '
+        Me.DtpFechaRecoleccionFin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DtpFechaRecoleccionFin.Location = New System.Drawing.Point(793, 85)
+        Me.DtpFechaRecoleccionFin.Name = "DtpFechaRecoleccionFin"
+        Me.DtpFechaRecoleccionFin.Size = New System.Drawing.Size(100, 20)
+        Me.DtpFechaRecoleccionFin.TabIndex = 112
+        '
+        'LblBuscarFechaRecoleccion
+        '
+        Me.LblBuscarFechaRecoleccion.Location = New System.Drawing.Point(554, 88)
+        Me.LblBuscarFechaRecoleccion.Name = "LblBuscarFechaRecoleccion"
+        Me.LblBuscarFechaRecoleccion.Size = New System.Drawing.Size(120, 13)
+        Me.LblBuscarFechaRecoleccion.TabIndex = 113
+        Me.LblBuscarFechaRecoleccion.Text = "Fecha de Recolección:"
+        '
         'SeguimientoALiberaciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -301,4 +331,7 @@ Partial Class SeguimientoALiberaciones
     Friend WithEvents CmbBuscarPrenda As DevComponents.DotNetBar.Controls.ComboBoxEx
     Friend WithEvents BtnBuscar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents BtnReiniciar As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents DtpFechaRecoleccionIni As System.Windows.Forms.DateTimePicker
+    Friend WithEvents LblBuscarFechaRecoleccion As System.Windows.Forms.Label
+    Friend WithEvents DtpFechaRecoleccionFin As System.Windows.Forms.DateTimePicker
 End Class
