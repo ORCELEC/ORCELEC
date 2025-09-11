@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[PRENDA_INVENTARIO_ALMACEN]    Script Date: 08/09/2025 06:29:37 p. m. ******/
+/****** Object:  Table [dbo].[PRENDA_INVENTARIO_ALMACEN]    Script Date: 10/09/2025 06:00:32 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,7 +13,8 @@ CREATE TABLE [dbo].[PRENDA_INVENTARIO_ALMACEN](
 	[Cve_Prenda] [bigint] NOT NULL,
 	[Almacen] [nvarchar](50) NOT NULL,
 	[Talla] [nvarchar](50) NOT NULL,
-	[Cantidad] [bigint] NULL,
+	[InventarioNoAsignado] [bigint] NULL,
+	[InventarioAsignado] [bigint] NULL,
  CONSTRAINT [PK_PRENDA_INVENTARIO_ALMACEN] PRIMARY KEY CLUSTERED 
 (
 	[Empresa] ASC,
