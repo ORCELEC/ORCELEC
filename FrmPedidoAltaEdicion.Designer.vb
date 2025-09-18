@@ -22,6 +22,10 @@ Partial Class FrmPedidoAltaEdicion
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPedidoAltaEdicion))
+        Dim SuperTabItemColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemColorTable()
+        Dim SuperTabColorStates1 As DevComponents.DotNetBar.Rendering.SuperTabColorStates = New DevComponents.DotNetBar.Rendering.SuperTabColorStates()
+        Dim SuperTabItemStateColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -42,64 +46,13 @@ Partial Class FrmPedidoAltaEdicion
         Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPedidoAltaEdicion))
-        Dim SuperTabItemColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemColorTable()
-        Dim SuperTabColorStates1 As DevComponents.DotNetBar.Rendering.SuperTabColorStates = New DevComponents.DotNetBar.Rendering.SuperTabColorStates()
-        Dim SuperTabItemStateColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable()
         Me.PanPrincipal = New DevComponents.DotNetBar.PanelEx()
         Me.BtnGuardarPedido = New DevComponents.DotNetBar.ButtonX()
         Me.BtnImportarPedido = New DevComponents.DotNetBar.ButtonX()
         Me.TabPrincipal = New DevComponents.DotNetBar.SuperTabControl()
-        Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.PanDetallePartida = New DevComponents.DotNetBar.PanelEx()
-        Me.BtnCerrarDetPartida = New DevComponents.DotNetBar.ButtonX()
-        Me.SuperTabControl2 = New DevComponents.DotNetBar.SuperTabControl()
-        Me.SuperTabControlPanel4 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.GPLugarEntrega = New DevComponents.DotNetBar.Controls.GroupPanel()
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
-        Me.ListRemisionado = New System.Windows.Forms.ListBox()
-        Me.ListDivision = New System.Windows.Forms.ListBox()
-        Me.LabelX87 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX78 = New DevComponents.DotNetBar.LabelX()
-        Me.TxtLEEstado = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX79 = New DevComponents.DotNetBar.LabelX()
-        Me.TxtLECiudad = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX80 = New DevComponents.DotNetBar.LabelX()
-        Me.TxtLEDelMun = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX81 = New DevComponents.DotNetBar.LabelX()
-        Me.TxtLEColonia = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX82 = New DevComponents.DotNetBar.LabelX()
-        Me.TxtLECP = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX83 = New DevComponents.DotNetBar.LabelX()
-        Me.TxtLENoInterior = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX84 = New DevComponents.DotNetBar.LabelX()
-        Me.TxtLENoExterior = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX85 = New DevComponents.DotNetBar.LabelX()
-        Me.TxtLECalle = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX86 = New DevComponents.DotNetBar.LabelX()
-        Me.PanSeleccionarTalla = New DevComponents.DotNetBar.PanelEx()
-        Me.BtnAgregarTallasCerrar = New DevComponents.DotNetBar.ButtonX()
-        Me.BtnAgregarTallas = New DevComponents.DotNetBar.ButtonX()
-        Me.ListSeleccionarTallas = New System.Windows.Forms.ListView()
-        Me.ButtonX2 = New DevComponents.DotNetBar.ButtonX()
-        Me.DGTallasCantPrecios = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.SuperTabItem4 = New DevComponents.DotNetBar.SuperTabItem()
-        Me.SuperTabControlPanel6 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.GPHabilitaciones = New DevComponents.DotNetBar.Controls.GroupPanel()
-        Me.ButtonX3 = New DevComponents.DotNetBar.ButtonX()
-        Me.DGHabilitaciones = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.GPTelas = New DevComponents.DotNetBar.Controls.GroupPanel()
-        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
-        Me.DGTelas = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.SuperTabItem5 = New DevComponents.DotNetBar.SuperTabItem()
-        Me.SuperTabControlPanel7 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.SuperTabItem7 = New DevComponents.DotNetBar.SuperTabItem()
-        Me.SuperTabControlPanel8 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.DataGridViewX2 = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.SuperTabItem6 = New DevComponents.DotNetBar.SuperTabItem()
-        Me.TabDatosPedido = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.GPDatosBasicos = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.ChkUsarInventarioDisponible = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.GPDatosCliente = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.TxtTelContacto = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX24 = New DevComponents.DotNetBar.LabelX()
@@ -220,6 +173,54 @@ Partial Class FrmPedidoAltaEdicion
         Me.BtnMostrarInspeccion = New System.Windows.Forms.Button()
         Me.BtnMostrarEntregaParcial = New System.Windows.Forms.Button()
         Me.TabFolio = New DevComponents.DotNetBar.SuperTabItem()
+        Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.PanDetallePartida = New DevComponents.DotNetBar.PanelEx()
+        Me.BtnCerrarDetPartida = New DevComponents.DotNetBar.ButtonX()
+        Me.SuperTabControl2 = New DevComponents.DotNetBar.SuperTabControl()
+        Me.SuperTabControlPanel4 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.GPLugarEntrega = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.ListRemisionado = New System.Windows.Forms.ListBox()
+        Me.ListDivision = New System.Windows.Forms.ListBox()
+        Me.LabelX87 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX78 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtLEEstado = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX79 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtLECiudad = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX80 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtLEDelMun = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX81 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtLEColonia = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX82 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtLECP = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX83 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtLENoInterior = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX84 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtLENoExterior = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX85 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtLECalle = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX86 = New DevComponents.DotNetBar.LabelX()
+        Me.PanSeleccionarTalla = New DevComponents.DotNetBar.PanelEx()
+        Me.BtnAgregarTallasCerrar = New DevComponents.DotNetBar.ButtonX()
+        Me.BtnAgregarTallas = New DevComponents.DotNetBar.ButtonX()
+        Me.ListSeleccionarTallas = New System.Windows.Forms.ListView()
+        Me.ButtonX2 = New DevComponents.DotNetBar.ButtonX()
+        Me.DGTallasCantPrecios = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.SuperTabItem4 = New DevComponents.DotNetBar.SuperTabItem()
+        Me.SuperTabControlPanel6 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.GPHabilitaciones = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.ButtonX3 = New DevComponents.DotNetBar.ButtonX()
+        Me.DGHabilitaciones = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.GPTelas = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
+        Me.DGTelas = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.SuperTabItem5 = New DevComponents.DotNetBar.SuperTabItem()
+        Me.SuperTabControlPanel7 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.SuperTabItem7 = New DevComponents.DotNetBar.SuperTabItem()
+        Me.SuperTabControlPanel8 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.DataGridViewX2 = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.SuperTabItem6 = New DevComponents.DotNetBar.SuperTabItem()
+        Me.TabDatosPedido = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel9 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.TxtObservacionesGeneralesFacturacion = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -239,10 +240,17 @@ Partial Class FrmPedidoAltaEdicion
         Me.SuperTabControlPanel5 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.SuperTabItem1 = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.ChkOmitirInventario = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.PanPrincipal.SuspendLayout()
         CType(Me.TabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPrincipal.SuspendLayout()
+        Me.SuperTabControlPanel1.SuspendLayout()
+        Me.GPDatosBasicos.SuspendLayout()
+        Me.GPDatosCliente.SuspendLayout()
+        Me.GPDatosLugarCobro.SuspendLayout()
+        Me.GPAdmiteEntregaParcial.SuspendLayout()
+        Me.GroupBox8.SuspendLayout()
+        Me.GPDatosInspeccion.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.SuperTabControlPanel3.SuspendLayout()
         Me.PanDetallePartida.SuspendLayout()
         CType(Me.SuperTabControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -259,14 +267,6 @@ Partial Class FrmPedidoAltaEdicion
         CType(Me.DGTelas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControlPanel8.SuspendLayout()
         CType(Me.DataGridViewX2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuperTabControlPanel1.SuspendLayout()
-        Me.GPDatosBasicos.SuspendLayout()
-        Me.GPDatosCliente.SuspendLayout()
-        Me.GPDatosLugarCobro.SuspendLayout()
-        Me.GPAdmiteEntregaParcial.SuspendLayout()
-        Me.GroupBox8.SuspendLayout()
-        Me.GPDatosInspeccion.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
         Me.SuperTabControlPanel9.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
         Me.GroupPanel2.SuspendLayout()
@@ -349,837 +349,6 @@ Partial Class FrmPedidoAltaEdicion
         Me.TabPrincipal.TabIndex = 45
         Me.TabPrincipal.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TabFolio, Me.TabDatosPedido, Me.TabNotas})
         '
-        'SuperTabControlPanel3
-        '
-        Me.SuperTabControlPanel3.Controls.Add(Me.PanDetallePartida)
-        Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 0)
-        Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
-        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(954, 473)
-        Me.SuperTabControlPanel3.TabIndex = 1
-        Me.SuperTabControlPanel3.TabItem = Me.TabDatosPedido
-        '
-        'PanDetallePartida
-        '
-        Me.PanDetallePartida.CanvasColor = System.Drawing.SystemColors.Control
-        Me.PanDetallePartida.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.PanDetallePartida.Controls.Add(Me.BtnCerrarDetPartida)
-        Me.PanDetallePartida.Controls.Add(Me.SuperTabControl2)
-        Me.PanDetallePartida.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PanDetallePartida.Location = New System.Drawing.Point(0, 3)
-        Me.PanDetallePartida.Name = "PanDetallePartida"
-        Me.PanDetallePartida.Size = New System.Drawing.Size(951, 445)
-        Me.PanDetallePartida.Style.Alignment = System.Drawing.StringAlignment.Center
-        Me.PanDetallePartida.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-        Me.PanDetallePartida.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-        Me.PanDetallePartida.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.PanDetallePartida.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-        Me.PanDetallePartida.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
-        Me.PanDetallePartida.Style.GradientAngle = 90
-        Me.PanDetallePartida.Style.LineAlignment = System.Drawing.StringAlignment.Near
-        Me.PanDetallePartida.TabIndex = 0
-        Me.PanDetallePartida.Text = "Detalle de Partida"
-        '
-        'BtnCerrarDetPartida
-        '
-        Me.BtnCerrarDetPartida.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.BtnCerrarDetPartida.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.BtnCerrarDetPartida.Location = New System.Drawing.Point(11, 11)
-        Me.BtnCerrarDetPartida.Name = "BtnCerrarDetPartida"
-        Me.BtnCerrarDetPartida.Size = New System.Drawing.Size(77, 22)
-        Me.BtnCerrarDetPartida.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.BtnCerrarDetPartida.TabIndex = 9
-        Me.BtnCerrarDetPartida.Text = "Cerrar"
-        Me.BtnCerrarDetPartida.Visible = False
-        '
-        'SuperTabControl2
-        '
-        '
-        '
-        '
-        '
-        '
-        '
-        Me.SuperTabControl2.ControlBox.CloseBox.Name = ""
-        '
-        '
-        '
-        Me.SuperTabControl2.ControlBox.MenuBox.Name = ""
-        Me.SuperTabControl2.ControlBox.Name = ""
-        Me.SuperTabControl2.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabControl2.ControlBox.MenuBox, Me.SuperTabControl2.ControlBox.CloseBox})
-        Me.SuperTabControl2.Controls.Add(Me.SuperTabControlPanel4)
-        Me.SuperTabControl2.Controls.Add(Me.SuperTabControlPanel6)
-        Me.SuperTabControl2.Controls.Add(Me.SuperTabControlPanel7)
-        Me.SuperTabControl2.Controls.Add(Me.SuperTabControlPanel8)
-        Me.SuperTabControl2.Location = New System.Drawing.Point(11, 39)
-        Me.SuperTabControl2.Name = "SuperTabControl2"
-        Me.SuperTabControl2.ReorderTabsEnabled = True
-        Me.SuperTabControl2.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.SuperTabControl2.SelectedTabIndex = 0
-        Me.SuperTabControl2.Size = New System.Drawing.Size(922, 396)
-        Me.SuperTabControl2.TabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SuperTabControl2.TabIndex = 10
-        Me.SuperTabControl2.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem4, Me.SuperTabItem5, Me.SuperTabItem6, Me.SuperTabItem7})
-        Me.SuperTabControl2.Text = "SuperTabControl2"
-        '
-        'SuperTabControlPanel4
-        '
-        Me.SuperTabControlPanel4.Controls.Add(Me.GPLugarEntrega)
-        Me.SuperTabControlPanel4.Controls.Add(Me.PanSeleccionarTalla)
-        Me.SuperTabControlPanel4.Controls.Add(Me.DGTallasCantPrecios)
-        Me.SuperTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel4.Location = New System.Drawing.Point(0, 25)
-        Me.SuperTabControlPanel4.Name = "SuperTabControlPanel4"
-        Me.SuperTabControlPanel4.Size = New System.Drawing.Size(922, 371)
-        Me.SuperTabControlPanel4.TabIndex = 1
-        Me.SuperTabControlPanel4.TabItem = Me.SuperTabItem4
-        '
-        'GPLugarEntrega
-        '
-        Me.GPLugarEntrega.CanvasColor = System.Drawing.SystemColors.Control
-        Me.GPLugarEntrega.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.GPLugarEntrega.Controls.Add(Me.GroupBox7)
-        Me.GPLugarEntrega.Location = New System.Drawing.Point(852, 87)
-        Me.GPLugarEntrega.Name = "GPLugarEntrega"
-        Me.GPLugarEntrega.Size = New System.Drawing.Size(44, 31)
-        '
-        '
-        '
-        Me.GPLugarEntrega.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-        Me.GPLugarEntrega.Style.BackColorGradientAngle = 90
-        Me.GPLugarEntrega.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-        Me.GPLugarEntrega.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GPLugarEntrega.Style.BorderBottomWidth = 1
-        Me.GPLugarEntrega.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-        Me.GPLugarEntrega.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GPLugarEntrega.Style.BorderLeftWidth = 1
-        Me.GPLugarEntrega.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GPLugarEntrega.Style.BorderRightWidth = 1
-        Me.GPLugarEntrega.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GPLugarEntrega.Style.BorderTopWidth = 1
-        Me.GPLugarEntrega.Style.CornerDiameter = 4
-        Me.GPLugarEntrega.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.GPLugarEntrega.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
-        Me.GPLugarEntrega.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
-        Me.GPLugarEntrega.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
-        '
-        '
-        '
-        Me.GPLugarEntrega.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.GPLugarEntrega.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GPLugarEntrega.TabIndex = 47
-        Me.GPLugarEntrega.Text = "Lugar de Entrega"
-        Me.GPLugarEntrega.Visible = False
-        '
-        'GroupBox7
-        '
-        Me.GroupBox7.Controls.Add(Me.ListRemisionado)
-        Me.GroupBox7.Controls.Add(Me.ListDivision)
-        Me.GroupBox7.Controls.Add(Me.LabelX87)
-        Me.GroupBox7.Controls.Add(Me.LabelX78)
-        Me.GroupBox7.Controls.Add(Me.TxtLEEstado)
-        Me.GroupBox7.Controls.Add(Me.LabelX79)
-        Me.GroupBox7.Controls.Add(Me.TxtLECiudad)
-        Me.GroupBox7.Controls.Add(Me.LabelX80)
-        Me.GroupBox7.Controls.Add(Me.TxtLEDelMun)
-        Me.GroupBox7.Controls.Add(Me.LabelX81)
-        Me.GroupBox7.Controls.Add(Me.TxtLEColonia)
-        Me.GroupBox7.Controls.Add(Me.LabelX82)
-        Me.GroupBox7.Controls.Add(Me.TxtLECP)
-        Me.GroupBox7.Controls.Add(Me.LabelX83)
-        Me.GroupBox7.Controls.Add(Me.TxtLENoInterior)
-        Me.GroupBox7.Controls.Add(Me.LabelX84)
-        Me.GroupBox7.Controls.Add(Me.TxtLENoExterior)
-        Me.GroupBox7.Controls.Add(Me.LabelX85)
-        Me.GroupBox7.Controls.Add(Me.TxtLECalle)
-        Me.GroupBox7.Controls.Add(Me.LabelX86)
-        Me.GroupBox7.Location = New System.Drawing.Point(3, 3)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(520, 246)
-        Me.GroupBox7.TabIndex = 2
-        Me.GroupBox7.TabStop = False
-        '
-        'ListRemisionado
-        '
-        Me.ListRemisionado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ListRemisionado.FormattingEnabled = True
-        Me.ListRemisionado.ItemHeight = 16
-        Me.ListRemisionado.Location = New System.Drawing.Point(84, 81)
-        Me.ListRemisionado.Name = "ListRemisionado"
-        Me.ListRemisionado.Size = New System.Drawing.Size(428, 52)
-        Me.ListRemisionado.TabIndex = 67
-        '
-        'ListDivision
-        '
-        Me.ListDivision.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ListDivision.FormattingEnabled = True
-        Me.ListDivision.ItemHeight = 16
-        Me.ListDivision.Location = New System.Drawing.Point(84, 23)
-        Me.ListDivision.Name = "ListDivision"
-        Me.ListDivision.Size = New System.Drawing.Size(428, 52)
-        Me.ListDivision.TabIndex = 66
-        '
-        'LabelX87
-        '
-        '
-        '
-        '
-        Me.LabelX87.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX87.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX87.Location = New System.Drawing.Point(6, 21)
-        Me.LabelX87.Name = "LabelX87"
-        Me.LabelX87.Size = New System.Drawing.Size(75, 21)
-        Me.LabelX87.TabIndex = 65
-        Me.LabelX87.Text = "División:"
-        '
-        'LabelX78
-        '
-        '
-        '
-        '
-        Me.LabelX78.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX78.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX78.Location = New System.Drawing.Point(6, 77)
-        Me.LabelX78.Name = "LabelX78"
-        Me.LabelX78.Size = New System.Drawing.Size(84, 21)
-        Me.LabelX78.TabIndex = 63
-        Me.LabelX78.Text = "Remisionado:"
-        '
-        'TxtLEEstado
-        '
-        '
-        '
-        '
-        Me.TxtLEEstado.Border.Class = "TextBoxBorder"
-        Me.TxtLEEstado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtLEEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtLEEstado.FocusHighlightEnabled = True
-        Me.TxtLEEstado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtLEEstado.Location = New System.Drawing.Point(332, 217)
-        Me.TxtLEEstado.Name = "TxtLEEstado"
-        Me.TxtLEEstado.ReadOnly = True
-        Me.TxtLEEstado.Size = New System.Drawing.Size(182, 23)
-        Me.TxtLEEstado.TabIndex = 61
-        '
-        'LabelX79
-        '
-        '
-        '
-        '
-        Me.LabelX79.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX79.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX79.Location = New System.Drawing.Point(262, 217)
-        Me.LabelX79.Name = "LabelX79"
-        Me.LabelX79.Size = New System.Drawing.Size(75, 21)
-        Me.LabelX79.TabIndex = 60
-        Me.LabelX79.Text = "Estado:"
-        '
-        'TxtLECiudad
-        '
-        '
-        '
-        '
-        Me.TxtLECiudad.Border.Class = "TextBoxBorder"
-        Me.TxtLECiudad.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtLECiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtLECiudad.FocusHighlightEnabled = True
-        Me.TxtLECiudad.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtLECiudad.Location = New System.Drawing.Point(84, 215)
-        Me.TxtLECiudad.Name = "TxtLECiudad"
-        Me.TxtLECiudad.ReadOnly = True
-        Me.TxtLECiudad.Size = New System.Drawing.Size(161, 23)
-        Me.TxtLECiudad.TabIndex = 59
-        '
-        'LabelX80
-        '
-        '
-        '
-        '
-        Me.LabelX80.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX80.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX80.Location = New System.Drawing.Point(6, 215)
-        Me.LabelX80.Name = "LabelX80"
-        Me.LabelX80.Size = New System.Drawing.Size(75, 21)
-        Me.LabelX80.TabIndex = 58
-        Me.LabelX80.Text = "Ciudad:"
-        '
-        'TxtLEDelMun
-        '
-        '
-        '
-        '
-        Me.TxtLEDelMun.Border.Class = "TextBoxBorder"
-        Me.TxtLEDelMun.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtLEDelMun.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtLEDelMun.FocusHighlightEnabled = True
-        Me.TxtLEDelMun.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtLEDelMun.Location = New System.Drawing.Point(332, 191)
-        Me.TxtLEDelMun.Name = "TxtLEDelMun"
-        Me.TxtLEDelMun.ReadOnly = True
-        Me.TxtLEDelMun.Size = New System.Drawing.Size(182, 23)
-        Me.TxtLEDelMun.TabIndex = 57
-        '
-        'LabelX81
-        '
-        '
-        '
-        '
-        Me.LabelX81.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX81.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX81.Location = New System.Drawing.Point(262, 191)
-        Me.LabelX81.Name = "LabelX81"
-        Me.LabelX81.Size = New System.Drawing.Size(75, 21)
-        Me.LabelX81.TabIndex = 56
-        Me.LabelX81.Text = "Del/Mun:"
-        '
-        'TxtLEColonia
-        '
-        '
-        '
-        '
-        Me.TxtLEColonia.Border.Class = "TextBoxBorder"
-        Me.TxtLEColonia.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtLEColonia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtLEColonia.FocusHighlightEnabled = True
-        Me.TxtLEColonia.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtLEColonia.Location = New System.Drawing.Point(84, 190)
-        Me.TxtLEColonia.Name = "TxtLEColonia"
-        Me.TxtLEColonia.ReadOnly = True
-        Me.TxtLEColonia.Size = New System.Drawing.Size(160, 23)
-        Me.TxtLEColonia.TabIndex = 55
-        '
-        'LabelX82
-        '
-        '
-        '
-        '
-        Me.LabelX82.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX82.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX82.Location = New System.Drawing.Point(6, 188)
-        Me.LabelX82.Name = "LabelX82"
-        Me.LabelX82.Size = New System.Drawing.Size(66, 21)
-        Me.LabelX82.TabIndex = 54
-        Me.LabelX82.Text = "Colonia:"
-        '
-        'TxtLECP
-        '
-        '
-        '
-        '
-        Me.TxtLECP.Border.Class = "TextBoxBorder"
-        Me.TxtLECP.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtLECP.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtLECP.FocusHighlightEnabled = True
-        Me.TxtLECP.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtLECP.Location = New System.Drawing.Point(428, 166)
-        Me.TxtLECP.Name = "TxtLECP"
-        Me.TxtLECP.ReadOnly = True
-        Me.TxtLECP.Size = New System.Drawing.Size(86, 23)
-        Me.TxtLECP.TabIndex = 53
-        '
-        'LabelX83
-        '
-        '
-        '
-        '
-        Me.LabelX83.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX83.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX83.Location = New System.Drawing.Point(373, 167)
-        Me.LabelX83.Name = "LabelX83"
-        Me.LabelX83.Size = New System.Drawing.Size(45, 21)
-        Me.LabelX83.TabIndex = 52
-        Me.LabelX83.Text = "C.P.:"
-        '
-        'TxtLENoInterior
-        '
-        '
-        '
-        '
-        Me.TxtLENoInterior.Border.Class = "TextBoxBorder"
-        Me.TxtLENoInterior.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtLENoInterior.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtLENoInterior.FocusHighlightEnabled = True
-        Me.TxtLENoInterior.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtLENoInterior.Location = New System.Drawing.Point(277, 166)
-        Me.TxtLENoInterior.Name = "TxtLENoInterior"
-        Me.TxtLENoInterior.ReadOnly = True
-        Me.TxtLENoInterior.Size = New System.Drawing.Size(86, 23)
-        Me.TxtLENoInterior.TabIndex = 51
-        '
-        'LabelX84
-        '
-        '
-        '
-        '
-        Me.LabelX84.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX84.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX84.Location = New System.Drawing.Point(188, 166)
-        Me.LabelX84.Name = "LabelX84"
-        Me.LabelX84.Size = New System.Drawing.Size(84, 21)
-        Me.LabelX84.TabIndex = 50
-        Me.LabelX84.Text = "No. Interior:"
-        '
-        'TxtLENoExterior
-        '
-        '
-        '
-        '
-        Me.TxtLENoExterior.Border.Class = "TextBoxBorder"
-        Me.TxtLENoExterior.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtLENoExterior.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtLENoExterior.FocusHighlightEnabled = True
-        Me.TxtLENoExterior.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtLENoExterior.Location = New System.Drawing.Point(84, 166)
-        Me.TxtLENoExterior.Name = "TxtLENoExterior"
-        Me.TxtLENoExterior.ReadOnly = True
-        Me.TxtLENoExterior.Size = New System.Drawing.Size(86, 23)
-        Me.TxtLENoExterior.TabIndex = 49
-        '
-        'LabelX85
-        '
-        '
-        '
-        '
-        Me.LabelX85.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX85.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX85.Location = New System.Drawing.Point(6, 161)
-        Me.LabelX85.Name = "LabelX85"
-        Me.LabelX85.Size = New System.Drawing.Size(84, 21)
-        Me.LabelX85.TabIndex = 48
-        Me.LabelX85.Text = "No. Exterior:"
-        '
-        'TxtLECalle
-        '
-        '
-        '
-        '
-        Me.TxtLECalle.Border.Class = "TextBoxBorder"
-        Me.TxtLECalle.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtLECalle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtLECalle.FocusHighlightEnabled = True
-        Me.TxtLECalle.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtLECalle.Location = New System.Drawing.Point(84, 139)
-        Me.TxtLECalle.Name = "TxtLECalle"
-        Me.TxtLECalle.ReadOnly = True
-        Me.TxtLECalle.Size = New System.Drawing.Size(430, 23)
-        Me.TxtLECalle.TabIndex = 47
-        '
-        'LabelX86
-        '
-        '
-        '
-        '
-        Me.LabelX86.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX86.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX86.Location = New System.Drawing.Point(6, 139)
-        Me.LabelX86.Name = "LabelX86"
-        Me.LabelX86.Size = New System.Drawing.Size(45, 21)
-        Me.LabelX86.TabIndex = 46
-        Me.LabelX86.Text = "Calle:"
-        '
-        'PanSeleccionarTalla
-        '
-        Me.PanSeleccionarTalla.CanvasColor = System.Drawing.SystemColors.Control
-        Me.PanSeleccionarTalla.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.PanSeleccionarTalla.Controls.Add(Me.BtnAgregarTallasCerrar)
-        Me.PanSeleccionarTalla.Controls.Add(Me.BtnAgregarTallas)
-        Me.PanSeleccionarTalla.Controls.Add(Me.ListSeleccionarTallas)
-        Me.PanSeleccionarTalla.Controls.Add(Me.ButtonX2)
-        Me.PanSeleccionarTalla.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PanSeleccionarTalla.Location = New System.Drawing.Point(451, 35)
-        Me.PanSeleccionarTalla.Name = "PanSeleccionarTalla"
-        Me.PanSeleccionarTalla.Size = New System.Drawing.Size(213, 267)
-        Me.PanSeleccionarTalla.Style.Alignment = System.Drawing.StringAlignment.Center
-        Me.PanSeleccionarTalla.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-        Me.PanSeleccionarTalla.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-        Me.PanSeleccionarTalla.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.PanSeleccionarTalla.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-        Me.PanSeleccionarTalla.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
-        Me.PanSeleccionarTalla.Style.GradientAngle = 90
-        Me.PanSeleccionarTalla.Style.LineAlignment = System.Drawing.StringAlignment.Near
-        Me.PanSeleccionarTalla.TabIndex = 32
-        Me.PanSeleccionarTalla.Text = "Seleccionar Tallas"
-        Me.PanSeleccionarTalla.Visible = False
-        '
-        'BtnAgregarTallasCerrar
-        '
-        Me.BtnAgregarTallasCerrar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.BtnAgregarTallasCerrar.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.BtnAgregarTallasCerrar.Location = New System.Drawing.Point(117, 233)
-        Me.BtnAgregarTallasCerrar.Name = "BtnAgregarTallasCerrar"
-        Me.BtnAgregarTallasCerrar.Size = New System.Drawing.Size(77, 22)
-        Me.BtnAgregarTallasCerrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.BtnAgregarTallasCerrar.TabIndex = 7
-        Me.BtnAgregarTallasCerrar.Text = "Cerrar"
-        '
-        'BtnAgregarTallas
-        '
-        Me.BtnAgregarTallas.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.BtnAgregarTallas.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.BtnAgregarTallas.Location = New System.Drawing.Point(15, 233)
-        Me.BtnAgregarTallas.Name = "BtnAgregarTallas"
-        Me.BtnAgregarTallas.Size = New System.Drawing.Size(77, 22)
-        Me.BtnAgregarTallas.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.BtnAgregarTallas.TabIndex = 6
-        Me.BtnAgregarTallas.Text = "Agregar"
-        '
-        'ListSeleccionarTallas
-        '
-        Me.ListSeleccionarTallas.Location = New System.Drawing.Point(15, 27)
-        Me.ListSeleccionarTallas.Name = "ListSeleccionarTallas"
-        Me.ListSeleccionarTallas.Size = New System.Drawing.Size(181, 197)
-        Me.ListSeleccionarTallas.TabIndex = 2
-        Me.ListSeleccionarTallas.UseCompatibleStateImageBehavior = False
-        Me.ListSeleccionarTallas.View = System.Windows.Forms.View.List
-        '
-        'ButtonX2
-        '
-        Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX2.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonX2.Location = New System.Drawing.Point(965, 12)
-        Me.ButtonX2.Name = "ButtonX2"
-        Me.ButtonX2.Size = New System.Drawing.Size(123, 32)
-        Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX2.TabIndex = 1
-        Me.ButtonX2.Text = "Cerrar Detalle de Partida"
-        '
-        'DGTallasCantPrecios
-        '
-        Me.DGTallasCantPrecios.AllowUserToAddRows = False
-        Me.DGTallasCantPrecios.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGTallasCantPrecios.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGTallasCantPrecios.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.DGTallasCantPrecios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGTallasCantPrecios.DefaultCellStyle = DataGridViewCellStyle3
-        Me.DGTallasCantPrecios.EnableHeadersVisualStyles = False
-        Me.DGTallasCantPrecios.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.DGTallasCantPrecios.Location = New System.Drawing.Point(9, 8)
-        Me.DGTallasCantPrecios.Name = "DGTallasCantPrecios"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGTallasCantPrecios.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGTallasCantPrecios.RowsDefaultCellStyle = DataGridViewCellStyle5
-        Me.DGTallasCantPrecios.Size = New System.Drawing.Size(910, 364)
-        Me.DGTallasCantPrecios.TabIndex = 0
-        '
-        'SuperTabItem4
-        '
-        Me.SuperTabItem4.AttachedControl = Me.SuperTabControlPanel4
-        Me.SuperTabItem4.GlobalItem = False
-        Me.SuperTabItem4.Name = "SuperTabItem4"
-        Me.SuperTabItem4.Text = "Tallas, Cantidades, Distribución y Precio"
-        '
-        'SuperTabControlPanel6
-        '
-        Me.SuperTabControlPanel6.Controls.Add(Me.GPHabilitaciones)
-        Me.SuperTabControlPanel6.Controls.Add(Me.GPTelas)
-        Me.SuperTabControlPanel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel6.Location = New System.Drawing.Point(0, 0)
-        Me.SuperTabControlPanel6.Name = "SuperTabControlPanel6"
-        Me.SuperTabControlPanel6.Size = New System.Drawing.Size(922, 396)
-        Me.SuperTabControlPanel6.TabIndex = 2
-        Me.SuperTabControlPanel6.TabItem = Me.SuperTabItem5
-        '
-        'GPHabilitaciones
-        '
-        Me.GPHabilitaciones.CanvasColor = System.Drawing.SystemColors.Control
-        Me.GPHabilitaciones.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.GPHabilitaciones.Controls.Add(Me.ButtonX3)
-        Me.GPHabilitaciones.Controls.Add(Me.DGHabilitaciones)
-        Me.GPHabilitaciones.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GPHabilitaciones.Location = New System.Drawing.Point(12, 145)
-        Me.GPHabilitaciones.Name = "GPHabilitaciones"
-        Me.GPHabilitaciones.Size = New System.Drawing.Size(897, 199)
-        '
-        '
-        '
-        Me.GPHabilitaciones.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-        Me.GPHabilitaciones.Style.BackColorGradientAngle = 90
-        Me.GPHabilitaciones.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-        Me.GPHabilitaciones.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GPHabilitaciones.Style.BorderBottomWidth = 1
-        Me.GPHabilitaciones.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-        Me.GPHabilitaciones.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GPHabilitaciones.Style.BorderLeftWidth = 1
-        Me.GPHabilitaciones.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GPHabilitaciones.Style.BorderRightWidth = 1
-        Me.GPHabilitaciones.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GPHabilitaciones.Style.BorderTopWidth = 1
-        Me.GPHabilitaciones.Style.CornerDiameter = 4
-        Me.GPHabilitaciones.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.GPHabilitaciones.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
-        Me.GPHabilitaciones.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
-        Me.GPHabilitaciones.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
-        '
-        '
-        '
-        Me.GPHabilitaciones.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.GPHabilitaciones.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GPHabilitaciones.TabIndex = 4
-        Me.GPHabilitaciones.Text = "Habilitaciones"
-        '
-        'ButtonX3
-        '
-        Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX3.Location = New System.Drawing.Point(783, 3)
-        Me.ButtonX3.Name = "ButtonX3"
-        Me.ButtonX3.Size = New System.Drawing.Size(105, 27)
-        Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX3.TabIndex = 4
-        Me.ButtonX3.Text = "ButtonX3"
-        '
-        'DGHabilitaciones
-        '
-        Me.DGHabilitaciones.AllowUserToAddRows = False
-        Me.DGHabilitaciones.AllowUserToDeleteRows = False
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGHabilitaciones.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGHabilitaciones.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
-        Me.DGHabilitaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGHabilitaciones.DefaultCellStyle = DataGridViewCellStyle8
-        Me.DGHabilitaciones.EnableHeadersVisualStyles = False
-        Me.DGHabilitaciones.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.DGHabilitaciones.Location = New System.Drawing.Point(13, 3)
-        Me.DGHabilitaciones.Name = "DGHabilitaciones"
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGHabilitaciones.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGHabilitaciones.RowsDefaultCellStyle = DataGridViewCellStyle10
-        Me.DGHabilitaciones.Size = New System.Drawing.Size(764, 169)
-        Me.DGHabilitaciones.TabIndex = 3
-        '
-        'GPTelas
-        '
-        Me.GPTelas.CanvasColor = System.Drawing.SystemColors.Control
-        Me.GPTelas.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.GPTelas.Controls.Add(Me.ButtonX1)
-        Me.GPTelas.Controls.Add(Me.DGTelas)
-        Me.GPTelas.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GPTelas.Location = New System.Drawing.Point(12, 3)
-        Me.GPTelas.Name = "GPTelas"
-        Me.GPTelas.Size = New System.Drawing.Size(897, 136)
-        '
-        '
-        '
-        Me.GPTelas.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-        Me.GPTelas.Style.BackColorGradientAngle = 90
-        Me.GPTelas.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-        Me.GPTelas.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GPTelas.Style.BorderBottomWidth = 1
-        Me.GPTelas.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-        Me.GPTelas.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GPTelas.Style.BorderLeftWidth = 1
-        Me.GPTelas.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GPTelas.Style.BorderRightWidth = 1
-        Me.GPTelas.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.GPTelas.Style.BorderTopWidth = 1
-        Me.GPTelas.Style.CornerDiameter = 4
-        Me.GPTelas.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.GPTelas.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
-        Me.GPTelas.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
-        Me.GPTelas.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
-        '
-        '
-        '
-        Me.GPTelas.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.GPTelas.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GPTelas.TabIndex = 3
-        Me.GPTelas.Text = "Telas"
-        '
-        'ButtonX1
-        '
-        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX1.Location = New System.Drawing.Point(783, 3)
-        Me.ButtonX1.Name = "ButtonX1"
-        Me.ButtonX1.Size = New System.Drawing.Size(105, 27)
-        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX1.TabIndex = 4
-        Me.ButtonX1.Text = "ButtonX1"
-        '
-        'DGTelas
-        '
-        Me.DGTelas.AllowUserToAddRows = False
-        Me.DGTelas.AllowUserToDeleteRows = False
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGTelas.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGTelas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
-        Me.DGTelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGTelas.DefaultCellStyle = DataGridViewCellStyle13
-        Me.DGTelas.EnableHeadersVisualStyles = False
-        Me.DGTelas.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.DGTelas.Location = New System.Drawing.Point(13, 3)
-        Me.DGTelas.Name = "DGTelas"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGTelas.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGTelas.RowsDefaultCellStyle = DataGridViewCellStyle15
-        Me.DGTelas.Size = New System.Drawing.Size(764, 102)
-        Me.DGTelas.TabIndex = 3
-        '
-        'SuperTabItem5
-        '
-        Me.SuperTabItem5.AttachedControl = Me.SuperTabControlPanel6
-        Me.SuperTabItem5.GlobalItem = False
-        Me.SuperTabItem5.Name = "SuperTabItem5"
-        Me.SuperTabItem5.Text = "Telas y Habilitaciones"
-        Me.SuperTabItem5.Visible = False
-        '
-        'SuperTabControlPanel7
-        '
-        Me.SuperTabControlPanel7.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel7.Location = New System.Drawing.Point(0, 0)
-        Me.SuperTabControlPanel7.Name = "SuperTabControlPanel7"
-        Me.SuperTabControlPanel7.Size = New System.Drawing.Size(922, 396)
-        Me.SuperTabControlPanel7.TabIndex = 4
-        Me.SuperTabControlPanel7.TabItem = Me.SuperTabItem7
-        '
-        'SuperTabItem7
-        '
-        Me.SuperTabItem7.AttachedControl = Me.SuperTabControlPanel7
-        Me.SuperTabItem7.GlobalItem = False
-        Me.SuperTabItem7.Name = "SuperTabItem7"
-        Me.SuperTabItem7.Text = "SuperTabItem7"
-        Me.SuperTabItem7.Visible = False
-        '
-        'SuperTabControlPanel8
-        '
-        Me.SuperTabControlPanel8.Controls.Add(Me.DataGridViewX2)
-        Me.SuperTabControlPanel8.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel8.Location = New System.Drawing.Point(0, 0)
-        Me.SuperTabControlPanel8.Name = "SuperTabControlPanel8"
-        Me.SuperTabControlPanel8.Size = New System.Drawing.Size(922, 396)
-        Me.SuperTabControlPanel8.TabIndex = 3
-        Me.SuperTabControlPanel8.TabItem = Me.SuperTabItem6
-        '
-        'DataGridViewX2
-        '
-        Me.DataGridViewX2.AllowUserToAddRows = False
-        Me.DataGridViewX2.AllowUserToDeleteRows = False
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataGridViewX2.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewX2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
-        Me.DataGridViewX2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewX2.DefaultCellStyle = DataGridViewCellStyle18
-        Me.DataGridViewX2.EnableHeadersVisualStyles = False
-        Me.DataGridViewX2.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.DataGridViewX2.Location = New System.Drawing.Point(8, 42)
-        Me.DataGridViewX2.Name = "DataGridViewX2"
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle19.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewX2.RowHeadersDefaultCellStyle = DataGridViewCellStyle19
-        DataGridViewCellStyle20.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataGridViewX2.RowsDefaultCellStyle = DataGridViewCellStyle20
-        Me.DataGridViewX2.Size = New System.Drawing.Size(377, 239)
-        Me.DataGridViewX2.TabIndex = 1
-        Me.DataGridViewX2.Visible = False
-        '
-        'SuperTabItem6
-        '
-        Me.SuperTabItem6.AttachedControl = Me.SuperTabControlPanel8
-        Me.SuperTabItem6.GlobalItem = False
-        Me.SuperTabItem6.Name = "SuperTabItem6"
-        Me.SuperTabItem6.Text = "Logos"
-        Me.SuperTabItem6.Visible = False
-        '
-        'TabDatosPedido
-        '
-        Me.TabDatosPedido.AttachedControl = Me.SuperTabControlPanel3
-        Me.TabDatosPedido.GlobalItem = False
-        Me.TabDatosPedido.Name = "TabDatosPedido"
-        Me.TabDatosPedido.Text = "Datos del Pedido"
-        '
         'SuperTabControlPanel1
         '
         Me.SuperTabControlPanel1.Controls.Add(Me.GPDatosBasicos)
@@ -1194,7 +363,7 @@ Partial Class FrmPedidoAltaEdicion
         '
         Me.GPDatosBasicos.CanvasColor = System.Drawing.SystemColors.Control
         Me.GPDatosBasicos.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.GPDatosBasicos.Controls.Add(Me.ChkOmitirInventario)
+        Me.GPDatosBasicos.Controls.Add(Me.ChkUsarInventarioDisponible)
         Me.GPDatosBasicos.Controls.Add(Me.GPDatosCliente)
         Me.GPDatosBasicos.Controls.Add(Me.GPDatosLugarCobro)
         Me.GPDatosBasicos.Controls.Add(Me.CmbIVA)
@@ -1275,6 +444,19 @@ Partial Class FrmPedidoAltaEdicion
         Me.GPDatosBasicos.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GPDatosBasicos.TabIndex = 0
         Me.GPDatosBasicos.Text = "Datos Básicos"
+        '
+        'ChkUsarInventarioDisponible
+        '
+        '
+        '
+        '
+        Me.ChkUsarInventarioDisponible.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ChkUsarInventarioDisponible.Location = New System.Drawing.Point(340, 109)
+        Me.ChkUsarInventarioDisponible.Name = "ChkUsarInventarioDisponible"
+        Me.ChkUsarInventarioDisponible.Size = New System.Drawing.Size(194, 23)
+        Me.ChkUsarInventarioDisponible.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ChkUsarInventarioDisponible.TabIndex = 112
+        Me.ChkUsarInventarioDisponible.Text = "Usar Inventario Disponible"
         '
         'GPDatosCliente
         '
@@ -2264,7 +1446,7 @@ Partial Class FrmPedidoAltaEdicion
         Me.CmbIVA.FormattingEnabled = True
         Me.CmbIVA.ItemHeight = 17
         Me.CmbIVA.Items.AddRange(New Object() {Me.IVA0, Me.IVA16})
-        Me.CmbIVA.Location = New System.Drawing.Point(688, 35)
+        Me.CmbIVA.Location = New System.Drawing.Point(688, 34)
         Me.CmbIVA.Name = "CmbIVA"
         Me.CmbIVA.Size = New System.Drawing.Size(99, 23)
         Me.CmbIVA.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -2285,7 +1467,7 @@ Partial Class FrmPedidoAltaEdicion
         '
         Me.LblIVA.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LblIVA.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblIVA.Location = New System.Drawing.Point(593, 37)
+        Me.LblIVA.Location = New System.Drawing.Point(593, 36)
         Me.LblIVA.Name = "LblIVA"
         Me.LblIVA.Size = New System.Drawing.Size(101, 21)
         Me.LblIVA.TabIndex = 109
@@ -3144,6 +2326,837 @@ Partial Class FrmPedidoAltaEdicion
         Me.TabFolio.TabColor = SuperTabItemColorTable1
         Me.TabFolio.Text = "Datos Generales"
         '
+        'SuperTabControlPanel3
+        '
+        Me.SuperTabControlPanel3.Controls.Add(Me.PanDetallePartida)
+        Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 0)
+        Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
+        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(954, 473)
+        Me.SuperTabControlPanel3.TabIndex = 1
+        Me.SuperTabControlPanel3.TabItem = Me.TabDatosPedido
+        '
+        'PanDetallePartida
+        '
+        Me.PanDetallePartida.CanvasColor = System.Drawing.SystemColors.Control
+        Me.PanDetallePartida.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.PanDetallePartida.Controls.Add(Me.BtnCerrarDetPartida)
+        Me.PanDetallePartida.Controls.Add(Me.SuperTabControl2)
+        Me.PanDetallePartida.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PanDetallePartida.Location = New System.Drawing.Point(0, 3)
+        Me.PanDetallePartida.Name = "PanDetallePartida"
+        Me.PanDetallePartida.Size = New System.Drawing.Size(951, 445)
+        Me.PanDetallePartida.Style.Alignment = System.Drawing.StringAlignment.Center
+        Me.PanDetallePartida.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.PanDetallePartida.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.PanDetallePartida.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.PanDetallePartida.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.PanDetallePartida.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.PanDetallePartida.Style.GradientAngle = 90
+        Me.PanDetallePartida.Style.LineAlignment = System.Drawing.StringAlignment.Near
+        Me.PanDetallePartida.TabIndex = 0
+        Me.PanDetallePartida.Text = "Detalle de Partida"
+        '
+        'BtnCerrarDetPartida
+        '
+        Me.BtnCerrarDetPartida.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.BtnCerrarDetPartida.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.BtnCerrarDetPartida.Location = New System.Drawing.Point(11, 11)
+        Me.BtnCerrarDetPartida.Name = "BtnCerrarDetPartida"
+        Me.BtnCerrarDetPartida.Size = New System.Drawing.Size(77, 22)
+        Me.BtnCerrarDetPartida.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.BtnCerrarDetPartida.TabIndex = 9
+        Me.BtnCerrarDetPartida.Text = "Cerrar"
+        Me.BtnCerrarDetPartida.Visible = False
+        '
+        'SuperTabControl2
+        '
+        '
+        '
+        '
+        '
+        '
+        '
+        Me.SuperTabControl2.ControlBox.CloseBox.Name = ""
+        '
+        '
+        '
+        Me.SuperTabControl2.ControlBox.MenuBox.Name = ""
+        Me.SuperTabControl2.ControlBox.Name = ""
+        Me.SuperTabControl2.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabControl2.ControlBox.MenuBox, Me.SuperTabControl2.ControlBox.CloseBox})
+        Me.SuperTabControl2.Controls.Add(Me.SuperTabControlPanel4)
+        Me.SuperTabControl2.Controls.Add(Me.SuperTabControlPanel6)
+        Me.SuperTabControl2.Controls.Add(Me.SuperTabControlPanel7)
+        Me.SuperTabControl2.Controls.Add(Me.SuperTabControlPanel8)
+        Me.SuperTabControl2.Location = New System.Drawing.Point(11, 39)
+        Me.SuperTabControl2.Name = "SuperTabControl2"
+        Me.SuperTabControl2.ReorderTabsEnabled = True
+        Me.SuperTabControl2.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.SuperTabControl2.SelectedTabIndex = 0
+        Me.SuperTabControl2.Size = New System.Drawing.Size(922, 396)
+        Me.SuperTabControl2.TabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SuperTabControl2.TabIndex = 10
+        Me.SuperTabControl2.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem4, Me.SuperTabItem5, Me.SuperTabItem6, Me.SuperTabItem7})
+        Me.SuperTabControl2.Text = "SuperTabControl2"
+        '
+        'SuperTabControlPanel4
+        '
+        Me.SuperTabControlPanel4.Controls.Add(Me.GPLugarEntrega)
+        Me.SuperTabControlPanel4.Controls.Add(Me.PanSeleccionarTalla)
+        Me.SuperTabControlPanel4.Controls.Add(Me.DGTallasCantPrecios)
+        Me.SuperTabControlPanel4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel4.Location = New System.Drawing.Point(0, 25)
+        Me.SuperTabControlPanel4.Name = "SuperTabControlPanel4"
+        Me.SuperTabControlPanel4.Size = New System.Drawing.Size(922, 371)
+        Me.SuperTabControlPanel4.TabIndex = 1
+        Me.SuperTabControlPanel4.TabItem = Me.SuperTabItem4
+        '
+        'GPLugarEntrega
+        '
+        Me.GPLugarEntrega.CanvasColor = System.Drawing.SystemColors.Control
+        Me.GPLugarEntrega.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GPLugarEntrega.Controls.Add(Me.GroupBox7)
+        Me.GPLugarEntrega.Location = New System.Drawing.Point(852, 87)
+        Me.GPLugarEntrega.Name = "GPLugarEntrega"
+        Me.GPLugarEntrega.Size = New System.Drawing.Size(44, 31)
+        '
+        '
+        '
+        Me.GPLugarEntrega.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.GPLugarEntrega.Style.BackColorGradientAngle = 90
+        Me.GPLugarEntrega.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.GPLugarEntrega.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPLugarEntrega.Style.BorderBottomWidth = 1
+        Me.GPLugarEntrega.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.GPLugarEntrega.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPLugarEntrega.Style.BorderLeftWidth = 1
+        Me.GPLugarEntrega.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPLugarEntrega.Style.BorderRightWidth = 1
+        Me.GPLugarEntrega.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPLugarEntrega.Style.BorderTopWidth = 1
+        Me.GPLugarEntrega.Style.CornerDiameter = 4
+        Me.GPLugarEntrega.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.GPLugarEntrega.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.GPLugarEntrega.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.GPLugarEntrega.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        '
+        '
+        '
+        Me.GPLugarEntrega.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.GPLugarEntrega.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.GPLugarEntrega.TabIndex = 47
+        Me.GPLugarEntrega.Text = "Lugar de Entrega"
+        Me.GPLugarEntrega.Visible = False
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.ListRemisionado)
+        Me.GroupBox7.Controls.Add(Me.ListDivision)
+        Me.GroupBox7.Controls.Add(Me.LabelX87)
+        Me.GroupBox7.Controls.Add(Me.LabelX78)
+        Me.GroupBox7.Controls.Add(Me.TxtLEEstado)
+        Me.GroupBox7.Controls.Add(Me.LabelX79)
+        Me.GroupBox7.Controls.Add(Me.TxtLECiudad)
+        Me.GroupBox7.Controls.Add(Me.LabelX80)
+        Me.GroupBox7.Controls.Add(Me.TxtLEDelMun)
+        Me.GroupBox7.Controls.Add(Me.LabelX81)
+        Me.GroupBox7.Controls.Add(Me.TxtLEColonia)
+        Me.GroupBox7.Controls.Add(Me.LabelX82)
+        Me.GroupBox7.Controls.Add(Me.TxtLECP)
+        Me.GroupBox7.Controls.Add(Me.LabelX83)
+        Me.GroupBox7.Controls.Add(Me.TxtLENoInterior)
+        Me.GroupBox7.Controls.Add(Me.LabelX84)
+        Me.GroupBox7.Controls.Add(Me.TxtLENoExterior)
+        Me.GroupBox7.Controls.Add(Me.LabelX85)
+        Me.GroupBox7.Controls.Add(Me.TxtLECalle)
+        Me.GroupBox7.Controls.Add(Me.LabelX86)
+        Me.GroupBox7.Location = New System.Drawing.Point(3, 3)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(520, 246)
+        Me.GroupBox7.TabIndex = 2
+        Me.GroupBox7.TabStop = False
+        '
+        'ListRemisionado
+        '
+        Me.ListRemisionado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ListRemisionado.FormattingEnabled = True
+        Me.ListRemisionado.ItemHeight = 16
+        Me.ListRemisionado.Location = New System.Drawing.Point(84, 81)
+        Me.ListRemisionado.Name = "ListRemisionado"
+        Me.ListRemisionado.Size = New System.Drawing.Size(428, 52)
+        Me.ListRemisionado.TabIndex = 67
+        '
+        'ListDivision
+        '
+        Me.ListDivision.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ListDivision.FormattingEnabled = True
+        Me.ListDivision.ItemHeight = 16
+        Me.ListDivision.Location = New System.Drawing.Point(84, 23)
+        Me.ListDivision.Name = "ListDivision"
+        Me.ListDivision.Size = New System.Drawing.Size(428, 52)
+        Me.ListDivision.TabIndex = 66
+        '
+        'LabelX87
+        '
+        '
+        '
+        '
+        Me.LabelX87.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX87.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX87.Location = New System.Drawing.Point(6, 21)
+        Me.LabelX87.Name = "LabelX87"
+        Me.LabelX87.Size = New System.Drawing.Size(75, 21)
+        Me.LabelX87.TabIndex = 65
+        Me.LabelX87.Text = "División:"
+        '
+        'LabelX78
+        '
+        '
+        '
+        '
+        Me.LabelX78.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX78.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX78.Location = New System.Drawing.Point(6, 77)
+        Me.LabelX78.Name = "LabelX78"
+        Me.LabelX78.Size = New System.Drawing.Size(84, 21)
+        Me.LabelX78.TabIndex = 63
+        Me.LabelX78.Text = "Remisionado:"
+        '
+        'TxtLEEstado
+        '
+        '
+        '
+        '
+        Me.TxtLEEstado.Border.Class = "TextBoxBorder"
+        Me.TxtLEEstado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtLEEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtLEEstado.FocusHighlightEnabled = True
+        Me.TxtLEEstado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtLEEstado.Location = New System.Drawing.Point(332, 217)
+        Me.TxtLEEstado.Name = "TxtLEEstado"
+        Me.TxtLEEstado.ReadOnly = True
+        Me.TxtLEEstado.Size = New System.Drawing.Size(182, 23)
+        Me.TxtLEEstado.TabIndex = 61
+        '
+        'LabelX79
+        '
+        '
+        '
+        '
+        Me.LabelX79.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX79.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX79.Location = New System.Drawing.Point(262, 217)
+        Me.LabelX79.Name = "LabelX79"
+        Me.LabelX79.Size = New System.Drawing.Size(75, 21)
+        Me.LabelX79.TabIndex = 60
+        Me.LabelX79.Text = "Estado:"
+        '
+        'TxtLECiudad
+        '
+        '
+        '
+        '
+        Me.TxtLECiudad.Border.Class = "TextBoxBorder"
+        Me.TxtLECiudad.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtLECiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtLECiudad.FocusHighlightEnabled = True
+        Me.TxtLECiudad.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtLECiudad.Location = New System.Drawing.Point(84, 215)
+        Me.TxtLECiudad.Name = "TxtLECiudad"
+        Me.TxtLECiudad.ReadOnly = True
+        Me.TxtLECiudad.Size = New System.Drawing.Size(161, 23)
+        Me.TxtLECiudad.TabIndex = 59
+        '
+        'LabelX80
+        '
+        '
+        '
+        '
+        Me.LabelX80.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX80.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX80.Location = New System.Drawing.Point(6, 215)
+        Me.LabelX80.Name = "LabelX80"
+        Me.LabelX80.Size = New System.Drawing.Size(75, 21)
+        Me.LabelX80.TabIndex = 58
+        Me.LabelX80.Text = "Ciudad:"
+        '
+        'TxtLEDelMun
+        '
+        '
+        '
+        '
+        Me.TxtLEDelMun.Border.Class = "TextBoxBorder"
+        Me.TxtLEDelMun.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtLEDelMun.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtLEDelMun.FocusHighlightEnabled = True
+        Me.TxtLEDelMun.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtLEDelMun.Location = New System.Drawing.Point(332, 191)
+        Me.TxtLEDelMun.Name = "TxtLEDelMun"
+        Me.TxtLEDelMun.ReadOnly = True
+        Me.TxtLEDelMun.Size = New System.Drawing.Size(182, 23)
+        Me.TxtLEDelMun.TabIndex = 57
+        '
+        'LabelX81
+        '
+        '
+        '
+        '
+        Me.LabelX81.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX81.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX81.Location = New System.Drawing.Point(262, 191)
+        Me.LabelX81.Name = "LabelX81"
+        Me.LabelX81.Size = New System.Drawing.Size(75, 21)
+        Me.LabelX81.TabIndex = 56
+        Me.LabelX81.Text = "Del/Mun:"
+        '
+        'TxtLEColonia
+        '
+        '
+        '
+        '
+        Me.TxtLEColonia.Border.Class = "TextBoxBorder"
+        Me.TxtLEColonia.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtLEColonia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtLEColonia.FocusHighlightEnabled = True
+        Me.TxtLEColonia.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtLEColonia.Location = New System.Drawing.Point(84, 190)
+        Me.TxtLEColonia.Name = "TxtLEColonia"
+        Me.TxtLEColonia.ReadOnly = True
+        Me.TxtLEColonia.Size = New System.Drawing.Size(160, 23)
+        Me.TxtLEColonia.TabIndex = 55
+        '
+        'LabelX82
+        '
+        '
+        '
+        '
+        Me.LabelX82.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX82.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX82.Location = New System.Drawing.Point(6, 188)
+        Me.LabelX82.Name = "LabelX82"
+        Me.LabelX82.Size = New System.Drawing.Size(66, 21)
+        Me.LabelX82.TabIndex = 54
+        Me.LabelX82.Text = "Colonia:"
+        '
+        'TxtLECP
+        '
+        '
+        '
+        '
+        Me.TxtLECP.Border.Class = "TextBoxBorder"
+        Me.TxtLECP.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtLECP.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtLECP.FocusHighlightEnabled = True
+        Me.TxtLECP.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtLECP.Location = New System.Drawing.Point(428, 166)
+        Me.TxtLECP.Name = "TxtLECP"
+        Me.TxtLECP.ReadOnly = True
+        Me.TxtLECP.Size = New System.Drawing.Size(86, 23)
+        Me.TxtLECP.TabIndex = 53
+        '
+        'LabelX83
+        '
+        '
+        '
+        '
+        Me.LabelX83.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX83.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX83.Location = New System.Drawing.Point(373, 167)
+        Me.LabelX83.Name = "LabelX83"
+        Me.LabelX83.Size = New System.Drawing.Size(45, 21)
+        Me.LabelX83.TabIndex = 52
+        Me.LabelX83.Text = "C.P.:"
+        '
+        'TxtLENoInterior
+        '
+        '
+        '
+        '
+        Me.TxtLENoInterior.Border.Class = "TextBoxBorder"
+        Me.TxtLENoInterior.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtLENoInterior.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtLENoInterior.FocusHighlightEnabled = True
+        Me.TxtLENoInterior.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtLENoInterior.Location = New System.Drawing.Point(277, 166)
+        Me.TxtLENoInterior.Name = "TxtLENoInterior"
+        Me.TxtLENoInterior.ReadOnly = True
+        Me.TxtLENoInterior.Size = New System.Drawing.Size(86, 23)
+        Me.TxtLENoInterior.TabIndex = 51
+        '
+        'LabelX84
+        '
+        '
+        '
+        '
+        Me.LabelX84.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX84.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX84.Location = New System.Drawing.Point(188, 166)
+        Me.LabelX84.Name = "LabelX84"
+        Me.LabelX84.Size = New System.Drawing.Size(84, 21)
+        Me.LabelX84.TabIndex = 50
+        Me.LabelX84.Text = "No. Interior:"
+        '
+        'TxtLENoExterior
+        '
+        '
+        '
+        '
+        Me.TxtLENoExterior.Border.Class = "TextBoxBorder"
+        Me.TxtLENoExterior.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtLENoExterior.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtLENoExterior.FocusHighlightEnabled = True
+        Me.TxtLENoExterior.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtLENoExterior.Location = New System.Drawing.Point(84, 166)
+        Me.TxtLENoExterior.Name = "TxtLENoExterior"
+        Me.TxtLENoExterior.ReadOnly = True
+        Me.TxtLENoExterior.Size = New System.Drawing.Size(86, 23)
+        Me.TxtLENoExterior.TabIndex = 49
+        '
+        'LabelX85
+        '
+        '
+        '
+        '
+        Me.LabelX85.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX85.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX85.Location = New System.Drawing.Point(6, 161)
+        Me.LabelX85.Name = "LabelX85"
+        Me.LabelX85.Size = New System.Drawing.Size(84, 21)
+        Me.LabelX85.TabIndex = 48
+        Me.LabelX85.Text = "No. Exterior:"
+        '
+        'TxtLECalle
+        '
+        '
+        '
+        '
+        Me.TxtLECalle.Border.Class = "TextBoxBorder"
+        Me.TxtLECalle.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtLECalle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtLECalle.FocusHighlightEnabled = True
+        Me.TxtLECalle.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtLECalle.Location = New System.Drawing.Point(84, 139)
+        Me.TxtLECalle.Name = "TxtLECalle"
+        Me.TxtLECalle.ReadOnly = True
+        Me.TxtLECalle.Size = New System.Drawing.Size(430, 23)
+        Me.TxtLECalle.TabIndex = 47
+        '
+        'LabelX86
+        '
+        '
+        '
+        '
+        Me.LabelX86.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX86.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX86.Location = New System.Drawing.Point(6, 139)
+        Me.LabelX86.Name = "LabelX86"
+        Me.LabelX86.Size = New System.Drawing.Size(45, 21)
+        Me.LabelX86.TabIndex = 46
+        Me.LabelX86.Text = "Calle:"
+        '
+        'PanSeleccionarTalla
+        '
+        Me.PanSeleccionarTalla.CanvasColor = System.Drawing.SystemColors.Control
+        Me.PanSeleccionarTalla.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.PanSeleccionarTalla.Controls.Add(Me.BtnAgregarTallasCerrar)
+        Me.PanSeleccionarTalla.Controls.Add(Me.BtnAgregarTallas)
+        Me.PanSeleccionarTalla.Controls.Add(Me.ListSeleccionarTallas)
+        Me.PanSeleccionarTalla.Controls.Add(Me.ButtonX2)
+        Me.PanSeleccionarTalla.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PanSeleccionarTalla.Location = New System.Drawing.Point(451, 35)
+        Me.PanSeleccionarTalla.Name = "PanSeleccionarTalla"
+        Me.PanSeleccionarTalla.Size = New System.Drawing.Size(213, 267)
+        Me.PanSeleccionarTalla.Style.Alignment = System.Drawing.StringAlignment.Center
+        Me.PanSeleccionarTalla.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.PanSeleccionarTalla.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.PanSeleccionarTalla.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.PanSeleccionarTalla.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.PanSeleccionarTalla.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.PanSeleccionarTalla.Style.GradientAngle = 90
+        Me.PanSeleccionarTalla.Style.LineAlignment = System.Drawing.StringAlignment.Near
+        Me.PanSeleccionarTalla.TabIndex = 32
+        Me.PanSeleccionarTalla.Text = "Seleccionar Tallas"
+        Me.PanSeleccionarTalla.Visible = False
+        '
+        'BtnAgregarTallasCerrar
+        '
+        Me.BtnAgregarTallasCerrar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.BtnAgregarTallasCerrar.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.BtnAgregarTallasCerrar.Location = New System.Drawing.Point(117, 233)
+        Me.BtnAgregarTallasCerrar.Name = "BtnAgregarTallasCerrar"
+        Me.BtnAgregarTallasCerrar.Size = New System.Drawing.Size(77, 22)
+        Me.BtnAgregarTallasCerrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.BtnAgregarTallasCerrar.TabIndex = 7
+        Me.BtnAgregarTallasCerrar.Text = "Cerrar"
+        '
+        'BtnAgregarTallas
+        '
+        Me.BtnAgregarTallas.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.BtnAgregarTallas.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.BtnAgregarTallas.Location = New System.Drawing.Point(15, 233)
+        Me.BtnAgregarTallas.Name = "BtnAgregarTallas"
+        Me.BtnAgregarTallas.Size = New System.Drawing.Size(77, 22)
+        Me.BtnAgregarTallas.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.BtnAgregarTallas.TabIndex = 6
+        Me.BtnAgregarTallas.Text = "Agregar"
+        '
+        'ListSeleccionarTallas
+        '
+        Me.ListSeleccionarTallas.Location = New System.Drawing.Point(15, 27)
+        Me.ListSeleccionarTallas.Name = "ListSeleccionarTallas"
+        Me.ListSeleccionarTallas.Size = New System.Drawing.Size(181, 197)
+        Me.ListSeleccionarTallas.TabIndex = 2
+        Me.ListSeleccionarTallas.UseCompatibleStateImageBehavior = False
+        Me.ListSeleccionarTallas.View = System.Windows.Forms.View.List
+        '
+        'ButtonX2
+        '
+        Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX2.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonX2.Location = New System.Drawing.Point(965, 12)
+        Me.ButtonX2.Name = "ButtonX2"
+        Me.ButtonX2.Size = New System.Drawing.Size(123, 32)
+        Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX2.TabIndex = 1
+        Me.ButtonX2.Text = "Cerrar Detalle de Partida"
+        '
+        'DGTallasCantPrecios
+        '
+        Me.DGTallasCantPrecios.AllowUserToAddRows = False
+        Me.DGTallasCantPrecios.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGTallasCantPrecios.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGTallasCantPrecios.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DGTallasCantPrecios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGTallasCantPrecios.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DGTallasCantPrecios.EnableHeadersVisualStyles = False
+        Me.DGTallasCantPrecios.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.DGTallasCantPrecios.Location = New System.Drawing.Point(9, 8)
+        Me.DGTallasCantPrecios.Name = "DGTallasCantPrecios"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGTallasCantPrecios.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGTallasCantPrecios.RowsDefaultCellStyle = DataGridViewCellStyle5
+        Me.DGTallasCantPrecios.Size = New System.Drawing.Size(910, 364)
+        Me.DGTallasCantPrecios.TabIndex = 0
+        '
+        'SuperTabItem4
+        '
+        Me.SuperTabItem4.AttachedControl = Me.SuperTabControlPanel4
+        Me.SuperTabItem4.GlobalItem = False
+        Me.SuperTabItem4.Name = "SuperTabItem4"
+        Me.SuperTabItem4.Text = "Tallas, Cantidades, Distribución y Precio"
+        '
+        'SuperTabControlPanel6
+        '
+        Me.SuperTabControlPanel6.Controls.Add(Me.GPHabilitaciones)
+        Me.SuperTabControlPanel6.Controls.Add(Me.GPTelas)
+        Me.SuperTabControlPanel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel6.Location = New System.Drawing.Point(0, 0)
+        Me.SuperTabControlPanel6.Name = "SuperTabControlPanel6"
+        Me.SuperTabControlPanel6.Size = New System.Drawing.Size(922, 396)
+        Me.SuperTabControlPanel6.TabIndex = 2
+        Me.SuperTabControlPanel6.TabItem = Me.SuperTabItem5
+        '
+        'GPHabilitaciones
+        '
+        Me.GPHabilitaciones.CanvasColor = System.Drawing.SystemColors.Control
+        Me.GPHabilitaciones.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GPHabilitaciones.Controls.Add(Me.ButtonX3)
+        Me.GPHabilitaciones.Controls.Add(Me.DGHabilitaciones)
+        Me.GPHabilitaciones.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GPHabilitaciones.Location = New System.Drawing.Point(12, 145)
+        Me.GPHabilitaciones.Name = "GPHabilitaciones"
+        Me.GPHabilitaciones.Size = New System.Drawing.Size(897, 199)
+        '
+        '
+        '
+        Me.GPHabilitaciones.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.GPHabilitaciones.Style.BackColorGradientAngle = 90
+        Me.GPHabilitaciones.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.GPHabilitaciones.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPHabilitaciones.Style.BorderBottomWidth = 1
+        Me.GPHabilitaciones.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.GPHabilitaciones.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPHabilitaciones.Style.BorderLeftWidth = 1
+        Me.GPHabilitaciones.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPHabilitaciones.Style.BorderRightWidth = 1
+        Me.GPHabilitaciones.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPHabilitaciones.Style.BorderTopWidth = 1
+        Me.GPHabilitaciones.Style.CornerDiameter = 4
+        Me.GPHabilitaciones.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.GPHabilitaciones.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.GPHabilitaciones.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.GPHabilitaciones.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        '
+        '
+        '
+        Me.GPHabilitaciones.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.GPHabilitaciones.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.GPHabilitaciones.TabIndex = 4
+        Me.GPHabilitaciones.Text = "Habilitaciones"
+        '
+        'ButtonX3
+        '
+        Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX3.Location = New System.Drawing.Point(783, 3)
+        Me.ButtonX3.Name = "ButtonX3"
+        Me.ButtonX3.Size = New System.Drawing.Size(105, 27)
+        Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX3.TabIndex = 4
+        Me.ButtonX3.Text = "ButtonX3"
+        '
+        'DGHabilitaciones
+        '
+        Me.DGHabilitaciones.AllowUserToAddRows = False
+        Me.DGHabilitaciones.AllowUserToDeleteRows = False
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGHabilitaciones.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGHabilitaciones.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        Me.DGHabilitaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGHabilitaciones.DefaultCellStyle = DataGridViewCellStyle8
+        Me.DGHabilitaciones.EnableHeadersVisualStyles = False
+        Me.DGHabilitaciones.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.DGHabilitaciones.Location = New System.Drawing.Point(13, 3)
+        Me.DGHabilitaciones.Name = "DGHabilitaciones"
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGHabilitaciones.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGHabilitaciones.RowsDefaultCellStyle = DataGridViewCellStyle10
+        Me.DGHabilitaciones.Size = New System.Drawing.Size(764, 169)
+        Me.DGHabilitaciones.TabIndex = 3
+        '
+        'GPTelas
+        '
+        Me.GPTelas.CanvasColor = System.Drawing.SystemColors.Control
+        Me.GPTelas.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GPTelas.Controls.Add(Me.ButtonX1)
+        Me.GPTelas.Controls.Add(Me.DGTelas)
+        Me.GPTelas.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GPTelas.Location = New System.Drawing.Point(12, 3)
+        Me.GPTelas.Name = "GPTelas"
+        Me.GPTelas.Size = New System.Drawing.Size(897, 136)
+        '
+        '
+        '
+        Me.GPTelas.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.GPTelas.Style.BackColorGradientAngle = 90
+        Me.GPTelas.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.GPTelas.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPTelas.Style.BorderBottomWidth = 1
+        Me.GPTelas.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.GPTelas.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPTelas.Style.BorderLeftWidth = 1
+        Me.GPTelas.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPTelas.Style.BorderRightWidth = 1
+        Me.GPTelas.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPTelas.Style.BorderTopWidth = 1
+        Me.GPTelas.Style.CornerDiameter = 4
+        Me.GPTelas.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.GPTelas.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.GPTelas.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.GPTelas.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        '
+        '
+        '
+        Me.GPTelas.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.GPTelas.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.GPTelas.TabIndex = 3
+        Me.GPTelas.Text = "Telas"
+        '
+        'ButtonX1
+        '
+        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.ButtonX1.Location = New System.Drawing.Point(783, 3)
+        Me.ButtonX1.Name = "ButtonX1"
+        Me.ButtonX1.Size = New System.Drawing.Size(105, 27)
+        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX1.TabIndex = 4
+        Me.ButtonX1.Text = "ButtonX1"
+        '
+        'DGTelas
+        '
+        Me.DGTelas.AllowUserToAddRows = False
+        Me.DGTelas.AllowUserToDeleteRows = False
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGTelas.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGTelas.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        Me.DGTelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGTelas.DefaultCellStyle = DataGridViewCellStyle13
+        Me.DGTelas.EnableHeadersVisualStyles = False
+        Me.DGTelas.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.DGTelas.Location = New System.Drawing.Point(13, 3)
+        Me.DGTelas.Name = "DGTelas"
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGTelas.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGTelas.RowsDefaultCellStyle = DataGridViewCellStyle15
+        Me.DGTelas.Size = New System.Drawing.Size(764, 102)
+        Me.DGTelas.TabIndex = 3
+        '
+        'SuperTabItem5
+        '
+        Me.SuperTabItem5.AttachedControl = Me.SuperTabControlPanel6
+        Me.SuperTabItem5.GlobalItem = False
+        Me.SuperTabItem5.Name = "SuperTabItem5"
+        Me.SuperTabItem5.Text = "Telas y Habilitaciones"
+        Me.SuperTabItem5.Visible = False
+        '
+        'SuperTabControlPanel7
+        '
+        Me.SuperTabControlPanel7.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel7.Location = New System.Drawing.Point(0, 0)
+        Me.SuperTabControlPanel7.Name = "SuperTabControlPanel7"
+        Me.SuperTabControlPanel7.Size = New System.Drawing.Size(922, 396)
+        Me.SuperTabControlPanel7.TabIndex = 4
+        Me.SuperTabControlPanel7.TabItem = Me.SuperTabItem7
+        '
+        'SuperTabItem7
+        '
+        Me.SuperTabItem7.AttachedControl = Me.SuperTabControlPanel7
+        Me.SuperTabItem7.GlobalItem = False
+        Me.SuperTabItem7.Name = "SuperTabItem7"
+        Me.SuperTabItem7.Text = "SuperTabItem7"
+        Me.SuperTabItem7.Visible = False
+        '
+        'SuperTabControlPanel8
+        '
+        Me.SuperTabControlPanel8.Controls.Add(Me.DataGridViewX2)
+        Me.SuperTabControlPanel8.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel8.Location = New System.Drawing.Point(0, 0)
+        Me.SuperTabControlPanel8.Name = "SuperTabControlPanel8"
+        Me.SuperTabControlPanel8.Size = New System.Drawing.Size(922, 396)
+        Me.SuperTabControlPanel8.TabIndex = 3
+        Me.SuperTabControlPanel8.TabItem = Me.SuperTabItem6
+        '
+        'DataGridViewX2
+        '
+        Me.DataGridViewX2.AllowUserToAddRows = False
+        Me.DataGridViewX2.AllowUserToDeleteRows = False
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridViewX2.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewX2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
+        Me.DataGridViewX2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewX2.DefaultCellStyle = DataGridViewCellStyle18
+        Me.DataGridViewX2.EnableHeadersVisualStyles = False
+        Me.DataGridViewX2.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.DataGridViewX2.Location = New System.Drawing.Point(8, 42)
+        Me.DataGridViewX2.Name = "DataGridViewX2"
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle19.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewX2.RowHeadersDefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataGridViewX2.RowsDefaultCellStyle = DataGridViewCellStyle20
+        Me.DataGridViewX2.Size = New System.Drawing.Size(377, 239)
+        Me.DataGridViewX2.TabIndex = 1
+        Me.DataGridViewX2.Visible = False
+        '
+        'SuperTabItem6
+        '
+        Me.SuperTabItem6.AttachedControl = Me.SuperTabControlPanel8
+        Me.SuperTabItem6.GlobalItem = False
+        Me.SuperTabItem6.Name = "SuperTabItem6"
+        Me.SuperTabItem6.Text = "Logos"
+        Me.SuperTabItem6.Visible = False
+        '
+        'TabDatosPedido
+        '
+        Me.TabDatosPedido.AttachedControl = Me.SuperTabControlPanel3
+        Me.TabDatosPedido.GlobalItem = False
+        Me.TabDatosPedido.Name = "TabDatosPedido"
+        Me.TabDatosPedido.Text = "Datos del Pedido"
+        '
         'SuperTabControlPanel9
         '
         Me.SuperTabControlPanel9.Controls.Add(Me.GroupPanel1)
@@ -3453,19 +3466,6 @@ Partial Class FrmPedidoAltaEdicion
         Me.SuperTabControlPanel2.TabIndex = 0
         Me.SuperTabControlPanel2.TabItem = Me.SuperTabItem1
         '
-        'ChkOmitirInventario
-        '
-        '
-        '
-        '
-        Me.ChkOmitirInventario.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ChkOmitirInventario.Location = New System.Drawing.Point(799, 35)
-        Me.ChkOmitirInventario.Name = "ChkOmitirInventario"
-        Me.ChkOmitirInventario.Size = New System.Drawing.Size(109, 23)
-        Me.ChkOmitirInventario.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ChkOmitirInventario.TabIndex = 112
-        Me.ChkOmitirInventario.Text = "Omitir Inventario"
-        '
         'FrmPedidoAltaEdicion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3478,6 +3478,14 @@ Partial Class FrmPedidoAltaEdicion
         Me.PanPrincipal.ResumeLayout(False)
         CType(Me.TabPrincipal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPrincipal.ResumeLayout(False)
+        Me.SuperTabControlPanel1.ResumeLayout(False)
+        Me.GPDatosBasicos.ResumeLayout(False)
+        Me.GPDatosCliente.ResumeLayout(False)
+        Me.GPDatosLugarCobro.ResumeLayout(False)
+        Me.GPAdmiteEntregaParcial.ResumeLayout(False)
+        Me.GroupBox8.ResumeLayout(False)
+        Me.GPDatosInspeccion.ResumeLayout(False)
+        Me.GroupBox4.ResumeLayout(False)
         Me.SuperTabControlPanel3.ResumeLayout(False)
         Me.PanDetallePartida.ResumeLayout(False)
         CType(Me.SuperTabControl2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3494,14 +3502,6 @@ Partial Class FrmPedidoAltaEdicion
         CType(Me.DGTelas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControlPanel8.ResumeLayout(False)
         CType(Me.DataGridViewX2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SuperTabControlPanel1.ResumeLayout(False)
-        Me.GPDatosBasicos.ResumeLayout(False)
-        Me.GPDatosCliente.ResumeLayout(False)
-        Me.GPDatosLugarCobro.ResumeLayout(False)
-        Me.GPAdmiteEntregaParcial.ResumeLayout(False)
-        Me.GroupBox8.ResumeLayout(False)
-        Me.GPDatosInspeccion.ResumeLayout(False)
-        Me.GroupBox4.ResumeLayout(False)
         Me.SuperTabControlPanel9.ResumeLayout(False)
         Me.GroupPanel1.ResumeLayout(False)
         Me.GroupPanel2.ResumeLayout(False)
@@ -3701,5 +3701,5 @@ Partial Class FrmPedidoAltaEdicion
     Friend WithEvents LabelX49 As DevComponents.DotNetBar.LabelX
     Friend WithEvents TxtLugarCobroAtencion As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX48 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents ChkOmitirInventario As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents ChkUsarInventarioDisponible As DevComponents.DotNetBar.Controls.CheckBoxX
 End Class

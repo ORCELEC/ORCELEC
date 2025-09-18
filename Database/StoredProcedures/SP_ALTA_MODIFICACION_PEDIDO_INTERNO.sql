@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SP_ALTA_MODIFICACION_PEDIDO_INTERNO]    Script Date: 06/08/2025 02:21:46 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_ALTA_MODIFICACION_PEDIDO_INTERNO]    Script Date: 18/09/2025 01:37:28 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -32,6 +32,7 @@ CREATE PROCEDURE [dbo].[SP_ALTA_MODIFICACION_PEDIDO_INTERNO]
 	@FormaPago nvarchar(255),
 	@CuentaPago nvarchar(255),
 	@BancoPago nvarchar(255),
+	@OmitirInventario bit,
 	@TipoPedido nvarchar(50),
 	@CondicionesPagoDias numeric(18,0),
 	@CondicionesPagoTipoDias nvarchar(50),
@@ -86,9 +87,11 @@ begin
 			1,
             1,
 			CASE @TipoPedido 
-				WHEN 'CON CONTRATO' THEN 'N' 
+				WHEN 'CONFECCIÓN' THEN 'N' 
 				WHEN 'COMPRA' THEN 'C'
 				WHEN 'MUESTRA' THEN 'M'
+				WHEN 'FACTURACIÓN' THEN 'L'
+				WHEN 'FACTURACION' THEN 'L'
 				ELSE
 					NULL 
 			END,
@@ -132,6 +135,7 @@ begin
 				   ,[FormaPago]
 				   ,[CuentaPago]
 				   ,[BancoPago]
+				   ,[OmitirInventario]
 				   ,[CondicionesPagoDias]
 				   ,[CondicionesPagoTipoDias]
 				   ,[CondicionesPagoCondicion]
@@ -165,6 +169,7 @@ begin
 				   @FormaPago,
 				   @CuentaPago,
 				   @BancoPago,
+				   @OmitirInventario,
 				   @CondicionesPagoDias,
 				   @CondicionesPagoTipoDias,
 				   @CondicionesPagoCondicion,
@@ -202,6 +207,7 @@ begin
 			FormaPago = @FormaPago,
 			CuentaPago = @CuentaPago,
 			BancoPago = @BancoPago,
+			OmitirInventario = @OmitirInventario,
 			CondicionesPagoDias = @CondicionesPagoDias,
 			CondicionesPagoTipoDias = @CondicionesPagoTipoDias,
 			@CondicionesPagoCondicion = @CondicionesPagoCondicion,
