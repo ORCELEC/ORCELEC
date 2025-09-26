@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[CATALOGO_TELA]    Script Date: 17/07/2025 01:45:06 p. m. ******/
+/****** Object:  Table [dbo].[CATALOGO_TELA]    Script Date: 26/09/2025 01:48:02 p. m. ******/
 SET ANSI_NULLS ON
 GO
 

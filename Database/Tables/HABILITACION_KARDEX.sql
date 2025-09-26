@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[HABILITACION_KARDEX]    Script Date: 17/07/2025 01:45:22 p. m. ******/
+/****** Object:  Table [dbo].[HABILITACION_KARDEX]    Script Date: 26/09/2025 01:47:28 p. m. ******/
 SET ANSI_NULLS ON
 GO
 

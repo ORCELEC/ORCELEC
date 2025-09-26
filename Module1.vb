@@ -92,7 +92,7 @@ Module Module1
                 Unidad = "U:\"
             ElseIf Directorio = "2" Then
                 Servidor = "SISTEMASUNO\SISTEMAS"
-                NombreBD = "NORCELEC"
+                NombreBD = "NORCELEC22092025"
                 NombreDSN = "SQL"
                 Unidad = "C:\"
             End If
