@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[OP_AUTORIZAR_REGRESA_ASIGNACION]    Script Date: 07/08/2025 06:08:29 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[OP_AUTORIZAR_REGRESA_ASIGNACION]    Script Date: 03/10/2025 06:25:56 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -26,6 +26,8 @@ BEGIN
 	DECLARE @CVE_MAQUILADORORIGINAL BIGINT
 	DECLARE @NOM_MAQUILADORORIGINAL NVARCHAR(255)
 	DECLARE @CONSECUTIVO BIGINT
+	DECLARE @OMITIRINVENTARIO BIT
+	DECLARE @CONSECUTIVOINV BIGINT
 
     -- Insert statements for procedure here
 	IF @ESTATUS = 'AUTORIZADA'
@@ -50,7 +52,7 @@ BEGIN
 			AND No_OP = @NO_OP
 
 			--OBTIENE EL ULTIMO CONSECUTIVO DE LAS OBSERVACIONES DEL PROCESO DE AUTORIZACIÓN
-			SELECT ISNULL(MAX(Consecutivo),0) FROM OP_OBSERVACIONESAUTORIZAR WHERE Empresa = @EMPRESA AND No_OP = @NO_OP
+			SELECT @CONSECUTIVO = ISNULL(MAX(Consecutivo),0) FROM OP_OBSERVACIONESAUTORIZAR WHERE Empresa = @EMPRESA AND No_OP = @NO_OP
 
 			--AUMENTE EN 1 EL CONSECUTIVO
 			SET @CONSECUTIVO +=1
@@ -71,8 +73,7 @@ BEGIN
 				FECHAHORA,
 				COMPUTADORA
 			)
-			VALUES
-			(
+			SELECT
 				@EMPRESA,
 				@NO_OP,
 				@CONSECUTIVO,
@@ -85,7 +86,6 @@ BEGIN
 				@USUARIO,
 				GETDATE(),
 				@COMPUTADORA
-			)
 		END
 		ELSE
 		BEGIN
@@ -101,7 +101,7 @@ BEGIN
 			AND No_OP = @NO_OP
 
 			--OBTIENE EL ULTIMO CONSECUTIVO DE LAS OBSERVACIONES DEL PROCESO DE AUTORIZACIÓN
-			SELECT ISNULL(MAX(Consecutivo),0) FROM OP_OBSERVACIONESAUTORIZAR WHERE Empresa = @EMPRESA AND No_OP = @NO_OP
+			SELECT @CONSECUTIVO = ISNULL(MAX(Consecutivo),0) FROM OP_OBSERVACIONESAUTORIZAR WHERE Empresa = @EMPRESA AND No_OP = @NO_OP
 
 			--AUMENTE EN 1 EL CONSECUTIVO
 			SET @CONSECUTIVO +=1
@@ -139,7 +139,52 @@ BEGIN
 			)
 
 		END
-	END
+
+		--SELECT @OMITIRINVENTARIO = MAX(CONVERT(TINYINT, ISNULL(PI.OmitirInventario,0)))
+  --      FROM PEDIDO_INTERNO PI
+  --      INNER JOIN PEDIDO_INTERNO_TALLAS PIT
+  --              ON PI.Empresa = PIT.Empresa AND PI.No_Pedido = PIT.No_Pedido
+  --      WHERE PIT.Empresa = @EMPRESA AND PIT.No_OP = @NO_OP
+
+  --      IF @OMITIRINVENTARIO = 1
+  --      BEGIN
+		--	--Actualiza inventario de producto terminado con las cantidades de la OP autorizada
+		--	MERGE INTO PRENDA_INVENTARIO AS IPT
+		--	USING (
+		--			SELECT @EMPRESA AS Empresa, PIT.Cve_Prenda, PIT.Talla, SUM(PIT.Cantidad) AS Cantidad
+		--			FROM PEDIDO_INTERNO_TALLAS PIT
+		--			WHERE PIT.Empresa = @EMPRESA AND PIT.No_OP = @NO_OP
+		--			GROUP BY PIT.Cve_Prenda, PIT.Talla
+		--	) AS SRC
+		--	ON IPT.Empresa = SRC.Empresa AND IPT.Cve_Prenda = SRC.Cve_Prenda AND IPT.Talla = SRC.Talla
+		--	WHEN MATCHED THEN
+		--			UPDATE SET IPT.Cantidad = IPT.Cantidad + SRC.Cantidad
+		--	WHEN NOT MATCHED THEN
+		--			INSERT (Empresa, Cve_Prenda, Talla, Cantidad)
+		--			VALUES (SRC.Empresa, SRC.Cve_Prenda, SRC.Talla, SRC.Cantidad);
+
+		--	--Registra movimiento en bitácora de inventario
+  --          SELECT @CONSECUTIVOINV = ISNULL(MAX(Consecutivo),0)
+  --          FROM PRENDA_INVENTARIO_BITACORA
+  --          WHERE Empresa = @EMPRESA AND No_OP = @NO_OP;
+
+  --          INSERT INTO PRENDA_INVENTARIO_BITACORA
+  --              (Empresa, No_OP, Consecutivo, Cve_Prenda, Talla, Cantidad, USUARIO, FECHAHORA, COMPUTADORA)
+  --          SELECT
+  --              @EMPRESA AS Empresa,
+  --              @NO_OP AS No_OP,
+  --              @CONSECUTIVOINV + ROW_NUMBER() OVER (ORDER BY PIT.Cve_Prenda, PIT.Talla) AS Consecutivo,
+  --              PIT.Cve_Prenda,
+  --              PIT.Talla,
+  --              SUM(PIT.Cantidad) AS Cantidad,
+  --              @USUARIO,
+  --              GETDATE(),
+  --              @COMPUTADORA
+  --          FROM PEDIDO_INTERNO_TALLAS PIT
+  --          WHERE PIT.Empresa = @EMPRESA AND PIT.No_OP = @NO_OP
+  --          GROUP BY PIT.Cve_Prenda, PIT.Talla;
+  --      END
+    END
 
 	IF @ESTATUS = 'REGRESARASIGNACION'
 	BEGIN
@@ -161,7 +206,7 @@ BEGIN
 		AND No_OP = @NO_OP
 
 		--OBTIENE EL ULTIMO CONSECUTIVO DE LAS OBSERVACIONES DEL PROCESO DE AUTORIZACIÓN
-		SELECT ISNULL(MAX(Consecutivo),0) FROM OP_OBSERVACIONESAUTORIZAR WHERE Empresa = @EMPRESA AND No_OP = @NO_OP
+		SELECT @CONSECUTIVO = ISNULL(MAX(Consecutivo),0) FROM OP_OBSERVACIONESAUTORIZAR WHERE Empresa = @EMPRESA AND No_OP = @NO_OP
 
 		--AUMENTE EN 1 EL CONSECUTIVO
 		SET @CONSECUTIVO +=1
@@ -180,8 +225,7 @@ BEGIN
 			FECHAHORA,
 			COMPUTADORA
 		)
-		VALUES
-		(
+		SELECT
 			@EMPRESA,
 			@NO_OP,
 			@CONSECUTIVO,
@@ -192,7 +236,6 @@ BEGIN
 			@USUARIO,
 			GETDATE(),
 			@COMPUTADORA
-		)
 	END
 END
 GO
