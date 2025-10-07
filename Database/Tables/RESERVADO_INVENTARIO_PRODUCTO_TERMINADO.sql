@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[RESERVADO_INVENTARIO_PRODUCTO_TERMINADO]    Script Date: 02/09/2025 12:23:15 p. m. ******/
+/****** Object:  Table [dbo].[RESERVADO_INVENTARIO_PRODUCTO_TERMINADO]    Script Date: 06/10/2025 06:07:49 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -18,6 +18,9 @@ CREATE TABLE [dbo].[RESERVADO_INVENTARIO_PRODUCTO_TERMINADO](
 	[Prioridad] [bigint] NOT NULL,
 	[Talla] [nvarchar](50) NOT NULL,
 	[Cantidad] [numeric](18, 0) NULL,
+	[USUARIO] [bigint] NULL,
+	[FECHAHORA] [datetime] NULL,
+	[COMPUTADORA] [nvarchar](50) NULL,
  CONSTRAINT [PK_RESERVADO_INVENTARIO_PRODUCTO_TERMINADO] PRIMARY KEY CLUSTERED 
 (
 	[Empresa] ASC,
