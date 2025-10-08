@@ -9,7 +9,7 @@ Public Class FrmInicioSesion
     Dim AbrirBD As New ConectaBD
 
     Private Sub FrmInicioSesion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        'MessageBox.Show(ConectaBD.Desencriptar("ÙÙÞ"))
+        'MessageBox.Show(ConectaBD.Desencriptar("ãÒåÛÇ"))
         'TextBoxX1.Text = ConectaBD.Encriptar("SANTIAG0")
         CrearAccesoDirecto()
         'MessageBox.Show(AbrirBD.Desencriptar("ÝÒÞÖÊÒª«"))

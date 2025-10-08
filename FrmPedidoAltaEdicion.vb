@@ -1294,12 +1294,13 @@ Public Class FrmPedidoAltaEdicion
                             ElseIf (UCase(ExcelHoja.Cells(2, 1).Value.ToString) = "FACTURACIÓN") Then
                                 TxtTipoPedido.Text = "FACTURACIÓN"
                             End If
-                            Dim valorUsarInventario = ExcelHoja.Cells(2, 2).Value
-                            If valorUsarInventario Is Nothing OrElse TypeOf valorUsarInventario Is DBNull Then
-                                ChkUsarInventarioDisponible.Checked = False
-                            Else
-                                ChkUsarInventarioDisponible.Checked = (UCase(valorUsarInventario.ToString().Trim()) = "SI")
-                            End If
+                            ChkOmitirInventario.Checked = (UCase(ExcelHoja.Cells(2, 2).Value.ToString()) = "SI")
+                            'Dim valorUsarInventario = ExcelHoja.Cells(2, 2).Value
+                            'If valorUsarInventario Is Nothing OrElse TypeOf valorUsarInventario Is DBNull Then
+                            '    ChkUsarInventarioDisponible.Checked = False
+                            'Else
+                            '    ChkUsarInventarioDisponible.Checked = (UCase(valorUsarInventario.ToString().Trim()) = "SI")
+                            'End If
                             'SE RECUPERAN DATOS DEL CLIENTE
                             BDComando.Parameters.Clear()
                             BDComando.CommandType = CommandType.Text
@@ -2633,7 +2634,8 @@ Public Class FrmPedidoAltaEdicion
             BDComando.Parameters.Add("@FORMAPAGO", SqlDbType.NVarChar)
             BDComando.Parameters.Add("@CUENTAPAGO", SqlDbType.NVarChar)
             BDComando.Parameters.Add("@BANCOPAGO", SqlDbType.NVarChar)
-            BDComando.Parameters.Add("@USARINVENTARIODISPONIBLE", SqlDbType.Bit)
+            BDComando.Parameters.Add("@OMITIRINVENTARIO", SqlDbType.Bit)
+            'BDComando.Parameters.Add("@USARINVENTARIODISPONIBLE", SqlDbType.Bit)
             BDComando.Parameters.Add("@TIPOPEDIDO", SqlDbType.NVarChar)
             BDComando.Parameters.Add("@CONDICIONESPAGODIAS", SqlDbType.BigInt)
             BDComando.Parameters.Add("@CONDICIONESPAGOTIPODIAS", SqlDbType.NVarChar)
@@ -2680,7 +2682,8 @@ Public Class FrmPedidoAltaEdicion
             BDComando.Parameters("@FORMAPAGO").Value = TxtFormaPago.Text
             BDComando.Parameters("@CUENTAPAGO").Value = TxtCuentaPago.Text
             BDComando.Parameters("@BANCOPAGO").Value = TxtBancoPago.Text
-            BDComando.Parameters("@USARINVENTARIODISPONIBLE").Value = ChkUsarInventarioDisponible.Checked
+            BDComando.Parameters("@OMITIRINVENTARIO").Value = ChkOmitirInventario.Checked
+            'BDComando.Parameters("@USARINVENTARIODISPONIBLE").Value = ChkUsarInventarioDisponible.Checked
             BDComando.Parameters("@TIPOPEDIDO").Value = TxtTipoPedido.Text
             BDComando.Parameters("@CONDICIONESPAGODIAS").Value = CmbCondPagoDias.SelectedItem.ToString()
             BDComando.Parameters("@CONDICIONESPAGOTIPODIAS").Value = CmbCondPagoTipoDia.SelectedItem.ToString()

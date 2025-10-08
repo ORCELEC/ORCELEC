@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[PRENDA_INVENTARIO_BITACORA]    Script Date: 11/09/2025 02:08:33 p. m. ******/
+/****** Object:  Table [dbo].[PRENDA_INVENTARIO_BITACORA]    Script Date: 08/10/2025 05:48:07 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -16,7 +16,10 @@ CREATE TABLE [dbo].[PRENDA_INVENTARIO_BITACORA](
 	[Talla] [nvarchar](50) NOT NULL,
 	[TipoMovimiento] [nvarchar](50) NOT NULL,
 	[Almacen] [nvarchar](50) NOT NULL,
+	[TipoInventario] [nvarchar](50) NULL,
 	[No_OP] [numeric](18, 0) NULL,
+	[Cve_Maquilador] [bigint] NULL,
+	[Nom_Maquilador] [nvarchar](150) NULL,
 	[Cantidad] [bigint] NOT NULL,
 	[CantidadAvance] [bigint] NOT NULL,
 	[USUARIO] [bigint] NOT NULL,

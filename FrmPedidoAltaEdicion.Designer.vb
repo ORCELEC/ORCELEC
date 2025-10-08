@@ -240,6 +240,7 @@ Partial Class FrmPedidoAltaEdicion
         Me.SuperTabControlPanel5 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.SuperTabItem1 = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.ChkOmitirInventario = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.PanPrincipal.SuspendLayout()
         CType(Me.TabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPrincipal.SuspendLayout()
@@ -363,6 +364,7 @@ Partial Class FrmPedidoAltaEdicion
         '
         Me.GPDatosBasicos.CanvasColor = System.Drawing.SystemColors.Control
         Me.GPDatosBasicos.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GPDatosBasicos.Controls.Add(Me.ChkOmitirInventario)
         Me.GPDatosBasicos.Controls.Add(Me.ChkUsarInventarioDisponible)
         Me.GPDatosBasicos.Controls.Add(Me.GPDatosCliente)
         Me.GPDatosBasicos.Controls.Add(Me.GPDatosLugarCobro)
@@ -457,6 +459,7 @@ Partial Class FrmPedidoAltaEdicion
         Me.ChkUsarInventarioDisponible.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ChkUsarInventarioDisponible.TabIndex = 112
         Me.ChkUsarInventarioDisponible.Text = "Usar Inventario Disponible"
+        Me.ChkUsarInventarioDisponible.Visible = False
         '
         'GPDatosCliente
         '
@@ -3466,6 +3469,19 @@ Partial Class FrmPedidoAltaEdicion
         Me.SuperTabControlPanel2.TabIndex = 0
         Me.SuperTabControlPanel2.TabItem = Me.SuperTabItem1
         '
+        'ChkOmitirInventario
+        '
+        '
+        '
+        '
+        Me.ChkOmitirInventario.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.ChkOmitirInventario.Location = New System.Drawing.Point(593, 7)
+        Me.ChkOmitirInventario.Name = "ChkOmitirInventario"
+        Me.ChkOmitirInventario.Size = New System.Drawing.Size(194, 23)
+        Me.ChkOmitirInventario.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ChkOmitirInventario.TabIndex = 113
+        Me.ChkOmitirInventario.Text = "Omitir Inventario"
+        '
         'FrmPedidoAltaEdicion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3702,4 +3718,5 @@ Partial Class FrmPedidoAltaEdicion
     Friend WithEvents TxtLugarCobroAtencion As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX48 As DevComponents.DotNetBar.LabelX
     Friend WithEvents ChkUsarInventarioDisponible As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents ChkOmitirInventario As DevComponents.DotNetBar.Controls.CheckBoxX
 End Class

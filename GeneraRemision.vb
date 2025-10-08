@@ -1379,8 +1379,22 @@ SolicitarCantidadDeImpresiones:
                                 RptViewer.ShowDialog(Me)
                             End If
 
+                            ' Colección de clientes permitidos (según tu lista)
+                            Dim clientesPermitidos As New HashSet(Of Integer) From {
+                                556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 567,
+                                568, 569, 570, 571, 572, 573, 574, 575, 576, 577, 578, 579,
+                                580, 581, 582, 583, 584, 585, 586, 587, 588, 589, 590, 591,
+                                592, 593, 594, 595, 596, 597, 598, 599, 600, 601, 602, 603,
+                                604, 605, 606, 607, 608, 610, 611, 612, 613, 614, 615, 616,
+                                617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 627, 628,
+                                629, 630, 631, 632, 633, 634, 635, 636, 637, 639, 640, 641,
+                                642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 654,
+                                655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666,
+                                667, 668, 669, 675, 676, 677, 678, 679, 680
+                            }
+
                             ' Clientes con Carta de Garantía
-                            If Enumerable.Range(556, 53).Contains(Cve_Cliente) Then
+                            If clientesPermitidos.Contains(Cve_Cliente) Then
                                 Dim CartaGarantiaImpresion As New CartaGarantiaFP
                                 CartaGarantiaImpresion.SetDatabaseLogon(ConectaBD.UsuarioReportes, ConectaBD.PasswordReportes)
                                 CartaGarantiaImpresion.SetParameterValue("@Empresa", ConectaBD.Cve_Empresa)
@@ -1536,7 +1550,18 @@ SolicitarCantidadDeImpresiones:
                             Or Cve_Cliente = 586 Or Cve_Cliente = 587 Or Cve_Cliente = 588 Or Cve_Cliente = 589 Or Cve_Cliente = 590 Or Cve_Cliente = 591 _
                             Or Cve_Cliente = 592 Or Cve_Cliente = 593 Or Cve_Cliente = 594 Or Cve_Cliente = 595 Or Cve_Cliente = 596 Or Cve_Cliente = 597 _
                             Or Cve_Cliente = 598 Or Cve_Cliente = 599 Or Cve_Cliente = 600 Or Cve_Cliente = 601 Or Cve_Cliente = 602 Or Cve_Cliente = 603 _
-                            Or Cve_Cliente = 604 Or Cve_Cliente = 605 Or Cve_Cliente = 606 Or Cve_Cliente = 607 Or Cve_Cliente = 608 Then
+                            Or Cve_Cliente = 604 Or Cve_Cliente = 605 Or Cve_Cliente = 606 Or Cve_Cliente = 607 Or Cve_Cliente = 608 Or Cve_Cliente = 610 _
+                            Or Cve_Cliente = 611 Or Cve_Cliente = 612 Or Cve_Cliente = 613 Or Cve_Cliente = 614 Or Cve_Cliente = 615 Or Cve_Cliente = 616 _
+                            Or Cve_Cliente = 617 Or Cve_Cliente = 618 Or Cve_Cliente = 619 Or Cve_Cliente = 620 Or Cve_Cliente = 621 Or Cve_Cliente = 622 _
+                            Or Cve_Cliente = 623 Or Cve_Cliente = 624 Or Cve_Cliente = 625 Or Cve_Cliente = 626 Or Cve_Cliente = 627 Or Cve_Cliente = 628 _
+                            Or Cve_Cliente = 629 Or Cve_Cliente = 630 Or Cve_Cliente = 631 Or Cve_Cliente = 632 Or Cve_Cliente = 633 Or Cve_Cliente = 634 _
+                            Or Cve_Cliente = 635 Or Cve_Cliente = 636 Or Cve_Cliente = 637 Or Cve_Cliente = 639 Or Cve_Cliente = 640 Or Cve_Cliente = 641 _
+                            Or Cve_Cliente = 642 Or Cve_Cliente = 643 Or Cve_Cliente = 644 Or Cve_Cliente = 645 Or Cve_Cliente = 646 Or Cve_Cliente = 647 _
+                            Or Cve_Cliente = 648 Or Cve_Cliente = 649 Or Cve_Cliente = 650 Or Cve_Cliente = 651 Or Cve_Cliente = 652 Or Cve_Cliente = 654 _
+                            Or Cve_Cliente = 655 Or Cve_Cliente = 656 Or Cve_Cliente = 657 Or Cve_Cliente = 658 Or Cve_Cliente = 659 Or Cve_Cliente = 660 _
+                            Or Cve_Cliente = 661 Or Cve_Cliente = 662 Or Cve_Cliente = 663 Or Cve_Cliente = 664 Or Cve_Cliente = 665 Or Cve_Cliente = 666 _
+                            Or Cve_Cliente = 667 Or Cve_Cliente = 668 Or Cve_Cliente = 669 Or Cve_Cliente = 675 Or Cve_Cliente = 676 Or Cve_Cliente = 677 _
+                            Or Cve_Cliente = 678 Or Cve_Cliente = 679 Or Cve_Cliente = 680 Then
 
             Dim CartaGarantiaImpresion As New CartaGarantiaFP
 
