@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[PEDIDO_INTERNO]    Script Date: 07/08/2025 05:28:32 p. m. ******/
+/****** Object:  Table [dbo].[PEDIDO_INTERNO]    Script Date: 09/10/2025 11:29:54 a. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -36,6 +36,7 @@ CREATE TABLE [dbo].[PEDIDO_INTERNO](
 	[FormaPago] [nvarchar](255) NULL,
 	[CuentaPago] [nvarchar](255) NULL,
 	[BancoPago] [nvarchar](255) NULL,
+	[OmitirInventario] [bit] NULL,
 	[CondicionesPagoDias] [numeric](18, 0) NULL,
 	[CondicionesPagoTipoDias] [nvarchar](50) NULL,
 	[CondicionesPagoCondicion] [nvarchar](100) NULL,

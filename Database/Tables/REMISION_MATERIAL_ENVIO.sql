@@ -1,0 +1,30 @@
+USE [NORCELEC]
+GO
+
+/****** Object:  Table [dbo].[REMISION_MATERIAL_ENVIO]    Script Date: 09/10/2025 11:33:45 a. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[REMISION_MATERIAL_ENVIO](
+	[Empresa] [bigint] NOT NULL,
+	[No_Remision] [bigint] NOT NULL,
+	[FechaQueSeMando] [date] NULL,
+	[QuienSeLoLLevo] [nvarchar](255) NULL,
+	[ObservacionesAdicionales] [nvarchar](max) NULL,
+	[USUARIO] [bigint] NULL,
+	[FECHAHORA] [datetime] NULL,
+	[COMPUTADORA] [nvarchar](50) NULL,
+	[USUARIOACTUALIZO] [bigint] NULL,
+	[FECHAHORAACTUALIZO] [datetime] NULL,
+	[COMPUTADORAACTUALIZO] [nvarchar](50) NULL,
+ CONSTRAINT [PK_REMISION_MATERIAL_ENVIO] PRIMARY KEY CLUSTERED 
+(
+	[Empresa] ASC,
+	[No_Remision] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+

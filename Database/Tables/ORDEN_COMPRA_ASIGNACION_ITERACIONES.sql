@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[ORDEN_COMPRA_ASIGNACION_ITERACIONES]    Script Date: 17/07/2025 01:39:31 p. m. ******/
+/****** Object:  Table [dbo].[ORDEN_COMPRA_ASIGNACION_ITERACIONES]    Script Date: 09/10/2025 11:32:02 a. m. ******/
 SET ANSI_NULLS ON
 GO
 
