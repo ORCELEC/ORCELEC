@@ -1390,7 +1390,7 @@ SolicitarCantidadDeImpresiones:
                                 629, 630, 631, 632, 633, 634, 635, 636, 637, 639, 640, 641,
                                 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 654,
                                 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666,
-                                667, 668, 669, 675, 676, 677, 678, 679, 680
+                                667, 668, 669, 675, 676, 677, 678, 679, 680, 681, 682, 683
                             }
 
                             ' Clientes con Carta de Garantía
@@ -1561,7 +1561,7 @@ SolicitarCantidadDeImpresiones:
                             Or Cve_Cliente = 655 Or Cve_Cliente = 656 Or Cve_Cliente = 657 Or Cve_Cliente = 658 Or Cve_Cliente = 659 Or Cve_Cliente = 660 _
                             Or Cve_Cliente = 661 Or Cve_Cliente = 662 Or Cve_Cliente = 663 Or Cve_Cliente = 664 Or Cve_Cliente = 665 Or Cve_Cliente = 666 _
                             Or Cve_Cliente = 667 Or Cve_Cliente = 668 Or Cve_Cliente = 669 Or Cve_Cliente = 675 Or Cve_Cliente = 676 Or Cve_Cliente = 677 _
-                            Or Cve_Cliente = 678 Or Cve_Cliente = 679 Or Cve_Cliente = 680 Then
+                            Or Cve_Cliente = 678 Or Cve_Cliente = 679 Or Cve_Cliente = 680 Or Cve_Cliente = 681 Or Cve_Cliente = 682 Or Cve_Cliente = 683 Then
 
             Dim CartaGarantiaImpresion As New CartaGarantiaFP
 

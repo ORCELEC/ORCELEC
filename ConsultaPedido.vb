@@ -58,11 +58,11 @@ Public Class ConsultaPedido
         End Try
 
         If Departamento <> "VENTAS" Then
-            BDComando.CommandText = "SELECT * FROM PEDIDO_INTERNO WHERE STATUS = 'AUTORIZADO'"
+            BDComando.CommandText = "SELECT * FROM PEDIDO_INTERNO WHERE STATUS = 'AUTORIZADO' ORDER BY NO_PEDIDO"
             BtnAutorizarPedido.Enabled = True
             BtnCancelarPedido.Enabled = True
         Else
-            BDComando.CommandText = "SELECT * FROM PEDIDO_INTERNO PI,CLIENTE_VENDEDOR CV WHERE PI.STATUS IN ('EDICIÓN','AUTORIZADO') AND PI.Cve_Cliente = CV.Cve_Cliente AND CV.Cve_Vendedor = " & ConectaBD.Cve_Usuario
+            BDComando.CommandText = "SELECT * FROM PEDIDO_INTERNO PI,CLIENTE_VENDEDOR CV WHERE PI.STATUS IN ('EDICIÓN','AUTORIZADO') AND PI.Cve_Cliente = CV.Cve_Cliente AND CV.Cve_Vendedor = " & ConectaBD.Cve_Usuario & " ORDER BY NO_PEDIDO"
         End If
         Try
             BDComando.Connection.Open()
