@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[PRENDA_INVENTARIO_ALMACEN]    Script Date: 03/10/2025 06:47:24 p. m. ******/
+/****** Object:  Table [dbo].[PRENDA_INVENTARIO_ALMACEN]    Script Date: 16/10/2025 05:37:42 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
