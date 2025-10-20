@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[USUARIOS]    Script Date: 10/07/2025 06:45:30 p. m. ******/
+/****** Object:  Table [dbo].[USUARIOS]    Script Date: 20/10/2025 12:49:38 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -14,7 +14,7 @@ CREATE TABLE [dbo].[USUARIOS](
 	[PUESTO] [nvarchar](50) NULL,
 	[DEPARTAMENTO] [nvarchar](50) NULL,
 	[EMAIL] [nvarchar](255) NULL,
-	[CONTRASEÑA] [nvarchar](8) NULL,
+	[CONTRASEÑA] [nvarchar](20) NULL,
 	[ProgramaRutaTrabajo] [bit] NULL,
 	[STATUS] [bit] NULL,
  CONSTRAINT [PK_USUARIOS] PRIMARY KEY CLUSTERED 
