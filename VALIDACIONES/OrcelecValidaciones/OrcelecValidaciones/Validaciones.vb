@@ -404,7 +404,8 @@ Public Class Validaciones
                 MensajeAvanceOP += "<th width=200px>Maquilador</th>" 'ENCABEZADO DE COLUMNA
                 MensajeAvanceOP += "<th width=50px>OP</th>" 'ENCABEZADO DE COLUMNA
                 MensajeAvanceOP += "<th width=200px>Prenda</th>" 'ENCABEZADO DE COLUMNA
-                MensajeAvanceOP += "<th width=100px>Fecha de OP</th>" 'ENCABEZADO DE COLUMNA
+                MensajeAvanceOP += "<th width=100px>Fecha de Creación de OP</th>" 'ENCABEZADO DE COLUMNA
+                MensajeAvanceOP += "<th width=100px>Fecha de Inicio Prod. OP</th>" 'ENCABEZADO DE COLUMNA
                 MensajeAvanceOP += "<th width=100px>Fecha Vencimiento OP</th>" 'ENCABEZADO DE COLUMNA
                 MensajeAvanceOP += "<th width=200px>Cliente</th>" 'ENCABEZADO DE COLUMNA
                 MensajeAvanceOP += "<th width=100px>Materiales Recibidos Completos</th>" 'ENCABEZADO DE COLUMNA
@@ -425,6 +426,7 @@ Public Class Validaciones
                     End If
                     MensajeAvanceOP += "<td>" & BDReader("DESCRIPCIONPRENDA") & "</td>" 'DATO COLUMNA
                     MensajeAvanceOP += "<td>" & Format(BDReader("FECHACREACION"), "dd/MM/yyyy") & "</td>" 'DATO COLUMNA
+                    MensajeAvanceOP += "<td>" & Format(BDReader("FECHAINICIO"), "dd/MM/yyyy") & "</td>" 'DATO COLUMNA
                     MensajeAvanceOP += "<td>" & Format(BDReader("FECHAVENCIMIENTO"), "dd/MM/yyyy") & "</td>" 'DATO COLUMNA 
                     MensajeAvanceOP += "<td>" & BDReader("NOM_CLIENTE") & "</td>" 'DATO COLUMNA
                     If (BDReader("FaltaRecibir") > 0) Then
@@ -741,7 +743,8 @@ Public Class Validaciones
                         MensajeAvanceOPInspector += "<th width=200px>Maquilador</th>" 'ENCABEZADO DE COLUMNA
                         MensajeAvanceOPInspector += "<th width=50px>OP</th>" 'ENCABEZADO DE COLUMNA
                         MensajeAvanceOPInspector += "<th width=200px>Prenda</th>" 'ENCABEZADO DE COLUMNA
-                        MensajeAvanceOPInspector += "<th width=100px>Fecha de OP</th>" 'ENCABEZADO DE COLUMNA
+                        MensajeAvanceOPInspector += "<th width=100px>Fecha de Creación OP</th>" 'ENCABEZADO DE COLUMNA
+                        MensajeAvanceOPInspector += "<th width=100px>Fecha de Inicio Prod. OP</th>" 'ENCABEZADO DE COLUMNA
                         MensajeAvanceOPInspector += "<th width=100px>Fecha Vencimiento OP</th>" 'ENCABEZADO DE COLUMNA
                         MensajeAvanceOPInspector += "<th width=200px>Cliente</th>" 'ENCABEZADO DE COLUMNA
                         MensajeAvanceOPInspector += "<th width=100px>Materiales Recibidos Completos</th>" 'ENCABEZADO DE COLUMNA
@@ -762,6 +765,7 @@ Public Class Validaciones
                             End If
                             MensajeAvanceOPInspector += "<td>" & BDReader("DESCRIPCIONPRENDA") & "</td>" 'DATO COLUMNA
                             MensajeAvanceOPInspector += "<td>" & Format(BDReader("FECHACREACION"), "dd/MM/yyyy") & "</td>" 'DATO COLUMNA
+                            MensajeAvanceOPInspector += "<td>" & Format(BDReader("FECHAINICIO"), "dd/MM/yyyy") & "</td>" 'DATO COLUMNA
                             MensajeAvanceOPInspector += "<td>" & Format(BDReader("FECHAVENCIMIENTO"), "dd/MM/yyyy") & "</td>" 'DATO COLUMNA 
                             MensajeAvanceOPInspector += "<td>" & BDReader("NOM_CLIENTE") & "</td>" 'DATO COLUMNA
                             If (BDReader("FaltaRecibir") > 0) Then

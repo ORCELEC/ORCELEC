@@ -71,19 +71,19 @@ Public Class OPVista
             If BDReader.HasRows = True Then
                 While BDReader.Read
                     'DGVProgramaProduccion.Rows.Add(BDReader("CVE_MAQUILADOR"), BDReader("ENCARGADO"), BDReader("NO_OP"), BDReader("NO_OPSISTEMAANTERIOR"), IIf(IsDBNull(BDReader("NO_OPSISTEMAANTERIOR")) = True, BDReader("NO_OP"), BDReader("NO_OP") & " OP " & BDReader("NO_OPSISTEMAANTERIOR")), BDReader("CVE_PRENDA"), BDReader("DESCRIPCIONPRENDA"), BDReader.GetDateTime(6).ToString("dd/MM/yyyy"), BDReader.GetDateTime(7).ToString("dd/MM/yyyy"), BDReader("CVE_CLIENTE"), BDReader("NOM_CLIENTE"), IIf(BDReader("FaltaRecibir") > 0, "NO", IIf(IsDBNull(BDReader("FECHACONFIRMACIONMATERIALES")) = True, "", BDReader.GetDateTime(12).ToString("dd/MM/yyyy"))), BDReader("CANT_OP"), BDReader("PorcentajeAvanceOP"), BDReader.GetDateTime(7).ToString("dd/MM/yyyy"), IIf(IsDBNull(BDReader("OBSERVACIONES")) = True, "", BDReader("OBSERVACIONES")))
-                    DGVProgramaProduccion.Rows.Add(BDReader("CVE_MAQUILADOR"), BDReader("ENCARGADO"), BDReader("NO_OP"), BDReader("NO_OPSISTEMAANTERIOR"), IIf(IsDBNull(BDReader("NO_OPSISTEMAANTERIOR")) = True, BDReader("NO_OP"), BDReader("NO_OPSISTEMAANTERIOR") & "-" & BDReader("NO_OP")), BDReader("CVE_PRENDA"), BDReader("DESCRIPCIONPRENDA"), BDReader.GetDateTime(6).ToString("dd/MM/yyyy"), BDReader.GetDateTime(7).ToString("dd/MM/yyyy"), BDReader("CVE_CLIENTE"), BDReader("NOM_CLIENTE"), IIf(BDReader("FaltaRecibir") > 0, "NO", "SI"), IIf(BDReader("FaltaInspeccionar") > 0, "NO", "SI"), BDReader("CANT_OP"), BDReader("PorcentajeAvanceOPMenosUnaSemana"), BDReader("PorcentajeAvanceOPMenosUnDia"), BDReader("PorcentajeAvanceOP"), BDReader.GetDateTime(7).ToString("dd/MM/yyyy"), IIf(IsDBNull(BDReader("OBSERVACIONES")) = True, "", BDReader("OBSERVACIONES")))
+                    DGVProgramaProduccion.Rows.Add(BDReader("CVE_MAQUILADOR"), BDReader("ENCARGADO"), BDReader("NO_OP"), BDReader("NO_OPSISTEMAANTERIOR"), IIf(IsDBNull(BDReader("NO_OPSISTEMAANTERIOR")) = True, BDReader("NO_OP"), BDReader("NO_OPSISTEMAANTERIOR") & "-" & BDReader("NO_OP")), BDReader("CVE_PRENDA"), BDReader("DESCRIPCIONPRENDA"), BDReader.GetDateTime(6).ToString("dd/MM/yyyy"), BDReader.GetDateTime(8).ToString("dd/MM/yyyy"), BDReader("CVE_CLIENTE"), BDReader("NOM_CLIENTE"), IIf(BDReader("FaltaRecibir") > 0, "NO", "SI"), IIf(BDReader("FaltaInspeccionar") > 0, "NO", "SI"), BDReader("CANT_OP"), BDReader("PorcentajeAvanceOPMenosUnaSemana"), BDReader("PorcentajeAvanceOPMenosUnDia"), BDReader("PorcentajeAvanceOP"), BDReader.GetDateTime(8).ToString("dd/MM/yyyy"), IIf(IsDBNull(BDReader("OBSERVACIONES")) = True, "", BDReader("OBSERVACIONES")))
                     If BDReader("FaltaRecibir") > 0 Then
                         DGVProgramaProduccion.Rows(DGVProgramaProduccion.Rows.Count - 1).Cells("ConfirmacionMaterialesCompletos").Style.BackColor = Color.Red
                     Else
                         If (IsDBNull(BDReader("FechaConfirmacionMateriales")) = False) Then
-                            DGVProgramaProduccion.Rows(DGVProgramaProduccion.Rows.Count - 1).Cells("ConfirmacionMaterialesCompletos").Value = BDReader.GetDateTime(12).ToString("dd/MM/yyyy")
+                            DGVProgramaProduccion.Rows(DGVProgramaProduccion.Rows.Count - 1).Cells("ConfirmacionMaterialesCompletos").Value = BDReader.GetDateTime(13).ToString("dd/MM/yyyy")
                         End If
                     End If
                     If BDReader("FaltaInspeccionar") > 0 Then
                         DGVProgramaProduccion.Rows(DGVProgramaProduccion.Rows.Count - 1).Cells("InspeccionMaterialesCompletos").Style.BackColor = Color.Red
                     Else
                         If (IsDBNull(BDReader("FechaInspeccionMateriales")) = False) Then
-                            DGVProgramaProduccion.Rows(DGVProgramaProduccion.Rows.Count - 1).Cells("InspeccionMaterialesCompletos").Value = BDReader.GetDateTime(14).ToString("dd/MM/yyyy")
+                            DGVProgramaProduccion.Rows(DGVProgramaProduccion.Rows.Count - 1).Cells("InspeccionMaterialesCompletos").Value = BDReader.GetDateTime(15).ToString("dd/MM/yyyy")
                         End If
                     End If
                 End While
@@ -186,7 +186,7 @@ Public Class OPVista
                 Me.Cursor = Cursors.WaitCursor
                 PrimeraFilaVisible = DGVProgramaProduccion.FirstDisplayedScrollingRowIndex
                 DGVAvanceOP.Rows.Clear()
-                If DGVAvanceOP.Columns.Count > 7 Then
+                If DGVAvanceOP.Columns.Count > 8 Then
                     ''ELIMINAR LAS COLUMNAS DE TALLAS PREVIAS
                     For Contador As Int32 = 1 To DGVAvanceOP.Columns.Count - 7
                         DGVAvanceOP.Columns.Remove("TALLA" & Contador)
