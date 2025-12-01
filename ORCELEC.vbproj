@@ -32,7 +32,7 @@
     <ProductName>ORCELEC %28Nuevo%29</ProductName>
     <PublisherName>UET</PublisherName>
     <SuiteName>ORCELEC</SuiteName>
-    <ApplicationRevision>172</ApplicationRevision>
+    <ApplicationRevision>173</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -515,6 +515,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module1.vb" />
+    <Compile Include="MovimientoProductoTerminadoEntreAlmacenes.Designer.vb">
+      <DependentUpon>MovimientoProductoTerminadoEntreAlmacenes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MovimientoProductoTerminadoEntreAlmacenes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -951,6 +957,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IPRAF.resx">
       <DependentUpon>IPRAF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovimientoProductoTerminadoEntreAlmacenes.resx">
+      <DependentUpon>MovimientoProductoTerminadoEntreAlmacenes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

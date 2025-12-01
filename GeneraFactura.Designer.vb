@@ -22,21 +22,18 @@ Partial Class GeneraFactura
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim SuperTabItemColorTable2 As DevComponents.DotNetBar.Rendering.SuperTabItemColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemColorTable()
-        Dim SuperTabColorStates2 As DevComponents.DotNetBar.Rendering.SuperTabColorStates = New DevComponents.DotNetBar.Rendering.SuperTabColorStates()
-        Dim SuperTabItemStateColorTable2 As DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim SuperTabItemColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemColorTable()
+        Dim SuperTabColorStates1 As DevComponents.DotNetBar.Rendering.SuperTabColorStates = New DevComponents.DotNetBar.Rendering.SuperTabColorStates()
+        Dim SuperTabItemStateColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanPrincipal = New DevComponents.DotNetBar.PanelEx()
+        Me.BtnCancelarFactura = New DevComponents.DotNetBar.ButtonX()
         Me.BtnFacturaAutomaticaIMSS = New DevComponents.DotNetBar.ButtonX()
         Me.BtnGenerarCodigoBarras = New DevComponents.DotNetBar.ButtonX()
-        Me.GB5 = New System.Windows.Forms.GroupBox()
-        Me.RBPartidaTodaslasTallas = New System.Windows.Forms.RadioButton()
-        Me.RBPartidaPorTalla = New System.Windows.Forms.RadioButton()
-        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.TxtCveFactura = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.BtnGeneraLayout = New DevComponents.DotNetBar.ButtonX()
         Me.BtnGuardar = New DevComponents.DotNetBar.ButtonX()
@@ -79,9 +76,11 @@ Partial Class GeneraFactura
         Me.TabNotas = New DevComponents.DotNetBar.SuperTabItem()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.ReflectionLabel1 = New DevComponents.DotNetBar.Controls.ReflectionLabel()
-        Me.BtnCancelarFactura = New DevComponents.DotNetBar.ButtonX()
+        Me.GB5 = New System.Windows.Forms.GroupBox()
+        Me.RBPartidaTodaslasTallas = New System.Windows.Forms.RadioButton()
+        Me.RBPartidaPorTalla = New System.Windows.Forms.RadioButton()
+        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.PanPrincipal.SuspendLayout()
-        Me.GB5.SuspendLayout()
         Me.GBPrioridad.SuspendLayout()
         Me.GB4.SuspendLayout()
         Me.GB3.SuspendLayout()
@@ -96,6 +95,7 @@ Partial Class GeneraFactura
         CType(Me.DGPrevioFactura, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControlPanel9.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
+        Me.GB5.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanPrincipal
@@ -131,6 +131,18 @@ Partial Class GeneraFactura
         Me.PanPrincipal.Style.GradientAngle = 90
         Me.PanPrincipal.TabIndex = 3
         '
+        'BtnCancelarFactura
+        '
+        Me.BtnCancelarFactura.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.BtnCancelarFactura.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.BtnCancelarFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnCancelarFactura.Location = New System.Drawing.Point(784, 166)
+        Me.BtnCancelarFactura.Name = "BtnCancelarFactura"
+        Me.BtnCancelarFactura.Size = New System.Drawing.Size(166, 28)
+        Me.BtnCancelarFactura.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.BtnCancelarFactura.TabIndex = 99
+        Me.BtnCancelarFactura.Text = "Cancelar Factura"
+        '
         'BtnFacturaAutomaticaIMSS
         '
         Me.BtnFacturaAutomaticaIMSS.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
@@ -154,56 +166,6 @@ Partial Class GeneraFactura
         Me.BtnGenerarCodigoBarras.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.BtnGenerarCodigoBarras.TabIndex = 97
         Me.BtnGenerarCodigoBarras.Text = "Código de Barra GM"
-        '
-        'GB5
-        '
-        Me.GB5.Controls.Add(Me.RBPartidaTodaslasTallas)
-        Me.GB5.Controls.Add(Me.RBPartidaPorTalla)
-        Me.GB5.Controls.Add(Me.LabelX6)
-        Me.GB5.Enabled = False
-        Me.GB5.Location = New System.Drawing.Point(14, 200)
-        Me.GB5.Name = "GB5"
-        Me.GB5.Size = New System.Drawing.Size(945, 33)
-        Me.GB5.TabIndex = 96
-        Me.GB5.TabStop = False
-        '
-        'RBPartidaTodaslasTallas
-        '
-        Me.RBPartidaTodaslasTallas.AutoSize = True
-        Me.RBPartidaTodaslasTallas.Location = New System.Drawing.Point(374, 10)
-        Me.RBPartidaTodaslasTallas.Name = "RBPartidaTodaslasTallas"
-        Me.RBPartidaTodaslasTallas.Size = New System.Drawing.Size(176, 17)
-        Me.RBPartidaTodaslasTallas.TabIndex = 89
-        Me.RBPartidaTodaslasTallas.TabStop = True
-        Me.RBPartidaTodaslasTallas.Text = "Una partida para todas las tallas"
-        Me.RBPartidaTodaslasTallas.UseVisualStyleBackColor = True
-        '
-        'RBPartidaPorTalla
-        '
-        Me.RBPartidaPorTalla.AutoSize = True
-        Me.RBPartidaPorTalla.Location = New System.Drawing.Point(247, 10)
-        Me.RBPartidaPorTalla.Name = "RBPartidaPorTalla"
-        Me.RBPartidaPorTalla.Size = New System.Drawing.Size(98, 17)
-        Me.RBPartidaPorTalla.TabIndex = 88
-        Me.RBPartidaPorTalla.TabStop = True
-        Me.RBPartidaPorTalla.Text = "Partida por talla"
-        Me.RBPartidaPorTalla.UseVisualStyleBackColor = True
-        '
-        'LabelX6
-        '
-        '
-        '
-        '
-        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX6.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX6.Location = New System.Drawing.Point(6, 10)
-        Me.LabelX6.Name = "LabelX6"
-        Me.LabelX6.Size = New System.Drawing.Size(235, 22)
-        Me.LabelX6.TabIndex = 87
-        Me.LabelX6.Text = "Tipo de partida:"
-        Me.LabelX6.TextLineAlignment = System.Drawing.StringAlignment.Near
-        Me.LabelX6.VerticalTextTopUp = False
-        Me.LabelX6.WordWrap = True
         '
         'TxtCveFactura
         '
@@ -519,8 +481,8 @@ Partial Class GeneraFactura
         Me.TabPrincipal.ControlBox.MenuBox.Name = ""
         Me.TabPrincipal.ControlBox.Name = ""
         Me.TabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TabPrincipal.ControlBox.MenuBox, Me.TabPrincipal.ControlBox.CloseBox})
-        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel1)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel3)
+        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel1)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel9)
         Me.TabPrincipal.Location = New System.Drawing.Point(12, 237)
         Me.TabPrincipal.Name = "TabPrincipal"
@@ -555,21 +517,21 @@ Partial Class GeneraFactura
         Me.TabFolio.AttachedControl = Me.SuperTabControlPanel1
         Me.TabFolio.GlobalItem = False
         Me.TabFolio.Name = "TabFolio"
-        SuperTabItemStateColorTable2.CloseMarker = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        SuperTabItemStateColorTable2.InnerBorder = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        SuperTabItemStateColorTable2.OuterBorder = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        SuperTabColorStates2.Normal = SuperTabItemStateColorTable2
-        SuperTabItemColorTable2.Bottom = SuperTabColorStates2
-        Me.TabFolio.TabColor = SuperTabItemColorTable2
+        SuperTabItemStateColorTable1.CloseMarker = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        SuperTabItemStateColorTable1.InnerBorder = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        SuperTabItemStateColorTable1.OuterBorder = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        SuperTabColorStates1.Normal = SuperTabItemStateColorTable1
+        SuperTabItemColorTable1.Bottom = SuperTabColorStates1
+        Me.TabFolio.TabColor = SuperTabItemColorTable1
         Me.TabFolio.Text = "Datos Generales"
         '
         'SuperTabControlPanel3
         '
         Me.SuperTabControlPanel3.Controls.Add(Me.PanDetallePartida)
         Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 0)
+        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 25)
         Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
-        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(954, 351)
+        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(954, 326)
         Me.SuperTabControlPanel3.TabIndex = 1
         Me.SuperTabControlPanel3.TabItem = Me.TabDatosPedido
         '
@@ -610,39 +572,39 @@ Partial Class GeneraFactura
         '
         Me.DGPrevioFactura.AllowUserToAddRows = False
         Me.DGPrevioFactura.AllowUserToDeleteRows = False
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGPrevioFactura.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGPrevioFactura.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGPrevioFactura.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGPrevioFactura.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DGPrevioFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGPrevioFactura.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGPrevioFactura.DefaultCellStyle = DataGridViewCellStyle3
         Me.DGPrevioFactura.EnableHeadersVisualStyles = False
         Me.DGPrevioFactura.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DGPrevioFactura.Location = New System.Drawing.Point(13, 34)
         Me.DGPrevioFactura.Name = "DGPrevioFactura"
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGPrevioFactura.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGPrevioFactura.RowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGPrevioFactura.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGPrevioFactura.RowsDefaultCellStyle = DataGridViewCellStyle5
         Me.DGPrevioFactura.Size = New System.Drawing.Size(925, 282)
         Me.DGPrevioFactura.TabIndex = 11
         '
@@ -803,17 +765,55 @@ Partial Class GeneraFactura
         Me.ReflectionLabel1.TabIndex = 2
         Me.ReflectionLabel1.Text = "<b><font size=""+6""><i>FACTURACIÓN DE PEDIDO</i></font></b>"
         '
-        'BtnCancelarFactura
+        'GB5
         '
-        Me.BtnCancelarFactura.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.BtnCancelarFactura.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.BtnCancelarFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnCancelarFactura.Location = New System.Drawing.Point(784, 166)
-        Me.BtnCancelarFactura.Name = "BtnCancelarFactura"
-        Me.BtnCancelarFactura.Size = New System.Drawing.Size(166, 28)
-        Me.BtnCancelarFactura.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.BtnCancelarFactura.TabIndex = 99
-        Me.BtnCancelarFactura.Text = "Cancelar Factura"
+        Me.GB5.Controls.Add(Me.RBPartidaTodaslasTallas)
+        Me.GB5.Controls.Add(Me.RBPartidaPorTalla)
+        Me.GB5.Controls.Add(Me.LabelX6)
+        Me.GB5.Enabled = False
+        Me.GB5.Location = New System.Drawing.Point(14, 200)
+        Me.GB5.Name = "GB5"
+        Me.GB5.Size = New System.Drawing.Size(945, 33)
+        Me.GB5.TabIndex = 96
+        Me.GB5.TabStop = False
+        '
+        'RBPartidaTodaslasTallas
+        '
+        Me.RBPartidaTodaslasTallas.AutoSize = True
+        Me.RBPartidaTodaslasTallas.Location = New System.Drawing.Point(374, 10)
+        Me.RBPartidaTodaslasTallas.Name = "RBPartidaTodaslasTallas"
+        Me.RBPartidaTodaslasTallas.Size = New System.Drawing.Size(176, 17)
+        Me.RBPartidaTodaslasTallas.TabIndex = 89
+        Me.RBPartidaTodaslasTallas.TabStop = True
+        Me.RBPartidaTodaslasTallas.Text = "Una partida para todas las tallas"
+        Me.RBPartidaTodaslasTallas.UseVisualStyleBackColor = True
+        '
+        'RBPartidaPorTalla
+        '
+        Me.RBPartidaPorTalla.AutoSize = True
+        Me.RBPartidaPorTalla.Location = New System.Drawing.Point(247, 10)
+        Me.RBPartidaPorTalla.Name = "RBPartidaPorTalla"
+        Me.RBPartidaPorTalla.Size = New System.Drawing.Size(98, 17)
+        Me.RBPartidaPorTalla.TabIndex = 88
+        Me.RBPartidaPorTalla.TabStop = True
+        Me.RBPartidaPorTalla.Text = "Partida por talla"
+        Me.RBPartidaPorTalla.UseVisualStyleBackColor = True
+        '
+        'LabelX6
+        '
+        '
+        '
+        '
+        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX6.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX6.Location = New System.Drawing.Point(6, 10)
+        Me.LabelX6.Name = "LabelX6"
+        Me.LabelX6.Size = New System.Drawing.Size(235, 22)
+        Me.LabelX6.TabIndex = 87
+        Me.LabelX6.Text = "Tipo de partida:"
+        Me.LabelX6.TextLineAlignment = System.Drawing.StringAlignment.Near
+        Me.LabelX6.VerticalTextTopUp = False
+        Me.LabelX6.WordWrap = True
         '
         'GeneraFactura
         '
@@ -824,8 +824,6 @@ Partial Class GeneraFactura
         Me.Name = "GeneraFactura"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.PanPrincipal.ResumeLayout(False)
-        Me.GB5.ResumeLayout(False)
-        Me.GB5.PerformLayout()
         Me.GBPrioridad.ResumeLayout(False)
         Me.GB4.ResumeLayout(False)
         Me.GB4.PerformLayout()
@@ -844,6 +842,8 @@ Partial Class GeneraFactura
         CType(Me.DGPrevioFactura, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControlPanel9.ResumeLayout(False)
         Me.GroupPanel1.ResumeLayout(False)
+        Me.GB5.ResumeLayout(False)
+        Me.GB5.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

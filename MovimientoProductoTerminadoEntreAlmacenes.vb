@@ -1,0 +1,3 @@
+﻿Public Class MovimientoProductoTerminadoEntreAlmacenes
+
+End Class
