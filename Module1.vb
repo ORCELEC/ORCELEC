@@ -4,6 +4,7 @@ Imports System.Data.SqlClient
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports System.ComponentModel
+Imports System.Drawing.Printing
 
 Module Module1
     Public Class ConectaBD
@@ -148,5 +149,16 @@ Module Module1
         Else
             Console.WriteLine("Email sent successfully.")
         End If
+    End Sub
+
+    ' Método global para forzar la impresora predeterminada
+    Public Sub UsarImpresoraPredeterminada(ByVal reporte As ReportDocument)
+        Try
+            Dim ps As New PrinterSettings()
+            reporte.PrintOptions.PrinterName = ps.PrinterName
+        Catch ex As Exception
+            MessageBox.Show("No se pudo asignar la impresora predeterminada: " & ex.Message,
+                            "Impresión", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End Try
     End Sub
 End Module

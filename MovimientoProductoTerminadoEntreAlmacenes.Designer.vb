@@ -28,10 +28,10 @@ Partial Class MovimientoProductoTerminadoEntreAlmacenes
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanPrincipal = New DevComponents.DotNetBar.PanelEx()
+        Me.BtnGenerarMovimiento = New DevComponents.DotNetBar.ButtonX()
+        Me.DGPrevioFactura = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.ListAlmacenes = New System.Windows.Forms.ListBox()
-        Me.DGPrevioFactura = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.BtnGenerarMovimiento = New DevComponents.DotNetBar.ButtonX()
         Me.PanPrincipal.SuspendLayout()
         CType(Me.DGPrevioFactura, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -61,29 +61,17 @@ Partial Class MovimientoProductoTerminadoEntreAlmacenes
         Me.PanPrincipal.TabIndex = 1
         Me.PanPrincipal.Text = "Movimiento entre almacenes"
         '
-        'LabelX1
+        'BtnGenerarMovimiento
         '
-        Me.LabelX1.AutoSize = True
-        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX1.Location = New System.Drawing.Point(12, 22)
-        Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.Size = New System.Drawing.Size(111, 18)
-        Me.LabelX1.TabIndex = 57
-        Me.LabelX1.Text = "Almacén Origen:"
-        '
-        'ListAlmacenes
-        '
-        Me.ListAlmacenes.FormattingEnabled = True
-        Me.ListAlmacenes.ItemHeight = 16
-        Me.ListAlmacenes.Location = New System.Drawing.Point(12, 42)
-        Me.ListAlmacenes.Name = "ListAlmacenes"
-        Me.ListAlmacenes.Size = New System.Drawing.Size(232, 84)
-        Me.ListAlmacenes.TabIndex = 56
+        Me.BtnGenerarMovimiento.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.BtnGenerarMovimiento.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.BtnGenerarMovimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnGenerarMovimiento.Location = New System.Drawing.Point(12, 407)
+        Me.BtnGenerarMovimiento.Name = "BtnGenerarMovimiento"
+        Me.BtnGenerarMovimiento.Size = New System.Drawing.Size(232, 27)
+        Me.BtnGenerarMovimiento.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.BtnGenerarMovimiento.TabIndex = 67
+        Me.BtnGenerarMovimiento.Text = "Generar Movimiento"
         '
         'DGPrevioFactura
         '
@@ -125,17 +113,29 @@ Partial Class MovimientoProductoTerminadoEntreAlmacenes
         Me.DGPrevioFactura.Size = New System.Drawing.Size(232, 269)
         Me.DGPrevioFactura.TabIndex = 66
         '
-        'BtnGenerarMovimiento
+        'LabelX1
         '
-        Me.BtnGenerarMovimiento.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.BtnGenerarMovimiento.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.BtnGenerarMovimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnGenerarMovimiento.Location = New System.Drawing.Point(12, 407)
-        Me.BtnGenerarMovimiento.Name = "BtnGenerarMovimiento"
-        Me.BtnGenerarMovimiento.Size = New System.Drawing.Size(232, 27)
-        Me.BtnGenerarMovimiento.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.BtnGenerarMovimiento.TabIndex = 67
-        Me.BtnGenerarMovimiento.Text = "Generar Movimiento"
+        Me.LabelX1.AutoSize = True
+        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX1.Location = New System.Drawing.Point(12, 22)
+        Me.LabelX1.Name = "LabelX1"
+        Me.LabelX1.Size = New System.Drawing.Size(111, 18)
+        Me.LabelX1.TabIndex = 57
+        Me.LabelX1.Text = "Almacén Origen:"
+        '
+        'ListAlmacenes
+        '
+        Me.ListAlmacenes.FormattingEnabled = True
+        Me.ListAlmacenes.ItemHeight = 16
+        Me.ListAlmacenes.Location = New System.Drawing.Point(12, 42)
+        Me.ListAlmacenes.Name = "ListAlmacenes"
+        Me.ListAlmacenes.Size = New System.Drawing.Size(232, 84)
+        Me.ListAlmacenes.TabIndex = 56
         '
         'MovimientoProductoTerminadoEntreAlmacenes
         '
@@ -144,6 +144,7 @@ Partial Class MovimientoProductoTerminadoEntreAlmacenes
         Me.ClientSize = New System.Drawing.Size(257, 442)
         Me.Controls.Add(Me.PanPrincipal)
         Me.Name = "MovimientoProductoTerminadoEntreAlmacenes"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.PanPrincipal.ResumeLayout(False)
         Me.PanPrincipal.PerformLayout()
         CType(Me.DGPrevioFactura, System.ComponentModel.ISupportInitialize).EndInit()

@@ -1356,18 +1356,24 @@ SolicitarCantidadDeImpresiones:
                                 RemisionUNAMImpresion.SetDatabaseLogon(ConectaBD.UsuarioReportes, ConectaBD.PasswordReportes)
                                 RemisionUNAMImpresion.SetParameterValue("@Empresa", ConectaBD.Cve_Empresa)
                                 RemisionUNAMImpresion.SetParameterValue("@No_Remision", Fila("No_Remision"))
+                                ' → Se usa la función del Module1
+                                UsarImpresoraPredeterminada(RemisionUNAMImpresion)
                             ElseIf {37, 38, 39, 40, 41, 42, 60, 61, 62, 63, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 415}.Contains(Cve_Cliente) Then
                                 Dim RemisionISSSTEImpresion As New RptRemisionISSSTEElTren
                                 ReporteBase = RemisionISSSTEImpresion
                                 RemisionISSSTEImpresion.SetDatabaseLogon(ConectaBD.UsuarioReportes, ConectaBD.PasswordReportes)
                                 RemisionISSSTEImpresion.SetParameterValue("@Empresa", ConectaBD.Cve_Empresa)
                                 RemisionISSSTEImpresion.SetParameterValue("@No_Remision", Fila("No_Remision"))
+                                ' → Se usa la función del Module1
+                                UsarImpresoraPredeterminada(RemisionISSSTEImpresion)
                             Else
                                 Dim RemisionImpresion As New Remision
                                 ReporteBase = RemisionImpresion
                                 RemisionImpresion.SetDatabaseLogon(ConectaBD.UsuarioReportes, ConectaBD.PasswordReportes)
                                 RemisionImpresion.SetParameterValue("@Empresa", ConectaBD.Cve_Empresa)
                                 RemisionImpresion.SetParameterValue("@No_Remision", Fila("No_Remision"))
+                                ' → Se usa la función del Module1
+                                UsarImpresoraPredeterminada(RemisionImpresion)
                             End If
 
                             If MandarDirectamenteImpresora Then
@@ -1400,7 +1406,8 @@ SolicitarCantidadDeImpresiones:
                                 CartaGarantiaImpresion.SetDatabaseLogon(ConectaBD.UsuarioReportes, ConectaBD.PasswordReportes)
                                 CartaGarantiaImpresion.SetParameterValue("@Empresa", ConectaBD.Cve_Empresa)
                                 CartaGarantiaImpresion.SetParameterValue("@No_Remision", Fila("No_Remision"))
-
+                                ' → Se usa la función del Module1
+                                UsarImpresoraPredeterminada(CartaGarantiaImpresion)
                                 If MandarDirectamenteImpresora Then
                                     CartaGarantiaImpresion.PrintOptions.PrinterName = New PrinterSettings().PrinterName
                                     CartaGarantiaImpresion.PrintToPrinter(CantidadDeImpresiones, False, 1, 99999)
@@ -1415,7 +1422,8 @@ SolicitarCantidadDeImpresiones:
                                     RemisionDependenciaFP.SetDatabaseLogon(ConectaBD.UsuarioReportes, ConectaBD.PasswordReportes)
                                     RemisionDependenciaFP.SetParameterValue("@Empresa", ConectaBD.Cve_Empresa)
                                     RemisionDependenciaFP.SetParameterValue("@No_Remision", Fila("No_Remision"))
-
+                                    ' → Se usa la función del Module1
+                                    UsarImpresoraPredeterminada(RemisionDependenciaFP)
                                     If MandarDirectamenteImpresora Then
                                         RemisionDependenciaFP.PrintOptions.PrinterName = New PrinterSettings().PrinterName
                                         RemisionDependenciaFP.PrintToPrinter(CantidadDeImpresiones, False, 1, 99999)
@@ -1524,16 +1532,22 @@ SolicitarCantidadDeImpresiones:
             RemisionUNAMImpresion.SetDatabaseLogon(ConectaBD.UsuarioReportes, ConectaBD.PasswordReportes)
             RemisionUNAMImpresion.SetParameterValue("@Empresa", ConectaBD.Cve_Empresa)
             RemisionUNAMImpresion.SetParameterValue("@No_Remision", Val(TxtCveRemision.Text))
+            ' → Se usa la función del Module1
+            UsarImpresoraPredeterminada(RemisionUNAMImpresion)
             RptViewer.CRV.ReportSource = RemisionUNAMImpresion
         ElseIf Cve_Cliente = 37 Or Cve_Cliente = 38 Or Cve_Cliente = 39 Or Cve_Cliente = 40 Or Cve_Cliente = 41 Or Cve_Cliente = 42 Or Cve_Cliente = 60 Or Cve_Cliente = 61 Or Cve_Cliente = 62 Or Cve_Cliente = 63 Or Cve_Cliente = 66 Or Cve_Cliente = 67 Or Cve_Cliente = 68 Or Cve_Cliente = 69 Or Cve_Cliente = 70 Or Cve_Cliente = 71 Or Cve_Cliente = 72 Or Cve_Cliente = 73 Or Cve_Cliente = 74 Or Cve_Cliente = 75 Or Cve_Cliente = 76 Or Cve_Cliente = 77 Or Cve_Cliente = 78 Or Cve_Cliente = 79 Or Cve_Cliente = 415 Then
             RemisionISSSTEImpresion.SetDatabaseLogon(ConectaBD.UsuarioReportes, ConectaBD.PasswordReportes)
             RemisionISSSTEImpresion.SetParameterValue("@Empresa", ConectaBD.Cve_Empresa)
             RemisionISSSTEImpresion.SetParameterValue("@No_Remision", Val(TxtCveRemision.Text))
+            ' → Se usa la función del Module1
+            UsarImpresoraPredeterminada(RemisionISSSTEImpresion)
             RptViewer.CRV.ReportSource = RemisionISSSTEImpresion
         Else
             RemisionImpresion.SetDatabaseLogon(ConectaBD.UsuarioReportes, ConectaBD.PasswordReportes)
             RemisionImpresion.SetParameterValue("@Empresa", ConectaBD.Cve_Empresa)
             RemisionImpresion.SetParameterValue("@No_Remision", Val(TxtCveRemision.Text))
+            ' → Se usa la función del Module1
+            UsarImpresoraPredeterminada(RemisionImpresion)
             RptViewer.CRV.ReportSource = RemisionImpresion
         End If
 
@@ -1571,6 +1585,8 @@ SolicitarCantidadDeImpresiones:
             CartaGarantiaImpresion.SetDatabaseLogon(ConectaBD.UsuarioReportes, ConectaBD.PasswordReportes)
             CartaGarantiaImpresion.SetParameterValue("@Empresa", ConectaBD.Cve_Empresa)
             CartaGarantiaImpresion.SetParameterValue("@No_Remision", Val(TxtCveRemision.Text))
+            ' → Se usa la función del Module1
+            UsarImpresoraPredeterminada(CartaGarantiaImpresion)
             RptViewer.CRV.ReportSource = CartaGarantiaImpresion
             RptViewer.CRV.AllowedExportFormats = 1
             RptViewer.ShowDialog(Me)
@@ -1581,6 +1597,8 @@ SolicitarCantidadDeImpresiones:
                 RemisionDependenciaFP.SetDatabaseLogon(ConectaBD.UsuarioReportes, ConectaBD.PasswordReportes)
                 RemisionDependenciaFP.SetParameterValue("@Empresa", ConectaBD.Cve_Empresa)
                 RemisionDependenciaFP.SetParameterValue("@No_Remision", Val(TxtCveRemision.Text))
+                ' → Se usa la función del Module1
+                UsarImpresoraPredeterminada(RemisionDependenciaFP)
                 RptViewer.CRV.ReportSource = RemisionDependenciaFP
                 RptViewer.CRV.AllowedExportFormats = 1
                 RptViewer.ShowDialog(Me)

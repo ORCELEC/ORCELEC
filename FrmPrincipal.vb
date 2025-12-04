@@ -757,4 +757,9 @@ Public Class FrmPrincipal
         SeguimientoALiberaciones.MdiParent = Me
         SeguimientoALiberaciones.Show()
     End Sub
+
+    Private Sub BtmMovimientoEntreAlmacenes_Click(sender As Object, e As EventArgs) Handles BtmMovimientoEntreAlmacenes.Click
+        MovimientoProductoTerminadoEntreAlmacenes.MdiParent = Me
+        MovimientoProductoTerminadoEntreAlmacenes.Show()
+    End Sub
 End Class
