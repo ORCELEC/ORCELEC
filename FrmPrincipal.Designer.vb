@@ -269,6 +269,7 @@ Partial Class FrmPrincipal
         Me.SistemasBar = New DevComponents.DotNetBar.RibbonTabItem()
         Me.DireccionBar = New DevComponents.DotNetBar.RibbonTabItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.BtmGeneraSusceptibleIMSS = New DevComponents.DotNetBar.ButtonItem()
         CType(Me.SBBDUnidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SBUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SBFecha, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -349,17 +350,17 @@ Partial Class FrmPrincipal
         Me.RibbonControl1.BackgroundStyle.Class = "RibbonGalleryContainer"
         Me.RibbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonControl1.CaptionVisible = True
+        Me.RibbonControl1.Controls.Add(Me.RibbonPanel6)
+        Me.RibbonControl1.Controls.Add(Me.RibbonPanel5)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel4)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel2)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel11)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel1)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel13)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel14)
-        Me.RibbonControl1.Controls.Add(Me.RibbonPanel6)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel7)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel3)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel10)
-        Me.RibbonControl1.Controls.Add(Me.RibbonPanel5)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel9)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel8)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel12)
@@ -417,6 +418,7 @@ Partial Class FrmPrincipal
         '
         Me.RibbonPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonPanel4.TabIndex = 4
+        Me.RibbonPanel4.Visible = False
         '
         'RibbonBar5
         '
@@ -1306,7 +1308,6 @@ Partial Class FrmPrincipal
         '
         Me.RibbonPanel6.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonPanel6.TabIndex = 6
-        Me.RibbonPanel6.Visible = False
         '
         'RibbonBar7
         '
@@ -1342,7 +1343,7 @@ Partial Class FrmPrincipal
         '
         Me.ButtonItem96.AutoExpandOnClick = True
         Me.ButtonItem96.Name = "ButtonItem96"
-        Me.ButtonItem96.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmFactuElec, Me.BtmRemision, Me.BtmNotaCredito, Me.BtmRemisionesIMSS, Me.BtnImportaIMSSAltas})
+        Me.ButtonItem96.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmFactuElec, Me.BtmRemision, Me.BtmNotaCredito, Me.BtmRemisionesIMSS, Me.BtnImportaIMSSAltas, Me.BtmGeneraSusceptibleIMSS})
         Me.ButtonItem96.SubItemsExpandWidth = 14
         Me.ButtonItem96.Text = "Menu Principal"
         '
@@ -2297,7 +2298,6 @@ Partial Class FrmPrincipal
         '
         'AlmProdBar
         '
-        Me.AlmProdBar.Checked = True
         Me.AlmProdBar.Name = "AlmProdBar"
         Me.AlmProdBar.Panel = Me.RibbonPanel4
         Me.AlmProdBar.Text = "Almacen Producto Terminado"
@@ -2310,6 +2310,7 @@ Partial Class FrmPrincipal
         '
         'FacturaBar
         '
+        Me.FacturaBar.Checked = True
         Me.FacturaBar.Name = "FacturaBar"
         Me.FacturaBar.Panel = Me.RibbonPanel6
         Me.FacturaBar.Text = "Facturación"
@@ -2366,6 +2367,11 @@ Partial Class FrmPrincipal
         '
         'Timer1
         '
+        '
+        'BtmGeneraSusceptibleIMSS
+        '
+        Me.BtmGeneraSusceptibleIMSS.Name = "BtmGeneraSusceptibleIMSS"
+        Me.BtmGeneraSusceptibleIMSS.Text = "Genera Susceptible IMSS"
         '
         'FrmPrincipal
         '
@@ -2648,5 +2654,6 @@ Partial Class FrmPrincipal
     Friend WithEvents BtmReasignacion As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents BtmActualizaFacturas As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents BtmSeguimientoLiberaciones As DevComponents.DotNetBar.ButtonItem
+    Friend WithEvents BtmGeneraSusceptibleIMSS As DevComponents.DotNetBar.ButtonItem
 
 End Class
