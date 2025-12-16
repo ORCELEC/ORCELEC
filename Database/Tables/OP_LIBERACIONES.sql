@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[OP_LIBERACIONES]    Script Date: 24/10/2025 01:06:13 p. m. ******/
+/****** Object:  Table [dbo].[OP_LIBERACIONES]    Script Date: 15/12/2025 08:58:40 p. m. ******/
 SET ANSI_NULLS ON
 GO
 

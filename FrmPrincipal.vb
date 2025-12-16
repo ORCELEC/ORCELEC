@@ -6,10 +6,29 @@ Imports System.Data.OleDb
 Imports MimeKit
 Imports MailKit.Net.Smtp
 Imports MailKit.Security
+Imports System.Globalization
+Imports System.Linq
+Imports System.Runtime.InteropServices
+Imports System.Text
+Imports System.IO
+Imports Excel = Microsoft.Office.Interop.Excel
 
 Public Class FrmPrincipal
     Private BDComando As SqlCommand
     Private BDReader As SqlDataReader
+
+    Private Class DetalleFacturaIMSS
+        Public Property NumeroFactura As Long
+        Public Property NoContrato As String
+        Public Property Almacen As String
+        Public Property FacturaTotal As Decimal
+        Public Property FechaFactura As DateTime
+        Public Property Partidas As Dictionary(Of Integer, List(Of String))
+
+        Public Sub New()
+            Partidas = New Dictionary(Of Integer, List(Of String))()
+        End Sub
+    End Class
 
     Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs)
         ' Cree una nueva instancia del formulario secundario.
@@ -761,5 +780,343 @@ Public Class FrmPrincipal
     Private Sub BtmMovimientoEntreAlmacenes_Click(sender As Object, e As EventArgs) Handles BtmMovimientoEntreAlmacenes.Click
         MovimientoProductoTerminadoEntreAlmacenes.MdiParent = Me
         MovimientoProductoTerminadoEntreAlmacenes.Show()
+    End Sub
+
+    Private Function ObtenerDetalleFacturaIMSS(numeroFactura As Long) As DetalleFacturaIMSS
+        Dim detalle As New DetalleFacturaIMSS() With {
+            .NumeroFactura = numeroFactura
+        }
+        Dim contratoAsignado As Boolean = False
+        Dim almacenAsignado As Boolean = False
+        Dim fechaAsignada As Boolean = False
+        Dim totalAsignado As Boolean = False
+
+        Using comando As New SqlCommand()
+            comando.Connection = ConectaBD.BDConexion
+            comando.CommandType = CommandType.Text
+            comando.CommandText = "SELECT IA.NoContrato, IA.Almacen_Imss, IA.No_Factura, IA.PartidaFactura, IA.No_Alta, F.FechaHoraFactura, F.FacturaTotal FROM IMSSAltas IA INNER JOIN FACTURA F ON IA.Empresa = F.Empresa AND IA.No_Factura = F.No_Factura AND IA.PartidaFactura = F.Partida WHERE IA.Empresa = @EMPRESA AND IA.No_Factura = @NO_FACTURA ORDER BY IA.PartidaFactura, IA.No_Alta"
+
+            comando.Parameters.Add("@EMPRESA", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
+            comando.Parameters.Add("@NO_FACTURA", SqlDbType.BigInt).Value = numeroFactura
+
+            Dim lector As SqlDataReader = Nothing
+            Try
+                comando.Connection.Open()
+                lector = comando.ExecuteReader()
+
+                If lector.HasRows = False Then
+                    MessageBox.Show("No se encontraron partidas para la factura indicada.", "Hoja Susceptible IMSS", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Return Nothing
+                End If
+
+                While lector.Read()
+                    If contratoAsignado = False AndAlso IsDBNull(lector("NoContrato")) = False Then
+                        detalle.NoContrato = lector("NoContrato").ToString()
+                        contratoAsignado = True
+                    End If
+
+                    If almacenAsignado = False AndAlso IsDBNull(lector("Almacen_Imss")) = False Then
+                        detalle.Almacen = lector("Almacen_Imss").ToString()
+                        almacenAsignado = True
+                    End If
+
+                    If fechaAsignada = False AndAlso IsDBNull(lector("FechaHoraFactura")) = False Then
+                        detalle.FechaFactura = Convert.ToDateTime(lector("FechaHoraFactura"))
+                        fechaAsignada = True
+                    End If
+
+                    If totalAsignado = False AndAlso IsDBNull(lector("FacturaTotal")) = False Then
+                        detalle.FacturaTotal = Convert.ToDecimal(lector("FacturaTotal"))
+                        totalAsignado = True
+                    End If
+
+                    Dim partida As Integer = Convert.ToInt32(lector("PartidaFactura"))
+                    Dim noAlta As String = lector("No_Alta").ToString()
+
+                    If detalle.Partidas.ContainsKey(partida) = False Then
+                        detalle.Partidas(partida) = New List(Of String)()
+                    End If
+
+                    detalle.Partidas(partida).Add(noAlta)
+                End While
+            Catch ex As Exception
+                MessageBox.Show("Se generó un error al consultar los datos de la factura, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Hoja Susceptible IMSS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                Return Nothing
+            Finally
+                If lector IsNot Nothing AndAlso lector.IsClosed = False Then
+                    lector.Close()
+                End If
+
+                If comando.Connection.State = ConnectionState.Open Then
+                    comando.Connection.Close()
+                End If
+            End Try
+        End Using
+
+        Return detalle
+    End Function
+
+    Private Function FormatearAltasIMSS(altas As List(Of String)) As String
+        If altas Is Nothing OrElse altas.Count = 0 Then
+            Return String.Empty
+        End If
+
+        Dim texto As New StringBuilder()
+        For i As Integer = 0 To altas.Count - 1
+            texto.Append(altas(i))
+
+            If i < altas.Count - 1 Then
+                texto.Append(", ")
+            End If
+
+            If i Mod 2 = 1 AndAlso i < altas.Count - 1 Then
+                texto.AppendLine()
+                texto.Append(" ")
+            End If
+        Next
+
+        Return texto.ToString()
+    End Function
+
+    Private Function ObtenerPlantillaSusceptibleIMSS() As String
+        Dim posiblesRutas As New List(Of String) From {
+            Path.Combine(Application.StartupPath, "HojaSusceptibleIMSS.xlsx"),
+            Path.Combine(Application.StartupPath, "HojaSusceptibleIMSS.xls"),
+            Path.Combine(Application.StartupPath, "Plantillas", "HojaSusceptibleIMSS.xlsx"),
+            Path.Combine(Application.StartupPath, "Plantillas", "HojaSusceptibleIMSS.xls"),
+            Path.Combine(Application.StartupPath, "HojaAltasIMSS.xlsx"),
+            Path.Combine(Application.StartupPath, "HojaAltasIMSS.xls")
+        }
+
+        For Each ruta In posiblesRutas
+            If File.Exists(ruta) Then
+                Return ruta
+            End If
+        Next
+
+        Return Nothing
+    End Function
+
+    Private Sub ConfigurarFilaPartidaSusceptible(hoja As Excel.Worksheet, filaDestino As Integer, aplicaBordeGrueso As Boolean)
+        Dim rangosPartida As Excel.Range() = {
+            hoja.Range("B" & filaDestino, "C" & filaDestino),
+            hoja.Range("D" & filaDestino, "E" & filaDestino),
+            hoja.Range("F" & filaDestino, "G" & filaDestino),
+            hoja.Range("H" & filaDestino, "I" & filaDestino),
+            hoja.Range("J" & filaDestino, "K" & filaDestino)
+        }
+
+        For Each rango In rangosPartida
+            rango.Merge()
+            rango.WrapText = True
+
+            If aplicaBordeGrueso Then
+                rango.Borders.LineStyle = Excel.XlLineStyle.xlContinuous
+                rango.Borders.Weight = Excel.XlBorderWeight.xlMedium
+            End If
+
+            LiberarObjetoCom(rango)
+        Next
+
+        hoja.Rows(filaDestino).EntireRow.AutoFit()
+    End Sub
+
+    Private Sub GenerarHojaAltasIMSS(plantillaPath As String, destinoPath As String, detalle As DetalleFacturaIMSS)
+        Dim excelApp As Excel.Application = Nothing
+        Dim libro As Excel.Workbook = Nothing
+        Dim hoja As Excel.Worksheet = Nothing
+
+        Try
+            excelApp = New Excel.Application()
+            excelApp.DisplayAlerts = False
+            If String.IsNullOrWhiteSpace(plantillaPath) = False AndAlso File.Exists(plantillaPath) Then
+                libro = excelApp.Workbooks.Open(plantillaPath)
+            Else
+                libro = excelApp.Workbooks.Add()
+            End If
+
+            Try
+                hoja = CType(libro.Sheets("Hoja1"), Excel.Worksheet)
+            Catch ex As Exception
+                hoja = CType(libro.Sheets(1), Excel.Worksheet)
+            End Try
+
+            Dim rangoJ1 As Excel.Range = hoja.Range("J1")
+            rangoJ1.Interior.Color = System.Drawing.Color.Yellow
+            LiberarObjetoCom(rangoJ1)
+
+            Dim rangoK1K2 As Excel.Range = hoja.Range("K1", "K2")
+            rangoK1K2.Merge()
+            rangoK1K2.Value = detalle.Almacen
+            rangoK1K2.Interior.Color = System.Drawing.Color.Yellow
+            rangoK1K2.WrapText = True
+
+            Dim alturaBaseK As Double = Math.Max(hoja.Rows(1).RowHeight, hoja.Rows(2).RowHeight)
+            Dim anchoColumnaK As Double = Math.Max(1, rangoK1K2.ColumnWidth)
+            Dim lineasK As Integer = Math.Max(1, CInt(Math.Ceiling(detalle.Almacen.Length / anchoColumnaK)))
+            Dim alturaPorFilaK As Double = Math.Max(alturaBaseK, (alturaBaseK * lineasK) / 2.0)
+            hoja.Rows("1:2").RowHeight = alturaPorFilaK
+
+            LiberarObjetoCom(rangoK1K2)
+
+            hoja.Range("F5").Value = detalle.NoContrato
+            hoja.Range("F7").Value = "00 00 03 02 86"
+
+            Dim fechaActual As DateTime = DateTime.Now
+            Dim cultura As New CultureInfo("es-MX")
+            hoja.Range("D15").Value = fechaActual.Day
+            hoja.Range("G15").Value = cultura.TextInfo.ToTitleCase(fechaActual.ToString("MMMM", cultura))
+            hoja.Range("J15").Value = fechaActual.Year
+
+            Dim maximoPartidasBase As Integer = 17
+            Dim maximoPartidaFactura As Integer = If(detalle.Partidas.Keys.Count > 0, detalle.Partidas.Keys.Max(), 0)
+            Dim filasAInsertar As Integer = Math.Max(0, maximoPartidaFactura - maximoPartidasBase)
+
+            If filasAInsertar > 0 Then
+                Dim indiceInsercion As Integer = 39
+                Dim rangoInsertar As Excel.Range = hoja.Rows(indiceInsercion & ":" & indiceInsercion + filasAInsertar - 1)
+                rangoInsertar.Insert(Excel.XlInsertShiftDirection.xlShiftDown)
+                LiberarObjetoCom(rangoInsertar)
+            End If
+
+            For Each partida As Integer In detalle.Partidas.Keys.OrderBy(Function(p) p)
+                Dim filaDestino As Integer = 20 + partida
+                Dim requiereBordeGrueso As Boolean = filaDestino > 37
+
+                ConfigurarFilaPartidaSusceptible(hoja, filaDestino, requiereBordeGrueso)
+
+                hoja.Range("A" & filaDestino).Value = partida
+
+                If partida = 1 Then
+                    hoja.Range("B" & filaDestino, "C" & filaDestino).Value = "FACTURA"
+                    hoja.Range("D" & filaDestino, "E" & filaDestino).Value = detalle.NumeroFactura
+                    hoja.Range("F" & filaDestino, "G" & filaDestino).Value = detalle.FechaFactura
+                    hoja.Range("H" & filaDestino, "I" & filaDestino).Value = detalle.FacturaTotal
+                End If
+
+                Dim rangoAltas As Excel.Range = hoja.Range("J" & filaDestino, "K" & filaDestino)
+                rangoAltas.Value = FormatearAltasIMSS(detalle.Partidas(partida))
+                rangoAltas.WrapText = True
+
+                Dim lineasAltas As Integer = Math.Max(1, CInt(Math.Ceiling(detalle.Partidas(partida).Count / 2.0)))
+                Dim alturaBase As Double = hoja.Rows(filaDestino).RowHeight
+                hoja.Rows(filaDestino).RowHeight = Math.Max(alturaBase, alturaBase * lineasAltas)
+
+                LiberarObjetoCom(rangoAltas)
+            Next
+
+            Dim filaTotales As Integer = 39 + Math.Max(0, maximoPartidaFactura - maximoPartidasBase)
+            hoja.Range("E" & filaTotales).Value = 1
+            hoja.Range("H" & filaTotales).Value = detalle.FacturaTotal
+
+            If maximoPartidaFactura > maximoPartidasBase Then
+                Dim totalDocumentos As Excel.Range = hoja.Range("B" & filaTotales, "D" & filaTotales)
+                totalDocumentos.Merge()
+                totalDocumentos.Value = "TOTAL DE DOCUMENTOS"
+                totalDocumentos.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
+                totalDocumentos.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+                LiberarObjetoCom(totalDocumentos)
+
+                Dim cantidadDocumentos As Excel.Range = hoja.Range("E" & filaTotales)
+                cantidadDocumentos.Value = 1
+                cantidadDocumentos.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
+                cantidadDocumentos.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+                cantidadDocumentos.Borders.LineStyle = Excel.XlLineStyle.xlContinuous
+                LiberarObjetoCom(cantidadDocumentos)
+
+                hoja.Range("G" & filaTotales).Value = "TOTAL"
+
+                Dim totalFactura As Excel.Range = hoja.Range("H" & filaTotales, "I" & filaTotales)
+                totalFactura.Merge()
+                totalFactura.Value = detalle.FacturaTotal
+                totalFactura.Borders.LineStyle = Excel.XlLineStyle.xlContinuous
+                LiberarObjetoCom(totalFactura)
+            End If
+
+            Dim filaMensaje As Integer = filaTotales + 2
+            hoja.Range("B" & filaMensaje).Value = "FAVOR DE SUBIR A CADENAS PRODUCTIVAS"
+
+            libro.SaveAs(destinoPath, Excel.XlFileFormat.xlOpenXMLWorkbook)
+        Finally
+            If hoja IsNot Nothing Then
+                LiberarObjetoCom(hoja)
+            End If
+
+            If libro IsNot Nothing Then
+                libro.Close(SaveChanges:=False)
+                LiberarObjetoCom(libro)
+            End If
+
+            If excelApp IsNot Nothing Then
+                excelApp.Quit()
+                LiberarObjetoCom(excelApp)
+            End If
+        End Try
+    End Sub
+
+    Private Sub LiberarObjetoCom(ByVal objeto As Object)
+        If objeto IsNot Nothing Then
+            Marshal.ReleaseComObject(objeto)
+        End If
+    End Sub
+
+    Private Sub BtmGeneraSusceptibleIMSS_Click(sender As System.Object, e As System.EventArgs) Handles BtmGeneraSusceptibleIMSS.Click
+        Dim valorFactura As String = InputBox("Capture el número de factura para generar la hoja Susceptible IMSS.", "Hoja Susceptible IMSS")
+        If String.IsNullOrWhiteSpace(valorFactura) Then
+            Exit Sub
+        End If
+
+        Dim numeroFactura As Long
+        If Not Long.TryParse(valorFactura, numeroFactura) Then
+            MessageBox.Show("El número de factura no es válido, favor de verificar.", "Hoja Susceptible IMSS", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        Dim detalleFactura As DetalleFacturaIMSS = ObtenerDetalleFacturaIMSS(numeroFactura)
+        If detalleFactura Is Nothing Then
+            Exit Sub
+        End If
+
+        Dim plantillaDetectada As String = ObtenerPlantillaSusceptibleIMSS()
+        Dim plantillaSeleccionada As String = plantillaDetectada
+
+        Using selectorPlantilla As New OpenFileDialog()
+            selectorPlantilla.Filter = "Archivo de Excel (*.xlsx;*.xls)|*.xlsx;*.xls|Todos los archivos (*.*)|*.*"
+            selectorPlantilla.Title = "Seleccionar plantilla Hoja Susceptible IMSS"
+
+            If String.IsNullOrWhiteSpace(plantillaDetectada) = False Then
+                selectorPlantilla.InitialDirectory = Path.GetDirectoryName(plantillaDetectada)
+                selectorPlantilla.FileName = Path.GetFileName(plantillaDetectada)
+            Else
+                selectorPlantilla.InitialDirectory = Application.StartupPath
+            End If
+
+            Dim resultadoPlantilla As DialogResult = selectorPlantilla.ShowDialog()
+            If resultadoPlantilla = DialogResult.OK Then
+                plantillaSeleccionada = selectorPlantilla.FileName
+            End If
+        End Using
+
+        If String.IsNullOrWhiteSpace(plantillaSeleccionada) Then
+            MessageBox.Show("No se seleccionó una plantilla y no se encontró una ruta por defecto. Se generará el archivo con el formato básico.", "Hoja Susceptible IMSS", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+        Dim guardarArchivo As New SaveFileDialog()
+        With guardarArchivo
+            .Filter = "Archivo de Excel (*.xlsx)|*.xlsx"
+            .Title = "Guardar Hoja Susceptible IMSS"
+            .FileName = "SusceptibleIMSS_" & numeroFactura & ".xlsx"
+        End With
+
+        If guardarArchivo.ShowDialog() <> DialogResult.OK Then
+            Exit Sub
+        End If
+
+        Try
+            GenerarHojaAltasIMSS(plantillaSeleccionada, guardarArchivo.FileName, detalleFactura)
+            MessageBox.Show("Se generó correctamente la Hoja Susceptible IMSS.", "Hoja Susceptible IMSS", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("Se generó un error al generar la hoja, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Hoja Susceptible IMSS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End Try
     End Sub
 End Class
