@@ -30,6 +30,7 @@ Partial Class GeneraRemision2
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GeneraRemision2))
         Me.PanPrincipal = New DevComponents.DotNetBar.PanelEx()
         Me.BtnCancelarRemision = New DevComponents.DotNetBar.ButtonX()
         Me.TxtCveRemision = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -40,15 +41,12 @@ Partial Class GeneraRemision2
         Me.RBGB4LugarEntrega = New System.Windows.Forms.RadioButton()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.GB3 = New System.Windows.Forms.GroupBox()
-        Me.RBGB3NO = New System.Windows.Forms.RadioButton()
         Me.RBGB3SI = New System.Windows.Forms.RadioButton()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.GB2 = New System.Windows.Forms.GroupBox()
-        Me.RBGB2NO = New System.Windows.Forms.RadioButton()
         Me.RBGB2SI = New System.Windows.Forms.RadioButton()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
         Me.GB1 = New System.Windows.Forms.GroupBox()
-        Me.RBGB1NO = New System.Windows.Forms.RadioButton()
         Me.RBGB1SI = New System.Windows.Forms.RadioButton()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.TxtNoPedido = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -71,6 +69,72 @@ Partial Class GeneraRemision2
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.ReflectionLabel1 = New DevComponents.DotNetBar.Controls.ReflectionLabel()
         Me.RBGB4PartidaLibre = New System.Windows.Forms.RadioButton()
+        Me.GPDatosBasicos = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.CmbIVA = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.IVA0 = New DevComponents.Editors.ComboItem()
+        Me.IVA16 = New DevComponents.Editors.ComboItem()
+        Me.LblIVA = New DevComponents.DotNetBar.LabelX()
+        Me.TxtRegimenFiscal = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX30 = New DevComponents.DotNetBar.LabelX()
+        Me.GPDatosCliente = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.TxtTelContacto = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX24 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtContacto = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX23 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtEmail = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX22 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtFax = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX21 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtTelefono = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtEstado = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX19 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtCiudad = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX18 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtDelMun = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX17 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtColonia = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX16 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtCP = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtNoInterior = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX14 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtNoExterior = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtCalle = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX12 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtRFC = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX11 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX28 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtCveProveedor = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX7 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtBancoPago = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TxtCuentaPago = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtUsoCFDI = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX8 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtInstruccionesEntrega = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX29 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtFormaPago = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX26 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtMetodoPago = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX25 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtOrdenSurtimiento = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TxtContratoCliente = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.TxtPedCliente = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.BtnMostrarCliente = New System.Windows.Forms.Button()
+        Me.CmbCondPagoCondicion = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.CmbCondPagoTipoDia = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.LabelX10 = New DevComponents.DotNetBar.LabelX()
+        Me.CmbCondPagoDias = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtFolio = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX66 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX65 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX64 = New DevComponents.DotNetBar.LabelX()
+        Me.TxtCliente = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX27 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX32 = New DevComponents.DotNetBar.LabelX()
         Me.PanPrincipal.SuspendLayout()
         Me.GB4.SuspendLayout()
         Me.GB3.SuspendLayout()
@@ -78,11 +142,14 @@ Partial Class GeneraRemision2
         Me.GB1.SuspendLayout()
         CType(Me.TabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPrincipal.SuspendLayout()
+        Me.SuperTabControlPanel1.SuspendLayout()
         Me.SuperTabControlPanel3.SuspendLayout()
         Me.PanDetallePartida.SuspendLayout()
         CType(Me.DGPrevioRemision, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControlPanel9.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
+        Me.GPDatosBasicos.SuspendLayout()
+        Me.GPDatosCliente.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanPrincipal
@@ -219,7 +286,6 @@ Partial Class GeneraRemision2
         '
         'GB3
         '
-        Me.GB3.Controls.Add(Me.RBGB3NO)
         Me.GB3.Controls.Add(Me.RBGB3SI)
         Me.GB3.Controls.Add(Me.LabelX4)
         Me.GB3.Enabled = False
@@ -228,17 +294,6 @@ Partial Class GeneraRemision2
         Me.GB3.Size = New System.Drawing.Size(945, 33)
         Me.GB3.TabIndex = 90
         Me.GB3.TabStop = False
-        '
-        'RBGB3NO
-        '
-        Me.RBGB3NO.AutoSize = True
-        Me.RBGB3NO.Location = New System.Drawing.Point(561, 10)
-        Me.RBGB3NO.Name = "RBGB3NO"
-        Me.RBGB3NO.Size = New System.Drawing.Size(39, 17)
-        Me.RBGB3NO.TabIndex = 89
-        Me.RBGB3NO.TabStop = True
-        Me.RBGB3NO.Text = "No"
-        Me.RBGB3NO.UseVisualStyleBackColor = True
         '
         'RBGB3SI
         '
@@ -269,7 +324,6 @@ Partial Class GeneraRemision2
         '
         'GB2
         '
-        Me.GB2.Controls.Add(Me.RBGB2NO)
         Me.GB2.Controls.Add(Me.RBGB2SI)
         Me.GB2.Controls.Add(Me.LabelX2)
         Me.GB2.Enabled = False
@@ -278,17 +332,6 @@ Partial Class GeneraRemision2
         Me.GB2.Size = New System.Drawing.Size(945, 32)
         Me.GB2.TabIndex = 89
         Me.GB2.TabStop = False
-        '
-        'RBGB2NO
-        '
-        Me.RBGB2NO.AutoSize = True
-        Me.RBGB2NO.Location = New System.Drawing.Point(560, 11)
-        Me.RBGB2NO.Name = "RBGB2NO"
-        Me.RBGB2NO.Size = New System.Drawing.Size(39, 17)
-        Me.RBGB2NO.TabIndex = 89
-        Me.RBGB2NO.TabStop = True
-        Me.RBGB2NO.Text = "No"
-        Me.RBGB2NO.UseVisualStyleBackColor = True
         '
         'RBGB2SI
         '
@@ -319,7 +362,6 @@ Partial Class GeneraRemision2
         '
         'GB1
         '
-        Me.GB1.Controls.Add(Me.RBGB1NO)
         Me.GB1.Controls.Add(Me.RBGB1SI)
         Me.GB1.Controls.Add(Me.LabelX1)
         Me.GB1.Enabled = False
@@ -328,17 +370,6 @@ Partial Class GeneraRemision2
         Me.GB1.Size = New System.Drawing.Size(945, 31)
         Me.GB1.TabIndex = 88
         Me.GB1.TabStop = False
-        '
-        'RBGB1NO
-        '
-        Me.RBGB1NO.AutoSize = True
-        Me.RBGB1NO.Location = New System.Drawing.Point(560, 13)
-        Me.RBGB1NO.Name = "RBGB1NO"
-        Me.RBGB1NO.Size = New System.Drawing.Size(39, 17)
-        Me.RBGB1NO.TabIndex = 89
-        Me.RBGB1NO.TabStop = True
-        Me.RBGB1NO.Text = "No"
-        Me.RBGB1NO.UseVisualStyleBackColor = True
         '
         'RBGB1SI
         '
@@ -409,8 +440,8 @@ Partial Class GeneraRemision2
         Me.TabPrincipal.ControlBox.MenuBox.Name = ""
         Me.TabPrincipal.ControlBox.Name = ""
         Me.TabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TabPrincipal.ControlBox.MenuBox, Me.TabPrincipal.ControlBox.CloseBox})
-        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel3)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel1)
+        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel3)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel9)
         Me.TabPrincipal.Location = New System.Drawing.Point(12, 208)
         Me.TabPrincipal.Name = "TabPrincipal"
@@ -424,6 +455,7 @@ Partial Class GeneraRemision2
         '
         'SuperTabControlPanel1
         '
+        Me.SuperTabControlPanel1.Controls.Add(Me.GPDatosBasicos)
         Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel1.Location = New System.Drawing.Point(0, 25)
         Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
@@ -538,9 +570,9 @@ Partial Class GeneraRemision2
         '
         Me.SuperTabControlPanel9.Controls.Add(Me.GroupPanel1)
         Me.SuperTabControlPanel9.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 0)
+        Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 25)
         Me.SuperTabControlPanel9.Name = "SuperTabControlPanel9"
-        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 380)
+        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 355)
         Me.SuperTabControlPanel9.TabIndex = 0
         Me.SuperTabControlPanel9.TabItem = Me.TabNotas
         '
@@ -695,6 +727,1055 @@ Partial Class GeneraRemision2
         Me.RBGB4PartidaLibre.Text = "Partida Libre"
         Me.RBGB4PartidaLibre.UseVisualStyleBackColor = True
         '
+        'GPDatosBasicos
+        '
+        Me.GPDatosBasicos.CanvasColor = System.Drawing.SystemColors.Control
+        Me.GPDatosBasicos.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GPDatosBasicos.Controls.Add(Me.CmbIVA)
+        Me.GPDatosBasicos.Controls.Add(Me.LblIVA)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtRegimenFiscal)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX30)
+        Me.GPDatosBasicos.Controls.Add(Me.GPDatosCliente)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX28)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtCveProveedor)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX7)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtBancoPago)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtCuentaPago)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX6)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtUsoCFDI)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX8)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtInstruccionesEntrega)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX29)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtFormaPago)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX26)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtMetodoPago)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX25)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtOrdenSurtimiento)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtContratoCliente)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtPedCliente)
+        Me.GPDatosBasicos.Controls.Add(Me.BtnMostrarCliente)
+        Me.GPDatosBasicos.Controls.Add(Me.CmbCondPagoCondicion)
+        Me.GPDatosBasicos.Controls.Add(Me.CmbCondPagoTipoDia)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX10)
+        Me.GPDatosBasicos.Controls.Add(Me.CmbCondPagoDias)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX9)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtFolio)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX66)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX65)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX64)
+        Me.GPDatosBasicos.Controls.Add(Me.TxtCliente)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX27)
+        Me.GPDatosBasicos.Controls.Add(Me.LabelX32)
+        Me.GPDatosBasicos.Location = New System.Drawing.Point(9, 8)
+        Me.GPDatosBasicos.Name = "GPDatosBasicos"
+        Me.GPDatosBasicos.Size = New System.Drawing.Size(936, 341)
+        '
+        '
+        '
+        Me.GPDatosBasicos.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.GPDatosBasicos.Style.BackColorGradientAngle = 90
+        Me.GPDatosBasicos.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.GPDatosBasicos.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPDatosBasicos.Style.BorderBottomWidth = 1
+        Me.GPDatosBasicos.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.GPDatosBasicos.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPDatosBasicos.Style.BorderLeftWidth = 1
+        Me.GPDatosBasicos.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPDatosBasicos.Style.BorderRightWidth = 1
+        Me.GPDatosBasicos.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPDatosBasicos.Style.BorderTopWidth = 1
+        Me.GPDatosBasicos.Style.CornerDiameter = 4
+        Me.GPDatosBasicos.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.GPDatosBasicos.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.GPDatosBasicos.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.GPDatosBasicos.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        '
+        '
+        '
+        Me.GPDatosBasicos.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.GPDatosBasicos.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.GPDatosBasicos.TabIndex = 1
+        Me.GPDatosBasicos.Text = "Datos Básicos"
+        '
+        'CmbIVA
+        '
+        Me.CmbIVA.DisplayMember = "Text"
+        Me.CmbIVA.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CmbIVA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbIVA.Enabled = False
+        Me.CmbIVA.FocusHighlightEnabled = True
+        Me.CmbIVA.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbIVA.FormattingEnabled = True
+        Me.CmbIVA.ItemHeight = 17
+        Me.CmbIVA.Items.AddRange(New Object() {Me.IVA0, Me.IVA16})
+        Me.CmbIVA.Location = New System.Drawing.Point(688, 27)
+        Me.CmbIVA.Name = "CmbIVA"
+        Me.CmbIVA.Size = New System.Drawing.Size(99, 23)
+        Me.CmbIVA.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CmbIVA.TabIndex = 112
+        '
+        'IVA0
+        '
+        Me.IVA0.Text = "0 %"
+        '
+        'IVA16
+        '
+        Me.IVA16.Text = "16 %"
+        '
+        'LblIVA
+        '
+        '
+        '
+        '
+        Me.LblIVA.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LblIVA.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblIVA.Location = New System.Drawing.Point(586, 27)
+        Me.LblIVA.Name = "LblIVA"
+        Me.LblIVA.Size = New System.Drawing.Size(101, 21)
+        Me.LblIVA.TabIndex = 111
+        Me.LblIVA.Text = "Porcentaje de IVA:"
+        '
+        'TxtRegimenFiscal
+        '
+        '
+        '
+        '
+        Me.TxtRegimenFiscal.Border.Class = "TextBoxBorder"
+        Me.TxtRegimenFiscal.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtRegimenFiscal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtRegimenFiscal.FocusHighlightEnabled = True
+        Me.TxtRegimenFiscal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtRegimenFiscal.Location = New System.Drawing.Point(688, 57)
+        Me.TxtRegimenFiscal.Name = "TxtRegimenFiscal"
+        Me.TxtRegimenFiscal.ReadOnly = True
+        Me.TxtRegimenFiscal.Size = New System.Drawing.Size(211, 21)
+        Me.TxtRegimenFiscal.TabIndex = 100
+        '
+        'LabelX30
+        '
+        '
+        '
+        '
+        Me.LabelX30.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX30.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX30.Location = New System.Drawing.Point(593, 57)
+        Me.LabelX30.Name = "LabelX30"
+        Me.LabelX30.Size = New System.Drawing.Size(89, 21)
+        Me.LabelX30.TabIndex = 99
+        Me.LabelX30.Text = "Regimen Fiscal:"
+        Me.LabelX30.VerticalTextTopUp = False
+        '
+        'GPDatosCliente
+        '
+        Me.GPDatosCliente.CanvasColor = System.Drawing.SystemColors.Control
+        Me.GPDatosCliente.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GPDatosCliente.Controls.Add(Me.TxtTelContacto)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX24)
+        Me.GPDatosCliente.Controls.Add(Me.TxtContacto)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX23)
+        Me.GPDatosCliente.Controls.Add(Me.TxtEmail)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX22)
+        Me.GPDatosCliente.Controls.Add(Me.TxtFax)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX21)
+        Me.GPDatosCliente.Controls.Add(Me.TxtTelefono)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX20)
+        Me.GPDatosCliente.Controls.Add(Me.TxtEstado)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX19)
+        Me.GPDatosCliente.Controls.Add(Me.TxtCiudad)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX18)
+        Me.GPDatosCliente.Controls.Add(Me.TxtDelMun)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX17)
+        Me.GPDatosCliente.Controls.Add(Me.TxtColonia)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX16)
+        Me.GPDatosCliente.Controls.Add(Me.TxtCP)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX15)
+        Me.GPDatosCliente.Controls.Add(Me.TxtNoInterior)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX14)
+        Me.GPDatosCliente.Controls.Add(Me.TxtNoExterior)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX13)
+        Me.GPDatosCliente.Controls.Add(Me.TxtCalle)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX12)
+        Me.GPDatosCliente.Controls.Add(Me.TxtRFC)
+        Me.GPDatosCliente.Controls.Add(Me.LabelX11)
+        Me.GPDatosCliente.Location = New System.Drawing.Point(176, 49)
+        Me.GPDatosCliente.Name = "GPDatosCliente"
+        Me.GPDatosCliente.Size = New System.Drawing.Size(408, 29)
+        '
+        '
+        '
+        Me.GPDatosCliente.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.GPDatosCliente.Style.BackColorGradientAngle = 90
+        Me.GPDatosCliente.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.GPDatosCliente.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPDatosCliente.Style.BorderBottomWidth = 1
+        Me.GPDatosCliente.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.GPDatosCliente.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPDatosCliente.Style.BorderLeftWidth = 1
+        Me.GPDatosCliente.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPDatosCliente.Style.BorderRightWidth = 1
+        Me.GPDatosCliente.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GPDatosCliente.Style.BorderTopWidth = 1
+        Me.GPDatosCliente.Style.CornerDiameter = 4
+        Me.GPDatosCliente.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.GPDatosCliente.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.GPDatosCliente.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.GPDatosCliente.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        '
+        '
+        '
+        Me.GPDatosCliente.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.GPDatosCliente.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.GPDatosCliente.TabIndex = 73
+        Me.GPDatosCliente.Text = "Datos del Cliente"
+        Me.GPDatosCliente.Visible = False
+        '
+        'TxtTelContacto
+        '
+        '
+        '
+        '
+        Me.TxtTelContacto.Border.Class = "TextBoxBorder"
+        Me.TxtTelContacto.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtTelContacto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtTelContacto.FocusHighlightEnabled = True
+        Me.TxtTelContacto.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTelContacto.Location = New System.Drawing.Point(384, 166)
+        Me.TxtTelContacto.Name = "TxtTelContacto"
+        Me.TxtTelContacto.ReadOnly = True
+        Me.TxtTelContacto.Size = New System.Drawing.Size(160, 21)
+        Me.TxtTelContacto.TabIndex = 55
+        '
+        'LabelX24
+        '
+        '
+        '
+        '
+        Me.LabelX24.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX24.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX24.Location = New System.Drawing.Point(289, 165)
+        Me.LabelX24.Name = "LabelX24"
+        Me.LabelX24.Size = New System.Drawing.Size(76, 21)
+        Me.LabelX24.TabIndex = 54
+        Me.LabelX24.Text = "Tel. Contacto:"
+        '
+        'TxtContacto
+        '
+        '
+        '
+        '
+        Me.TxtContacto.Border.Class = "TextBoxBorder"
+        Me.TxtContacto.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtContacto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtContacto.FocusHighlightEnabled = True
+        Me.TxtContacto.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtContacto.Location = New System.Drawing.Point(98, 165)
+        Me.TxtContacto.Name = "TxtContacto"
+        Me.TxtContacto.ReadOnly = True
+        Me.TxtContacto.Size = New System.Drawing.Size(160, 21)
+        Me.TxtContacto.TabIndex = 53
+        '
+        'LabelX23
+        '
+        '
+        '
+        '
+        Me.LabelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX23.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX23.Location = New System.Drawing.Point(4, 166)
+        Me.LabelX23.Name = "LabelX23"
+        Me.LabelX23.Size = New System.Drawing.Size(75, 21)
+        Me.LabelX23.TabIndex = 52
+        Me.LabelX23.Text = "Contacto:"
+        '
+        'TxtEmail
+        '
+        '
+        '
+        '
+        Me.TxtEmail.Border.Class = "TextBoxBorder"
+        Me.TxtEmail.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtEmail.FocusHighlightEnabled = True
+        Me.TxtEmail.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtEmail.Location = New System.Drawing.Point(98, 143)
+        Me.TxtEmail.Name = "TxtEmail"
+        Me.TxtEmail.ReadOnly = True
+        Me.TxtEmail.Size = New System.Drawing.Size(160, 21)
+        Me.TxtEmail.TabIndex = 51
+        '
+        'LabelX22
+        '
+        '
+        '
+        '
+        Me.LabelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX22.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX22.Location = New System.Drawing.Point(5, 143)
+        Me.LabelX22.Name = "LabelX22"
+        Me.LabelX22.Size = New System.Drawing.Size(75, 21)
+        Me.LabelX22.TabIndex = 50
+        Me.LabelX22.Text = "E-mail:"
+        '
+        'TxtFax
+        '
+        '
+        '
+        '
+        Me.TxtFax.Border.Class = "TextBoxBorder"
+        Me.TxtFax.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtFax.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtFax.FocusHighlightEnabled = True
+        Me.TxtFax.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtFax.Location = New System.Drawing.Point(384, 143)
+        Me.TxtFax.Name = "TxtFax"
+        Me.TxtFax.ReadOnly = True
+        Me.TxtFax.Size = New System.Drawing.Size(160, 21)
+        Me.TxtFax.TabIndex = 49
+        '
+        'LabelX21
+        '
+        '
+        '
+        '
+        Me.LabelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX21.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX21.Location = New System.Drawing.Point(290, 141)
+        Me.LabelX21.Name = "LabelX21"
+        Me.LabelX21.Size = New System.Drawing.Size(61, 21)
+        Me.LabelX21.TabIndex = 48
+        Me.LabelX21.Text = "Fax:"
+        '
+        'TxtTelefono
+        '
+        '
+        '
+        '
+        Me.TxtTelefono.Border.Class = "TextBoxBorder"
+        Me.TxtTelefono.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtTelefono.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtTelefono.FocusHighlightEnabled = True
+        Me.TxtTelefono.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTelefono.Location = New System.Drawing.Point(98, 121)
+        Me.TxtTelefono.Name = "TxtTelefono"
+        Me.TxtTelefono.ReadOnly = True
+        Me.TxtTelefono.Size = New System.Drawing.Size(160, 21)
+        Me.TxtTelefono.TabIndex = 47
+        '
+        'LabelX20
+        '
+        '
+        '
+        '
+        Me.LabelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX20.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX20.Location = New System.Drawing.Point(3, 121)
+        Me.LabelX20.Name = "LabelX20"
+        Me.LabelX20.Size = New System.Drawing.Size(75, 21)
+        Me.LabelX20.TabIndex = 46
+        Me.LabelX20.Text = "Teléfono:"
+        '
+        'TxtEstado
+        '
+        '
+        '
+        '
+        Me.TxtEstado.Border.Class = "TextBoxBorder"
+        Me.TxtEstado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtEstado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtEstado.FocusHighlightEnabled = True
+        Me.TxtEstado.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtEstado.Location = New System.Drawing.Point(384, 121)
+        Me.TxtEstado.Name = "TxtEstado"
+        Me.TxtEstado.ReadOnly = True
+        Me.TxtEstado.Size = New System.Drawing.Size(160, 21)
+        Me.TxtEstado.TabIndex = 45
+        '
+        'LabelX19
+        '
+        '
+        '
+        '
+        Me.LabelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX19.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX19.Location = New System.Drawing.Point(290, 121)
+        Me.LabelX19.Name = "LabelX19"
+        Me.LabelX19.Size = New System.Drawing.Size(63, 21)
+        Me.LabelX19.TabIndex = 44
+        Me.LabelX19.Text = "Estado:"
+        '
+        'TxtCiudad
+        '
+        '
+        '
+        '
+        Me.TxtCiudad.Border.Class = "TextBoxBorder"
+        Me.TxtCiudad.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtCiudad.FocusHighlightEnabled = True
+        Me.TxtCiudad.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtCiudad.Location = New System.Drawing.Point(98, 99)
+        Me.TxtCiudad.Name = "TxtCiudad"
+        Me.TxtCiudad.ReadOnly = True
+        Me.TxtCiudad.Size = New System.Drawing.Size(160, 21)
+        Me.TxtCiudad.TabIndex = 43
+        '
+        'LabelX18
+        '
+        '
+        '
+        '
+        Me.LabelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX18.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX18.Location = New System.Drawing.Point(3, 99)
+        Me.LabelX18.Name = "LabelX18"
+        Me.LabelX18.Size = New System.Drawing.Size(75, 21)
+        Me.LabelX18.TabIndex = 42
+        Me.LabelX18.Text = "Ciudad:"
+        '
+        'TxtDelMun
+        '
+        '
+        '
+        '
+        Me.TxtDelMun.Border.Class = "TextBoxBorder"
+        Me.TxtDelMun.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtDelMun.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtDelMun.FocusHighlightEnabled = True
+        Me.TxtDelMun.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtDelMun.Location = New System.Drawing.Point(384, 98)
+        Me.TxtDelMun.Name = "TxtDelMun"
+        Me.TxtDelMun.ReadOnly = True
+        Me.TxtDelMun.Size = New System.Drawing.Size(160, 21)
+        Me.TxtDelMun.TabIndex = 41
+        '
+        'LabelX17
+        '
+        '
+        '
+        '
+        Me.LabelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX17.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX17.Location = New System.Drawing.Point(290, 99)
+        Me.LabelX17.Name = "LabelX17"
+        Me.LabelX17.Size = New System.Drawing.Size(63, 21)
+        Me.LabelX17.TabIndex = 40
+        Me.LabelX17.Text = "Del/Mun:"
+        '
+        'TxtColonia
+        '
+        '
+        '
+        '
+        Me.TxtColonia.Border.Class = "TextBoxBorder"
+        Me.TxtColonia.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtColonia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtColonia.FocusHighlightEnabled = True
+        Me.TxtColonia.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtColonia.Location = New System.Drawing.Point(97, 73)
+        Me.TxtColonia.Name = "TxtColonia"
+        Me.TxtColonia.ReadOnly = True
+        Me.TxtColonia.Size = New System.Drawing.Size(160, 21)
+        Me.TxtColonia.TabIndex = 39
+        '
+        'LabelX16
+        '
+        '
+        '
+        '
+        Me.LabelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX16.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX16.Location = New System.Drawing.Point(3, 71)
+        Me.LabelX16.Name = "LabelX16"
+        Me.LabelX16.Size = New System.Drawing.Size(66, 21)
+        Me.LabelX16.TabIndex = 38
+        Me.LabelX16.Text = "Colonia:"
+        '
+        'TxtCP
+        '
+        '
+        '
+        '
+        Me.TxtCP.Border.Class = "TextBoxBorder"
+        Me.TxtCP.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtCP.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtCP.FocusHighlightEnabled = True
+        Me.TxtCP.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtCP.Location = New System.Drawing.Point(384, 71)
+        Me.TxtCP.Name = "TxtCP"
+        Me.TxtCP.ReadOnly = True
+        Me.TxtCP.Size = New System.Drawing.Size(86, 21)
+        Me.TxtCP.TabIndex = 37
+        '
+        'LabelX15
+        '
+        '
+        '
+        '
+        Me.LabelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX15.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX15.Location = New System.Drawing.Point(343, 71)
+        Me.LabelX15.Name = "LabelX15"
+        Me.LabelX15.Size = New System.Drawing.Size(35, 21)
+        Me.LabelX15.TabIndex = 36
+        Me.LabelX15.Text = "C.P.:"
+        '
+        'TxtNoInterior
+        '
+        '
+        '
+        '
+        Me.TxtNoInterior.Border.Class = "TextBoxBorder"
+        Me.TxtNoInterior.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtNoInterior.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtNoInterior.FocusHighlightEnabled = True
+        Me.TxtNoInterior.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtNoInterior.Location = New System.Drawing.Point(285, 48)
+        Me.TxtNoInterior.Name = "TxtNoInterior"
+        Me.TxtNoInterior.ReadOnly = True
+        Me.TxtNoInterior.Size = New System.Drawing.Size(86, 21)
+        Me.TxtNoInterior.TabIndex = 35
+        '
+        'LabelX14
+        '
+        '
+        '
+        '
+        Me.LabelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX14.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX14.Location = New System.Drawing.Point(215, 48)
+        Me.LabelX14.Name = "LabelX14"
+        Me.LabelX14.Size = New System.Drawing.Size(74, 21)
+        Me.LabelX14.TabIndex = 34
+        Me.LabelX14.Text = "No. Interior:"
+        '
+        'TxtNoExterior
+        '
+        '
+        '
+        '
+        Me.TxtNoExterior.Border.Class = "TextBoxBorder"
+        Me.TxtNoExterior.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtNoExterior.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtNoExterior.FocusHighlightEnabled = True
+        Me.TxtNoExterior.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtNoExterior.Location = New System.Drawing.Point(98, 49)
+        Me.TxtNoExterior.Name = "TxtNoExterior"
+        Me.TxtNoExterior.ReadOnly = True
+        Me.TxtNoExterior.Size = New System.Drawing.Size(86, 21)
+        Me.TxtNoExterior.TabIndex = 33
+        '
+        'LabelX13
+        '
+        '
+        '
+        '
+        Me.LabelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX13.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX13.Location = New System.Drawing.Point(3, 48)
+        Me.LabelX13.Name = "LabelX13"
+        Me.LabelX13.Size = New System.Drawing.Size(84, 21)
+        Me.LabelX13.TabIndex = 32
+        Me.LabelX13.Text = "No. Exterior:"
+        '
+        'TxtCalle
+        '
+        '
+        '
+        '
+        Me.TxtCalle.Border.Class = "TextBoxBorder"
+        Me.TxtCalle.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtCalle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtCalle.FocusHighlightEnabled = True
+        Me.TxtCalle.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtCalle.Location = New System.Drawing.Point(98, 25)
+        Me.TxtCalle.Name = "TxtCalle"
+        Me.TxtCalle.ReadOnly = True
+        Me.TxtCalle.Size = New System.Drawing.Size(160, 21)
+        Me.TxtCalle.TabIndex = 31
+        '
+        'LabelX12
+        '
+        '
+        '
+        '
+        Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX12.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX12.Location = New System.Drawing.Point(3, 25)
+        Me.LabelX12.Name = "LabelX12"
+        Me.LabelX12.Size = New System.Drawing.Size(45, 21)
+        Me.LabelX12.TabIndex = 30
+        Me.LabelX12.Text = "Calle:"
+        '
+        'TxtRFC
+        '
+        '
+        '
+        '
+        Me.TxtRFC.Border.Class = "TextBoxBorder"
+        Me.TxtRFC.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtRFC.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtRFC.FocusHighlightEnabled = True
+        Me.TxtRFC.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtRFC.Location = New System.Drawing.Point(98, 1)
+        Me.TxtRFC.Name = "TxtRFC"
+        Me.TxtRFC.ReadOnly = True
+        Me.TxtRFC.Size = New System.Drawing.Size(138, 21)
+        Me.TxtRFC.TabIndex = 29
+        '
+        'LabelX11
+        '
+        '
+        '
+        '
+        Me.LabelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX11.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX11.Location = New System.Drawing.Point(3, 3)
+        Me.LabelX11.Name = "LabelX11"
+        Me.LabelX11.Size = New System.Drawing.Size(45, 21)
+        Me.LabelX11.TabIndex = 28
+        Me.LabelX11.Text = "RFC:"
+        '
+        'LabelX28
+        '
+        '
+        '
+        '
+        Me.LabelX28.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX28.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX28.Location = New System.Drawing.Point(593, 189)
+        Me.LabelX28.Name = "LabelX28"
+        Me.LabelX28.Size = New System.Drawing.Size(89, 21)
+        Me.LabelX28.TabIndex = 98
+        Me.LabelX28.Text = "Banco de Pago:"
+        '
+        'TxtCveProveedor
+        '
+        '
+        '
+        '
+        Me.TxtCveProveedor.Border.Class = "TextBoxBorder"
+        Me.TxtCveProveedor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtCveProveedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtCveProveedor.FocusHighlightEnabled = True
+        Me.TxtCveProveedor.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtCveProveedor.Location = New System.Drawing.Point(143, 55)
+        Me.TxtCveProveedor.Name = "TxtCveProveedor"
+        Me.TxtCveProveedor.ReadOnly = True
+        Me.TxtCveProveedor.Size = New System.Drawing.Size(191, 23)
+        Me.TxtCveProveedor.TabIndex = 95
+        '
+        'LabelX7
+        '
+        '
+        '
+        '
+        Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX7.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX7.Location = New System.Drawing.Point(3, 57)
+        Me.LabelX7.Name = "LabelX7"
+        Me.LabelX7.Size = New System.Drawing.Size(140, 21)
+        Me.LabelX7.TabIndex = 94
+        Me.LabelX7.Text = "Clave de Proveedor:"
+        Me.LabelX7.WordWrap = True
+        '
+        'TxtBancoPago
+        '
+        '
+        '
+        '
+        Me.TxtBancoPago.Border.Class = "TextBoxBorder"
+        Me.TxtBancoPago.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtBancoPago.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtBancoPago.FocusHighlightEnabled = True
+        Me.TxtBancoPago.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtBancoPago.Location = New System.Drawing.Point(688, 189)
+        Me.TxtBancoPago.Name = "TxtBancoPago"
+        Me.TxtBancoPago.ReadOnly = True
+        Me.TxtBancoPago.Size = New System.Drawing.Size(211, 21)
+        Me.TxtBancoPago.TabIndex = 93
+        '
+        'TxtCuentaPago
+        '
+        '
+        '
+        '
+        Me.TxtCuentaPago.Border.Class = "TextBoxBorder"
+        Me.TxtCuentaPago.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtCuentaPago.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtCuentaPago.FocusHighlightEnabled = True
+        Me.TxtCuentaPago.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtCuentaPago.Location = New System.Drawing.Point(688, 162)
+        Me.TxtCuentaPago.Name = "TxtCuentaPago"
+        Me.TxtCuentaPago.ReadOnly = True
+        Me.TxtCuentaPago.Size = New System.Drawing.Size(211, 21)
+        Me.TxtCuentaPago.TabIndex = 91
+        '
+        'LabelX6
+        '
+        '
+        '
+        '
+        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX6.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX6.Location = New System.Drawing.Point(593, 164)
+        Me.LabelX6.Name = "LabelX6"
+        Me.LabelX6.Size = New System.Drawing.Size(89, 21)
+        Me.LabelX6.TabIndex = 90
+        Me.LabelX6.Text = "Cuenta de Pago:"
+        '
+        'TxtUsoCFDI
+        '
+        '
+        '
+        '
+        Me.TxtUsoCFDI.Border.Class = "TextBoxBorder"
+        Me.TxtUsoCFDI.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtUsoCFDI.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtUsoCFDI.FocusHighlightEnabled = True
+        Me.TxtUsoCFDI.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtUsoCFDI.Location = New System.Drawing.Point(688, 84)
+        Me.TxtUsoCFDI.Name = "TxtUsoCFDI"
+        Me.TxtUsoCFDI.ReadOnly = True
+        Me.TxtUsoCFDI.Size = New System.Drawing.Size(211, 21)
+        Me.TxtUsoCFDI.TabIndex = 89
+        '
+        'LabelX8
+        '
+        '
+        '
+        '
+        Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX8.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX8.Location = New System.Drawing.Point(593, 84)
+        Me.LabelX8.Name = "LabelX8"
+        Me.LabelX8.Size = New System.Drawing.Size(89, 21)
+        Me.LabelX8.TabIndex = 88
+        Me.LabelX8.Text = "Uso de CFDI:"
+        '
+        'TxtInstruccionesEntrega
+        '
+        '
+        '
+        '
+        Me.TxtInstruccionesEntrega.Border.Class = "TextBoxBorder"
+        Me.TxtInstruccionesEntrega.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtInstruccionesEntrega.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtInstruccionesEntrega.FocusHighlightEnabled = True
+        Me.TxtInstruccionesEntrega.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtInstruccionesEntrega.Location = New System.Drawing.Point(99, 218)
+        Me.TxtInstruccionesEntrega.Multiline = True
+        Me.TxtInstruccionesEntrega.Name = "TxtInstruccionesEntrega"
+        Me.TxtInstruccionesEntrega.ReadOnly = True
+        Me.TxtInstruccionesEntrega.Size = New System.Drawing.Size(800, 92)
+        Me.TxtInstruccionesEntrega.TabIndex = 85
+        '
+        'LabelX29
+        '
+        '
+        '
+        '
+        Me.LabelX29.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX29.BackgroundStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        Me.LabelX29.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX29.Location = New System.Drawing.Point(6, 207)
+        Me.LabelX29.Name = "LabelX29"
+        Me.LabelX29.Size = New System.Drawing.Size(89, 48)
+        Me.LabelX29.TabIndex = 84
+        Me.LabelX29.Text = "Documentación de Entrega:"
+        Me.LabelX29.WordWrap = True
+        '
+        'TxtFormaPago
+        '
+        '
+        '
+        '
+        Me.TxtFormaPago.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtFormaPago.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtFormaPago.FocusHighlightEnabled = True
+        Me.TxtFormaPago.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtFormaPago.Location = New System.Drawing.Point(688, 139)
+        Me.TxtFormaPago.Name = "TxtFormaPago"
+        Me.TxtFormaPago.ReadOnly = True
+        Me.TxtFormaPago.Size = New System.Drawing.Size(211, 21)
+        Me.TxtFormaPago.TabIndex = 83
+        '
+        'LabelX26
+        '
+        '
+        '
+        '
+        Me.LabelX26.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX26.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX26.Location = New System.Drawing.Point(593, 138)
+        Me.LabelX26.Name = "LabelX26"
+        Me.LabelX26.Size = New System.Drawing.Size(89, 21)
+        Me.LabelX26.TabIndex = 82
+        Me.LabelX26.Text = "Forma de Pago:"
+        '
+        'TxtMetodoPago
+        '
+        '
+        '
+        '
+        Me.TxtMetodoPago.Border.Class = "TextBoxBorder"
+        Me.TxtMetodoPago.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtMetodoPago.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtMetodoPago.FocusHighlightEnabled = True
+        Me.TxtMetodoPago.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtMetodoPago.Location = New System.Drawing.Point(688, 111)
+        Me.TxtMetodoPago.Name = "TxtMetodoPago"
+        Me.TxtMetodoPago.ReadOnly = True
+        Me.TxtMetodoPago.Size = New System.Drawing.Size(211, 21)
+        Me.TxtMetodoPago.TabIndex = 81
+        '
+        'LabelX25
+        '
+        '
+        '
+        '
+        Me.LabelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX25.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX25.Location = New System.Drawing.Point(593, 111)
+        Me.LabelX25.Name = "LabelX25"
+        Me.LabelX25.Size = New System.Drawing.Size(89, 21)
+        Me.LabelX25.TabIndex = 80
+        Me.LabelX25.Text = "Metodo Pago:"
+        '
+        'TxtOrdenSurtimiento
+        '
+        '
+        '
+        '
+        Me.TxtOrdenSurtimiento.Border.Class = "TextBoxBorder"
+        Me.TxtOrdenSurtimiento.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtOrdenSurtimiento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtOrdenSurtimiento.FocusHighlightEnabled = True
+        Me.TxtOrdenSurtimiento.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtOrdenSurtimiento.Location = New System.Drawing.Point(143, 163)
+        Me.TxtOrdenSurtimiento.Name = "TxtOrdenSurtimiento"
+        Me.TxtOrdenSurtimiento.ReadOnly = True
+        Me.TxtOrdenSurtimiento.Size = New System.Drawing.Size(191, 23)
+        Me.TxtOrdenSurtimiento.TabIndex = 77
+        '
+        'TxtContratoCliente
+        '
+        '
+        '
+        '
+        Me.TxtContratoCliente.Border.Class = "TextBoxBorder"
+        Me.TxtContratoCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtContratoCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtContratoCliente.FocusHighlightEnabled = True
+        Me.TxtContratoCliente.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtContratoCliente.Location = New System.Drawing.Point(143, 138)
+        Me.TxtContratoCliente.Name = "TxtContratoCliente"
+        Me.TxtContratoCliente.ReadOnly = True
+        Me.TxtContratoCliente.Size = New System.Drawing.Size(191, 23)
+        Me.TxtContratoCliente.TabIndex = 76
+        '
+        'TxtPedCliente
+        '
+        '
+        '
+        '
+        Me.TxtPedCliente.Border.Class = "TextBoxBorder"
+        Me.TxtPedCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtPedCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtPedCliente.FocusHighlightEnabled = True
+        Me.TxtPedCliente.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtPedCliente.Location = New System.Drawing.Point(143, 112)
+        Me.TxtPedCliente.Name = "TxtPedCliente"
+        Me.TxtPedCliente.ReadOnly = True
+        Me.TxtPedCliente.Size = New System.Drawing.Size(191, 23)
+        Me.TxtPedCliente.TabIndex = 75
+        '
+        'BtnMostrarCliente
+        '
+        Me.BtnMostrarCliente.BackgroundImage = CType(resources.GetObject("BtnMostrarCliente.BackgroundImage"), System.Drawing.Image)
+        Me.BtnMostrarCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BtnMostrarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnMostrarCliente.Location = New System.Drawing.Point(516, 27)
+        Me.BtnMostrarCliente.Name = "BtnMostrarCliente"
+        Me.BtnMostrarCliente.Size = New System.Drawing.Size(27, 23)
+        Me.BtnMostrarCliente.TabIndex = 66
+        Me.BtnMostrarCliente.UseVisualStyleBackColor = True
+        '
+        'CmbCondPagoCondicion
+        '
+        Me.CmbCondPagoCondicion.DisplayMember = "Text"
+        Me.CmbCondPagoCondicion.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CmbCondPagoCondicion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbCondPagoCondicion.Enabled = False
+        Me.CmbCondPagoCondicion.FocusHighlightEnabled = True
+        Me.CmbCondPagoCondicion.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbCondPagoCondicion.FormattingEnabled = True
+        Me.CmbCondPagoCondicion.ItemHeight = 17
+        Me.CmbCondPagoCondicion.Location = New System.Drawing.Point(380, 83)
+        Me.CmbCondPagoCondicion.Name = "CmbCondPagoCondicion"
+        Me.CmbCondPagoCondicion.Size = New System.Drawing.Size(188, 23)
+        Me.CmbCondPagoCondicion.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CmbCondPagoCondicion.TabIndex = 64
+        '
+        'CmbCondPagoTipoDia
+        '
+        Me.CmbCondPagoTipoDia.DisplayMember = "Text"
+        Me.CmbCondPagoTipoDia.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CmbCondPagoTipoDia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbCondPagoTipoDia.Enabled = False
+        Me.CmbCondPagoTipoDia.FocusHighlightEnabled = True
+        Me.CmbCondPagoTipoDia.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbCondPagoTipoDia.FormattingEnabled = True
+        Me.CmbCondPagoTipoDia.ItemHeight = 17
+        Me.CmbCondPagoTipoDia.Location = New System.Drawing.Point(234, 83)
+        Me.CmbCondPagoTipoDia.Name = "CmbCondPagoTipoDia"
+        Me.CmbCondPagoTipoDia.Size = New System.Drawing.Size(138, 23)
+        Me.CmbCondPagoTipoDia.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CmbCondPagoTipoDia.TabIndex = 63
+        '
+        'LabelX10
+        '
+        '
+        '
+        '
+        Me.LabelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX10.Location = New System.Drawing.Point(205, 85)
+        Me.LabelX10.Name = "LabelX10"
+        Me.LabelX10.Size = New System.Drawing.Size(33, 21)
+        Me.LabelX10.TabIndex = 62
+        Me.LabelX10.Text = "días"
+        '
+        'CmbCondPagoDias
+        '
+        Me.CmbCondPagoDias.DisplayMember = "Text"
+        Me.CmbCondPagoDias.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CmbCondPagoDias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbCondPagoDias.Enabled = False
+        Me.CmbCondPagoDias.FocusHighlightEnabled = True
+        Me.CmbCondPagoDias.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbCondPagoDias.FormattingEnabled = True
+        Me.CmbCondPagoDias.ItemHeight = 17
+        Me.CmbCondPagoDias.Location = New System.Drawing.Point(143, 83)
+        Me.CmbCondPagoDias.Name = "CmbCondPagoDias"
+        Me.CmbCondPagoDias.Size = New System.Drawing.Size(58, 23)
+        Me.CmbCondPagoDias.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CmbCondPagoDias.TabIndex = 61
+        '
+        'LabelX9
+        '
+        '
+        '
+        '
+        Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX9.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX9.Location = New System.Drawing.Point(3, 81)
+        Me.LabelX9.Name = "LabelX9"
+        Me.LabelX9.Size = New System.Drawing.Size(89, 21)
+        Me.LabelX9.TabIndex = 60
+        Me.LabelX9.Text = "Cond. de Pago:"
+        '
+        'TxtFolio
+        '
+        '
+        '
+        '
+        Me.TxtFolio.Border.Class = "TextBoxBorder"
+        Me.TxtFolio.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtFolio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtFolio.FocusHighlightEnabled = True
+        Me.TxtFolio.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtFolio.Location = New System.Drawing.Point(143, 0)
+        Me.TxtFolio.Name = "TxtFolio"
+        Me.TxtFolio.ReadOnly = True
+        Me.TxtFolio.Size = New System.Drawing.Size(97, 23)
+        Me.TxtFolio.TabIndex = 59
+        '
+        'LabelX66
+        '
+        '
+        '
+        '
+        Me.LabelX66.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX66.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX66.Location = New System.Drawing.Point(3, 161)
+        Me.LabelX66.Name = "LabelX66"
+        Me.LabelX66.Size = New System.Drawing.Size(134, 21)
+        Me.LabelX66.TabIndex = 57
+        Me.LabelX66.Text = "Orden de Surtimiento:"
+        '
+        'LabelX65
+        '
+        '
+        '
+        '
+        Me.LabelX65.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX65.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX65.Location = New System.Drawing.Point(3, 132)
+        Me.LabelX65.Name = "LabelX65"
+        Me.LabelX65.Size = New System.Drawing.Size(108, 21)
+        Me.LabelX65.TabIndex = 55
+        Me.LabelX65.Text = "Contrato Cliente:"
+        '
+        'LabelX64
+        '
+        '
+        '
+        '
+        Me.LabelX64.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX64.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX64.Location = New System.Drawing.Point(3, 107)
+        Me.LabelX64.Name = "LabelX64"
+        Me.LabelX64.Size = New System.Drawing.Size(92, 21)
+        Me.LabelX64.TabIndex = 51
+        Me.LabelX64.Text = "Pedido Cliente:"
+        '
+        'TxtCliente
+        '
+        '
+        '
+        '
+        Me.TxtCliente.Border.Class = "TextBoxBorder"
+        Me.TxtCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtCliente.FocusHighlightEnabled = True
+        Me.TxtCliente.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtCliente.Location = New System.Drawing.Point(143, 27)
+        Me.TxtCliente.Name = "TxtCliente"
+        Me.TxtCliente.ReadOnly = True
+        Me.TxtCliente.Size = New System.Drawing.Size(376, 23)
+        Me.TxtCliente.TabIndex = 50
+        '
+        'LabelX27
+        '
+        '
+        '
+        '
+        Me.LabelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX27.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX27.Location = New System.Drawing.Point(3, 30)
+        Me.LabelX27.Name = "LabelX27"
+        Me.LabelX27.Size = New System.Drawing.Size(45, 21)
+        Me.LabelX27.TabIndex = 49
+        Me.LabelX27.Text = "Cliente:"
+        '
+        'LabelX32
+        '
+        '
+        '
+        '
+        Me.LabelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX32.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX32.Location = New System.Drawing.Point(3, 3)
+        Me.LabelX32.Name = "LabelX32"
+        Me.LabelX32.Size = New System.Drawing.Size(45, 21)
+        Me.LabelX32.TabIndex = 48
+        Me.LabelX32.Text = "Folio:"
+        '
         'GeneraRemision2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -714,11 +1795,14 @@ Partial Class GeneraRemision2
         Me.GB1.PerformLayout()
         CType(Me.TabPrincipal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPrincipal.ResumeLayout(False)
+        Me.SuperTabControlPanel1.ResumeLayout(False)
         Me.SuperTabControlPanel3.ResumeLayout(False)
         Me.PanDetallePartida.ResumeLayout(False)
         CType(Me.DGPrevioRemision, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControlPanel9.ResumeLayout(False)
         Me.GroupPanel1.ResumeLayout(False)
+        Me.GPDatosBasicos.ResumeLayout(False)
+        Me.GPDatosCliente.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -745,13 +1829,10 @@ Partial Class GeneraRemision2
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents GB1 As System.Windows.Forms.GroupBox
     Friend WithEvents GB2 As System.Windows.Forms.GroupBox
-    Friend WithEvents RBGB2NO As System.Windows.Forms.RadioButton
     Friend WithEvents RBGB2SI As System.Windows.Forms.RadioButton
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents RBGB1NO As System.Windows.Forms.RadioButton
     Friend WithEvents RBGB1SI As System.Windows.Forms.RadioButton
     Friend WithEvents GB3 As System.Windows.Forms.GroupBox
-    Friend WithEvents RBGB3NO As System.Windows.Forms.RadioButton
     Friend WithEvents RBGB3SI As System.Windows.Forms.RadioButton
     Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
     Friend WithEvents GB4 As System.Windows.Forms.GroupBox
@@ -763,4 +1844,70 @@ Partial Class GeneraRemision2
     Friend WithEvents BtnMuestraRemision As DevComponents.DotNetBar.ButtonX
     Friend WithEvents BtnCancelarRemision As DevComponents.DotNetBar.ButtonX
     Friend WithEvents RBGB4PartidaLibre As System.Windows.Forms.RadioButton
+    Friend WithEvents GPDatosBasicos As DevComponents.DotNetBar.Controls.GroupPanel
+    Friend WithEvents CmbIVA As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Friend WithEvents IVA0 As DevComponents.Editors.ComboItem
+    Friend WithEvents IVA16 As DevComponents.Editors.ComboItem
+    Friend WithEvents LblIVA As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtRegimenFiscal As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX30 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents GPDatosCliente As DevComponents.DotNetBar.Controls.GroupPanel
+    Friend WithEvents TxtTelContacto As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX24 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtContacto As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX23 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtEmail As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX22 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtFax As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX21 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtTelefono As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX20 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtEstado As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX19 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtCiudad As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX18 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtDelMun As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX17 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtColonia As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX16 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtCP As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX15 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtNoInterior As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX14 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtNoExterior As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX13 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtCalle As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtRFC As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX11 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX28 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtCveProveedor As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX7 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtBancoPago As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents TxtCuentaPago As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX6 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtUsoCFDI As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX8 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtInstruccionesEntrega As DevComponents.DotNetBar.Controls.TextBoxX
+    Public WithEvents LabelX29 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtFormaPago As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX26 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtMetodoPago As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX25 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtOrdenSurtimiento As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents TxtContratoCliente As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents TxtPedCliente As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents BtnMostrarCliente As System.Windows.Forms.Button
+    Friend WithEvents CmbCondPagoCondicion As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Friend WithEvents CmbCondPagoTipoDia As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Friend WithEvents LabelX10 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents CmbCondPagoDias As DevComponents.DotNetBar.Controls.ComboBoxEx
+    Friend WithEvents LabelX9 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtFolio As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX66 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX65 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX64 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtCliente As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX27 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX32 As DevComponents.DotNetBar.LabelX
 End Class
