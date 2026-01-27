@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[OP_AVANCEPROCESOS]    Script Date: 24/10/2025 01:06:27 p. m. ******/
+/****** Object:  Table [dbo].[OP_AVANCEPROCESOS]    Script Date: 23/01/2026 11:46:52 a. m. ******/
 SET ANSI_NULLS ON
 GO
 

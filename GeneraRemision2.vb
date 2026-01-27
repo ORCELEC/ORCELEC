@@ -62,20 +62,18 @@ Public Class GeneraRemision2
                     End If
                 End Try
                 'AGREGAR LA VALIDACIÓN DE SI EL PEDIDO ESTA COMPLETAMENTE REMISIONADO O FACTURADO.
+                HabilitarPrimerPaso()
             End If
         End If
     End Sub
 
     Private Sub ReiniciarSeleccion()
-        GB1.Enabled = True
-        GB2.Enabled = True
-        GB3.Enabled = True
-        GB4.Enabled = True
         RBGB1SI.Checked = False
         RBGB2SI.Checked = False
         RBGB3SI.Checked = False
         RBGB4LugarEntrega.Checked = False
         RBGB4Partida.Checked = False
+        RBGB4PartidaLibre.Checked = False
         GB1.Text = ""
         GB2.Text = ""
         GB3.Text = ""
@@ -92,16 +90,44 @@ Public Class GeneraRemision2
         Zonas = ""
     End Sub
 
+    Private Sub HabilitarPrimerPaso()
+        GB1.Enabled = True
+        GB2.Enabled = True
+        GB3.Enabled = True
+        ActualizarSeleccionPrimerPaso()
+    End Sub
+
+    Private Sub ActualizarSeleccionPrimerPaso()
+        If RBGB1SI.Checked Then
+            RBGB2SI.Checked = False
+            RBGB3SI.Checked = False
+        ElseIf RBGB2SI.Checked Then
+            RBGB1SI.Checked = False
+            RBGB3SI.Checked = False
+        ElseIf RBGB3SI.Checked Then
+            RBGB1SI.Checked = False
+            RBGB2SI.Checked = False
+        End If
+
+        Dim primerPasoSeleccionado As Boolean = RBGB1SI.Checked Or RBGB2SI.Checked Or RBGB3SI.Checked
+        GB4.Enabled = primerPasoSeleccionado
+        If primerPasoSeleccionado = False Then
+            RBGB4LugarEntrega.Checked = False
+            RBGB4Partida.Checked = False
+            RBGB4PartidaLibre.Checked = False
+        End If
+    End Sub
+
     Private Sub RBGB1SI_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RBGB1SI.CheckedChanged
-        
+        ActualizarSeleccionPrimerPaso()
     End Sub
 
     Private Sub RBGB2SI_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RBGB2SI.CheckedChanged
-        
+        ActualizarSeleccionPrimerPaso()
     End Sub
 
     Private Sub RBGB3SI_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RBGB3SI.CheckedChanged
-
+        ActualizarSeleccionPrimerPaso()
     End Sub
 
     Private Sub RBGB4LugarEntrega_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RBGB4LugarEntrega.CheckedChanged
