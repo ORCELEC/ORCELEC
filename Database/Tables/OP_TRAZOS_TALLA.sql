@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[OP_TRAZOS_TALLA]    Script Date: 20/01/2026 12:45:39 p. m. ******/
+/****** Object:  Table [dbo].[OP_TRAZOS_TALLA]    Script Date: 26/01/2026 07:04:00 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -14,6 +14,10 @@ CREATE TABLE [dbo].[OP_TRAZOS_TALLA](
 	[Consecutivo] [bigint] NOT NULL,
 	[Partida] [bigint] NOT NULL,
 	[Talla] [nvarchar](50) NULL,
+	[Cuerpos] [bigint] NULL,
+	[USUARIO] [bigint] NULL,
+	[FECHAHORA] [datetime] NULL,
+	[COMPUTADORA] [nvarchar](50) NULL,
  CONSTRAINT [PK_OP_TRAZOS_TALLA] PRIMARY KEY CLUSTERED 
 (
 	[Empresa] ASC,

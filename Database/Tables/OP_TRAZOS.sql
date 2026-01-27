@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[OP_TRAZOS]    Script Date: 20/01/2026 12:45:31 p. m. ******/
+/****** Object:  Table [dbo].[OP_TRAZOS]    Script Date: 26/01/2026 07:03:48 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,17 +13,19 @@ CREATE TABLE [dbo].[OP_TRAZOS](
 	[No_OP] [bigint] NOT NULL,
 	[Consecutivo] [bigint] NOT NULL,
 	[No_Trazo] [bigint] NOT NULL,
-	[Cuerpos] [bigint] NULL,
 	[AnchoTela] [numeric](18, 2) NULL,
 	[AnchoTrazo] [numeric](18, 2) NULL,
 	[LargoTrazo] [numeric](18, 2) NULL,
 	[LargoTendido] [numeric](18, 2) NULL,
-	[HojasDobles] [bigint] NULL,
-	[PromedioOP] [numeric](18, 2) NULL,
-	[PromedioTaller] [numeric](18, 2) NULL,
-	[LienzosIzqDer] [nvarchar](100) NULL,
+	[TipoCorte] [nvarchar](50) NULL,
+	[HojasDobles/LienzosIzqDer] [bigint] NULL,
+	[PromedioOP] [numeric](18, 4) NULL,
+	[PromedioTaller] [numeric](18, 4) NULL,
 	[TotalPiezas] [bigint] NULL,
 	[MetrosOcupados] [numeric](18, 2) NULL,
+	[USUARIO] [bigint] NULL,
+	[FECHAHORA] [datetime] NULL,
+	[COMPUTADORA] [nvarchar](50) NULL,
  CONSTRAINT [PK_OP_TRAZOS] PRIMARY KEY CLUSTERED 
 (
 	[Empresa] ASC,
