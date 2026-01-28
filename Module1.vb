@@ -35,7 +35,7 @@ Module Module1
         Public Shared MailUsuario As String = "orcelec@uet.mx"
         Public Shared UsuarioReportes As String = "ReportesORCELEC"
         Public Shared PasswordReportes As String = "Admin1906redes@/"
-        Public Shared PasswordCorreo As String = "M0r15qu3t@$pru3b@$897@"
+        Public Shared PasswordCorreo As String = "M0r15qu3t@$pru3b@$897$%"
         'Public Shared PasswordCorreo As String = "Mor15qu3ta"
 
         Dim AbrirArchivo As StreamReader

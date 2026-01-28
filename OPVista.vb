@@ -868,9 +868,185 @@ Public Class OPVista
                         BDComando.Connection.Close()
                     End If
                 End Try
+            ElseIf DGVAvanceOP.CurrentRow.Cells("AvanceProceso").Value = "CORTE" Then
+                Me.Cursor = Cursors.WaitCursor
+                For Fila As Int64 = 0 To DGVAvanceOP.Rows.Count - 1
+                    If Fila <> DGVAvanceOP.CurrentRow.Index Then
+                        DGVAvanceOP.Rows(Fila).Visible = False
+                    End If
+                Next
+
+                BDComando.Parameters.Clear()
+                BDComando.CommandType = CommandType.StoredProcedure
+                BDComando.CommandText = "OP_CONSULTA_TRAZOS"
+                BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt)
+                BDComando.Parameters.Add("@NO_OP", SqlDbType.BigInt)
+
+                BDComando.Parameters("@EMPRESA").Value = ConectaBD.Cve_Empresa
+                BDComando.Parameters("@NO_OP").Value = DGVAvanceOP.CurrentRow.Cells("AvanceNoOP").Value
+
+                Dim tablaTrazos As New DataTable
+                Try
+                    BDComando.Connection.Open()
+                    Dim adapter As New SqlDataAdapter(BDComando)
+                    adapter.Fill(tablaTrazos)
+
+                    If tablaTrazos.Rows.Count > 0 Then
+                        DGVVistaTomaMedida.Columns.Add("ColCampo", "Concepto")
+                        DGVVistaTomaMedida.Columns("ColCampo").Width = 180
+
+                        Dim columnaConsecutivo As String = ""
+                        If tablaTrazos.Columns.Contains("Consecutivo") Then
+                            columnaConsecutivo = "Consecutivo"
+                        ElseIf tablaTrazos.Columns.Contains("CONSECUTIVO") Then
+                            columnaConsecutivo = "CONSECUTIVO"
+                        End If
+
+                        Dim columnaNoTrazo As String = ""
+                        If tablaTrazos.Columns.Contains("No_Trazo") Then
+                            columnaNoTrazo = "No_Trazo"
+                        ElseIf tablaTrazos.Columns.Contains("NO_TRAZO") Then
+                            columnaNoTrazo = "NO_TRAZO"
+                        ElseIf tablaTrazos.Columns.Contains("NoTrazo") Then
+                            columnaNoTrazo = "NoTrazo"
+                        End If
+
+                        Dim consecutivos As New List(Of String)
+                        If columnaConsecutivo <> "" Then
+                            For Each reg As DataRow In tablaTrazos.Rows
+                                Dim clave As String = FormatearValor(reg(columnaConsecutivo))
+                                If Not consecutivos.Contains(clave) Then
+                                    consecutivos.Add(clave)
+                                End If
+                            Next
+                        Else
+                            consecutivos.Add("1")
+                        End If
+
+                        consecutivos.Sort()
+
+                        For Each consecutivo As String In consecutivos
+                            Dim colName As String = "ColConsecutivo" & consecutivo
+                            DGVVistaTomaMedida.Columns.Add(colName, "Dato " & consecutivo)
+                        Next
+
+                        Dim filas As New List(Of String) From {
+                            "Número de Trazo",
+                            "Tallas/Cuerpos",
+                            "Ancho de Tela",
+                            "Ancho de Trazo",
+                            "Largo de Trazo",
+                            "Largo de Tendido",
+                            "Tipo de Corte",
+                            "# Lienzos Izq/Der",
+                            "Promedio OP",
+                            "Promedio Taller",
+                            "Total Piezas",
+                            "Metros Ocupados"
+                        }
+
+                        Dim indiceFilas As New Dictionary(Of String, Integer)
+                        For Each campo As String In filas
+                            Dim rowIndex As Integer = DGVVistaTomaMedida.Rows.Add()
+                            DGVVistaTomaMedida.Rows(rowIndex).Cells("ColCampo").Value = campo
+                            indiceFilas.Add(campo, rowIndex)
+                        Next
+
+                        Dim tieneLienzos As Boolean = False
+                        Dim tienePares As Boolean = False
+
+                        For Each consecutivo As String In consecutivos
+                            Dim filasTrazo As DataRow()
+                            If columnaConsecutivo <> "" Then
+                                filasTrazo = tablaTrazos.Select("[" & columnaConsecutivo & "] = '" & consecutivo.Replace("'", "''") & "'")
+                            Else
+                                filasTrazo = tablaTrazos.Select()
+                            End If
+
+                            If filasTrazo.Length = 0 Then
+                                Continue For
+                            End If
+
+                            Dim filaTrazo As DataRow = filasTrazo(0)
+                            Dim colDestino As String = "ColConsecutivo" & consecutivo
+                            Dim noTrazo As String = ""
+                            If columnaNoTrazo <> "" Then
+                                noTrazo = FormatearValor(filaTrazo(columnaNoTrazo))
+                            End If
+
+                            Dim tallasCuerpos As New List(Of String)
+                            For Each filaTalla As DataRow In filasTrazo
+                                Dim tallaTrazo As String = FormatearValor(ObtenerValorPorColumnas(filaTalla, "Talla", "TALLA"))
+                                Dim cuerpos As String = FormatearValor(ObtenerValorPorColumnas(filaTalla, "Cuerpos", "CUERPOS"))
+                                If tallaTrazo <> "" OrElse cuerpos <> "" Then
+                                    If tallaTrazo <> "" AndAlso cuerpos <> "" Then
+                                        tallasCuerpos.Add(tallaTrazo & "/" & cuerpos)
+                                    ElseIf tallaTrazo <> "" Then
+                                        tallasCuerpos.Add(tallaTrazo)
+                                    Else
+                                        tallasCuerpos.Add(cuerpos)
+                                    End If
+                                End If
+                            Next
+
+                            Dim tipoCorte As String = FormatearValor(ObtenerValorPorColumnas(filaTrazo, "TipoCorte", "TIPO_CORTE", "Tipo_Corte"))
+                            If tipoCorte.Trim().ToUpper() = "LIENZOS" Then
+                                tieneLienzos = True
+                            ElseIf tipoCorte.Trim().ToUpper() = "PARES" Then
+                                tienePares = True
+                            End If
+
+                            DGVVistaTomaMedida.Rows(indiceFilas("Número de Trazo")).Cells(colDestino).Value = noTrazo
+                            DGVVistaTomaMedida.Rows(indiceFilas("Tallas/Cuerpos")).Cells(colDestino).Value = String.Join(", ", tallasCuerpos)
+                            DGVVistaTomaMedida.Rows(indiceFilas("Ancho de Tela")).Cells(colDestino).Value = FormatearValor(ObtenerValorPorColumnas(filaTrazo, "AnchoTela", "ANCHO_TELA", "Ancho_Tela"))
+                            DGVVistaTomaMedida.Rows(indiceFilas("Ancho de Trazo")).Cells(colDestino).Value = FormatearValor(ObtenerValorPorColumnas(filaTrazo, "AnchoTrazo", "ANCHO_TRAZO", "Ancho_Trazo"))
+                            DGVVistaTomaMedida.Rows(indiceFilas("Largo de Trazo")).Cells(colDestino).Value = FormatearValor(ObtenerValorPorColumnas(filaTrazo, "LargoTrazo", "LARGO_TRAZO", "Largo_Trazo"))
+                            DGVVistaTomaMedida.Rows(indiceFilas("Largo de Tendido")).Cells(colDestino).Value = FormatearValor(ObtenerValorPorColumnas(filaTrazo, "LargoTendido", "LARGO_TENDIDO", "Largo_Tendido"))
+                            DGVVistaTomaMedida.Rows(indiceFilas("Tipo de Corte")).Cells(colDestino).Value = tipoCorte
+                            DGVVistaTomaMedida.Rows(indiceFilas("# Lienzos Izq/Der")).Cells(colDestino).Value = FormatearValor(ObtenerValorPorColumnas(filaTrazo, "HojasDobles/LienzosIzqDer", "HojasDobles", "LienzosIzqDer", "HOJASDOBLES", "LIENZOSIZQDER"))
+                            DGVVistaTomaMedida.Rows(indiceFilas("Promedio OP")).Cells(colDestino).Value = FormatearValor(ObtenerValorPorColumnas(filaTrazo, "PromedioOP", "PROMEDIO_OP", "Promedio_OP"))
+                            DGVVistaTomaMedida.Rows(indiceFilas("Promedio Taller")).Cells(colDestino).Value = FormatearValor(ObtenerValorPorColumnas(filaTrazo, "PromedioTaller", "PROMEDIO_TALLER", "Promedio_Taller"))
+                            DGVVistaTomaMedida.Rows(indiceFilas("Total Piezas")).Cells(colDestino).Value = FormatearValor(ObtenerValorPorColumnas(filaTrazo, "TotalPiezas", "TOTAL_PIEZAS", "Total_Piezas"))
+                            DGVVistaTomaMedida.Rows(indiceFilas("Metros Ocupados")).Cells(colDestino).Value = FormatearValor(ObtenerValorPorColumnas(filaTrazo, "MetrosOcupados", "METROS_OCUPADOS", "Metros_Ocupados"))
+                        Next
+
+                        If tienePares AndAlso Not tieneLienzos Then
+                            DGVVistaTomaMedida.Rows(indiceFilas("# Lienzos Izq/Der")).Cells("ColCampo").Value = "Hojas/Dobles"
+                        ElseIf tieneLienzos AndAlso tienePares Then
+                            DGVVistaTomaMedida.Rows(indiceFilas("# Lienzos Izq/Der")).Cells("ColCampo").Value = "Hojas/Dobles / # Lienzos Izq/Der"
+                        End If
+                    End If
+                    PanVistaTomaMedida.Text = "Consulta de Trazos"
+                    BtnCerrarVistaTomaMedida.Text = "Cerrar Vista de Consulta de Trazos"
+                    PanVistaTomaMedida.Visible = True
+                Catch ex As Exception
+                    MessageBox.Show("Se generó un error al consultar los Trazos, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Consulta de Trazos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Exit Sub
+                Finally
+                    Me.Cursor = Cursors.Default
+                    If BDComando.Connection.State = ConnectionState.Open Then
+                        BDComando.Connection.Close()
+                    End If
+                End Try
             End If
         End If
     End Sub
+
+    Private Function ObtenerValorPorColumnas(ByVal fila As DataRow, ByVal ParamArray columnas As String()) As Object
+        For Each columna As String In columnas
+            If fila.Table.Columns.Contains(columna) AndAlso Not IsDBNull(fila(columna)) Then
+                Return fila(columna)
+            End If
+        Next
+        Return Nothing
+    End Function
+
+    Private Function FormatearValor(ByVal valor As Object) As String
+        If valor Is Nothing OrElse IsDBNull(valor) Then
+            Return ""
+        End If
+        Return valor.ToString()
+    End Function
 
     Private Sub ChkFinalizadas_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChkFinalizadas.CheckedChanged
         Me.Cursor = Cursors.WaitCursor

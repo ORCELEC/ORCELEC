@@ -495,8 +495,8 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub BtmRemision_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtmRemision.Click
-        GeneraRemision2.MdiParent = Me
-        GeneraRemision2.Show()
+        GeneraRemision.MdiParent = Me
+        GeneraRemision.Show()
     End Sub
 
     Private Sub BtmFactuElec_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtmFactuElec.Click
