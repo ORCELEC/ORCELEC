@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SP_OP_VISTAAVANCE]    Script Date: 27/01/2026 06:25:13 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_OP_VISTAAVANCE]    Script Date: 27/01/2026 06:27:48 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -424,7 +424,8 @@ BEGIN
 		OPA.No_OPSistemaAnterior,
 		P.Cve_Prenda,
 		PIT.DescripcionPrenda,
-		OPA.FechaInicio AS FechaCreacion,
+		CONVERT(DATE,OPA.FechaCreacion) AS FechaCreacion,
+		OPA.FechaInicio,
 		OPA.FechaFinalizacion AS FechaVencimiento,
 		PI.Cve_Cliente,
 		PI.Nom_Cliente,
@@ -476,6 +477,7 @@ BEGIN
 		OPA.No_OPSistemaAnterior,
 		P.Cve_Prenda,
 		PIT.DescripcionPrenda,
+		OPA.FechaCreacion,
 		OPA.FechaInicio,
 		OPA.FechaFinalizacion,
 		PI.Cve_Cliente,
