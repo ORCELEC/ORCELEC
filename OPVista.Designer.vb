@@ -33,6 +33,14 @@ Partial Class OPVista
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanPrincipal = New DevComponents.DotNetBar.PanelEx()
+        Me.GBPrioridad = New System.Windows.Forms.GroupBox()
+        Me.RBCanceladas = New System.Windows.Forms.RadioButton()
+        Me.RBFinalizadas = New System.Windows.Forms.RadioButton()
+        Me.RBEnProceso = New System.Windows.Forms.RadioButton()
+        Me.CmbMes = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.CmbAnio = New DevComponents.DotNetBar.Controls.ComboBoxEx()
+        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.ChkFinalizadas = New System.Windows.Forms.CheckBox()
         Me.PanAvanceOP = New DevComponents.DotNetBar.PanelEx()
         Me.PanVistaTomaMedida = New DevComponents.DotNetBar.PanelEx()
@@ -89,15 +97,8 @@ Partial Class OPVista
         Me.TSBGuardar = New System.Windows.Forms.ToolStripButton()
         Me.TSBCancelar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
-        Me.CmbAnio = New DevComponents.DotNetBar.Controls.ComboBoxEx()
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
-        Me.CmbMes = New DevComponents.DotNetBar.Controls.ComboBoxEx()
-        Me.GBPrioridad = New System.Windows.Forms.GroupBox()
-        Me.RBEnProceso = New System.Windows.Forms.RadioButton()
-        Me.RBFinalizadas = New System.Windows.Forms.RadioButton()
-        Me.RBCanceladas = New System.Windows.Forms.RadioButton()
         Me.PanPrincipal.SuspendLayout()
+        Me.GBPrioridad.SuspendLayout()
         Me.PanAvanceOP.SuspendLayout()
         Me.PanVistaTomaMedida.SuspendLayout()
         CType(Me.DGVVistaTomaMedida, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -107,7 +108,6 @@ Partial Class OPVista
         CType(Me.DGVLogotipos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVProgramaProduccion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
-        Me.GBPrioridad.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanPrincipal
@@ -140,6 +140,112 @@ Partial Class OPVista
         Me.PanPrincipal.Style.LineAlignment = System.Drawing.StringAlignment.Near
         Me.PanPrincipal.TabIndex = 1
         Me.PanPrincipal.Text = "Seguimiento al Programa de Producción"
+        '
+        'GBPrioridad
+        '
+        Me.GBPrioridad.Controls.Add(Me.RBCanceladas)
+        Me.GBPrioridad.Controls.Add(Me.RBFinalizadas)
+        Me.GBPrioridad.Controls.Add(Me.RBEnProceso)
+        Me.GBPrioridad.Location = New System.Drawing.Point(317, 23)
+        Me.GBPrioridad.Name = "GBPrioridad"
+        Me.GBPrioridad.Size = New System.Drawing.Size(282, 34)
+        Me.GBPrioridad.TabIndex = 93
+        Me.GBPrioridad.TabStop = False
+        '
+        'RBCanceladas
+        '
+        Me.RBCanceladas.AutoSize = True
+        Me.RBCanceladas.Location = New System.Drawing.Point(199, 9)
+        Me.RBCanceladas.Name = "RBCanceladas"
+        Me.RBCanceladas.Size = New System.Drawing.Size(81, 17)
+        Me.RBCanceladas.TabIndex = 2
+        Me.RBCanceladas.TabStop = True
+        Me.RBCanceladas.Text = "Canceladas"
+        Me.RBCanceladas.UseVisualStyleBackColor = True
+        '
+        'RBFinalizadas
+        '
+        Me.RBFinalizadas.AutoSize = True
+        Me.RBFinalizadas.Location = New System.Drawing.Point(105, 9)
+        Me.RBFinalizadas.Name = "RBFinalizadas"
+        Me.RBFinalizadas.Size = New System.Drawing.Size(77, 17)
+        Me.RBFinalizadas.TabIndex = 1
+        Me.RBFinalizadas.TabStop = True
+        Me.RBFinalizadas.Text = "Finalizadas"
+        Me.RBFinalizadas.UseVisualStyleBackColor = True
+        '
+        'RBEnProceso
+        '
+        Me.RBEnProceso.AutoSize = True
+        Me.RBEnProceso.Location = New System.Drawing.Point(7, 10)
+        Me.RBEnProceso.Name = "RBEnProceso"
+        Me.RBEnProceso.Size = New System.Drawing.Size(79, 17)
+        Me.RBEnProceso.TabIndex = 0
+        Me.RBEnProceso.TabStop = True
+        Me.RBEnProceso.Text = "En proceso"
+        Me.RBEnProceso.UseVisualStyleBackColor = True
+        '
+        'CmbMes
+        '
+        Me.CmbMes.DisplayMember = "Text"
+        Me.CmbMes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CmbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbMes.FocusHighlightEnabled = True
+        Me.CmbMes.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbMes.FormattingEnabled = True
+        Me.CmbMes.ItemHeight = 17
+        Me.CmbMes.Location = New System.Drawing.Point(213, 32)
+        Me.CmbMes.Name = "CmbMes"
+        Me.CmbMes.Size = New System.Drawing.Size(78, 23)
+        Me.CmbMes.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CmbMes.TabIndex = 85
+        '
+        'LabelX1
+        '
+        '
+        '
+        '
+        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX1.Location = New System.Drawing.Point(163, 32)
+        Me.LabelX1.Name = "LabelX1"
+        Me.LabelX1.Size = New System.Drawing.Size(44, 25)
+        Me.LabelX1.TabIndex = 84
+        Me.LabelX1.Text = "Mes:"
+        Me.LabelX1.TextLineAlignment = System.Drawing.StringAlignment.Near
+        Me.LabelX1.VerticalTextTopUp = False
+        Me.LabelX1.WordWrap = True
+        '
+        'CmbAnio
+        '
+        Me.CmbAnio.DisplayMember = "Text"
+        Me.CmbAnio.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.CmbAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CmbAnio.FocusHighlightEnabled = True
+        Me.CmbAnio.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CmbAnio.FormattingEnabled = True
+        Me.CmbAnio.ItemHeight = 17
+        Me.CmbAnio.Location = New System.Drawing.Point(62, 32)
+        Me.CmbAnio.Name = "CmbAnio"
+        Me.CmbAnio.Size = New System.Drawing.Size(78, 23)
+        Me.CmbAnio.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CmbAnio.TabIndex = 83
+        '
+        'LabelX3
+        '
+        '
+        '
+        '
+        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX3.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX3.Location = New System.Drawing.Point(12, 32)
+        Me.LabelX3.Name = "LabelX3"
+        Me.LabelX3.Size = New System.Drawing.Size(44, 25)
+        Me.LabelX3.TabIndex = 41
+        Me.LabelX3.Text = "Año:"
+        Me.LabelX3.TextLineAlignment = System.Drawing.StringAlignment.Near
+        Me.LabelX3.VerticalTextTopUp = False
+        Me.LabelX3.WordWrap = True
         '
         'ChkFinalizadas
         '
@@ -256,7 +362,7 @@ Partial Class OPVista
         Me.ToolStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton4, Me.ToolStripButton5, Me.ToolStripButton6, Me.ToolStripSeparator3})
         Me.ToolStrip3.Location = New System.Drawing.Point(992, 0)
         Me.ToolStrip3.Name = "ToolStrip3"
-        Me.ToolStrip3.Size = New System.Drawing.Size(64, 25)
+        Me.ToolStrip3.Size = New System.Drawing.Size(87, 25)
         Me.ToolStrip3.TabIndex = 3
         Me.ToolStrip3.Text = "ToolStrip3"
         Me.ToolStrip3.Visible = False
@@ -403,7 +509,7 @@ Partial Class OPVista
         Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripSeparator2})
         Me.ToolStrip2.Location = New System.Drawing.Point(992, 0)
         Me.ToolStrip2.Name = "ToolStrip2"
-        Me.ToolStrip2.Size = New System.Drawing.Size(64, 25)
+        Me.ToolStrip2.Size = New System.Drawing.Size(87, 25)
         Me.ToolStrip2.TabIndex = 3
         Me.ToolStrip2.Text = "ToolStrip2"
         Me.ToolStrip2.Visible = False
@@ -659,7 +765,7 @@ Partial Class OPVista
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TSBEditar, Me.TSBGuardar, Me.TSBCancelar, Me.ToolStripSeparator1})
         Me.ToolStrip1.Location = New System.Drawing.Point(992, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(64, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(87, 25)
         Me.ToolStrip1.TabIndex = 3
         Me.ToolStrip1.Text = "ToolStrip1"
         Me.ToolStrip1.Visible = False
@@ -700,113 +806,6 @@ Partial Class OPVista
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
         '
-        'LabelX3
-        '
-        '
-        '
-        '
-        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX3.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX3.Location = New System.Drawing.Point(12, 32)
-        Me.LabelX3.Name = "LabelX3"
-        Me.LabelX3.Size = New System.Drawing.Size(44, 25)
-        Me.LabelX3.TabIndex = 41
-        Me.LabelX3.Text = "Año:"
-        Me.LabelX3.TextLineAlignment = System.Drawing.StringAlignment.Near
-        Me.LabelX3.VerticalTextTopUp = False
-        Me.LabelX3.WordWrap = True
-        '
-        'CmbAnio
-        '
-        Me.CmbAnio.DisplayMember = "Text"
-        Me.CmbAnio.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.CmbAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CmbAnio.FocusHighlightEnabled = True
-        Me.CmbAnio.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmbAnio.FormattingEnabled = True
-        Me.CmbAnio.ItemHeight = 17
-        Me.CmbAnio.Location = New System.Drawing.Point(62, 32)
-        Me.CmbAnio.Name = "CmbAnio"
-        Me.CmbAnio.Size = New System.Drawing.Size(78, 23)
-        Me.CmbAnio.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.CmbAnio.TabIndex = 83
-        '
-        'LabelX1
-        '
-        '
-        '
-        '
-        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX1.Location = New System.Drawing.Point(163, 32)
-        Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.Size = New System.Drawing.Size(44, 25)
-        Me.LabelX1.TabIndex = 84
-        Me.LabelX1.Text = "Mes:"
-        Me.LabelX1.TextLineAlignment = System.Drawing.StringAlignment.Near
-        Me.LabelX1.VerticalTextTopUp = False
-        Me.LabelX1.WordWrap = True
-        '
-        'CmbMes
-        '
-        Me.CmbMes.DisplayMember = "Text"
-        Me.CmbMes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.CmbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CmbMes.FocusHighlightEnabled = True
-        Me.CmbMes.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CmbMes.FormattingEnabled = True
-        Me.CmbMes.ItemHeight = 17
-        Me.CmbMes.Location = New System.Drawing.Point(213, 32)
-        Me.CmbMes.Name = "CmbMes"
-        Me.CmbMes.Size = New System.Drawing.Size(78, 23)
-        Me.CmbMes.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.CmbMes.TabIndex = 85
-        '
-        'GBPrioridad
-        '
-        Me.GBPrioridad.Controls.Add(Me.RBCanceladas)
-        Me.GBPrioridad.Controls.Add(Me.RBFinalizadas)
-        Me.GBPrioridad.Controls.Add(Me.RBEnProceso)
-        Me.GBPrioridad.Location = New System.Drawing.Point(317, 23)
-        Me.GBPrioridad.Name = "GBPrioridad"
-        Me.GBPrioridad.Size = New System.Drawing.Size(282, 34)
-        Me.GBPrioridad.TabIndex = 93
-        Me.GBPrioridad.TabStop = False
-        Me.GBPrioridad.Visible = False
-        '
-        'RBEnProceso
-        '
-        Me.RBEnProceso.AutoSize = True
-        Me.RBEnProceso.Location = New System.Drawing.Point(7, 10)
-        Me.RBEnProceso.Name = "RBEnProceso"
-        Me.RBEnProceso.Size = New System.Drawing.Size(79, 17)
-        Me.RBEnProceso.TabIndex = 0
-        Me.RBEnProceso.TabStop = True
-        Me.RBEnProceso.Text = "En proceso"
-        Me.RBEnProceso.UseVisualStyleBackColor = True
-        '
-        'RBFinalizadas
-        '
-        Me.RBFinalizadas.AutoSize = True
-        Me.RBFinalizadas.Location = New System.Drawing.Point(105, 9)
-        Me.RBFinalizadas.Name = "RBFinalizadas"
-        Me.RBFinalizadas.Size = New System.Drawing.Size(77, 17)
-        Me.RBFinalizadas.TabIndex = 1
-        Me.RBFinalizadas.TabStop = True
-        Me.RBFinalizadas.Text = "Finalizadas"
-        Me.RBFinalizadas.UseVisualStyleBackColor = True
-        '
-        'RBCanceladas
-        '
-        Me.RBCanceladas.AutoSize = True
-        Me.RBCanceladas.Location = New System.Drawing.Point(199, 9)
-        Me.RBCanceladas.Name = "RBCanceladas"
-        Me.RBCanceladas.Size = New System.Drawing.Size(81, 17)
-        Me.RBCanceladas.TabIndex = 2
-        Me.RBCanceladas.TabStop = True
-        Me.RBCanceladas.Text = "Canceladas"
-        Me.RBCanceladas.UseVisualStyleBackColor = True
-        '
         'OPVista
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -818,6 +817,8 @@ Partial Class OPVista
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.PanPrincipal.ResumeLayout(False)
         Me.PanPrincipal.PerformLayout()
+        Me.GBPrioridad.ResumeLayout(False)
+        Me.GBPrioridad.PerformLayout()
         Me.PanAvanceOP.ResumeLayout(False)
         Me.PanAvanceOP.PerformLayout()
         Me.PanVistaTomaMedida.ResumeLayout(False)
@@ -832,8 +833,6 @@ Partial Class OPVista
         CType(Me.DGVProgramaProduccion, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        Me.GBPrioridad.ResumeLayout(False)
-        Me.GBPrioridad.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

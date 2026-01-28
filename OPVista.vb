@@ -8,15 +8,17 @@ Public Class OPVista
     Private BDReader As SqlDataReader
     Private BDTablaOPVista As DataTable
     Private PrimeraFilaVisible As Integer
+    Private CargandoFiltros As Boolean
 
     Private Sub OPVista_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.SetBounds(Me.Parent.Location.X, Me.Parent.Location.Y, Me.Parent.Size.Width, Me.Parent.Size.Height)
         'Me.ClientSize = Me.Parent.ClientSize
         'Me.Location = Me.Parent.Location
-        ConsultaOP(False)
+        CargarFiltros()
+        ConsultaOP()
     End Sub
 
-    Private Sub ConsultaOP(ByVal Filtro As Boolean)
+    Private Sub ConsultaOP()
 
         DGVProgramaProduccion.Rows.Clear()
 
@@ -55,12 +57,16 @@ Public Class OPVista
 
         BDComando.CommandText = "SP_OP_VISTAAVANCE"
         BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt)
-        BDComando.Parameters.Add("@FINALIZADAS", SqlDbType.Bit)
+        BDComando.Parameters.Add("@ANIO", SqlDbType.Int)
+        BDComando.Parameters.Add("@MES", SqlDbType.Int)
+        BDComando.Parameters.Add("@ESTATUS", SqlDbType.NVarChar, 20)
         BDComando.Parameters.Add("@CVE_USUCALIDADINICIAL", SqlDbType.BigInt)
         BDComando.Parameters.Add("@CVE_USUCALIDADFINAL", SqlDbType.BigInt)
 
         BDComando.Parameters("@EMPRESA").Value = ConectaBD.Cve_Empresa
-        BDComando.Parameters("@FINALIZADAS").Value = Filtro
+        BDComando.Parameters("@ANIO").Value = ObtenerAnioSeleccionado()
+        BDComando.Parameters("@MES").Value = ObtenerMesSeleccionado()
+        BDComando.Parameters("@ESTATUS").Value = ObtenerEstatusSeleccionado()
         BDComando.Parameters("@CVE_USUCALIDADINICIAL").Value = CveCalidadInicial
         BDComando.Parameters("@CVE_USUCALIDADFINAL").Value = CveCalidadFinal
 
@@ -100,6 +106,115 @@ Public Class OPVista
             End If
         End Try
     End Sub
+
+    Private Sub CargarFiltros()
+        CargandoFiltros = True
+        CmbAnio.Items.Clear()
+        CmbMes.Items.Clear()
+
+        Dim anios As New List(Of Integer)
+        Dim anioServidor As Integer = Date.Now.Year
+        Dim mesServidor As Integer = Date.Now.Month
+
+        Using cmd As New SqlCommand("SELECT DISTINCT YEAR(FechaInicio) AS Anio FROM OP_ASIGNACION WHERE Empresa = @EMPRESA AND FechaInicio IS NOT NULL ORDER BY Anio", ConectaBD.BDConexion)
+            cmd.Parameters.Add("@EMPRESA", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
+            Try
+                cmd.Connection.Open()
+                Using reader As SqlDataReader = cmd.ExecuteReader()
+                    While reader.Read()
+                        If Not IsDBNull(reader("Anio")) Then
+                            anios.Add(Convert.ToInt32(reader("Anio")))
+                        End If
+                    End While
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Se generó un error al consultar los años de asignación, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Consulta de años", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Finally
+                If cmd.Connection.State = ConnectionState.Open Then
+                    cmd.Connection.Close()
+                End If
+            End Try
+        End Using
+
+        Using cmd As New SqlCommand("SELECT YEAR(GETDATE()) AS AnioServidor, MONTH(GETDATE()) AS MesServidor", ConectaBD.BDConexion)
+            Try
+                cmd.Connection.Open()
+                Using reader As SqlDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        If Not IsDBNull(reader("AnioServidor")) Then
+                            anioServidor = Convert.ToInt32(reader("AnioServidor"))
+                        End If
+                        If Not IsDBNull(reader("MesServidor")) Then
+                            mesServidor = Convert.ToInt32(reader("MesServidor"))
+                        End If
+                    End If
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Se generó un error al consultar la fecha del servidor, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Consulta de fecha", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Finally
+                If cmd.Connection.State = ConnectionState.Open Then
+                    cmd.Connection.Close()
+                End If
+            End Try
+        End Using
+
+        If anios.Count = 0 Then
+            anios.Add(anioServidor)
+        End If
+
+        For Each anio As Integer In anios
+            CmbAnio.Items.Add(anio)
+        Next
+
+        Dim anioSeleccionado As Integer = anioServidor
+        If anios.Contains(anioServidor) Then
+            anioSeleccionado = anioServidor
+        Else
+            anioSeleccionado = anios(anios.Count - 1)
+        End If
+        CmbAnio.SelectedItem = anioSeleccionado
+
+        Dim meses As String() = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}
+        For Each mes As String In meses
+            CmbMes.Items.Add(mes)
+        Next
+        If mesServidor >= 1 AndAlso mesServidor <= 12 Then
+            CmbMes.SelectedIndex = mesServidor - 1
+        Else
+            CmbMes.SelectedIndex = 0
+        End If
+
+        RBEnProceso.Checked = True
+        CargandoFiltros = False
+    End Sub
+
+    Private Function ObtenerAnioSeleccionado() As Integer
+        If CmbAnio.SelectedItem IsNot Nothing Then
+            Return Convert.ToInt32(CmbAnio.SelectedItem)
+        End If
+        Dim anio As Integer
+        If Integer.TryParse(CmbAnio.Text, anio) Then
+            Return anio
+        End If
+        Return Date.Now.Year
+    End Function
+
+    Private Function ObtenerMesSeleccionado() As Integer
+        If CmbMes.SelectedIndex >= 0 Then
+            Return CmbMes.SelectedIndex + 1
+        End If
+        Return Date.Now.Month
+    End Function
+
+    Private Function ObtenerEstatusSeleccionado() As String
+        If RBFinalizadas.Checked Then
+            Return "FINALIZADAS"
+        End If
+        If RBCanceladas.Checked Then
+            Return "CANCELADAS"
+        End If
+        Return "ENPROCESO"
+    End Function
 
     Private Sub DGVProgramaProduccion_CellDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DGVProgramaProduccion.CellDoubleClick
         If DGVProgramaProduccion.RowCount > 0 Then
@@ -1049,14 +1164,18 @@ Public Class OPVista
     End Function
 
     Private Sub ChkFinalizadas_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChkFinalizadas.CheckedChanged
+        If CargandoFiltros Then
+            Return
+        End If
         Me.Cursor = Cursors.WaitCursor
         ChkFinalizadas.Enabled = False
         Try
             If ChkFinalizadas.Checked = True Then
-                ConsultaOP(True)
+                RBFinalizadas.Checked = True
             ElseIf ChkFinalizadas.Checked = False Then
-                ConsultaOP(False)
+                RBEnProceso.Checked = True
             End If
+            ConsultaOP()
         Catch ex As Exception
             MessageBox.Show("Se generó un error al consultar las Ordenes de producción, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Ordenes de producción", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Finally
@@ -1066,7 +1185,20 @@ Public Class OPVista
             ' Habilitar el CheckBox nuevamente
             ChkFinalizadas.Enabled = True
         End Try
-        
+
+    End Sub
+
+    Private Sub Filtros_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbAnio.SelectedIndexChanged, CmbMes.SelectedIndexChanged, RBEnProceso.CheckedChanged, RBFinalizadas.CheckedChanged, RBCanceladas.CheckedChanged
+        If CargandoFiltros Then
+            Return
+        End If
+        If TypeOf sender Is RadioButton Then
+            Dim radio As RadioButton = DirectCast(sender, RadioButton)
+            If Not radio.Checked Then
+                Return
+            End If
+        End If
+        ConsultaOP()
     End Sub
 
     Private Sub DGVProgramaProduccion_CellMouseEnter(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DGVProgramaProduccion.CellMouseEnter
