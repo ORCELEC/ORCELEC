@@ -38,7 +38,7 @@ Public Class Validaciones
         Dim MensajeAvanceOPInspector As String = ""
         Dim SMTP As String = "smtp.ionos.mx"
         Dim Usuario As String = "orcelec@uet.mx"
-        Dim Contraseña As String = "M0r15qu3t@$pru3b@$897@"
+        Dim Contraseña As String = "M0r15qu3t@$pru3b@$897$%"
         Dim CorreoOrigen As String = "orcelec@uet.mx"
         Dim Puerto As Integer = 465
 
@@ -383,7 +383,7 @@ Public Class Validaciones
         BDComando.Parameters.Clear()
         BDComando.CommandType = CommandType.StoredProcedure
 
-        BDComando.CommandText = "SP_OP_VISTAAVANCE"
+        BDComando.CommandText = "SP_OP_VISTAAVANCEVALIDACIONES"
         BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt)
         BDComando.Parameters.Add("@FINALIZADAS", SqlDbType.Bit)
         BDComando.Parameters.Add("@CVE_USUCALIDADINICIAL", SqlDbType.BigInt)
@@ -724,7 +724,7 @@ Public Class Validaciones
                     BDComando.Parameters.Clear()
                     BDComando.CommandType = CommandType.StoredProcedure
 
-                    BDComando.CommandText = "SP_OP_VISTAAVANCE"
+                    BDComando.CommandText = "SP_OP_VISTAAVANCEVALIDACIONES"
                     BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt)
                     BDComando.Parameters.Add("@FINALIZADAS", SqlDbType.Bit)
                     BDComando.Parameters.Add("@CVE_USUCALIDADINICIAL", SqlDbType.BigInt)

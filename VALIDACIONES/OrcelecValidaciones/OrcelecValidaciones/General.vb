@@ -23,7 +23,7 @@ Module General
         Dim Directorio As String
         Dim SMTP As String = "smtp.ionos.mx"
         Dim Usuario As String = "orcelec@uet.mx"
-        Dim Contraseña As String = "M0r15qu3t@$pru3b@$897@"
+        Dim Contraseña As String = "M0r15qu3t@$pru3b@$897$%"
         Dim CorreoOrigen As String = "orcelec@uet.mx"
         Dim Puerto As Integer = 465
 

@@ -1163,31 +1163,6 @@ Public Class OPVista
         Return valor.ToString()
     End Function
 
-    Private Sub ChkFinalizadas_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChkFinalizadas.CheckedChanged
-        If CargandoFiltros Then
-            Return
-        End If
-        Me.Cursor = Cursors.WaitCursor
-        ChkFinalizadas.Enabled = False
-        Try
-            If ChkFinalizadas.Checked = True Then
-                RBFinalizadas.Checked = True
-            ElseIf ChkFinalizadas.Checked = False Then
-                RBEnProceso.Checked = True
-            End If
-            ConsultaOP()
-        Catch ex As Exception
-            MessageBox.Show("Se generó un error al consultar las Ordenes de producción, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Ordenes de producción", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Finally
-            ' Restaurar el cursor a su estado normal
-            Me.Cursor = Cursors.Default
-
-            ' Habilitar el CheckBox nuevamente
-            ChkFinalizadas.Enabled = True
-        End Try
-
-    End Sub
-
     Private Sub Filtros_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbAnio.SelectedIndexChanged, CmbMes.SelectedIndexChanged, RBEnProceso.CheckedChanged, RBFinalizadas.CheckedChanged, RBCanceladas.CheckedChanged
         If CargandoFiltros Then
             Return
@@ -1200,6 +1175,71 @@ Public Class OPVista
         End If
         ConsultaOP()
     End Sub
+
+    Private Function AplicarFiltrosDesdeOp(ByVal opABuscar As Decimal) As Boolean
+        Using cmd As New SqlCommand("SELECT TOP 1 FechaCreacion, Asignada, Cancelada, Finalizada, Estatus FROM OP_ASIGNACION WHERE Empresa = @EMPRESA AND (No_OP = @NO_OP OR No_OPSistemaAnterior = @NO_OP)", ConectaBD.BDConexion)
+            cmd.Parameters.Add("@EMPRESA", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
+            cmd.Parameters.Add("@NO_OP", SqlDbType.Decimal).Value = opABuscar
+            Try
+                cmd.Connection.Open()
+                Using reader As SqlDataReader = cmd.ExecuteReader()
+                    If Not reader.Read() Then
+                        Return False
+                    End If
+
+                    Dim fechaCreacion As DateTime? = Nothing
+                    If Not IsDBNull(reader("FechaCreacion")) Then
+                        fechaCreacion = Convert.ToDateTime(reader("FechaCreacion"))
+                    End If
+
+                    Dim asignada As Boolean = Not IsDBNull(reader("Asignada")) AndAlso Convert.ToBoolean(reader("Asignada"))
+                    Dim cancelada As Boolean = Not IsDBNull(reader("Cancelada")) AndAlso Convert.ToBoolean(reader("Cancelada"))
+                    Dim finalizada As Boolean = Not IsDBNull(reader("Finalizada")) AndAlso Convert.ToBoolean(reader("Finalizada"))
+                    Dim estatus As String = ""
+                    If Not IsDBNull(reader("Estatus")) Then
+                        estatus = reader("Estatus").ToString().Trim().ToUpper()
+                    End If
+
+                    CargandoFiltros = True
+                    Try
+                        If fechaCreacion.HasValue Then
+                            Dim anioOp As Integer = fechaCreacion.Value.Year
+                            If Not CmbAnio.Items.Contains(anioOp) Then
+                                CmbAnio.Items.Add(anioOp)
+                            End If
+                            CmbAnio.SelectedItem = anioOp
+
+                            Dim mesOp As Integer = fechaCreacion.Value.Month
+                            If mesOp >= 1 AndAlso mesOp <= 12 Then
+                                CmbMes.SelectedIndex = mesOp - 1
+                            End If
+                        End If
+
+                        If cancelada AndAlso estatus = "CANCELADA" Then
+                            RBCanceladas.Checked = True
+                        ElseIf asignada AndAlso Not cancelada AndAlso finalizada Then
+                            RBFinalizadas.Checked = True
+                        ElseIf asignada AndAlso Not cancelada AndAlso Not finalizada Then
+                            RBEnProceso.Checked = True
+                        Else
+                            RBEnProceso.Checked = True
+                        End If
+                    Finally
+                        CargandoFiltros = False
+                    End Try
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Se generó un error al consultar la OP, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Buscar OP", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Return False
+            Finally
+                If cmd.Connection.State = ConnectionState.Open Then
+                    cmd.Connection.Close()
+                End If
+            End Try
+        End Using
+
+        Return True
+    End Function
 
     Private Sub DGVProgramaProduccion_CellMouseEnter(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DGVProgramaProduccion.CellMouseEnter
         If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then ' Asegurar que no sea un encabezado
@@ -1278,6 +1318,18 @@ Public Class OPVista
 
             ' Puedes agregar aquí el código para manejar la búsqueda con el valor ingresado
             If Not String.IsNullOrWhiteSpace(opABuscar) Then
+                Dim opNumero As Decimal
+                If Not Decimal.TryParse(opABuscar, opNumero) Then
+                    MessageBox.Show("El No. de OP es inválido.", "Buscar OP", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Return
+                End If
+
+                If Not AplicarFiltrosDesdeOp(opNumero) Then
+                    MessageBox.Show("El No. de OP es inexistente.", "Buscar OP", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Return
+                End If
+
+                ConsultaOP()
                 ' Código para buscar la OP
                 For Fila As Integer = 0 To DGVProgramaProduccion.Rows.Count - 1
                     If DGVProgramaProduccion.Rows(Fila).Cells("OPNva").Value.ToString() = opABuscar Or DGVProgramaProduccion.Rows(Fila).Cells("OPAnterior").Value.ToString() = opABuscar Then
