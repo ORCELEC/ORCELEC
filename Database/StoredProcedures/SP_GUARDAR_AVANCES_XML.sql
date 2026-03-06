@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SP_GUARDAR_AVANCES_XML]    Script Date: 15/12/2025 08:57:15 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_GUARDAR_AVANCES_XML]    Script Date: 05/03/2026 06:32:17 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
