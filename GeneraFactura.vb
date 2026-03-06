@@ -701,8 +701,8 @@ Public Class GeneraFactura
                 e.Handled = True
                 dataGridViewTextBox.Text = DGPrevioFactura.Rows(rowIndex).Cells(DGPrevioFactura.CurrentCell.ColumnIndex).Value.ToString()
             Else
-                If (DGPrevioFactura.CurrentCell.ColumnIndex > 6 And DGPrevioFactura.CurrentCell.ColumnIndex < DGPrevioFactura.Columns.Count - 5) Then
-                    If (DGPrevioFactura.CurrentCell.ColumnIndex > 6 And DGPrevioFactura.CurrentCell.ColumnIndex < DGPrevioFactura.Columns.Count - 5) Then 'COLUMNAS DE TALLAS Y CANTIDADES
+                If (DGPrevioFactura.CurrentCell.ColumnIndex > 5 And DGPrevioFactura.CurrentCell.ColumnIndex < DGPrevioFactura.Columns.Count - 5) Then
+                    If (DGPrevioFactura.CurrentCell.ColumnIndex > 5 And DGPrevioFactura.CurrentCell.ColumnIndex < DGPrevioFactura.Columns.Count - 5) Then 'COLUMNAS DE TALLAS Y CANTIDADES
                         If IsDBNull(DGPrevioFactura.Rows(rowIndex - 1).Cells(DGPrevioFactura.CurrentCell.ColumnIndex).Value) = False Then
                             If DGPrevioFactura.Rows(rowIndex - 1).Cells(DGPrevioFactura.CurrentCell.ColumnIndex).Value <= 0 Then
                                 e.Handled = True
@@ -748,7 +748,7 @@ Public Class GeneraFactura
     End Sub
 
     Private Sub DGPrevioFactura_CellValidating(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellValidatingEventArgs) Handles DGPrevioFactura.CellValidating
-        If CargaManualCantidades = True And RBPartidaTodaslasTallas.Checked Then
+        If CargaManualCantidades = True And (RBPartidaTodaslasTallas.Checked Or RBGB4Partida.Checked) Then
             If e.RowIndex Mod 2 <> 0 Then
                 If e.ColumnIndex > 6 And e.ColumnIndex < DGPrevioFactura.Columns.Count - 5 Then
                     If e.FormattedValue.ToString() <> "" Then
@@ -798,7 +798,7 @@ Public Class GeneraFactura
                             DGPrevioFactura.CancelEdit()
                         End If
                     End If
-                ElseIf e.ColumnIndex = 6 Then ''PRECIO UNITARIO
+                ElseIf e.ColumnIndex = 5 Then ''PRECIO UNITARIO
                     If e.FormattedValue.ToString() <> "" Then
                         Dim valor As Decimal
                         If Not Decimal.TryParse(e.FormattedValue.ToString(), valor) Then
@@ -885,7 +885,7 @@ Public Class GeneraFactura
                         DGPrevioFactura.CancelEdit()
                     End If
                 End If
-            ElseIf e.ColumnIndex = 6 Then ''PRECIO UNITARIO
+            ElseIf e.ColumnIndex = 5 Then ''PRECIO UNITARIO
                 If e.FormattedValue.ToString() <> "" Then
                     Dim valor As Decimal
                     If Not Decimal.TryParse(e.FormattedValue.ToString(), valor) Then

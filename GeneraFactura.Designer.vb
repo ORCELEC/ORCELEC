@@ -22,14 +22,14 @@ Partial Class GeneraFactura
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim SuperTabItemColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemColorTable()
-        Dim SuperTabColorStates1 As DevComponents.DotNetBar.Rendering.SuperTabColorStates = New DevComponents.DotNetBar.Rendering.SuperTabColorStates()
-        Dim SuperTabItemStateColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim SuperTabItemColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemColorTable()
+        Dim SuperTabColorStates1 As DevComponents.DotNetBar.Rendering.SuperTabColorStates = New DevComponents.DotNetBar.Rendering.SuperTabColorStates()
+        Dim SuperTabItemStateColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable()
         Me.PanPrincipal = New DevComponents.DotNetBar.PanelEx()
         Me.BtnCancelarFactura = New DevComponents.DotNetBar.ButtonX()
         Me.BtnFacturaAutomaticaIMSS = New DevComponents.DotNetBar.ButtonX()
@@ -59,14 +59,14 @@ Partial Class GeneraFactura
         Me.TxtNoPedido = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.BtnInicio = New DevComponents.DotNetBar.ButtonX()
         Me.TabPrincipal = New DevComponents.DotNetBar.SuperTabControl()
-        Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.CodigoBarras1 = New System.Windows.Forms.PictureBox()
-        Me.TabFolio = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.PanDetallePartida = New DevComponents.DotNetBar.PanelEx()
         Me.BtnCerrarDetPartida = New DevComponents.DotNetBar.ButtonX()
         Me.DGPrevioFactura = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.TabDatosPedido = New DevComponents.DotNetBar.SuperTabItem()
+        Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.CodigoBarras1 = New System.Windows.Forms.PictureBox()
+        Me.TabFolio = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel9 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.LabelX58 = New DevComponents.DotNetBar.LabelX()
@@ -88,11 +88,11 @@ Partial Class GeneraFactura
         Me.GB1.SuspendLayout()
         CType(Me.TabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPrincipal.SuspendLayout()
-        Me.SuperTabControlPanel1.SuspendLayout()
-        CType(Me.CodigoBarras1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControlPanel3.SuspendLayout()
         Me.PanDetallePartida.SuspendLayout()
         CType(Me.DGPrevioFactura, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuperTabControlPanel1.SuspendLayout()
+        CType(Me.CodigoBarras1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControlPanel9.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
         Me.GB5.SuspendLayout()
@@ -494,37 +494,6 @@ Partial Class GeneraFactura
         Me.TabPrincipal.TabIndex = 45
         Me.TabPrincipal.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TabFolio, Me.TabNotas, Me.TabDatosPedido})
         '
-        'SuperTabControlPanel1
-        '
-        Me.SuperTabControlPanel1.Controls.Add(Me.CodigoBarras1)
-        Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel1.Location = New System.Drawing.Point(0, 25)
-        Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
-        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(954, 326)
-        Me.SuperTabControlPanel1.TabIndex = 1
-        Me.SuperTabControlPanel1.TabItem = Me.TabFolio
-        '
-        'CodigoBarras1
-        '
-        Me.CodigoBarras1.Location = New System.Drawing.Point(613, 21)
-        Me.CodigoBarras1.Name = "CodigoBarras1"
-        Me.CodigoBarras1.Size = New System.Drawing.Size(300, 100)
-        Me.CodigoBarras1.TabIndex = 91
-        Me.CodigoBarras1.TabStop = False
-        '
-        'TabFolio
-        '
-        Me.TabFolio.AttachedControl = Me.SuperTabControlPanel1
-        Me.TabFolio.GlobalItem = False
-        Me.TabFolio.Name = "TabFolio"
-        SuperTabItemStateColorTable1.CloseMarker = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        SuperTabItemStateColorTable1.InnerBorder = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        SuperTabItemStateColorTable1.OuterBorder = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        SuperTabColorStates1.Normal = SuperTabItemStateColorTable1
-        SuperTabItemColorTable1.Bottom = SuperTabColorStates1
-        Me.TabFolio.TabColor = SuperTabItemColorTable1
-        Me.TabFolio.Text = "Datos Generales"
-        '
         'SuperTabControlPanel3
         '
         Me.SuperTabControlPanel3.Controls.Add(Me.PanDetallePartida)
@@ -614,6 +583,37 @@ Partial Class GeneraFactura
         Me.TabDatosPedido.GlobalItem = False
         Me.TabDatosPedido.Name = "TabDatosPedido"
         Me.TabDatosPedido.Text = "Facturas"
+        '
+        'SuperTabControlPanel1
+        '
+        Me.SuperTabControlPanel1.Controls.Add(Me.CodigoBarras1)
+        Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel1.Location = New System.Drawing.Point(0, 25)
+        Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
+        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(954, 326)
+        Me.SuperTabControlPanel1.TabIndex = 1
+        Me.SuperTabControlPanel1.TabItem = Me.TabFolio
+        '
+        'CodigoBarras1
+        '
+        Me.CodigoBarras1.Location = New System.Drawing.Point(613, 21)
+        Me.CodigoBarras1.Name = "CodigoBarras1"
+        Me.CodigoBarras1.Size = New System.Drawing.Size(300, 100)
+        Me.CodigoBarras1.TabIndex = 91
+        Me.CodigoBarras1.TabStop = False
+        '
+        'TabFolio
+        '
+        Me.TabFolio.AttachedControl = Me.SuperTabControlPanel1
+        Me.TabFolio.GlobalItem = False
+        Me.TabFolio.Name = "TabFolio"
+        SuperTabItemStateColorTable1.CloseMarker = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        SuperTabItemStateColorTable1.InnerBorder = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        SuperTabItemStateColorTable1.OuterBorder = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        SuperTabColorStates1.Normal = SuperTabItemStateColorTable1
+        SuperTabItemColorTable1.Bottom = SuperTabColorStates1
+        Me.TabFolio.TabColor = SuperTabItemColorTable1
+        Me.TabFolio.Text = "Datos Generales"
         '
         'SuperTabControlPanel9
         '
@@ -835,11 +835,11 @@ Partial Class GeneraFactura
         Me.GB1.PerformLayout()
         CType(Me.TabPrincipal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPrincipal.ResumeLayout(False)
-        Me.SuperTabControlPanel1.ResumeLayout(False)
-        CType(Me.CodigoBarras1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControlPanel3.ResumeLayout(False)
         Me.PanDetallePartida.ResumeLayout(False)
         CType(Me.DGPrevioFactura, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SuperTabControlPanel1.ResumeLayout(False)
+        CType(Me.CodigoBarras1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControlPanel9.ResumeLayout(False)
         Me.GroupPanel1.ResumeLayout(False)
         Me.GB5.ResumeLayout(False)

@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[OP_AUTORIZAR_REGRESA_ASIGNACION]    Script Date: 15/12/2025 08:56:17 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[OP_AUTORIZAR_REGRESA_ASIGNACION]    Script Date: 05/03/2026 06:03:23 p. m. ******/
 SET ANSI_NULLS ON
 GO
 

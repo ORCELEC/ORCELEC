@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[PEDIDO_INTERNO_AUTORIZAR]    Script Date: 15/12/2025 08:56:33 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[PEDIDO_INTERNO_AUTORIZAR]    Script Date: 05/03/2026 05:59:56 p. m. ******/
 SET ANSI_NULLS ON
 GO
 

@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[RESERVADO_INVENTARIO_PRODUCTO_TERMINADO]    Script Date: 06/10/2025 06:07:49 p. m. ******/
+/****** Object:  Table [dbo].[RESERVADO_INVENTARIO_PRODUCTO_TERMINADO]    Script Date: 05/03/2026 05:52:59 p. m. ******/
 SET ANSI_NULLS ON
 GO
 

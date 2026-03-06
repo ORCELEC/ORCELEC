@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SP_GUARDAR_INGRESO_ALMACEN]    Script Date: 15/12/2025 08:57:36 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_GUARDAR_INGRESO_ALMACEN]    Script Date: 05/03/2026 06:09:14 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
