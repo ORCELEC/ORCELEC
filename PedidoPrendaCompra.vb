@@ -377,6 +377,33 @@ Public Class PedidoPrendaCompra
         ActualizarBotonesPorJuego()
     End Sub
 
+    Private Sub EliminarPartidaDeJuego(ByVal partidaActual As String)
+        If GrupoPorPartida.ContainsKey(partidaActual) = False Then
+            Exit Sub
+        End If
+
+        Dim grupoId As String = GrupoPorPartida(partidaActual)
+        If PartidasPorJuego.ContainsKey(grupoId) = False Then
+            GrupoPorPartida.Remove(partidaActual)
+            Exit Sub
+        End If
+
+        Dim grupoPartidas As HashSet(Of String) = PartidasPorJuego(grupoId)
+        grupoPartidas.Remove(partidaActual)
+        GrupoPorPartida.Remove(partidaActual)
+
+        If grupoPartidas.Count < 2 Then
+            For Each partidaRestante As String In grupoPartidas.ToList()
+                GrupoPorPartida.Remove(partidaRestante)
+            Next
+            PartidasPorJuego.Remove(grupoId)
+        Else
+            PartidasPorJuego(grupoId) = grupoPartidas
+        End If
+
+        ActualizarBotonesPorJuego()
+    End Sub
+
     Private Sub LlenaCondicionesPago()
         BDComando = New SqlCommand
         BDComando.Connection = ConectaBD.BDConexion
@@ -1036,7 +1063,13 @@ Public Class PedidoPrendaCompra
         If GrupoPorPartida.ContainsKey(partidaActual) Then
             Dim grupoId As String = GrupoPorPartida(partidaActual)
             Dim partidasRelacionadas = PartidasPorJuego(grupoId).Where(Function(partida) partida <> partidaActual).OrderBy(Function(partida) partida).ToArray()
-            MessageBox.Show("La partida No. " & partidaActual & " ya está haciendo juego con la partida No. " & String.Join(", ", partidasRelacionadas) & ".", "Partidas por juego", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Dim respuesta As DialogResult = MessageBox.Show("La partida No. " & partidaActual & " ya está haciendo juego con la partida No. " & String.Join(", ", partidasRelacionadas) & "." & vbCrLf & vbCrLf & "Si desea conservarla en el juego presione Sí." & vbCrLf & "Si desea eliminar esta partida del juego presione No.", "Partidas por juego", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+            If respuesta = DialogResult.No Then
+                EliminarPartidaDeJuego(partidaActual)
+                MessageBox.Show("La partida No. " & partidaActual & " se eliminó del juego y ya está disponible para volver a seleccionarse.", "Partidas por juego", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+
             Exit Sub
         End If
 
@@ -1592,7 +1625,7 @@ Public Class PedidoPrendaCompra
                         DGTallasCantPrecios.Columns("TotalPrendasPartida").Width = 70
 
                         For Contador As Int32 = DGTallasCantPrecios.Columns("FECHAVENCIMIENTO").Index + 1 To DGTallasCantPrecios.Columns("TotalPrendasPartida").Index - 1
-                            DGTallasCantPrecios.Columns(Contador).Width = 50
+                            DGTallasCantPrecios.Columns(Contador).Width = 70
                         Next
 
                         DGTallasCantPrecios.Columns("PRECIO").HeaderText = "P. Unitario S/IVA"
