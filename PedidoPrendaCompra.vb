@@ -1,6 +1,9 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Net
+Imports System.Globalization
+Imports System.Linq
+Imports System.Collections.Generic
 
 Public Class PedidoPrendaCompra
     Private BDComando As New SqlCommand
@@ -21,6 +24,10 @@ Public Class PedidoPrendaCompra
     Private Indice As Integer
     Private UnaSolaFecha As Boolean = False
     Private NumPartida As Integer
+    Private ReadOnly PartidasPorJuego As New Dictionary(Of String, HashSet(Of String))(StringComparer.OrdinalIgnoreCase)
+    Private ReadOnly GrupoPorPartida As New Dictionary(Of String, String)(StringComparer.OrdinalIgnoreCase)
+    Private ReadOnly CeldasCantidadSeleccionadas As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
+    Private Const NombreColumnaPorJuego As String = "PorJuego"
     Public TipoMovimiento As String
 
     Private Sub PedidoPrendaCompra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -122,6 +129,8 @@ Public Class PedidoPrendaCompra
         TxtNotasGeneralesProduccion.Clear()
         TxtNotasGeneralesLogistica.Clear()
         TxtNotasAlAutorizarCancelar.Clear()
+        LimpiarRelacionPartidasJuego()
+        RemoverColumnaPorJuego()
         TxtSubtotalPedido.Clear()
         TxtIVAPedido.Clear()
         TxtTotalPedido.Clear()
@@ -156,6 +165,216 @@ Public Class PedidoPrendaCompra
         TxtRemisionadoTelContacto.Clear()
         TxtRemisionadoInsEntrega.Clear()
         TxtRemisionadoDocumentacionEntrega.Clear()
+    End Sub
+
+
+    Private Sub LimpiarRelacionPartidasJuego()
+        PartidasPorJuego.Clear()
+        GrupoPorPartida.Clear()
+        CeldasCantidadSeleccionadas.Clear()
+    End Sub
+
+    Private Sub RemoverColumnaPorJuego()
+        If DGTallasCantPrecios.Columns.Contains(NombreColumnaPorJuego) Then
+            DGTallasCantPrecios.Columns.Remove(NombreColumnaPorJuego)
+        End If
+    End Sub
+
+    Private Sub ConfigurarColumnaPorJuegoResumen()
+        RemoverColumnaPorJuego()
+
+        If Not DGTallasCantPrecios.Columns.Contains("DESCRIPCIONPRENDA") Then
+            Exit Sub
+        End If
+
+        Dim columnaBoton As New DataGridViewButtonColumn
+        columnaBoton.Name = NombreColumnaPorJuego
+        columnaBoton.HeaderText = "Juego"
+        columnaBoton.Text = "Por Juego"
+        columnaBoton.UseColumnTextForButtonValue = True
+        columnaBoton.Width = 90
+        columnaBoton.ReadOnly = True
+        columnaBoton.FlatStyle = FlatStyle.Popup
+
+        DGTallasCantPrecios.Columns.Insert(DGTallasCantPrecios.Columns("DESCRIPCIONPRENDA").Index + 1, columnaBoton)
+        ActualizarBotonesPorJuego()
+    End Sub
+
+    Private Function EsColumnaCantidadResumen(ByVal columnIndex As Integer) As Boolean
+        If RBResumen.Checked = False Then
+            Return False
+        End If
+
+        If columnIndex < 0 OrElse DGTallasCantPrecios.Columns.Count = 0 Then
+            Return False
+        End If
+
+        If Not DGTallasCantPrecios.Columns.Contains("FECHAVENCIMIENTO") OrElse Not DGTallasCantPrecios.Columns.Contains("TotalPrendasPartida") Then
+            Return False
+        End If
+
+        Dim indiceInicio As Integer = DGTallasCantPrecios.Columns("FECHAVENCIMIENTO").Index + 1
+        Dim indiceFin As Integer = DGTallasCantPrecios.Columns("TotalPrendasPartida").Index - 1
+
+        Return columnIndex >= indiceInicio AndAlso columnIndex <= indiceFin
+    End Function
+
+    Private Function ValorCeldaMayorACero(ByVal valor As Object) As Boolean
+        If valor Is Nothing OrElse IsDBNull(valor) Then
+            Return False
+        End If
+
+        Dim numero As Decimal
+        If Decimal.TryParse(Convert.ToString(valor, CultureInfo.InvariantCulture), NumberStyles.Any, CultureInfo.InvariantCulture, numero) = False Then
+            If Decimal.TryParse(Convert.ToString(valor), NumberStyles.Any, CultureInfo.CurrentCulture, numero) = False Then
+                Return False
+            End If
+        End If
+
+        Return numero > 0D
+    End Function
+
+    Private Function ObtenerNumeroPartida(ByVal fila As DataGridViewRow) As String
+        Dim posiblesColumnas() As String = {"PartidaAcomodo", "PARTIDA", "Partida", "CONSECUTIVO", "NO_PARTIDA", "No_Partida"}
+
+        For Each nombreColumna As String In posiblesColumnas
+            If fila.DataGridView.Columns.Contains(nombreColumna) Then
+                Dim valor As Object = fila.Cells(nombreColumna).Value
+                If valor IsNot Nothing AndAlso IsDBNull(valor) = False AndAlso String.IsNullOrWhiteSpace(valor.ToString()) = False Then
+                    Return valor.ToString().Trim()
+                End If
+            End If
+        Next
+
+        Return (fila.Index + 1).ToString()
+    End Function
+
+    Private Function ObtenerDescripcionPartida(ByVal fila As DataGridViewRow) As String
+        If fila.DataGridView.Columns.Contains("DESCRIPCIONPRENDA") Then
+            Dim valor As Object = fila.Cells("DESCRIPCIONPRENDA").Value
+            If valor IsNot Nothing AndAlso IsDBNull(valor) = False Then
+                Return valor.ToString().Trim()
+            End If
+        End If
+
+        Return String.Empty
+    End Function
+
+    Private Function ObtenerClaveCeldaCantidad(ByVal rowIndex As Integer, ByVal columnIndex As Integer) As String
+        Dim fila As DataGridViewRow = DGTallasCantPrecios.Rows(rowIndex)
+        Return ObtenerNumeroPartida(fila) & "|" & DGTallasCantPrecios.Columns(columnIndex).Name
+    End Function
+
+    Private Function CeldaCantidadSeleccionada(ByVal rowIndex As Integer, ByVal columnIndex As Integer) As Boolean
+        Return CeldasCantidadSeleccionadas.Contains(ObtenerClaveCeldaCantidad(rowIndex, columnIndex))
+    End Function
+
+    Private Sub AlternarSeleccionCeldaCantidad(ByVal rowIndex As Integer, ByVal columnIndex As Integer)
+        Dim clave As String = ObtenerClaveCeldaCantidad(rowIndex, columnIndex)
+
+        If CeldasCantidadSeleccionadas.Contains(clave) Then
+            CeldasCantidadSeleccionadas.Remove(clave)
+        Else
+            CeldasCantidadSeleccionadas.Add(clave)
+        End If
+
+        DGTallasCantPrecios.InvalidateCell(columnIndex, rowIndex)
+    End Sub
+
+    Private Sub ActualizarBotonesPorJuego()
+        If DGTallasCantPrecios.Columns.Contains(NombreColumnaPorJuego) = False Then
+            Exit Sub
+        End If
+
+        For Each fila As DataGridViewRow In DGTallasCantPrecios.Rows
+            If fila.IsNewRow Then
+                Continue For
+            End If
+
+            Dim numeroPartida As String = ObtenerNumeroPartida(fila)
+            Dim celdaBoton As DataGridViewCell = fila.Cells(NombreColumnaPorJuego)
+            celdaBoton.Value = "Por Juego"
+
+            If GrupoPorPartida.ContainsKey(numeroPartida) Then
+                Dim grupoId As String = GrupoPorPartida(numeroPartida)
+                Dim partidasRelacionadas = PartidasPorJuego(grupoId).Where(Function(partida) partida <> numeroPartida).OrderBy(Function(partida) partida).ToArray()
+                celdaBoton.ToolTipText = "Ya hace juego con la partida No. " & String.Join(", ", partidasRelacionadas)
+            Else
+                celdaBoton.ToolTipText = "Seleccionar partidas para hacer juego"
+            End If
+        Next
+    End Sub
+
+    Private Function MostrarSeleccionPartidasJuego(ByVal partidaOrigen As String, ByVal partidasDisponibles As List(Of KeyValuePair(Of String, String))) As List(Of String)
+        Dim partidasSeleccionadas As New List(Of String)
+
+        Using frmSeleccion As New Form()
+            frmSeleccion.Text = "Seleccionar partidas para juego"
+            frmSeleccion.StartPosition = FormStartPosition.CenterParent
+            frmSeleccion.FormBorderStyle = FormBorderStyle.FixedDialog
+            frmSeleccion.MinimizeBox = False
+            frmSeleccion.MaximizeBox = False
+            frmSeleccion.ShowInTaskbar = False
+            frmSeleccion.Width = 520
+            frmSeleccion.Height = 420
+
+            Dim lblInstruccion As New Label()
+            lblInstruccion.AutoSize = False
+            lblInstruccion.Text = "Seleccione una o más partidas para relacionarlas con la partida No. " & partidaOrigen & "."
+            lblInstruccion.SetBounds(12, 12, 480, 40)
+
+            Dim clbPartidas As New CheckedListBox()
+            clbPartidas.CheckOnClick = True
+            clbPartidas.SetBounds(12, 58, 480, 270)
+
+            For Each partidaDisponible In partidasDisponibles
+                clbPartidas.Items.Add("Partida No. " & partidaDisponible.Key & " - " & partidaDisponible.Value)
+            Next
+
+            Dim btnAceptar As New Button()
+            btnAceptar.Text = "Aceptar"
+            btnAceptar.DialogResult = DialogResult.OK
+            btnAceptar.SetBounds(316, 340, 85, 28)
+
+            Dim btnCancelar As New Button()
+            btnCancelar.Text = "Cancelar"
+            btnCancelar.DialogResult = DialogResult.Cancel
+            btnCancelar.SetBounds(407, 340, 85, 28)
+
+            frmSeleccion.Controls.Add(lblInstruccion)
+            frmSeleccion.Controls.Add(clbPartidas)
+            frmSeleccion.Controls.Add(btnAceptar)
+            frmSeleccion.Controls.Add(btnCancelar)
+            frmSeleccion.AcceptButton = btnAceptar
+            frmSeleccion.CancelButton = btnCancelar
+
+            If frmSeleccion.ShowDialog(Me) = DialogResult.OK Then
+                For indice As Integer = 0 To clbPartidas.CheckedIndices.Count - 1
+                    Dim indiceSeleccionado As Integer = clbPartidas.CheckedIndices(indice)
+                    partidasSeleccionadas.Add(partidasDisponibles(indiceSeleccionado).Key)
+                Next
+            End If
+        End Using
+
+        Return partidasSeleccionadas
+    End Function
+
+    Private Sub RegistrarPartidasPorJuego(ByVal partidaOrigen As String, ByVal partidasSeleccionadas As IEnumerable(Of String))
+        Dim grupoId As String = Guid.NewGuid().ToString()
+        Dim grupoPartidas As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
+
+        grupoPartidas.Add(partidaOrigen)
+        For Each partidaSeleccionada As String In partidasSeleccionadas
+            grupoPartidas.Add(partidaSeleccionada)
+        Next
+
+        PartidasPorJuego(grupoId) = grupoPartidas
+
+        For Each partida As String In grupoPartidas
+            GrupoPorPartida(partida) = grupoId
+        Next
+
+        ActualizarBotonesPorJuego()
     End Sub
 
     Private Sub LlenaCondicionesPago()
@@ -757,6 +976,99 @@ Public Class PedidoPrendaCompra
         End If
     End Sub
 
+    Private Sub DGTallasCantPrecios_CellFormatting(sender As System.Object, e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DGTallasCantPrecios.CellFormatting
+        If e.RowIndex < 0 OrElse EsColumnaCantidadResumen(e.ColumnIndex) = False Then
+            Exit Sub
+        End If
+
+        If e.Value Is Nothing OrElse IsDBNull(e.Value) Then
+            e.Value = String.Empty
+            e.FormattingApplied = True
+        End If
+    End Sub
+
+    Private Sub DGTallasCantPrecios_CellPainting(sender As System.Object, e As System.Windows.Forms.DataGridViewCellPaintingEventArgs) Handles DGTallasCantPrecios.CellPainting
+        If e.RowIndex < 0 OrElse EsColumnaCantidadResumen(e.ColumnIndex) = False Then
+            Exit Sub
+        End If
+
+        Dim valorCelda As Object = DGTallasCantPrecios.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
+        If ValorCeldaMayorACero(valorCelda) = False Then
+            Exit Sub
+        End If
+
+        e.Paint(e.CellBounds, DataGridViewPaintParts.Background Or DataGridViewPaintParts.Border)
+
+        Dim estadoCheckbox As VisualStyles.CheckBoxState = VisualStyles.CheckBoxState.UncheckedNormal
+        If CeldaCantidadSeleccionada(e.RowIndex, e.ColumnIndex) Then
+            estadoCheckbox = VisualStyles.CheckBoxState.CheckedNormal
+        End If
+
+        Dim tamanoCheckbox As Size = CheckBoxRenderer.GetGlyphSize(e.Graphics, estadoCheckbox)
+        Dim margenIzquierdo As Integer = 4
+        Dim puntoCheckbox As New Point(e.CellBounds.Left + margenIzquierdo, e.CellBounds.Top + (e.CellBounds.Height - tamanoCheckbox.Height) \ 2)
+        CheckBoxRenderer.DrawCheckBox(e.Graphics, puntoCheckbox, estadoCheckbox)
+
+        Dim textoCelda As String = Convert.ToString(e.FormattedValue)
+        Dim rectanguloTexto As New Rectangle(puntoCheckbox.X + tamanoCheckbox.Width + 6, e.CellBounds.Top, e.CellBounds.Width - (tamanoCheckbox.Width + 12 + margenIzquierdo), e.CellBounds.Height)
+        TextRenderer.DrawText(e.Graphics, textoCelda, e.CellStyle.Font, rectanguloTexto, e.CellStyle.ForeColor, TextFormatFlags.Left Or TextFormatFlags.VerticalCenter Or TextFormatFlags.EndEllipsis)
+
+        e.Handled = True
+    End Sub
+
+    Private Sub DGTallasCantPrecios_CellClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DGTallasCantPrecios.CellClick
+        If e.RowIndex < 0 OrElse RBResumen.Checked = False Then
+            Exit Sub
+        End If
+
+        If EsColumnaCantidadResumen(e.ColumnIndex) AndAlso ValorCeldaMayorACero(DGTallasCantPrecios.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
+            AlternarSeleccionCeldaCantidad(e.RowIndex, e.ColumnIndex)
+            Exit Sub
+        End If
+
+        If DGTallasCantPrecios.Columns(e.ColumnIndex).Name <> NombreColumnaPorJuego Then
+            Exit Sub
+        End If
+
+        Dim filaActual As DataGridViewRow = DGTallasCantPrecios.Rows(e.RowIndex)
+        Dim partidaActual As String = ObtenerNumeroPartida(filaActual)
+
+        If GrupoPorPartida.ContainsKey(partidaActual) Then
+            Dim grupoId As String = GrupoPorPartida(partidaActual)
+            Dim partidasRelacionadas = PartidasPorJuego(grupoId).Where(Function(partida) partida <> partidaActual).OrderBy(Function(partida) partida).ToArray()
+            MessageBox.Show("La partida No. " & partidaActual & " ya está haciendo juego con la partida No. " & String.Join(", ", partidasRelacionadas) & ".", "Partidas por juego", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        Dim partidasDisponibles As New List(Of KeyValuePair(Of String, String))
+
+        For Each fila As DataGridViewRow In DGTallasCantPrecios.Rows
+            If fila.IsNewRow OrElse fila.Index = filaActual.Index Then
+                Continue For
+            End If
+
+            Dim partidaDisponible As String = ObtenerNumeroPartida(fila)
+            If GrupoPorPartida.ContainsKey(partidaDisponible) Then
+                Continue For
+            End If
+
+            partidasDisponibles.Add(New KeyValuePair(Of String, String)(partidaDisponible, ObtenerDescripcionPartida(fila)))
+        Next
+
+        If partidasDisponibles.Count = 0 Then
+            MessageBox.Show("No hay partidas disponibles para hacer juego con la partida No. " & partidaActual & ".", "Partidas por juego", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+
+        Dim partidasSeleccionadas As List(Of String) = MostrarSeleccionPartidasJuego(partidaActual, partidasDisponibles)
+        If partidasSeleccionadas.Count = 0 Then
+            Exit Sub
+        End If
+
+        RegistrarPartidasPorJuego(partidaActual, partidasSeleccionadas)
+        MessageBox.Show("La partida No. " & partidaActual & " ahora hace juego con la(s) partida(s) No. " & String.Join(", ", partidasSeleccionadas.OrderBy(Function(partida) partida)) & ".", "Partidas por juego", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
     Private Sub BtnCerrarDetPartida_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnCerrarDetPartida.Click
         BtnCerrarDetPartida.Visible = False
         TabDetalleDescripcionPrenda.Visible = False
@@ -1273,12 +1585,13 @@ Public Class PedidoPrendaCompra
                         DGTallasCantPrecios.Columns("CVE_PRENDA").Width = 50
                         DGTallasCantPrecios.Columns("DESCRIPCIONPRENDA").HeaderText = "Descripción de la Prenda"
                         DGTallasCantPrecios.Columns("DESCRIPCIONPRENDA").Width = 150
+                        ConfigurarColumnaPorJuegoResumen()
                         DGTallasCantPrecios.Columns("FECHAVENCIMIENTO").HeaderText = "Fecha de Vencimiento"
                         DGTallasCantPrecios.Columns("FECHAVENCIMIENTO").Width = 90
                         DGTallasCantPrecios.Columns("TotalPrendasPartida").HeaderText = "Total de la Partida"
                         DGTallasCantPrecios.Columns("TotalPrendasPartida").Width = 70
 
-                        For Contador As Int32 = DGTallasCantPrecios.Columns("DESCRIPCIONPRENDA").Index + 1 To DGTallasCantPrecios.Columns.Count - 5
+                        For Contador As Int32 = DGTallasCantPrecios.Columns("FECHAVENCIMIENTO").Index + 1 To DGTallasCantPrecios.Columns("TotalPrendasPartida").Index - 1
                             DGTallasCantPrecios.Columns(Contador).Width = 50
                         Next
 
@@ -1339,6 +1652,7 @@ Public Class PedidoPrendaCompra
                         BDAdapter.Fill(BDTabla)
 
                         DGTallasCantPrecios.DataSource = BDTabla
+                        RemoverColumnaPorJuego()
 
                         DGTallasCantPrecios.Columns("CONSECUTIVO").Visible = False
                         DGTallasCantPrecios.Columns("NO_PEDIDO").HeaderText = "No. Pedido"
