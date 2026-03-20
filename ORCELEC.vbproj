@@ -577,6 +577,12 @@
     <Compile Include="FrmOrdenProduccion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PedidoPrendaCompra.Designer.vb">
+      <DependentUpon>PedidoPrendaCompra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PedidoPrendaCompra.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PrendaTMMolde.Designer.vb">
       <DependentUpon>PrendaTMMolde.vb</DependentUpon>
     </Compile>
@@ -990,6 +996,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmOrdenProduccion.resx">
       <DependentUpon>FrmOrdenProduccion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PedidoPrendaCompra.resx">
+      <DependentUpon>PedidoPrendaCompra.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrendaTMMolde.resx">
       <DependentUpon>PrendaTMMolde.vb</DependentUpon>

@@ -1119,4 +1119,9 @@ Public Class FrmPrincipal
             MessageBox.Show("Se generó un error al generar la hoja, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Hoja Susceptible IMSS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End Try
     End Sub
+
+    Private Sub BtmPedidoTipoPrendaCompra_Click(sender As Object, e As EventArgs) Handles BtmPedidoTipoPrendaCompra.Click
+        PedidoPrendaCompra.MdiParent = Me
+        PedidoPrendaCompra.Show()
+    End Sub
 End Class

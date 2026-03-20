@@ -12,7 +12,7 @@ Public Class FrmInicioSesion
         'MessageBox.Show(ConectaBD.Desencriptar("ÝÒÞÖÊÒª«"))
         'TextBoxX1.Text = ConectaBD.Encriptar("SANTIAG0")
         CrearAccesoDirecto()
-        'MessageBox.Show(AbrirBD.Desencriptar("ÝÒÞÖÊÒª«"))
+        'MessageBox.Show(AbrirBD.Desencriptar("ÖÁ¿ÑÇÐÍÆ"))
         AbrirBD.ObtenerDirectorioPassword()
         AbrirBD.ConectarBD()
         BDComando.Connection = ConectaBD.BDConexion
