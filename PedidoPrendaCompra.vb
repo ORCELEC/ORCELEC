@@ -1738,6 +1738,7 @@ Public Class PedidoPrendaCompra
 
         Dim frmOrdenCompra As New OrdenCompra()
         frmOrdenCompra.AbiertaDesdePedidoPrendaCompra = True
+        frmOrdenCompra.TipoMovimiento = "ALTA"
         frmOrdenCompra.PartidasPedidoPrendaCompra = partidasSeleccionadas
         frmOrdenCompra.ClientePedidoPrendaCompra = TxtCliente.Text.Trim()
         frmOrdenCompra.ShowDialog(Me)

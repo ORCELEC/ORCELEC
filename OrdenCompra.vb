@@ -59,6 +59,8 @@ Public Class OrdenCompra
         BtnFechasPromesa.Enabled = True
         BtnConsultaRecepcionMaterial.Enabled = False
         BtnImprimirOC.Enabled = False
+        BtnAgregarPartida.Enabled = False
+        BtnEliminarPartida.Enabled = False
         LlenaProveedorPanDetalle()
         LlenaLugarEntrega()
         TxtCliente.ReadOnly = False
@@ -1433,6 +1435,41 @@ CONTINUA:
             BtnNuevo.Enabled = True
             TipoMovimiento = ""
             PanDetalle.Visible = False
+        End If
+    End Sub
+
+    Private Sub DGVOrdenCompraPartidas_CellValidating(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellValidatingEventArgs) Handles DGVOrdenCompraPartidas.CellValidating
+        If AbiertaDesdePedidoPrendaCompra = False Then
+            Exit Sub
+        End If
+
+        If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then
+            Exit Sub
+        End If
+
+        If DGVOrdenCompraPartidas.Columns(e.ColumnIndex).Name <> "AltaCantidad" Then
+            Exit Sub
+        End If
+
+        Dim valorActual As Object = DGVOrdenCompraPartidas.Rows(e.RowIndex).Cells("AltaCantidad").Value
+        If valorActual Is Nothing OrElse IsDBNull(valorActual) Then
+            Exit Sub
+        End If
+
+        Dim cantidadActual As Decimal
+        Dim cantidadNueva As Decimal
+
+        If Decimal.TryParse(valorActual.ToString(), cantidadActual) = False Then
+            Exit Sub
+        End If
+
+        If Decimal.TryParse(e.FormattedValue.ToString(), cantidadNueva) = False Then
+            Exit Sub
+        End If
+
+        If cantidadNueva > cantidadActual Then
+            MessageBox.Show("La cantidad no puede ser mayor a la cantidad actual cuando la Orden de Compra se genera desde PedidoPrendaCompra.", "Orden de Compra", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            e.Cancel = True
         End If
     End Sub
 
