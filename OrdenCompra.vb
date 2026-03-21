@@ -1,6 +1,7 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
 Imports System.Net
+Imports System.Collections.Generic
 Imports MimeKit
 Imports MailKit.Security
 
@@ -9,13 +10,19 @@ Public Class OrdenCompra
     Private BDReader As SqlDataReader
     Public TipoMovimiento As String
     Public TipoEntrada As String
+    Public AbiertaDesdePedidoPrendaCompra As Boolean
+    Public PartidasPedidoPrendaCompra As List(Of PartidaPedidoPrendaCompra)
+    Public ClientePedidoPrendaCompra As String
     Private LogModificacion As String
     Private ProveedorAnterior As String
 
     Private Sub OrdenCompra_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         BDComando = New SqlCommand
         BDComando.Connection = ConectaBD.BDConexion
-        If TipoEntrada <> "SUGERIDOCOMPRA" Then
+
+        If AbiertaDesdePedidoPrendaCompra Then
+            InicializarOrdenCompraDesdePedidoPrendaCompra()
+        ElseIf TipoEntrada <> "SUGERIDOCOMPRA" Then
             LimpiaControles()
             LlenaProveedorPanPrincipal()
             DeshabilitarControles()
@@ -37,6 +44,56 @@ Public Class OrdenCompra
             BtnFechasPromesa.Enabled = True
             BtnConsultaRecepcionMaterial.Enabled = False
         End If
+    End Sub
+
+    Private Sub InicializarOrdenCompraDesdePedidoPrendaCompra()
+        TipoMovimiento = "ALTA"
+        LimpiaControles()
+        HabilitarControlesEdicionOC()
+        PanDetalle.Visible = True
+        BtnGuardar.Enabled = True
+        BtnCancelar.Enabled = True
+        BtnNuevo.Enabled = False
+        BtnEditar.Enabled = False
+        BtnBaja.Enabled = False
+        BtnFechasPromesa.Enabled = True
+        BtnConsultaRecepcionMaterial.Enabled = False
+        BtnImprimirOC.Enabled = False
+        LlenaProveedorPanDetalle()
+        LlenaLugarEntrega()
+        TxtCliente.ReadOnly = False
+        TxtCliente.Text = ClientePedidoPrendaCompra
+        TxtAltaSubtotal.Text = Format(0, "$ #,###,##0.0000")
+        TxtAltaIVA.Text = Format(0, "$ #,###,##0.0000")
+        TxtAltaTotal.Text = Format(0, "$ #,###,##0.0000")
+
+        CargarPartidasDesdePedidoPrendaCompra()
+    End Sub
+
+    Private Sub CargarPartidasDesdePedidoPrendaCompra()
+        DGVOrdenCompraPartidas.Rows.Clear()
+
+        If PartidasPedidoPrendaCompra Is Nothing OrElse PartidasPedidoPrendaCompra.Count = 0 Then
+            Exit Sub
+        End If
+
+        For Each partida As PartidaPedidoPrendaCompra In PartidasPedidoPrendaCompra
+            DGVOrdenCompraPartidas.Rows.Add(
+                DGVOrdenCompraPartidas.Rows.Count + 1,
+                partida.NoPedido,
+                partida.TipoProducto,
+                partida.ClaveProducto,
+                partida.Descripcion,
+                partida.Cantidad,
+                "",
+                "",
+                "",
+                0,
+                0,
+                partida.Cantidad,
+                0)
+            DGVOrdenCompraPartidas.Rows(DGVOrdenCompraPartidas.Rows.Count - 1).Height = 50
+        Next
     End Sub
 
     Private Sub LlenaProveedorPanPrincipal()
@@ -1290,9 +1347,9 @@ CONTINUA:
                     'MessageBox.Show("Se guardo correctamente la confirmación de Fechas Promesa de Entrega.", "Fechas Promesa de Entrega", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
             End If
-            End If
+        End If
 
-            If TipoMovimiento = "ALTA" Then
+        If TipoMovimiento = "ALTA" Then
             If MessageBox.Show("Se guardo correctamente la Orden de Compra, ¿Quiere imprimir?", "Alta de Orden de Compra", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = DialogResult.Yes Then
                 Dim OrdenCompraImpresion As New OrdenCompraUET
                 Dim OrdenCompraSustento As New OrdenCompraSustentoUET
@@ -1321,7 +1378,7 @@ CONTINUA:
                     MessageBox.Show("Se generó un error al cargar el reporte de la Orden de compra, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Orden de Compra", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End Try
             End If
-            ElseIf TipoMovimiento = "MODIFICACION" Then
+        ElseIf TipoMovimiento = "MODIFICACION" Then
             If MessageBox.Show("Se modificó correctamente la Orden de Compra, ¿Quiere imprimir?", "Modificación de Orden de Compra", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = DialogResult.Yes Then
                 Dim OrdenCompraImpresion As New OrdenCompraUET
                 Dim OrdenCompraSustento As New OrdenCompraSustentoUET
@@ -1350,20 +1407,20 @@ CONTINUA:
                     MessageBox.Show("Se generó un error al cargar el reporte de la Orden de compra, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Orden de Compra", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End Try
             End If
-            End If
+        End If
 
-            If TipoEntrada = "SUGERIDOCOMPRA" Then
-                Me.Close()
-            Else
-                LimpiaControles()
-                LlenaProveedorPanPrincipal()
-                DeshabilitarControles()
-                BtnNuevo.Enabled = True
-                TipoMovimiento = ""
-                PanDetalle.Visible = False
-                PanFechasPromesaEntrega.Visible = False
-                ConsultaDeOC(0, 999999, 0, 999999)
-            End If
+        If TipoEntrada = "SUGERIDOCOMPRA" Then
+            Me.Close()
+        Else
+            LimpiaControles()
+            LlenaProveedorPanPrincipal()
+            DeshabilitarControles()
+            BtnNuevo.Enabled = True
+            TipoMovimiento = ""
+            PanDetalle.Visible = False
+            PanFechasPromesaEntrega.Visible = False
+            ConsultaDeOC(0, 999999, 0, 999999)
+        End If
     End Sub
 
     Private Sub BtnCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnCancelar.Click
@@ -1487,7 +1544,7 @@ CONTINUA:
         End If
     End Sub
 
-    
+
     Private Sub DGVOrdenCompraPartidas_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DGVOrdenCompraPartidas.KeyDown
         If e.KeyCode = Keys.Enter Then
             If TipoMovimiento = "ALTA" Or TipoMovimiento = "MODIFICACION" Then

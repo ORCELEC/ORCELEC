@@ -138,7 +138,6 @@ Public Class PedidoPrendaCompra
         GPGeneral.Visible = False
         TabPrincipal.SelectedTabIndex = 0
         TxtEstatus.Clear()
-        BtnGenerarOC.Text = "Mandar a Autorizar"
         BtnGenerarOC.Enabled = True
     End Sub
 
@@ -257,6 +256,144 @@ Public Class PedidoPrendaCompra
         End If
 
         Return String.Empty
+    End Function
+
+    Private Function ObtenerCvePrenda(ByVal fila As DataGridViewRow) As String
+        If fila.DataGridView.Columns.Contains("CVE_PRENDA") Then
+            Dim valor As Object = fila.Cells("CVE_PRENDA").Value
+            If valor IsNot Nothing AndAlso IsDBNull(valor) = False Then
+                Return valor.ToString().Trim()
+            End If
+        End If
+
+        Return String.Empty
+    End Function
+
+    Private Function ObtenerNombreTalla(ByVal columnIndex As Integer) As String
+        Dim columna As DataGridViewColumn = DGTallasCantPrecios.Columns(columnIndex)
+
+        If String.IsNullOrWhiteSpace(columna.HeaderText) = False Then
+            Return columna.HeaderText.Trim()
+        End If
+
+        Return columna.Name.Trim()
+    End Function
+
+    Private Function ObtenerCantidadDecimal(ByVal valor As Object) As Decimal
+        If valor Is Nothing OrElse IsDBNull(valor) Then
+            Return 0D
+        End If
+
+        Dim cantidad As Decimal
+        If Decimal.TryParse(Convert.ToString(valor, CultureInfo.InvariantCulture), NumberStyles.Any, CultureInfo.InvariantCulture, cantidad) Then
+            Return cantidad
+        End If
+
+        If Decimal.TryParse(Convert.ToString(valor), NumberStyles.Any, CultureInfo.CurrentCulture, cantidad) Then
+            Return cantidad
+        End If
+
+        Return 0D
+    End Function
+
+    Private Function ObtenerCvesPrendaPorJuego(ByVal grupoJuego As String) As String
+        If String.IsNullOrWhiteSpace(grupoJuego) OrElse PartidasPorJuego.ContainsKey(grupoJuego) = False Then
+            Return String.Empty
+        End If
+
+        Dim partidasDelJuego As HashSet(Of String) = PartidasPorJuego(grupoJuego)
+        Dim clavesPrenda As New List(Of String)
+
+        For Each fila As DataGridViewRow In DGTallasCantPrecios.Rows
+            If fila.IsNewRow Then
+                Continue For
+            End If
+
+            Dim numeroPartida As String = ObtenerNumeroPartida(fila)
+            If partidasDelJuego.Contains(numeroPartida) = False Then
+                Continue For
+            End If
+
+            Dim clavePrenda As String = ObtenerCvePrenda(fila)
+            If String.IsNullOrWhiteSpace(clavePrenda) = False AndAlso clavesPrenda.Contains(clavePrenda, StringComparer.OrdinalIgnoreCase) = False Then
+                clavesPrenda.Add(clavePrenda)
+            End If
+        Next
+
+        Return String.Join(", ", clavesPrenda)
+    End Function
+
+    Private Function ObtenerPartidasSeleccionadasParaOrdenCompra() As List(Of PartidaPedidoPrendaCompra)
+        Dim partidasOrdenCompra As New List(Of PartidaPedidoPrendaCompra)
+        Dim indicePartidaPorLlave As New Dictionary(Of String, Integer)(StringComparer.OrdinalIgnoreCase)
+        Dim noPedido As Integer = Val(ListPedidos.SelectedItem.ToString())
+
+        For Each fila As DataGridViewRow In DGTallasCantPrecios.Rows
+            If fila.IsNewRow Then
+                Continue For
+            End If
+
+            Dim numeroPartida As String = ObtenerNumeroPartida(fila)
+            Dim grupoJuego As String = String.Empty
+
+            If GrupoPorPartida.ContainsKey(numeroPartida) Then
+                grupoJuego = GrupoPorPartida(numeroPartida)
+            End If
+
+            For columnIndex As Integer = 0 To DGTallasCantPrecios.Columns.Count - 1
+                If EsColumnaCantidadResumen(columnIndex) = False OrElse CeldaCantidadSeleccionada(fila.Index, columnIndex) = False Then
+                    Continue For
+                End If
+
+                Dim valorCelda As Object = fila.Cells(columnIndex).Value
+                If ValorCeldaMayorACero(valorCelda) = False Then
+                    Continue For
+                End If
+
+                Dim nombreTalla As String = ObtenerNombreTalla(columnIndex)
+                Dim claveProducto As String = If(String.IsNullOrWhiteSpace(grupoJuego), ObtenerCvePrenda(fila), ObtenerCvesPrendaPorJuego(grupoJuego))
+                Dim cantidad As Decimal = ObtenerCantidadDecimal(valorCelda)
+                Dim llaveAgrupacion As String
+
+                If String.IsNullOrWhiteSpace(grupoJuego) Then
+                    llaveAgrupacion = "IND|" & fila.Index.ToString() & "|" & columnIndex.ToString()
+                Else
+                    llaveAgrupacion = "JGO|" & grupoJuego & "|" & nombreTalla
+                End If
+
+                If indicePartidaPorLlave.ContainsKey(llaveAgrupacion) = False Then
+                    partidasOrdenCompra.Add(New PartidaPedidoPrendaCompra With {
+                        .NoPedido = noPedido,
+                        .TipoProducto = "P",
+                        .ClaveProducto = claveProducto,
+                        .Descripcion = "Talla " & nombreTalla,
+                        .Cantidad = cantidad
+                    })
+                    indicePartidaPorLlave(llaveAgrupacion) = partidasOrdenCompra.Count - 1
+                Else
+                    Dim indicePartida As Integer = indicePartidaPorLlave(llaveAgrupacion)
+                    Dim partidaExistente As PartidaPedidoPrendaCompra = partidasOrdenCompra(indicePartida)
+
+                    If String.IsNullOrWhiteSpace(grupoJuego) Then
+                        partidaExistente.Cantidad += cantidad
+                    End If
+
+                    If String.IsNullOrWhiteSpace(grupoJuego) Then
+                        Dim clavesExistentes As List(Of String) = partidaExistente.ClaveProducto.Split(New String() {","}, StringSplitOptions.RemoveEmptyEntries).
+                            Select(Function(valor) valor.Trim()).
+                            Where(Function(valor) String.IsNullOrWhiteSpace(valor) = False).
+                            ToList()
+
+                        If String.IsNullOrWhiteSpace(claveProducto) = False AndAlso clavesExistentes.Contains(claveProducto, StringComparer.OrdinalIgnoreCase) = False Then
+                            clavesExistentes.Add(claveProducto)
+                            partidaExistente.ClaveProducto = String.Join(", ", clavesExistentes)
+                        End If
+                    End If
+                End If
+            Next
+        Next
+
+        Return partidasOrdenCompra
     End Function
 
     Private Function ObtenerClaveCeldaCantidad(ByVal rowIndex As Integer, ByVal columnIndex As Integer) As String
@@ -1235,11 +1372,6 @@ Public Class PedidoPrendaCompra
                         BDReader.Read()
                         TxtFolio.Text = BDReader("NUM_FOLIO")
                         TxtTipoPedido.Text = BDReader("DESCRIPCION")
-                        If TxtTipoPedido.Text.Trim().ToUpper() = "FACTURACIÓN" Then
-                            BtnGenerarOC.Text = "Autorizar Pedido"
-                        Else
-                            BtnGenerarOC.Text = "Mandar a Autorizar"
-                        End If
                         TxtCliente.Text = BDReader("NOM_CLIENTE") & " " & Format(BDReader("CVE_CLIENTE"), "0000")
                         TxtRFC.Text = BDReader("RFC")
                         TxtCalle.Text = BDReader("CALLE")
@@ -1388,11 +1520,6 @@ Public Class PedidoPrendaCompra
                             TxtNotasAlAutorizarCancelar.Clear()
                         End If
                         TxtEstatus.Text = BDReader("EstatusPedido")
-                        If TxtEstatus.Text.Trim().ToUpper() = "AUTORIZADO" Or TxtEstatus.Text.Trim().ToUpper() = "CANCELADO" Then
-                            BtnGenerarOC.Enabled = False
-                        Else
-                            BtnGenerarOC.Enabled = True
-                        End If
                     End If
                 Catch ex As Exception
                     MessageBox.Show("Se generó un error al consultar los datos del pedido interno, favor de contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Error de consulta de pedido interno", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -1598,6 +1725,21 @@ Public Class PedidoPrendaCompra
     End Sub
 
     Private Sub BtnGenerarOC_Click(sender As Object, e As EventArgs) Handles BtnGenerarOC.Click
+        If ListPedidos.SelectedItem Is Nothing Then
+            MessageBox.Show("Debe seleccionar un pedido para generar la Orden de Compra.", "Generar Orden de Compra", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End If
 
+        Dim partidasSeleccionadas As List(Of PartidaPedidoPrendaCompra) = ObtenerPartidasSeleccionadasParaOrdenCompra()
+        If partidasSeleccionadas.Count = 0 Then
+            MessageBox.Show("Debe seleccionar por lo menos una talla para generar la Orden de Compra.", "Generar Orden de Compra", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        End If
+
+        Dim frmOrdenCompra As New OrdenCompra()
+        frmOrdenCompra.AbiertaDesdePedidoPrendaCompra = True
+        frmOrdenCompra.PartidasPedidoPrendaCompra = partidasSeleccionadas
+        frmOrdenCompra.ClientePedidoPrendaCompra = TxtCliente.Text.Trim()
+        frmOrdenCompra.ShowDialog(Me)
     End Sub
 End Class

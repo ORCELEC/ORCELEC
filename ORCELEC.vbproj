@@ -262,6 +262,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Clases\PartidaPedido.vb" />
+    <Compile Include="Clases\PartidaPedidoPrendaCompra.vb" />
     <Compile Include="ConsultaPedido.Designer.vb">
       <DependentUpon>ConsultaPedido.vb</DependentUpon>
     </Compile>
