@@ -1,0 +1,194 @@
+USE [NORCELEC]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GUARDAR_OP_ACUSES_RECIBO_MATERIAL]    Script Date: 26/03/2026 03:38:45 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[GUARDAR_OP_ACUSES_RECIBO_MATERIAL]
+--DECLARE
+	@EMPRESA BIGINT,
+	@NO_REMISION BIGINT,
+	@FECHAFIRMAACUSE DATE,
+	@QUIENFIRMAACUSE NVARCHAR(255),
+	@TIPOARCHIVO NVARCHAR(10),
+	@USUARIO BIGINT,
+	@COMPUTADORA NVARCHAR(50)
+	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	--SET @EMPRESA = 1
+	--SET @NO_REMISION = 465
+	--SET @FECHAFIRMAACUSE = '19/01/2024'
+	--SET @QUIENFIRMAACUSE = 'ANDRES'
+	--SET @TIPOARCHIVO = '.pdf'
+	--SET @USUARIO = 0
+	--SET @COMPUTADORA = 'ANALISISUNO'
+
+    -- Insert statements for procedure here
+	DECLARE 
+		@CONSECUTIVO BIGINT,
+		@CONSUMO NUMERIC(18,2)
+
+	DECLARE @RUTAACUSE NVARCHAR(255)
+	SET @RUTAACUSE = '\\192.168.1.9\DAC ORCELEC\AcusesRemisiones\'
+
+	IF EXISTS(
+		SELECT 
+			*
+		FROM 
+			REMISION_MATERIAL RM,
+			OP_ACUSES_RECIBOMATERIAL OPARM
+		WHERE 
+			RM.Empresa = @EMPRESA
+		AND RM.No_Remision = @NO_REMISION
+		AND OPARM.Empresa = RM.Empresa
+		AND OPARM.No_OP = RM.No_OP 
+		AND OPARM.No_RemisionSistema = RM.No_Remision
+		AND OPARM.No_OrdenCompra = RM.No_OrdenCompra
+		AND OPARM.Partida = RM.OC_Partida
+		AND OPARM.No_Parcialidad = RM.OC_No_Parcialidad
+	)
+	BEGIN
+	select 'entra a actualizar'
+		UPDATE
+			OP_ACUSES_RECIBOMATERIAL
+		SET
+			FechaFirmaAcuse = COALESCE(@FECHAFIRMAACUSE, FechaFirmaAcuse),
+			QuienFirmaAcuse = COALESCE(@QUIENFIRMAACUSE, QuienFirmaAcuse),
+			RutaAcuse = CASE WHEN @TIPOARCHIVO IS NOT NULL THEN @RUTAACUSE + CONVERT(NVARCHAR, @NO_REMISION) + @TIPOARCHIVO ELSE RutaAcuse END,
+			USUARIOACUSE = @USUARIO,
+			FECHAHORAACUSE = GETDATE(),
+			COMPUTADORAACUSE = @COMPUTADORA
+		WHERE
+			Empresa = @EMPRESA
+		AND No_RemisionSistema = @NO_REMISION;
+	END
+	ELSE
+	BEGIN
+	select 'entra a insertar'
+		SELECT
+			@CONSECUTIVO = ISNULL(MAX(OPARM.Consecutivo),0) 
+		FROM 
+			REMISION_MATERIAL RM,
+			OP_ACUSES_RECIBOMATERIAL OPARM
+		WHERE 
+			RM.Empresa = @EMPRESA
+		AND RM.No_Remision = @NO_REMISION
+		AND OPARM.Empresa = RM.Empresa
+		AND OPARM.No_OP = RM.No_OP 
+		AND OPARM.No_OrdenCompra = RM.No_OrdenCompra
+		AND OPARM.Partida = RM.OC_Partida
+		AND OPARM.No_Parcialidad = RM.OC_No_Parcialidad
+
+		SET @CONSECUTIVO += 1
+
+		INSERT INTO OP_ACUSES_RECIBOMATERIAL
+		(
+			Empresa,
+			No_OP,
+			No_OrdenCompra,
+			Partida,
+			No_Parcialidad,
+			Consecutivo,
+			TipoMaterial,
+			Cve_Material,
+			DescripcionMaterial,
+			No_RemisionSistema,
+			No_RemisionFisica,
+			CantidadRemisionFisica,
+			FechaFirmaAcuse,
+			QuienFirmaAcuse,
+			RutaAcuse,
+			USUARIO,
+			FECHAHORA,
+			COMPUTADORA
+		)
+		SELECT 
+			RM.Empresa,
+			RM.No_OP,
+			RM.No_OrdenCompra,
+			RM.OC_Partida,
+			RM.OC_No_Parcialidad,
+			@CONSECUTIVO,
+			RM.TipoMaterial,
+			RM.Cve_Material,
+			RM.Descripcion,
+			RM.No_Remision,
+			RM.No_Remision,
+			RM.Cantidad,
+			@FECHAFIRMAACUSE,
+			@QUIENFIRMAACUSE,
+			@RUTAACUSE + CONVERT(NVARCHAR,RM.NO_REMISION) + @TIPOARCHIVO,
+			@USUARIO,
+			GETDATE(),
+			@COMPUTADORA
+		FROM
+			REMISION_MATERIAL RM
+		WHERE
+			RM.EMPRESA = @EMPRESA
+		AND RM.No_Remision = @NO_REMISION
+	END
+
+	DECLARE @CANTIDAD_RECIBIDA_TOTAL NUMERIC(18,2)
+
+	SELECT
+		@CANTIDAD_RECIBIDA_TOTAL = SUM(OPARM.CantidadRemisionFisica)
+	FROM
+		OP_ACUSES_RECIBOMATERIAL OPARM,
+		REMISION_MATERIAL RM
+	WHERE
+		RM.Empresa = @EMPRESA
+	AND RM.No_Remision = @NO_REMISION
+	AND OPARM.Empresa = RM.Empresa
+	AND OPARM.No_OP = RM.No_OP
+	AND OPARM.TipoMaterial = RM.TipoMaterial
+	AND OPARM.Cve_Material = RM.Cve_Material
+
+	SELECT
+		@CONSUMO = OPEM.Cantidad
+	FROM 
+		OP_EXPLOSION_MATERIALES OPEM,
+		REMISION_MATERIAL RM
+	WHERE
+		RM.EMPRESA = @EMPRESA
+	AND RM.No_Remision = @NO_REMISION
+	AND OPEM.Empresa = RM.Empresa
+	AND OPEM.No_OP = RM.No_OP
+	AND OPEM.TipoMaterial = RM.TipoMaterial
+	AND OPEM.Cve_Material = RM.Cve_Material
+
+	IF @CANTIDAD_RECIBIDA_TOTAL >= @CONSUMO
+	BEGIN
+		UPDATE
+			OPEM
+		SET
+			OPEM.RecibidoCompletoPorMaquilador = 1,
+			OPEM.USUARIORECIBIDOCOMPLETO = @USUARIO,
+			OPEM.FECHAHORARECIBIDOCOMPLETO = GETDATE(),
+			OPEM.COMPUTADORARECIBIDOCOMPLETO = @COMPUTADORA
+		FROM
+			REMISION_MATERIAL RM,
+			OP_EXPLOSION_MATERIALES OPEM
+		WHERE
+			RM.Empresa = @EMPRESA
+		AND RM.No_Remision = @NO_REMISION
+		AND OPEM.No_OP = RM.No_OP
+		AND OPEM.TipoMaterial = RM.TipoMaterial
+		AND OPEM.Cve_Material = RM.Cve_Material
+	END
+END
+
+--SELECT * FROM ORDEN_COMPRA_ASIGNACION_ITERACIONES WHERE No_Pedido = 575
+--SELECT * FROM OP_ACUSES_RECIBOMATERIAL WHERE No_RemisionSistema = '140'
+--DELETE OP_ACUSES_RECIBOMATERIAL WHERE No_RemisionSistema = 140
+--EXEC SP_OP_CONSULTA_ACUSES_RECIBO_MATERIAL 1,762
+--SELECT * FROM OP_EXPLOSION_MATERIALES WHERE No_OP=762
+GO
+
