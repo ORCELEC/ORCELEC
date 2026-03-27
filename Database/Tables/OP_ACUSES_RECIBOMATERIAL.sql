@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[OP_ACUSES_RECIBOMATERIAL]    Script Date: 09/10/2025 11:34:01 a. m. ******/
+/****** Object:  Table [dbo].[OP_ACUSES_RECIBOMATERIAL]    Script Date: 27/03/2026 01:33:49 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
