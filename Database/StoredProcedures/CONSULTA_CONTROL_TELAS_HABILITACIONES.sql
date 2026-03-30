@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[CONSULTA_CONTROL_TELAS_HABILITACIONES]    Script Date: 09/10/2025 11:28:46 a. m. ******/
+/****** Object:  StoredProcedure [dbo].[CONSULTA_CONTROL_TELAS_HABILITACIONES]    Script Date: 30/03/2026 02:36:30 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -25,10 +25,10 @@ BEGIN
 --3. SE CONSULTAN LAS OP ASIGNADAS Y LA CANTIDAD DE MATERIAL POR OP
 --4. SE CONSULTA LO REMISIONADO
 	--SET @EMPRESA = 1
-	--SET @NO_PEDIDOINICIAL = 0
-	--SET @NO_PEDIDOFINAL = 0
-	--SET @NO_OPINICIAL = 3087
-	--SET @NO_OPFINAL = 3087
+	--SET @NO_PEDIDOINICIAL = 3599
+	--SET @NO_PEDIDOFINAL = 3599
+	--SET @NO_OPINICIAL = 0
+	--SET @NO_OPFINAL = 0
 	--SET @ADICIONAL = 0
 
 	IF @NO_PEDIDOINICIAL = 0
@@ -58,7 +58,8 @@ BEGIN
 		DescripcionMaterial nvarchar(255),
 		ConsumoMaterialPedido numeric(18,2),
 		ConsumoMaterialPrenda numeric(18,2),
-		Unidad nvarchar(50)
+		Unidad nvarchar(50),
+		No_OP bigint
 	)
 
 	DECLARE @SQL AS NVARCHAR(MAX)
@@ -81,7 +82,8 @@ BEGIN
 		PEMD.Descripcion,
 		CASE WHEN TipoMaterial = ' + '''T''' + ' THEN SUM(CONVERT(NUMERIC(18,2),((PIT.CANTIDAD-ISNULL(RIPT.CANTIDAD,0))*PEMD.Consumo))/CT.ANCHO) ELSE SUM(CONVERT(NUMERIC(18,2),(PIT.CANTIDAD-ISNULL(RIPT.CANTIDAD,0))*PEMD.Consumo)) END,
 		CASE WHEN TipoMaterial = ' + '''T''' + ' THEN SUM(CONVERT(NUMERIC(18,2),((PIT.CANTIDAD-ISNULL(RIPT.CANTIDAD,0))*PEMD.Consumo))/CT.ANCHO) ELSE SUM(CONVERT(NUMERIC(18,2),(PIT.CANTIDAD-ISNULL(RIPT.CANTIDAD,0))*PEMD.Consumo)) END,
-		CASE WHEN TipoMaterial = ' + '''T''' + ' THEN ' + '''METROS''' + ' ELSE HG.Unidad END
+		CASE WHEN TipoMaterial = ' + '''T''' + ' THEN ' + '''METROS''' + ' ELSE HG.Unidad END,
+		PIT.NO_OP
 	FROM
 		FOLIOS_ADMINISTRACION FA,
 		PEDIDO_INTERNO PI,
@@ -149,7 +151,8 @@ BEGIN
 		PEMD.Cve_Grupo,
 		PEMD.Cve_Habilitacion,
 		PEMD.Descripcion,
-		HG.Unidad'
+		HG.Unidad,
+		PIT.NO_OP'
 	
 	INSERT INTO #EXPLOSION_MATERIALES
 	(
@@ -171,11 +174,109 @@ BEGIN
 		DescripcionMaterial,
 		ConsumoMaterialPedido,
 		ConsumoMaterialPrenda,
-		Unidad
+		Unidad,
+		No_OP
 	)
 	EXEC sp_executesql @sql;
 
 	DELETE #EXPLOSION_MATERIALES WHERE ConsumoMaterialPedido = 0
+
+	UPDATE
+		#EXPLOSION_MATERIALES
+	SET
+	 CantidadPrendasPedido = 
+		(
+		SELECT 
+			SUM(DISTINCT(CantidadPrendasPedido))
+		FROM 
+			#EXPLOSION_MATERIALES EM1 
+		WHERE 
+			EM1.Empresa = #EXPLOSION_MATERIALES.Empresa 
+		AND EM1.No_Pedido = #EXPLOSION_MATERIALES.No_Pedido
+		AND EM1.Cve_Prenda = #EXPLOSION_MATERIALES.Cve_Prenda
+		AND EM1.No_OP = #EXPLOSION_MATERIALES.No_OP
+		)
+
+	CREATE TABLE #EXPLOSION_MATERIALES_RESUMEN
+	(
+		Empresa numeric(18,0),
+		No_Pedido numeric(18,0),
+		Cve_Cliente bigint,
+		RazonSocial nvarchar(255),
+		Cve_Prenda bigint,
+		DescripcionPrenda nvarchar(1000),
+		CantidadPrendasPedido bigint,
+		FechaVencimientoPedido datetime,
+		TipoMaterial nvarchar(1),
+		Cve_Material nvarchar(20),
+		Cve_Tela numeric(18,0),
+		Cve_Grupo nvarchar(3),
+		Cve_Habilitacion numeric(18,0),
+		DescripcionMaterial nvarchar(255),
+		ConsumoMaterialPedido numeric(18,2),
+		ConsumoMaterialPrenda numeric(18,2),
+		Unidad nvarchar(50),
+		No_OP bigint
+	)
+	INSERT INTO #EXPLOSION_MATERIALES_RESUMEN
+	(
+		Empresa,
+		No_Pedido,
+		Cve_Cliente,
+		RazonSocial,
+		Cve_Prenda,
+		DescripcionPrenda,
+		CantidadPrendasPedido,
+		FechaVencimientoPedido,
+		TipoMaterial,
+		Cve_Material,
+		Cve_Tela,
+		Cve_Grupo,
+		Cve_Habilitacion,
+		DescripcionMaterial,
+		ConsumoMaterialPedido,
+		ConsumoMaterialPrenda,
+		Unidad,
+		No_OP
+	)
+	SELECT
+		Empresa,
+		No_Pedido,
+		Cve_Cliente,
+		RazonSocial,
+		Cve_Prenda,
+		DescripcionPrenda,
+		CantidadPrendasPedido,
+		FechaVencimientoPedido,
+		TipoMaterial,
+		Cve_Material,
+		Cve_Tela,
+		Cve_Grupo,
+		Cve_Habilitacion,
+		DescripcionMaterial,
+		SUM(ConsumoMaterialPedido),
+		SUM(ConsumoMaterialPrenda) AS ConsumoMaterialPrenda,
+		Unidad,
+		No_OP 
+	FROM
+		#EXPLOSION_MATERIALES
+	GROUP BY
+		Empresa,
+		No_Pedido,
+		Cve_Cliente,
+		RazonSocial,
+		Cve_Prenda,
+		DescripcionPrenda,
+		CantidadPrendasPedido,
+		FechaVencimientoPedido,
+		TipoMaterial,
+		Cve_Material,
+		Cve_Tela,
+		Cve_Grupo,
+		Cve_Habilitacion,
+		DescripcionMaterial,
+		Unidad,
+		No_OP 
 
 	--PASO 2
 	CREATE TABLE #EXPLOSION_MATERIALES_SC_OC
@@ -200,7 +301,8 @@ BEGIN
 		No_OrdenCompra bigint,
 		CantidadOC numeric(18,2),
 		PendienteDeOC numeric(18,2),
-		CantidadRecibidaOC numeric(18,2)
+		CantidadRecibidaOC numeric(18,2),
+		No_OP bigint
 	)
 
 	INSERT INTO #EXPLOSION_MATERIALES_SC_OC
@@ -224,7 +326,8 @@ BEGIN
 		Unidad,
 		No_OrdenCompra,
 		CantidadOC,
-		CantidadRecibidaOC
+		CantidadRecibidaOC,
+		No_OP
 	)
 	SELECT
 		EM.Empresa,
@@ -246,7 +349,8 @@ BEGIN
 		EM.Unidad,
 		OCFPES.No_OrdenCompra,
 		OCFPES.Cantidad,
-		(SELECT ISNULL(SUM(ISNULL(OC.Factor*OCFPR.CantidadRecibida,0)),0) FROM ORDEN_COMPRA OC,ORDEN_COMPRA_FECHA_PROMESA_RECIBO OCFPR WHERE OCFPR.Empresa = EM.Empresa AND OC.No_OrdenCompra = OCFPES.No_OrdenCompra AND OC.TipoMaterial = EM.TipoMaterial AND OC.Cve_Material = EM.Cve_Material AND OCFPR.No_OrdenCompra = OC.No_OrdenCompra AND OCFPR.Partida = OC.Partida)
+		(SELECT ISNULL(SUM(ISNULL(OC.Factor*OCFPR.CantidadRecibida,0)),0) FROM ORDEN_COMPRA OC,ORDEN_COMPRA_FECHA_PROMESA_RECIBO OCFPR WHERE OCFPR.Empresa = EM.Empresa AND OC.No_OrdenCompra = OCFPES.No_OrdenCompra AND OC.TipoMaterial = EM.TipoMaterial AND OC.Cve_Material = EM.Cve_Material AND OCFPR.No_OrdenCompra = OC.No_OrdenCompra AND OCFPR.Partida = OC.Partida),
+		EM.No_OP
 	FROM 
 		#EXPLOSION_MATERIALES EM,
 		ORDEN_COMPRA_ASIGNACION_ITERACIONES OCAI
@@ -292,13 +396,27 @@ BEGIN
 		EM.ConsumoMaterialPrenda,
 		EM.Unidad,
 		OCFPES.No_OrdenCompra,
-		OCFPES.Cantidad
+		OCFPES.Cantidad,
+		EM.No_OP
 	ORDER BY
 		EM.No_Pedido
-
+	
 	UPDATE 
 		#EXPLOSION_MATERIALES_SC_OC
 	SET 
+		ConsumoMaterialPrenda = 
+		(
+			SELECT 
+				EMSC_OC.ConsumoMaterialPrenda
+			FROM 
+				#EXPLOSION_MATERIALES_RESUMEN EMSC_OC
+			WHERE 
+				EMSC_OC.Empresa = #EXPLOSION_MATERIALES_SC_OC.Empresa
+			AND EMSC_OC.No_Pedido = #EXPLOSION_MATERIALES_SC_OC.No_Pedido
+			AND EMSC_OC.No_OP = #EXPLOSION_MATERIALES_SC_OC.No_OP
+			AND EMSC_OC.Cve_Material = #EXPLOSION_MATERIALES_SC_OC.Cve_Material
+			AND EMSC_OC.TipoMaterial = #EXPLOSION_MATERIALES_SC_OC.TipoMaterial
+		),
 		PendienteDeOC = ConsumoMaterialPedido - 
 		(
 		SELECT 
@@ -321,13 +439,109 @@ BEGIN
 			) AS Agrupado
 		)
 
-
 	UPDATE
 		#EXPLOSION_MATERIALES_SC_OC
 	SET
 		PendienteDeOC = 0
 	WHERE
 		PendienteDeOC < 0
+
+	CREATE TABLE #EXPLOSION_MATERIALES_SC_OC_RESUMEN
+	(
+		Empresa numeric(18,0),
+		No_Pedido numeric(18,0),
+		FechaVencimientoPedido datetime,
+		Cve_Cliente bigint,
+		RazonSocial nvarchar(255),
+		Cve_Prenda bigint,
+		DescripcionPrenda nvarchar(1000),
+		CantidadPrendasPedido bigint,
+		ConsumoMaterialPrenda numeric(18,2),
+		TipoMaterial nvarchar(1),
+		Cve_Tela numeric(18,0),
+		Cve_Material nvarchar(20),
+		Cve_Grupo nvarchar(3),
+		Cve_Habilitacion numeric(18,0),
+		DescripcionMaterial nvarchar(255),
+		ConsumoMaterialPedido numeric(18,2),
+		Unidad nvarchar(50),
+		No_OrdenCompra bigint,
+		CantidadOC numeric(18,2),
+		PendienteDeOC numeric(18,2),
+		CantidadRecibidaOC numeric(18,2),
+		No_OP bigint
+	)
+
+	INSERT INTO #EXPLOSION_MATERIALES_SC_OC_RESUMEN
+	(
+		Empresa,
+		No_Pedido,
+		FechaVencimientoPedido,
+		Cve_Cliente,
+		RazonSocial,
+		Cve_Prenda,
+		DescripcionPrenda,
+		CantidadPrendasPedido,
+		TipoMaterial,
+		Cve_Material,
+		Cve_Tela,
+		Cve_Grupo,
+		Cve_Habilitacion,
+		DescripcionMaterial,
+		ConsumoMaterialPedido,
+		ConsumoMaterialPrenda,
+		Unidad,
+		No_OrdenCompra,
+		CantidadOC,
+		CantidadRecibidaOC,
+		No_OP
+	)
+	SELECT
+		Empresa,
+		No_Pedido,
+		FechaVencimientoPedido,
+		Cve_Cliente,
+		RazonSocial,
+		Cve_Prenda,
+		DescripcionPrenda,
+		CantidadPrendasPedido,
+		TipoMaterial,
+		Cve_Material,
+		Cve_Tela,
+		Cve_Grupo,
+		Cve_Habilitacion,
+		DescripcionMaterial,
+		ConsumoMaterialPedido,
+		ConsumoMaterialPrenda,
+		Unidad,
+		No_OrdenCompra,
+		CantidadOC,
+		CantidadRecibidaOC,
+		No_OP
+	FROM
+		#EXPLOSION_MATERIALES_SC_OC
+	GROUP BY
+		Empresa,
+		No_Pedido,
+		FechaVencimientoPedido,
+		Cve_Cliente,
+		RazonSocial,
+		Cve_Prenda,
+		DescripcionPrenda,
+		CantidadPrendasPedido,
+		TipoMaterial,
+		Cve_Material,
+		Cve_Tela,
+		Cve_Grupo,
+		Cve_Habilitacion,
+		DescripcionMaterial,
+		ConsumoMaterialPedido,
+		ConsumoMaterialPrenda,
+		Unidad,
+		No_OrdenCompra,
+		CantidadOC,
+		CantidadRecibidaOC,
+		No_OP
 
 	--PASO 3
 	CREATE TABLE #ORDENES_PRODUCCION
@@ -417,7 +631,7 @@ BEGIN
 		OPEM.Cantidad
 	ORDER BY
 		PIT.No_Pedido
-
+	
 	CREATE TABLE #EXPLOSION_MATERIALES_OP
 	(
 		Empresa numeric(18,0),
@@ -486,13 +700,14 @@ BEGIN
 		OP.DescripcionMaterialOP,
 		OP.ConsumoMaterialOP
 	FROM 
-		#EXPLOSION_MATERIALES_SC_OC EM
+		#EXPLOSION_MATERIALES_SC_OC_RESUMEN EM
 		LEFT JOIN
 			#ORDENES_PRODUCCION OP
 		ON
 			OP.Empresa = EM.Empresa
 		AND OP.No_Pedido = EM.No_Pedido
 		AND OP.Cve_Prenda = EM.Cve_Prenda
+		AND OP.NO_OP = EM.NO_OP
 		AND OP.TipoMaterialOP = EM.TipoMaterial
 		AND OP.Cve_MaterialOP = EM.Cve_Material'
 
@@ -506,7 +721,7 @@ BEGIN
 	SET @SQL = @SQL + '
 	ORDER BY
 		EM.No_Pedido'
-	
+
 	INSERT INTO #EXPLOSION_MATERIALES_OP
 	(
 		Empresa,
@@ -546,18 +761,19 @@ BEGIN
 		#EXPLOSION_MATERIALES_OP
 	SET
 		CantidadPrendasPendientesAsignarOP = CantidadPrendasPedido-ISNULL(CantidadPrendasOP,0),
-		MaterialPendienteAsignarOP = ConsumoMaterialPedido-
-		(
-			SELECT 
-				ISNULL(SUM(ISNULL(EMOP1.ConsumoMaterialOP,0)),0)
-			FROM
-				#EXPLOSION_MATERIALES_OP EMOP1
-			WHERE
-				EMOP1.Empresa = #EXPLOSION_MATERIALES_OP.Empresa
-			AND EMOP1.No_Pedido = #EXPLOSION_MATERIALES_OP.No_Pedido
-			AND EMOP1.TipoMaterial = #EXPLOSION_MATERIALES_OP.TipoMaterial
-			AND EMOP1.Cve_Material = #EXPLOSION_MATERIALES_OP.Cve_Material
-		)
+		MaterialPendienteAsignarOP = ConsumoMaterialPedido-ConsumoMaterialOP
+		--(
+		--	SELECT
+		--		ISNULL(SUM(ISNULL(EMOP1.ConsumoMaterialOP,0)),0)
+		--	FROM
+		--		#EXPLOSION_MATERIALES_OP EMOP1
+		--	WHERE
+		--		EMOP1.Empresa = #EXPLOSION_MATERIALES_OP.Empresa
+		--	AND EMOP1.No_Pedido = #EXPLOSION_MATERIALES_OP.No_Pedido
+		--	AND EMOP1.TipoMaterial = #EXPLOSION_MATERIALES_OP.TipoMaterial
+		--	AND EMOP1.Cve_Material = #EXPLOSION_MATERIALES_OP.Cve_Material
+		--	AND EMOP1.No_OP = #EXPLOSION_MATERIALES_OP.No_OP
+		--)
 
 	--PASO 4
 	CREATE TABLE #EXPLOSION_MATERIALES_OP_REMISIONES
@@ -827,7 +1043,9 @@ BEGIN
 		RM.No_Remision
 
 	DROP TABLE #EXPLOSION_MATERIALES
+	DROP TABLE #EXPLOSION_MATERIALES_RESUMEN
 	DROP TABLE #EXPLOSION_MATERIALES_SC_OC
+	DROP TABLE #EXPLOSION_MATERIALES_SC_OC_RESUMEN
 	DROP TABLE #ORDENES_PRODUCCION
 	DROP TABLE #EXPLOSION_MATERIALES_OP
 
@@ -865,6 +1083,7 @@ BEGIN
 		)
 	WHERE
 		TipoMaterial = 'H'
+
 
 	--ACTUALIZA EL TOTALEVIADO Y PENDIENTE DE ENVIAR DE TELAS
 	UPDATE
@@ -1142,7 +1361,7 @@ BEGIN
 	DROP TABLE #EXPLOSION_MATERIALES_OP_REMISIONES
 END
 
---exec CONSULTA_CONTROL_TELAS_HABILITACIONES 1,0,0,1749,1749,0,0
+--exec CONSULTA_CONTROL_TELAS_HABILITACIONES 1,0,0,3672,3672,0,0
 
 --SELECT * FROM ORDEN_COMPRA_FECHAS_PROMESA_ENTREGA_SALDO WHERE No_Pedido = 1558 AND Cve_Material = 'ETC000001'
 
@@ -1151,7 +1370,7 @@ END
 --SELECT * FROM ORDEN_COMPRA_ASIGNACION_ITERACIONES WHERE No_Pedido = 1558 AND Cve_Material = 'ETC000001'
 --SELECT * FROM ORDEN_COMPRA_ASIGNACION_ITERACIONES WHERE No_Pedido = 1558 AND Cve_Material = 'ETC000001' AND Cve_Prenda = 7202 AND LugarEntrega = 3234
 
---SELECT * FROM PEDIDO_INTERNO_TALLAS WHERE No_Pedido = 1558 AND No_OP = 1748
+--SELECT * FROM PEDIDO_INTERNO_TALLAS WHERE No_OP = 3672 AND No_OP = 1748
 
 --SELECT * FROM REMISION_MATERIAL WHERE No_OP = 1748 AND TipoMaterial = 'H' AND Cve_Material = 'ETC000001'
 
