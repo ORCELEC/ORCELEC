@@ -12,6 +12,7 @@ Public Class OrdenCompra
     Public TipoEntrada As String
     Public AbiertaDesdePedidoPrendaCompra As Boolean
     Public PartidasPedidoPrendaCompra As List(Of PartidaPedidoPrendaCompra)
+    Public DetallesPedidoPrendaCompra As List(Of PartidaPedidoPrendaCompra)
     Public ClientePedidoPrendaCompra As String
     Private LogModificacion As String
     Private ProveedorAnterior As String
@@ -80,6 +81,8 @@ Public Class OrdenCompra
         End If
 
         For Each partida As PartidaPedidoPrendaCompra In PartidasPedidoPrendaCompra
+            partida.PartidaOC = DGVOrdenCompraPartidas.Rows.Count + 1
+            partida.CantidadOC = partida.Cantidad
             DGVOrdenCompraPartidas.Rows.Add(
                 DGVOrdenCompraPartidas.Rows.Count + 1,
                 partida.NoPedido,
@@ -95,7 +98,90 @@ Public Class OrdenCompra
                 partida.Cantidad,
                 0)
             DGVOrdenCompraPartidas.Rows(DGVOrdenCompraPartidas.Rows.Count - 1).Height = 50
+            DGVOrdenCompraPartidas.Rows(DGVOrdenCompraPartidas.Rows.Count - 1).Tag = partida
         Next
+    End Sub
+
+    Private Sub ActualizarDatosPartidaOCEnObjeto(ByVal fila As DataGridViewRow)
+        If fila Is Nothing OrElse fila.Tag Is Nothing OrElse TypeOf fila.Tag Is PartidaPedidoPrendaCompra = False Then
+            Exit Sub
+        End If
+
+        Dim partida As PartidaPedidoPrendaCompra = DirectCast(fila.Tag, PartidaPedidoPrendaCompra)
+        partida.PartidaOC = If(IsNothing(fila.Cells("AltaPartida").Value), 0, Val(fila.Cells("AltaPartida").Value))
+
+        Dim cantidadOC As Decimal = 0D
+        If IsNothing(fila.Cells("AltaCantidad").Value) = False AndAlso IsDBNull(fila.Cells("AltaCantidad").Value) = False Then
+            Decimal.TryParse(fila.Cells("AltaCantidad").Value.ToString(), cantidadOC)
+        End If
+        partida.CantidadOC = cantidadOC
+    End Sub
+
+    Private Sub GuardarRelacionPedidoCompraOrdenCompra(ByVal noOrdenCompra As Int32)
+        If DetallesPedidoPrendaCompra Is Nothing OrElse DetallesPedidoPrendaCompra.Count = 0 Then
+            Exit Sub
+        End If
+
+        Dim partidaOcPorLlave As New Dictionary(Of String, Tuple(Of Int32, Decimal))(StringComparer.OrdinalIgnoreCase)
+        For Each filaOc As DataGridViewRow In DGVOrdenCompraPartidas.Rows
+            If filaOc.IsNewRow Then
+                Continue For
+            End If
+
+            ActualizarDatosPartidaOCEnObjeto(filaOc)
+            Dim partida As PartidaPedidoPrendaCompra = If(TypeOf filaOc.Tag Is PartidaPedidoPrendaCompra, DirectCast(filaOc.Tag, PartidaPedidoPrendaCompra), Nothing)
+            Dim llave As String = If(partida Is Nothing, "", partida.LlaveAgrupacion)
+            If String.IsNullOrWhiteSpace(llave) Then
+                Continue For
+            End If
+
+            If partidaOcPorLlave.ContainsKey(llave) = False Then
+                partidaOcPorLlave.Add(llave, Tuple.Create(partida.PartidaOC, partida.CantidadOC))
+            End If
+        Next
+
+        Try
+            BDComando.Parameters.Clear()
+            BDComando.CommandType = CommandType.Text
+            BDComando.CommandText = "DELETE PEDIDO_COMPRA_ORDEN_COMPRA WHERE EMPRESA = @EMPRESA AND NO_ORDENCOMPRA = @NO_ORDENCOMPRA"
+            BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
+            BDComando.Parameters.Add("@NO_ORDENCOMPRA", SqlDbType.BigInt).Value = noOrdenCompra
+
+            BDComando.Connection.Open()
+            BDComando.ExecuteNonQuery()
+            BDComando.Connection.Close()
+
+            For Each detalle As PartidaPedidoPrendaCompra In DetallesPedidoPrendaCompra
+                If partidaOcPorLlave.ContainsKey(detalle.LlaveAgrupacion) = False Then
+                    Continue For
+                End If
+
+                Dim detalleOC As Tuple(Of Int32, Decimal) = partidaOcPorLlave(detalle.LlaveAgrupacion)
+
+                BDComando.Parameters.Clear()
+                BDComando.CommandType = CommandType.Text
+                BDComando.CommandText = "INSERT INTO PEDIDO_COMPRA_ORDEN_COMPRA (EMPRESA, NO_PEDIDO, PARTIDA_PEDIDO, CVE_PRENDA, TALLA, NO_ORDENCOMPRA, PARTIDAOC, CANTIDADOC, ESTATUSOC, USUARIO, FECHAHORA, COMPUTADORA) " &
+                                        "VALUES (@EMPRESA, @NO_PEDIDO, @PARTIDA_PEDIDO, @CVE_PRENDA, @TALLA, @NO_ORDENCOMPRA, @PARTIDAOC, @CANTIDADOC, @ESTATUSOC, @USUARIO, GETDATE(), @COMPUTADORA)"
+                BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
+                BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.BigInt).Value = detalle.NoPedido
+                BDComando.Parameters.Add("@PARTIDA_PEDIDO", SqlDbType.Int).Value = detalle.PartidaPedido
+                BDComando.Parameters.Add("@CVE_PRENDA", SqlDbType.BigInt).Value = Val(detalle.ClaveProducto)
+                BDComando.Parameters.Add("@TALLA", SqlDbType.NVarChar).Value = detalle.Talla
+                BDComando.Parameters.Add("@NO_ORDENCOMPRA", SqlDbType.BigInt).Value = noOrdenCompra
+                BDComando.Parameters.Add("@PARTIDAOC", SqlDbType.BigInt).Value = detalleOC.Item1
+                BDComando.Parameters.Add("@CANTIDADOC", SqlDbType.BigInt).Value = Convert.ToInt64(Math.Round(detalleOC.Item2, 0, MidpointRounding.AwayFromZero))
+                BDComando.Parameters.Add("@ESTATUSOC", SqlDbType.NVarChar).Value = "CREADA"
+                BDComando.Parameters.Add("@USUARIO", SqlDbType.BigInt).Value = ConectaBD.Cve_Usuario
+                BDComando.Parameters.Add("@COMPUTADORA", SqlDbType.NVarChar).Value = My.Computer.Name
+                BDComando.Connection.Open()
+                BDComando.ExecuteNonQuery()
+                BDComando.Connection.Close()
+            Next
+        Finally
+            If BDComando.Connection.State = ConnectionState.Open Then
+                BDComando.Connection.Close()
+            End If
+        End Try
     End Sub
 
     Private Sub LlenaProveedorPanPrincipal()
@@ -960,6 +1046,15 @@ Public Class OrdenCompra
                         End If
                     End Try
                 Next
+
+                If AbiertaDesdePedidoPrendaCompra AndAlso TipoMovimiento = "ALTA" Then
+                    Try
+                        GuardarRelacionPedidoCompraOrdenCompra(Val(TxtAltaNoOrdenCompra.Text))
+                    Catch ex As Exception
+                        MessageBox.Show("Se guardó la Orden de Compra, pero ocurrió un error al guardar la relación con el pedido. Contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Orden de Compra", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                        Exit Sub
+                    End Try
+                End If
 CONTINUA:
                 ''ENTRA A GUARDAR LAS FECHAS PROMESAS DE ENTREGA
                 'COMPARAR LA MATRIZ ORIGINAL CON LA QUE SE MODIFICÓ
@@ -1565,6 +1660,9 @@ CONTINUA:
                         DGVOrdenCompraPartidas.Rows(e.RowIndex).Cells("AltaSubtotal").Value = DGVOrdenCompraPartidas.Rows(e.RowIndex).Cells("AltaCantidad").Value * DGVOrdenCompraPartidas.Rows(e.RowIndex).Cells("AltaPrecioUnitario").Value
                     End If
                 End If
+                If e.RowIndex >= 0 Then
+                    ActualizarDatosPartidaOCEnObjeto(DGVOrdenCompraPartidas.Rows(e.RowIndex))
+                End If
                 'CALCULA TOTALES
                 Dim Subtotal As Double = 0.0
                 For Fila As Int32 = 0 To DGVOrdenCompraPartidas.Rows.Count - 1
@@ -1605,6 +1703,7 @@ CONTINUA:
                             DGVOrdenCompraPartidas.CurrentRow.Cells("AltaSubtotal").Value = DGVOrdenCompraPartidas.CurrentRow.Cells("AltaCantidad").Value * DGVOrdenCompraPartidas.CurrentRow.Cells("AltaPrecioUnitario").Value
                         End If
                     End If
+                    ActualizarDatosPartidaOCEnObjeto(DGVOrdenCompraPartidas.CurrentRow)
                     'CALCULA TOTALES
                     Dim Subtotal As Double = 0.0
                     For Fila As Int32 = 0 To DGVOrdenCompraPartidas.Rows.Count - 1

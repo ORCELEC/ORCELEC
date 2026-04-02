@@ -353,21 +353,19 @@ Public Class PedidoPrendaCompra
                 Dim nombreTalla As String = ObtenerNombreTalla(columnIndex)
                 Dim claveProducto As String = If(String.IsNullOrWhiteSpace(grupoJuego), ObtenerCvePrenda(fila), ObtenerCvesPrendaPorJuego(grupoJuego))
                 Dim cantidad As Decimal = ObtenerCantidadDecimal(valorCelda)
-                Dim llaveAgrupacion As String
-
-                If String.IsNullOrWhiteSpace(grupoJuego) Then
-                    llaveAgrupacion = "IND|" & fila.Index.ToString() & "|" & columnIndex.ToString()
-                Else
-                    llaveAgrupacion = "JGO|" & grupoJuego & "|" & nombreTalla
-                End If
+                Dim llaveAgrupacion As String = ObtenerLlaveAgrupacion(fila, columnIndex, grupoJuego, nombreTalla)
+                Dim partidaPedido As Integer = Val(numeroPartida)
 
                 If indicePartidaPorLlave.ContainsKey(llaveAgrupacion) = False Then
                     partidasOrdenCompra.Add(New PartidaPedidoPrendaCompra With {
                         .NoPedido = noPedido,
+                        .PartidaPedido = partidaPedido,
                         .TipoProducto = "P",
                         .ClaveProducto = claveProducto,
                         .Descripcion = "Talla " & nombreTalla,
-                        .Cantidad = cantidad
+                        .Talla = nombreTalla,
+                        .Cantidad = cantidad,
+                        .LlaveAgrupacion = llaveAgrupacion
                     })
                     indicePartidaPorLlave(llaveAgrupacion) = partidasOrdenCompra.Count - 1
                 Else
@@ -394,6 +392,58 @@ Public Class PedidoPrendaCompra
         Next
 
         Return partidasOrdenCompra
+    End Function
+
+    Private Function ObtenerDetallesSeleccionadosParaOrdenCompra() As List(Of PartidaPedidoPrendaCompra)
+        Dim detalles As New List(Of PartidaPedidoPrendaCompra)
+        Dim noPedido As Integer = Val(ListPedidos.SelectedItem.ToString())
+
+        For Each fila As DataGridViewRow In DGTallasCantPrecios.Rows
+            If fila.IsNewRow Then
+                Continue For
+            End If
+
+            Dim numeroPartida As String = ObtenerNumeroPartida(fila)
+            Dim grupoJuego As String = String.Empty
+            If GrupoPorPartida.ContainsKey(numeroPartida) Then
+                grupoJuego = GrupoPorPartida(numeroPartida)
+            End If
+
+            For columnIndex As Integer = 0 To DGTallasCantPrecios.Columns.Count - 1
+                If EsColumnaCantidadResumen(columnIndex) = False OrElse CeldaCantidadSeleccionada(fila.Index, columnIndex) = False Then
+                    Continue For
+                End If
+
+                Dim valorCelda As Object = fila.Cells(columnIndex).Value
+                If ValorCeldaMayorACero(valorCelda) = False Then
+                    Continue For
+                End If
+
+                Dim nombreTalla As String = ObtenerNombreTalla(columnIndex)
+                Dim llaveAgrupacion As String = ObtenerLlaveAgrupacion(fila, columnIndex, grupoJuego, nombreTalla)
+
+                detalles.Add(New PartidaPedidoPrendaCompra With {
+                    .NoPedido = noPedido,
+                    .PartidaPedido = Val(numeroPartida),
+                    .TipoProducto = "P",
+                    .ClaveProducto = ObtenerCvePrenda(fila),
+                    .Descripcion = "Talla " & nombreTalla,
+                    .Talla = nombreTalla,
+                    .Cantidad = ObtenerCantidadDecimal(valorCelda),
+                    .LlaveAgrupacion = llaveAgrupacion
+                })
+            Next
+        Next
+
+        Return detalles
+    End Function
+
+    Private Function ObtenerLlaveAgrupacion(ByVal fila As DataGridViewRow, ByVal columnIndex As Integer, ByVal grupoJuego As String, ByVal nombreTalla As String) As String
+        If String.IsNullOrWhiteSpace(grupoJuego) Then
+            Return "IND|" & fila.Index.ToString() & "|" & columnIndex.ToString()
+        End If
+
+        Return "JGO|" & grupoJuego & "|" & nombreTalla
     End Function
 
     Private Function ObtenerClaveCeldaCantidad(ByVal rowIndex As Integer, ByVal columnIndex As Integer) As String
@@ -1735,12 +1785,14 @@ Public Class PedidoPrendaCompra
             MessageBox.Show("Debe seleccionar por lo menos una talla para generar la Orden de Compra.", "Generar Orden de Compra", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Exit Sub
         End If
+        Dim detallesSeleccionados As List(Of PartidaPedidoPrendaCompra) = ObtenerDetallesSeleccionadosParaOrdenCompra()
 
         Dim frmOrdenCompra As New OrdenCompra()
         frmOrdenCompra.AbiertaDesdePedidoPrendaCompra = True
         frmOrdenCompra.TipoMovimiento = "ALTA"
         frmOrdenCompra.PartidasPedidoPrendaCompra = partidasSeleccionadas
         frmOrdenCompra.ClientePedidoPrendaCompra = TxtCliente.Text.Trim()
+        frmOrdenCompra.DetallesPedidoPrendaCompra = detallesSeleccionados
         frmOrdenCompra.ShowDialog(Me)
     End Sub
 End Class
