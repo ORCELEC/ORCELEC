@@ -151,12 +151,21 @@ Public Class OrdenCompra
             BDComando.ExecuteNonQuery()
             BDComando.Connection.Close()
 
+            Dim relacionesInsertadas As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
             For Each detalle As PartidaPedidoPrendaCompra In DetallesPedidoPrendaCompra
                 If partidaOcPorLlave.ContainsKey(detalle.LlaveAgrupacion) = False Then
                     Continue For
                 End If
 
                 Dim detalleOC As Tuple(Of Int32, Decimal) = partidaOcPorLlave(detalle.LlaveAgrupacion)
+                Dim llaveRelacion As String = detalle.NoPedido.ToString() & "|" &
+                                              detalle.PartidaPedido.ToString() & "|" &
+                                              detalle.ClaveProducto.Trim() & "|" &
+                                              detalle.Talla.Trim() & "|" &
+                                              detalleOC.Item1.ToString()
+                If relacionesInsertadas.Contains(llaveRelacion) Then
+                    Continue For
+                End If
 
                 BDComando.Parameters.Clear()
                 BDComando.CommandType = CommandType.Text
@@ -176,6 +185,7 @@ Public Class OrdenCompra
                 BDComando.Connection.Open()
                 BDComando.ExecuteNonQuery()
                 BDComando.Connection.Close()
+                relacionesInsertadas.Add(llaveRelacion)
             Next
         Finally
             If BDComando.Connection.State = ConnectionState.Open Then

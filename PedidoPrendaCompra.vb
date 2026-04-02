@@ -397,6 +397,40 @@ Public Class PedidoPrendaCompra
     Private Function ObtenerDetallesSeleccionadosParaOrdenCompra() As List(Of PartidaPedidoPrendaCompra)
         Dim detalles As New List(Of PartidaPedidoPrendaCompra)
         Dim noPedido As Integer = Val(ListPedidos.SelectedItem.ToString())
+        Dim tallasSeleccionadasPorJuego As New Dictionary(Of String, HashSet(Of String))(StringComparer.OrdinalIgnoreCase)
+        Dim detallesAgregados As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
+
+        For Each fila As DataGridViewRow In DGTallasCantPrecios.Rows
+            If fila.IsNewRow Then
+                Continue For
+            End If
+
+            Dim numeroPartida As String = ObtenerNumeroPartida(fila)
+            Dim grupoJuego As String = String.Empty
+            If GrupoPorPartida.ContainsKey(numeroPartida) Then
+                grupoJuego = GrupoPorPartida(numeroPartida)
+            End If
+
+            If String.IsNullOrWhiteSpace(grupoJuego) Then
+                Continue For
+            End If
+
+            For columnIndex As Integer = 0 To DGTallasCantPrecios.Columns.Count - 1
+                If EsColumnaCantidadResumen(columnIndex) = False OrElse CeldaCantidadSeleccionada(fila.Index, columnIndex) = False Then
+                    Continue For
+                End If
+
+                If ValorCeldaMayorACero(fila.Cells(columnIndex).Value) = False Then
+                    Continue For
+                End If
+
+                Dim nombreTalla As String = ObtenerNombreTalla(columnIndex)
+                If tallasSeleccionadasPorJuego.ContainsKey(grupoJuego) = False Then
+                    tallasSeleccionadasPorJuego(grupoJuego) = New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
+                End If
+                tallasSeleccionadasPorJuego(grupoJuego).Add(nombreTalla)
+            Next
+        Next
 
         For Each fila As DataGridViewRow In DGTallasCantPrecios.Rows
             If fila.IsNewRow Then
@@ -410,7 +444,7 @@ Public Class PedidoPrendaCompra
             End If
 
             For columnIndex As Integer = 0 To DGTallasCantPrecios.Columns.Count - 1
-                If EsColumnaCantidadResumen(columnIndex) = False OrElse CeldaCantidadSeleccionada(fila.Index, columnIndex) = False Then
+                If EsColumnaCantidadResumen(columnIndex) = False Then
                     Continue For
                 End If
 
@@ -420,7 +454,20 @@ Public Class PedidoPrendaCompra
                 End If
 
                 Dim nombreTalla As String = ObtenerNombreTalla(columnIndex)
+                Dim tallaSeleccionada As Boolean = CeldaCantidadSeleccionada(fila.Index, columnIndex)
+                Dim incluirPorJuego As Boolean = String.IsNullOrWhiteSpace(grupoJuego) = False AndAlso
+                                                tallasSeleccionadasPorJuego.ContainsKey(grupoJuego) AndAlso
+                                                tallasSeleccionadasPorJuego(grupoJuego).Contains(nombreTalla)
+
+                If tallaSeleccionada = False AndAlso incluirPorJuego = False Then
+                    Continue For
+                End If
+
                 Dim llaveAgrupacion As String = ObtenerLlaveAgrupacion(fila, columnIndex, grupoJuego, nombreTalla)
+                Dim llaveDetalle As String = numeroPartida & "|" & nombreTalla & "|" & llaveAgrupacion
+                If detallesAgregados.Contains(llaveDetalle) Then
+                    Continue For
+                End If
 
                 detalles.Add(New PartidaPedidoPrendaCompra With {
                     .NoPedido = noPedido,
@@ -432,6 +479,7 @@ Public Class PedidoPrendaCompra
                     .Cantidad = ObtenerCantidadDecimal(valorCelda),
                     .LlaveAgrupacion = llaveAgrupacion
                 })
+                detallesAgregados.Add(llaveDetalle)
             Next
         Next
 
