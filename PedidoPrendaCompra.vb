@@ -1635,7 +1635,7 @@ Public Class PedidoPrendaCompra
                 If RBResumen.Checked = True Then
                     BDComando.Parameters.Clear()
                     BDComando.CommandType = CommandType.StoredProcedure
-                    BDComando.CommandText = "SP_CONSULTA_PEDIDO_INTERNO_PARTIDAS_RESUMEN"
+                    BDComando.CommandText = "SP_CONSULTA_PEDIDO_INTERNO_COMPRA_PARTIDAS_RESUMEN"
                     BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt)
                     BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.BigInt)
 
