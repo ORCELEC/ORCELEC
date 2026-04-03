@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[PEDIDO_COMPRA_ORDEN_COMPRA]    Script Date: 20/03/2026 07:50:52 p. m. ******/
+/****** Object:  Table [dbo].[PEDIDO_COMPRA_ORDEN_COMPRA]    Script Date: 02/04/2026 07:16:51 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
