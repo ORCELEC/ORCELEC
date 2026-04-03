@@ -1275,6 +1275,7 @@ Partial Class PedidoPrendaCompra
         Me.GroupBox1.Size = New System.Drawing.Size(226, 35)
         Me.GroupBox1.TabIndex = 117
         Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Visible = False
         '
         'RBDetalle
         '

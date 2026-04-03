@@ -194,6 +194,90 @@ Public Class OrdenCompra
         End Try
     End Sub
 
+    Private Function PedidoCompradoCompleto(ByVal noPedido As Int64) As Boolean
+        Dim pendientes As Int32 = 0
+
+        Try
+            BDComando.Parameters.Clear()
+            BDComando.CommandType = CommandType.Text
+            BDComando.CommandText = "SELECT COUNT(1) AS Pendientes " &
+                                    "FROM (" &
+                                    "    SELECT PIT.No_Pedido, PIT.Partida, PIT.Cve_Prenda, PIT.Talla, " &
+                                    "           SUM(PIT.Cantidad - ISNULL(RIPT.CANTIDAD, 0)) - ISNULL(PCOC.CantidadOC, 0) AS CantidadPendiente " &
+                                    "    FROM PEDIDO_INTERNO_TALLAS PIT " &
+                                    "    LEFT JOIN RESERVADO_INVENTARIO_PRODUCTO_TERMINADO RIPT " &
+                                    "        ON RIPT.Empresa = PIT.Empresa " &
+                                    "       AND RIPT.No_Pedido = PIT.No_Pedido " &
+                                    "       AND RIPT.Partida = PIT.Partida " &
+                                    "       AND RIPT.Cve_Prenda = PIT.Cve_Prenda " &
+                                    "       AND RIPT.LugarDeEntrega = PIT.LugarDeEntrega " &
+                                    "       AND RIPT.Prioridad = PIT.Prioridad " &
+                                    "       AND RIPT.Talla = PIT.Talla " &
+                                    "    LEFT JOIN (" &
+                                    "        SELECT EMPRESA, NO_PEDIDO, PARTIDA_PEDIDO, CVE_PRENDA, TALLA, SUM(CANTIDADOC) AS CantidadOC " &
+                                    "        FROM PEDIDO_COMPRA_ORDEN_COMPRA " &
+                                    "        WHERE EMPRESA = @EMPRESA " &
+                                    "          AND NO_PEDIDO = @NO_PEDIDO " &
+                                    "          AND ISNULL(ESTATUSOC, '') <> 'CANCELADA' " &
+                                    "        GROUP BY EMPRESA, NO_PEDIDO, PARTIDA_PEDIDO, CVE_PRENDA, TALLA" &
+                                    "    ) PCOC " &
+                                    "        ON PCOC.EMPRESA = PIT.Empresa " &
+                                    "       AND PCOC.NO_PEDIDO = PIT.No_Pedido " &
+                                    "       AND PCOC.PARTIDA_PEDIDO = PIT.Partida " &
+                                    "       AND PCOC.CVE_PRENDA = PIT.Cve_Prenda " &
+                                    "       AND PCOC.TALLA = PIT.Talla " &
+                                    "    WHERE PIT.Empresa = @EMPRESA " &
+                                    "      AND PIT.No_Pedido = @NO_PEDIDO " &
+                                    "    GROUP BY PIT.No_Pedido, PIT.Partida, PIT.Cve_Prenda, PIT.Talla, PCOC.CantidadOC " &
+                                    ") AS Saldos " &
+                                    "WHERE Saldos.CantidadPendiente > 0"
+            BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
+            BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.BigInt).Value = noPedido
+
+            BDComando.Connection.Open()
+            pendientes = Convert.ToInt32(BDComando.ExecuteScalar())
+        Finally
+            If BDComando.Connection.State = ConnectionState.Open Then
+                BDComando.Connection.Close()
+            End If
+        End Try
+
+        Return pendientes = 0
+    End Function
+
+    Private Sub ActualizarCalculoOPPedidoInterno(ByVal noPedido As Int64)
+        Try
+            BDComando.Parameters.Clear()
+            BDComando.CommandType = CommandType.Text
+            BDComando.CommandText = "UPDATE PEDIDO_INTERNO SET CalculoOP = 1 WHERE EMPRESA = @EMPRESA AND NO_PEDIDO = @NO_PEDIDO"
+            BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
+            BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.BigInt).Value = noPedido
+            BDComando.Connection.Open()
+            BDComando.ExecuteNonQuery()
+        Finally
+            If BDComando.Connection.State = ConnectionState.Open Then
+                BDComando.Connection.Close()
+            End If
+        End Try
+    End Sub
+
+    Private Sub ValidarPedidosCompradosCompletos()
+        If DetallesPedidoPrendaCompra Is Nothing OrElse DetallesPedidoPrendaCompra.Count = 0 Then
+            Exit Sub
+        End If
+
+        Dim pedidos As New HashSet(Of Int64)
+        For Each detalle As PartidaPedidoPrendaCompra In DetallesPedidoPrendaCompra
+            pedidos.Add(detalle.NoPedido)
+        Next
+
+        For Each noPedido As Int64 In pedidos
+            If PedidoCompradoCompleto(noPedido) Then
+                ActualizarCalculoOPPedidoInterno(noPedido)
+            End If
+        Next
+    End Sub
+
     Private Sub LlenaProveedorPanPrincipal()
         BDComando.Parameters.Clear()
         BDComando.CommandType = CommandType.Text
@@ -1060,6 +1144,7 @@ Public Class OrdenCompra
                 If AbiertaDesdePedidoPrendaCompra AndAlso TipoMovimiento = "ALTA" Then
                     Try
                         GuardarRelacionPedidoCompraOrdenCompra(Val(TxtAltaNoOrdenCompra.Text))
+                        ValidarPedidosCompradosCompletos()
                     Catch ex As Exception
                         MessageBox.Show("Se guardó la Orden de Compra, pero ocurrió un error al guardar la relación con el pedido. Contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Orden de Compra", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                         Exit Sub
@@ -1516,7 +1601,7 @@ CONTINUA:
             End If
         End If
 
-        If TipoEntrada = "SUGERIDOCOMPRA" Then
+        If TipoEntrada = "SUGERIDOCOMPRA" OrElse AbiertaDesdePedidoPrendaCompra Then
             Me.Close()
         Else
             LimpiaControles()
