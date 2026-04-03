@@ -1841,6 +1841,8 @@ Public Class PedidoPrendaCompra
         frmOrdenCompra.PartidasPedidoPrendaCompra = partidasSeleccionadas
         frmOrdenCompra.ClientePedidoPrendaCompra = TxtCliente.Text.Trim()
         frmOrdenCompra.DetallesPedidoPrendaCompra = detallesSeleccionados
-        frmOrdenCompra.ShowDialog(Me)
+        If frmOrdenCompra.ShowDialog(Me) = DialogResult.OK Then
+            ListPedidos_SelectedIndexChanged(ListPedidos, EventArgs.Empty)
+        End If
     End Sub
 End Class

@@ -1601,7 +1601,10 @@ CONTINUA:
             End If
         End If
 
-        If TipoEntrada = "SUGERIDOCOMPRA" OrElse AbiertaDesdePedidoPrendaCompra Then
+        If AbiertaDesdePedidoPrendaCompra Then
+            Me.DialogResult = DialogResult.OK
+            Me.Close()
+        ElseIf TipoEntrada = "SUGERIDOCOMPRA" Then
             Me.Close()
         Else
             LimpiaControles()
