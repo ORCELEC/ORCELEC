@@ -245,11 +245,12 @@ Public Class OrdenCompra
         Return pendientes = 0
     End Function
 
-    Private Sub ActualizarCalculoOPPedidoInterno(ByVal noPedido As Int64)
+    Private Sub ActualizarCalculoOPPedidoInterno(ByVal noPedido As Int64, ByVal calculoOP As Int32)
         Try
             BDComando.Parameters.Clear()
             BDComando.CommandType = CommandType.Text
-            BDComando.CommandText = "UPDATE PEDIDO_INTERNO SET CalculoOP = 1 WHERE EMPRESA = @EMPRESA AND NO_PEDIDO = @NO_PEDIDO"
+            BDComando.CommandText = "UPDATE PEDIDO_INTERNO SET CalculoOP = @CALCULOOP WHERE EMPRESA = @EMPRESA AND NO_PEDIDO = @NO_PEDIDO"
+            BDComando.Parameters.Add("@CALCULOOP", SqlDbType.Int).Value = calculoOP
             BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
             BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.BigInt).Value = noPedido
             BDComando.Connection.Open()
@@ -271,11 +272,121 @@ Public Class OrdenCompra
             pedidos.Add(detalle.NoPedido)
         Next
 
+        ActualizarCalculoOPSegunPendientes(pedidos)
+    End Sub
+
+    Private Sub ActualizarCalculoOPSegunPendientes(ByVal pedidos As IEnumerable(Of Int64))
+        If pedidos Is Nothing Then
+            Exit Sub
+        End If
+
         For Each noPedido As Int64 In pedidos
-            If PedidoCompradoCompleto(noPedido) Then
-                ActualizarCalculoOPPedidoInterno(noPedido)
+            Dim pedidoCompleto As Boolean = PedidoCompradoCompleto(noPedido)
+            ActualizarCalculoOPPedidoInterno(noPedido, If(pedidoCompleto, 1, 0))
+        Next
+    End Sub
+
+    Private Function ExistePartidaTipoMaterialP() As Boolean
+        For Each fila As DataGridViewRow In DGVOrdenCompraPartidas.Rows
+            If fila.IsNewRow Then
+                Continue For
+            End If
+
+            Dim tipoMaterial As String = If(fila.Cells("AltaTipoMaterial").Value, "").ToString().Trim().ToUpper()
+            If tipoMaterial = "P" Then
+                Return True
             End If
         Next
+
+        Return False
+    End Function
+
+    Private Sub ConfigurarColumnasEdicionPartidas(ByVal soloColumnasPermitidas As Boolean)
+        If DGVOrdenCompraPartidas.Columns.Count = 0 Then
+            Exit Sub
+        End If
+
+        For Each columna As DataGridViewColumn In DGVOrdenCompraPartidas.Columns
+            columna.ReadOnly = soloColumnasPermitidas
+        Next
+
+        If soloColumnasPermitidas Then
+            DGVOrdenCompraPartidas.Columns("AltaClaveMaterial").ReadOnly = False
+            DGVOrdenCompraPartidas.Columns("AltaDescripcionMaterial").ReadOnly = False
+            DGVOrdenCompraPartidas.Columns("AltaCantidad").ReadOnly = False
+            DGVOrdenCompraPartidas.Columns("AltaUnidad").ReadOnly = False
+            DGVOrdenCompraPartidas.Columns("AltaPrecioUnitario").ReadOnly = False
+        End If
+    End Sub
+
+    Private Sub ActualizarCantidadPedidoCompraOrdenCompraDesdePartidas()
+        If TipoMovimiento <> "MODIFICACION" Then
+            Exit Sub
+        End If
+
+        Dim noOrdenCompra As Int64 = 0
+        Int64.TryParse(TxtAltaNoOrdenCompra.Text, noOrdenCompra)
+        If noOrdenCompra <= 0 Then
+            Exit Sub
+        End If
+
+        Dim pedidosActualizados As New HashSet(Of Int64)
+
+        For Each fila As DataGridViewRow In DGVOrdenCompraPartidas.Rows
+            If fila.IsNewRow Then
+                Continue For
+            End If
+
+            Dim tipoMaterial As String = If(fila.Cells("AltaTipoMaterial").Value, "").ToString().Trim().ToUpper()
+            If tipoMaterial <> "P" Then
+                Continue For
+            End If
+
+            Dim noPedidoTexto As String = If(fila.Cells("AltaNoPedido").Value, "").ToString().Trim()
+            If String.IsNullOrWhiteSpace(noPedidoTexto) OrElse noPedidoTexto = "0" Then
+                Continue For
+            End If
+
+            Dim partidaOc As Int64 = 0
+            Dim noPedido As Int64 = 0
+            Dim cantidad As Decimal = 0D
+
+            Int64.TryParse(If(fila.Cells("AltaPartida").Value, "0").ToString(), partidaOc)
+            Int64.TryParse(noPedidoTexto, noPedido)
+            Decimal.TryParse(If(fila.Cells("AltaCantidad").Value, "0").ToString(), cantidad)
+
+            If partidaOc <= 0 OrElse noPedido <= 0 Then
+                Continue For
+            End If
+
+            Try
+                BDComando.Parameters.Clear()
+                BDComando.CommandType = CommandType.Text
+                BDComando.CommandText = "UPDATE PEDIDO_COMPRA_ORDEN_COMPRA " &
+                                        "SET CANTIDADOC = @CANTIDADOC " &
+                                        "WHERE EMPRESA = @EMPRESA " &
+                                        "  AND NO_ORDENCOMPRA = @NO_ORDENCOMPRA " &
+                                        "  AND PARTIDAOC = @PARTIDAOC " &
+                                        "  AND NO_PEDIDO = @NO_PEDIDO"
+                BDComando.Parameters.Add("@CANTIDADOC", SqlDbType.BigInt).Value = Convert.ToInt64(Math.Round(cantidad, 0, MidpointRounding.AwayFromZero))
+                BDComando.Parameters.Add("@EMPRESA", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
+                BDComando.Parameters.Add("@NO_ORDENCOMPRA", SqlDbType.BigInt).Value = noOrdenCompra
+                BDComando.Parameters.Add("@PARTIDAOC", SqlDbType.BigInt).Value = partidaOc
+                BDComando.Parameters.Add("@NO_PEDIDO", SqlDbType.BigInt).Value = noPedido
+
+                BDComando.Connection.Open()
+                BDComando.ExecuteNonQuery()
+                pedidosActualizados.Add(noPedido)
+            Finally
+                If BDComando.Connection.State = ConnectionState.Open Then
+                    BDComando.Connection.Close()
+                End If
+            End Try
+        Next
+
+        If pedidosActualizados.Count > 0 Then
+            ActualizarCalculoOPSegunPendientes(pedidosActualizados)
+        End If
     End Sub
 
     Private Sub LlenaProveedorPanPrincipal()
@@ -848,8 +959,8 @@ Public Class OrdenCompra
             TipoMovimiento = "MODIFICACION"
             CmbAltaProveedor.Enabled = True
             CmbAltaLugarEntrega.Enabled = True
-            BtnAgregarPartida.Enabled = True
-            BtnEliminarPartida.Enabled = True
+            BtnAgregarPartida.Enabled = Not ExistePartidaTipoMaterialP()
+            BtnEliminarPartida.Enabled = Not ExistePartidaTipoMaterialP()
             BtnAgregarFechaPE.Enabled = False
             BtnEliminarFechaPE.Enabled = False
             BtnGuardarFPE.Enabled = False
@@ -860,6 +971,7 @@ Public Class OrdenCompra
             BtnImprimirOC.Enabled = True
 
             DGVOrdenCompraPartidas.ReadOnly = False
+            ConfigurarColumnasEdicionPartidas(True)
 
             DGVFechasPromesaEntrega.Columns("FechaPromesaEntrega").ReadOnly = False
             DGVFechasPromesaEntrega.Columns("CantidadPromesa").ReadOnly = False
@@ -889,6 +1001,7 @@ Public Class OrdenCompra
             BtnImprimirOC.Enabled = True
 
             DGVOrdenCompraPartidas.ReadOnly = True
+            ConfigurarColumnasEdicionPartidas(False)
 
             DGVFechasPromesaEntrega.Columns("FechaPromesaEntrega").ReadOnly = False
             DGVFechasPromesaEntrega.Columns("CantidadPromesa").ReadOnly = False
@@ -919,6 +1032,7 @@ Public Class OrdenCompra
         CmbAltaProveedor.Enabled = True
         CmbAltaLugarEntrega.Enabled = True
         DGVOrdenCompraPartidas.ReadOnly = False
+        ConfigurarColumnasEdicionPartidas(False)
         BtnAgregarPartida.Enabled = True
         BtnEliminarPartida.Enabled = True
         BtnFechasPromesa.Enabled = True
@@ -1147,6 +1261,15 @@ Public Class OrdenCompra
                         ValidarPedidosCompradosCompletos()
                     Catch ex As Exception
                         MessageBox.Show("Se guardó la Orden de Compra, pero ocurrió un error al guardar la relación con el pedido. Contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Orden de Compra", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                        Exit Sub
+                    End Try
+                End If
+
+                If TipoMovimiento = "MODIFICACION" Then
+                    Try
+                        ActualizarCantidadPedidoCompraOrdenCompraDesdePartidas()
+                    Catch ex As Exception
+                        MessageBox.Show("Se modificó la Orden de Compra, pero ocurrió un error al actualizar cantidades relacionadas con Pedido Compra. Contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Orden de Compra", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                         Exit Sub
                     End Try
                 End If
@@ -1429,7 +1552,6 @@ CONTINUA:
                     End If
                 End If
 
-
                 If TipoMovimiento = "MODIFICACION" Then
                     'Se manda correo de aviso.
                     ' Crear el mensaje
@@ -1669,6 +1791,7 @@ CONTINUA:
     Private Sub DGVOrdenCompraPartidas_CellEndEdit(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DGVOrdenCompraPartidas.CellEndEdit
         If TipoMovimiento = "ALTA" Or TipoMovimiento = "MODIFICACION" Then
             If TipoEntrada <> "SUGERIDOCOMPRA" And DGVOrdenCompraPartidas.CurrentCell.ColumnIndex = 3 Then ''COLUMNA DE CLAVE DE PRODUCTO
+                Dim TipoMaterial = DGVOrdenCompraPartidas.CurrentRow.Cells("AltaTipoMaterial").Value
                 Dim celdaValor = DGVOrdenCompraPartidas.CurrentRow.Cells("AltaClaveMaterial").Value
                 If Trim(celdaValor) <> "" Then
                     If IsNumeric(celdaValor) = True Then
@@ -1697,7 +1820,7 @@ CONTINUA:
                             End If
                         End Try
                     Else
-                        If celdaValor <> "PRENDA" Then
+                        If TipoMaterial <> "P" And celdaValor <> "PRENDA" Then
                             BDComando.Parameters.Clear()
                             BDComando.CommandType = CommandType.StoredProcedure
                             Dim NombreGrupoParameter As New SqlParameter()
@@ -1746,7 +1869,7 @@ CONTINUA:
                                     BDComando.Connection.Close()
                                 End If
                             End Try
-                        Else
+                        ElseIf celdaValor = "PRENDA" Then
                             DGVOrdenCompraPartidas.CurrentRow.Cells("AltaTipoMaterial").Value = "P"
                         End If
                     End If
