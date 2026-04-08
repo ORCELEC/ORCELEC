@@ -1754,15 +1754,37 @@ CONTINUA:
     End Sub
 
     Private Sub DGVOrdenCompraPartidas_CellValidating(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellValidatingEventArgs) Handles DGVOrdenCompraPartidas.CellValidating
-        If AbiertaDesdePedidoPrendaCompra = False Then
-            Exit Sub
-        End If
-
         If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then
             Exit Sub
         End If
 
         If DGVOrdenCompraPartidas.Columns(e.ColumnIndex).Name <> "AltaCantidad" Then
+            Exit Sub
+        End If
+
+        Dim cantidadNueva As Decimal
+        If Decimal.TryParse(e.FormattedValue.ToString(), cantidadNueva) = False Then
+            Exit Sub
+        End If
+
+        If TipoMovimiento = "MODIFICACION" Then
+            Dim tipoMaterial As String = If(DGVOrdenCompraPartidas.Rows(e.RowIndex).Cells("AltaTipoMaterial").Value, "").ToString().Trim().ToUpper()
+
+            If tipoMaterial = "P" Then
+                Dim cantidadOriginalValor As Object = DGVOrdenCompraPartidas.Rows(e.RowIndex).Cells("AltaCantidadOriginal").Value
+                Dim cantidadOriginal As Decimal
+
+                If cantidadOriginalValor IsNot Nothing AndAlso IsDBNull(cantidadOriginalValor) = False AndAlso Decimal.TryParse(cantidadOriginalValor.ToString(), cantidadOriginal) Then
+                    If cantidadNueva > cantidadOriginal Then
+                        MessageBox.Show("La cantidad no puede ser mayor a la cantidad original para partidas de tipo material P cuando la Orden de Compra está en modificación.", "Orden de Compra", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                        e.Cancel = True
+                        Exit Sub
+                    End If
+                End If
+            End If
+        End If
+
+        If AbiertaDesdePedidoPrendaCompra = False Then
             Exit Sub
         End If
 
@@ -1772,13 +1794,8 @@ CONTINUA:
         End If
 
         Dim cantidadActual As Decimal
-        Dim cantidadNueva As Decimal
 
         If Decimal.TryParse(valorActual.ToString(), cantidadActual) = False Then
-            Exit Sub
-        End If
-
-        If Decimal.TryParse(e.FormattedValue.ToString(), cantidadNueva) = False Then
             Exit Sub
         End If
 
@@ -1912,11 +1929,11 @@ CONTINUA:
                     DGVOrdenCompraPartidas.CurrentRow.Cells("ALTACVEUNIDAD").Value = BuscarUnidadConversion.TxtCveUnidad.Text
                     DGVOrdenCompraPartidas.CurrentRow.Cells("ALTAUNIDAD").Value = BuscarUnidadConversion.TxtDescripcion.Text
                     DGVOrdenCompraPartidas.CurrentRow.Cells("ALTAFACTORUNIDAD").Value = BuscarUnidadConversion.TxtFactor.Text
-                    If IsNothing(DGVOrdenCompraPartidas.CurrentRow.Cells("ALTACANTIDADORIGINAL").Value) = False Then
+                    If IsNothing(DGVOrdenCompraPartidas.CurrentRow.Cells("ALTACANTIDAD").Value) = False Then
                         If Double.Parse(BuscarUnidadConversion.TxtFactor.Text) = 1.0 Then
-                            DGVOrdenCompraPartidas.CurrentRow.Cells("ALTACANTIDAD").Value = DGVOrdenCompraPartidas.CurrentRow.Cells("ALTACANTIDADORIGINAL").Value
+                            DGVOrdenCompraPartidas.CurrentRow.Cells("ALTACANTIDAD").Value = DGVOrdenCompraPartidas.CurrentRow.Cells("ALTACANTIDAD").Value
                         Else
-                            DGVOrdenCompraPartidas.CurrentRow.Cells("ALTACANTIDAD").Value = Math.Ceiling(Double.Parse(DGVOrdenCompraPartidas.CurrentRow.Cells("ALTACANTIDADORIGINAL").Value) / Double.Parse(BuscarUnidadConversion.TxtFactor.Text))
+                            DGVOrdenCompraPartidas.CurrentRow.Cells("ALTACANTIDAD").Value = Math.Ceiling(Double.Parse(DGVOrdenCompraPartidas.CurrentRow.Cells("ALTACANTIDAD").Value) / Double.Parse(BuscarUnidadConversion.TxtFactor.Text))
                         End If
                     End If
                     If IsDBNull(DGVOrdenCompraPartidas.CurrentRow.Cells("AltaCantidad").Value) = False And IsDBNull(DGVOrdenCompraPartidas.CurrentRow.Cells("AltaPrecioUnitario").Value) = False Then
