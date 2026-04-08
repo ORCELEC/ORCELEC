@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SP_ALTA_MODIFICACION_ORDEN_COMPRA]    Script Date: 20/03/2026 07:09:21 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_ALTA_MODIFICACION_ORDEN_COMPRA]    Script Date: 07/04/2026 06:38:37 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -48,7 +48,8 @@ BEGIN
 		@USUARIOANT BIGINT,
 		@FECHAHORAANT DATETIME,
 		@COMPUTADORAANT NVARCHAR(50),
-		@CANTIDADCOMPRADAANT NUMERIC(18,2)
+		@CANTIDADCOMPRADAANT NUMERIC(18,2),
+		@TIPOPEDIDO NVARCHAR(1)
 
 	IF @TIPOMOVIMIENTO = 'ALTA'
 	BEGIN
@@ -173,25 +174,31 @@ BEGIN
 		--GUARDA LA INFORMACIÓN DE LA ORDEN DE COMPRA EN LA TABLA SUGERIDO_COMPRA_ORDEN_COMPRA
 		IF @NO_PEDIDO <> 0
 		BEGIN
-			INSERT INTO SUGERIDO_COMPRA_ORDEN_COMPRA
-			(
-				Empresa,
-				No_Pedido,
-				TipoMaterial,
-				Cve_Material,
-				No_OrdenCompra,
-				Partida_OrdenCompra,
-				Estatus_OrdenCompra
-			)
-			VALUES(
-				@EMPRESA,
-				@NO_PEDIDO,
-				@TIPOMATERIAL,
-				@CVEMATERIAL,
-				CASE WHEN @PARTIDA = 1 THEN	@CONSECUTIVO ELSE @NO_ORDENCOMPRA END,
-				@PARTIDA,
-				'CREADA'
-			)
+			SELECT @TIPOPEDIDO = FA.TipoPedido FROM PEDIDO_INTERNO PI,FOLIOS_ADMINISTRACION FA WHERE PI.Empresa = @EMPRESA AND PI.No_Pedido = @NO_PEDIDO AND FA.Empresa = PI.Empresa AND FA.Num_Folio = PI.Num_Folio
+
+			IF @TIPOPEDIDO NOT IN ('C')
+			BEGIN
+			
+				INSERT INTO SUGERIDO_COMPRA_ORDEN_COMPRA
+				(
+					Empresa,
+					No_Pedido,
+					TipoMaterial,
+					Cve_Material,
+					No_OrdenCompra,
+					Partida_OrdenCompra,
+					Estatus_OrdenCompra
+				)
+				VALUES(
+					@EMPRESA,
+					@NO_PEDIDO,
+					@TIPOMATERIAL,
+					@CVEMATERIAL,
+					CASE WHEN @PARTIDA = 1 THEN	@CONSECUTIVO ELSE @NO_ORDENCOMPRA END,
+					@PARTIDA,
+					'CREADA'
+				)
+			END
 		END
 
 		--ACTUALIZA EL CAMPO CANTIDADCOMPRADA
