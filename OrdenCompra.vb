@@ -1186,6 +1186,7 @@ Public Class OrdenCompra
                 BDComando.Parameters.Add("@USUARIO", SqlDbType.BigInt)
                 BDComando.Parameters.Add("@COMPUTADORA", SqlDbType.NVarChar)
                 BDComando.Parameters.Add("@NO_OP", SqlDbType.BigInt)
+                BDComando.Parameters.Add("@CONSECUTIVOSUGERIDO", SqlDbType.BigInt)
                 BDComando.Parameters.Add("@NO_ORDENCOMPRAOUTPUT", SqlDbType.BigInt)
 
                 For Fila As Int32 = 0 To DGVOrdenCompraPartidas.Rows.Count - 1
@@ -1221,6 +1222,11 @@ Public Class OrdenCompra
                     BDComando.Parameters("@USUARIO").Value = ConectaBD.Cve_Usuario
                     BDComando.Parameters("@COMPUTADORA").Value = My.Computer.Name
                     BDComando.Parameters("@NO_OP").Value = DGVOrdenCompraPartidas.Rows(Fila).Cells("AltaNo_OP").Value
+                    BDComando.Parameters("@CONSECUTIVOSUGERIDO").Value = If(IsNothing(DGVOrdenCompraPartidas.Rows(Fila).Cells("ConsecutivoSugerido").Value) OrElse
+                                                                           IsDBNull(DGVOrdenCompraPartidas.Rows(Fila).Cells("ConsecutivoSugerido").Value) OrElse
+                                                                           DGVOrdenCompraPartidas.Rows(Fila).Cells("ConsecutivoSugerido").Value.ToString() = "",
+                                                                           0,
+                                                                           Convert.ToInt64(DGVOrdenCompraPartidas.Rows(Fila).Cells("ConsecutivoSugerido").Value))
                     BDComando.Parameters("@NO_ORDENCOMPRAOUTPUT").Direction = ParameterDirection.Output
 
                     Try
