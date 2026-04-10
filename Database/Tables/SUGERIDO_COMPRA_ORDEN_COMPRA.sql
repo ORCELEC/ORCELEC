@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[SUGERIDO_COMPRA_ORDEN_COMPRA]    Script Date: 08/04/2026 01:05:12 p. m. ******/
+/****** Object:  Table [dbo].[SUGERIDO_COMPRA_ORDEN_COMPRA]    Script Date: 09/04/2026 06:24:30 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,6 +11,7 @@ GO
 CREATE TABLE [dbo].[SUGERIDO_COMPRA_ORDEN_COMPRA](
 	[Empresa] [bigint] NOT NULL,
 	[No_Pedido] [bigint] NOT NULL,
+	[Consecutivo] [bigint] NULL,
 	[TipoMaterial] [nvarchar](1) NOT NULL,
 	[Cve_Material] [nvarchar](20) NOT NULL,
 	[No_OrdenCompra] [bigint] NOT NULL,
