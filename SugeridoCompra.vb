@@ -302,24 +302,26 @@ Public Class SugeridoCompra
                 Dim chkCell As DataGridViewCheckBoxCell = TryCast(DGVSugeridoCompra.Rows(e.RowIndex).Cells("Seleccionar"), DataGridViewCheckBoxCell)
 
                 If chkCell IsNot Nothing AndAlso cantidadCell IsNot Nothing AndAlso Not IsDBNull(cantidadCell.Value) Then
-                    Dim cantidad As Double
-                    If Double.TryParse(cantidadCell.Value.ToString(), cantidad) AndAlso cantidad <= 0 Then
-                        chkCell.Value = False
-                        MessageBox.Show("No se puede seleccionar esta fila porque la cantidad a comprar es 0 o menor.", "Sugerido de compra", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Dim seleccionado As Boolean = False
+                    If chkCell.Value IsNot Nothing AndAlso Not IsDBNull(chkCell.Value) Then
+                        If TypeOf chkCell.Value Is Boolean Then
+                            seleccionado = CBool(chkCell.Value)
+                        ElseIf IsNumeric(chkCell.Value) Then
+                            seleccionado = Convert.ToInt32(chkCell.Value) <> 0
+                        Else
+                            Dim valorSeleccion As String = chkCell.Value.ToString().Trim()
+                            seleccionado = valorSeleccion = "1" OrElse valorSeleccion.Equals("True", StringComparison.OrdinalIgnoreCase)
+                        End If
                     End If
-                End If
-            End If
-        End If
-    End Sub
 
-    Private Sub DGVSugeridoCompra_CellBeginEdit(sender As System.Object, e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DGVSugeridoCompra.CellBeginEdit
-        ' Verificar si la columna "Seleccionar" existe
-        If DGVSugeridoCompra.Columns("Seleccionar") IsNot Nothing AndAlso e.RowIndex >= 0 Then
-            If e.ColumnIndex = DGVSugeridoCompra.Columns("Seleccionar").Index Then
-                Dim cantidadCell As DataGridViewCell = DGVSugeridoCompra.Rows(e.RowIndex).Cells("CantidadAComprar")
-                If cantidadCell IsNot Nothing AndAlso (IsDBNull(cantidadCell.Value) OrElse Convert.ToDouble(cantidadCell.Value) <= 0) Then
-                    e.Cancel = True
-                    MessageBox.Show("No se puede seleccionar esta fila porque la cantidad a comprar es 0 o menor.", "Sugerido de compra", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    ' Solo validar cuando el usuario realmente intenta seleccionar la fila.
+                    If seleccionado Then
+                        Dim cantidad As Double
+                        If Double.TryParse(cantidadCell.Value.ToString(), cantidad) AndAlso cantidad <= 0 Then
+                            chkCell.Value = False
+                            MessageBox.Show("No se puede seleccionar esta fila porque la cantidad a comprar es 0 o menor.", "Sugerido de compra", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        End If
+                    End If
                 End If
             End If
         End If

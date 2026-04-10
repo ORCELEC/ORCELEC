@@ -222,7 +222,6 @@ Public Class OPVista
                 Me.Cursor = Cursors.WaitCursor
                 Dim Id_Session As String = ""
                 Dim TieneLogos As Boolean = False
-                Dim Partida As Int32
 
                 'DGVLogotipos.Rows.Clear()
 
