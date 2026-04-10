@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SP_ALTA_MODIFICACION_ORDEN_COMPRA]    Script Date: 08/04/2026 01:02:50 p. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_ALTA_MODIFICACION_ORDEN_COMPRA]    Script Date: 09/04/2026 06:11:03 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
