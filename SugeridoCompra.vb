@@ -66,7 +66,7 @@ Public Class SugeridoCompra
                     If BDReader("TIPOMATERIAL") = "H" Then
                         CveHabilitacion = BDReader("CVE_GRUPO") & Format(BDReader("CVE_HABILITACION"), "000000")
                     End If
-                    DGVSugeridoCompra.Rows.Add(False, BDReader("NO_PEDIDO"), IIf(BDReader("TIPOMATERIAL") = "T", "TELA", "HABILITACIÓN"), IIf(BDReader("TIPOMATERIAL") = "T", BDReader("CVE_TELA").ToString(), CveHabilitacion), BDReader("DESCRIPCIONMATERIAL"), BDReader("STOCK"), BDReader("CANTIDAD") - BDReader("CANTIDADCOMPRADA"), BDReader("UNIDAD"), BDReader("No_OP"))
+                    DGVSugeridoCompra.Rows.Add(False, BDReader("NO_PEDIDO"), IIf(BDReader("TIPOMATERIAL") = "T", "TELA", "HABILITACIÓN"), IIf(BDReader("TIPOMATERIAL") = "T", BDReader("CVE_TELA").ToString(), CveHabilitacion), BDReader("DESCRIPCIONMATERIAL"), BDReader("STOCK"), BDReader("CANTIDAD") - BDReader("CANTIDADCOMPRADA"), BDReader("UNIDAD"), BDReader("No_OP"), BDReader("CONSECUTIVO"))
                 End While
             End If
         Catch ex As Exception
@@ -158,7 +158,7 @@ Public Class SugeridoCompra
                 Dim Partida As Int32 = 1
                 For Fila As Int32 = 0 To DGVSugeridoCompra.Rows.Count - 1
                     If DGVSugeridoCompra.Rows(Fila).Cells("SELECCIONAR").Value = True Then
-                        OC.DGVOrdenCompraPartidas.Rows.Add(Partida, DGVSugeridoCompra.Rows(Fila).Cells("NOPEDIDO").Value, DGVSugeridoCompra.Rows(Fila).Cells("TIPOMATERIAL").Value, DGVSugeridoCompra.Rows(Fila).Cells("CVEMATERIAL").Value, DGVSugeridoCompra.Rows(Fila).Cells("DESCRIPCIONMATERIAL").Value, DGVSugeridoCompra.Rows(Fila).Cells("CANTIDADACOMPRAR").Value, DGVSugeridoCompra.Rows(Fila).Cells("UNIDAD").Value, 0, 1, DBNull.Value, DBNull.Value, DGVSugeridoCompra.Rows(Fila).Cells("CANTIDADACOMPRAR").Value, DGVSugeridoCompra.Rows(Fila).Cells("No_Op").Value)
+                        OC.DGVOrdenCompraPartidas.Rows.Add(Partida, DGVSugeridoCompra.Rows(Fila).Cells("NOPEDIDO").Value, DGVSugeridoCompra.Rows(Fila).Cells("TIPOMATERIAL").Value, DGVSugeridoCompra.Rows(Fila).Cells("CVEMATERIAL").Value, DGVSugeridoCompra.Rows(Fila).Cells("DESCRIPCIONMATERIAL").Value, DGVSugeridoCompra.Rows(Fila).Cells("CANTIDADACOMPRAR").Value, DGVSugeridoCompra.Rows(Fila).Cells("UNIDAD").Value, 0, 1, DBNull.Value, DBNull.Value, DGVSugeridoCompra.Rows(Fila).Cells("CANTIDADACOMPRAR").Value, DGVSugeridoCompra.Rows(Fila).Cells("No_Op").Value, DGVSugeridoCompra.Rows(Fila).Cells("Consecutivo").Value)
                         Partida += 1
                     End If
                 Next

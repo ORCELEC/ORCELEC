@@ -22,33 +22,18 @@ Partial Class SugeridoCompra
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanPrincipal = New DevComponents.DotNetBar.PanelEx()
         Me.PanReservados = New DevComponents.DotNetBar.PanelEx()
         Me.BtnCerrar = New DevComponents.DotNetBar.ButtonX()
         Me.BtnGenerarRemision = New DevComponents.DotNetBar.ButtonX()
         Me.BtnQuitarReservado = New DevComponents.DotNetBar.ButtonX()
         Me.DGVReservados = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.DGVSugeridoCompra = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.Seleccionar = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.NoPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CveMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescripcionMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CantidadAComprar = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Unidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.No_Op = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BtnCrearOC = New DevComponents.DotNetBar.ButtonX()
-        Me.GPBusqueda = New DevComponents.DotNetBar.Controls.GroupPanel()
-        Me.LblCliente = New DevComponents.DotNetBar.LabelX()
-        Me.ListPedido = New System.Windows.Forms.ListBox()
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.ReservadoNoReservado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReservadoNoPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReservadoTipoMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -60,6 +45,22 @@ Partial Class SugeridoCompra
         Me.ReservadoNoDocumento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReservadoCantidadReservada = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ReservadoNoOP = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DGVSugeridoCompra = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.BtnCrearOC = New DevComponents.DotNetBar.ButtonX()
+        Me.GPBusqueda = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.LblCliente = New DevComponents.DotNetBar.LabelX()
+        Me.ListPedido = New System.Windows.Forms.ListBox()
+        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.Seleccionar = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.NoPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CveMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CantidadAComprar = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Unidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.No_Op = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Consecutivo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PanPrincipal.SuspendLayout()
         Me.PanReservados.SuspendLayout()
         CType(Me.DGVReservados, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -157,117 +158,122 @@ Partial Class SugeridoCompra
         Me.DGVReservados.AllowUserToAddRows = False
         Me.DGVReservados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVReservados.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ReservadoNoReservado, Me.ReservadoNoPedido, Me.ReservadoTipoMaterial, Me.ReservadoCveTela, Me.ReservadoCveGrupo, Me.ReservadoCveHabilitacion, Me.ReservadoTipoReservado, Me.ReservadoOrigenNo, Me.ReservadoNoDocumento, Me.ReservadoCantidadReservada, Me.ReservadoNoOP})
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVReservados.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVReservados.DefaultCellStyle = DataGridViewCellStyle1
         Me.DGVReservados.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DGVReservados.Location = New System.Drawing.Point(15, 66)
         Me.DGVReservados.Name = "DGVReservados"
         Me.DGVReservados.Size = New System.Drawing.Size(935, 295)
         Me.DGVReservados.TabIndex = 0
         '
+        'ReservadoNoReservado
+        '
+        Me.ReservadoNoReservado.HeaderText = "No. Reservado"
+        Me.ReservadoNoReservado.Name = "ReservadoNoReservado"
+        Me.ReservadoNoReservado.Visible = False
+        '
+        'ReservadoNoPedido
+        '
+        Me.ReservadoNoPedido.HeaderText = "No. Pedido"
+        Me.ReservadoNoPedido.Name = "ReservadoNoPedido"
+        Me.ReservadoNoPedido.Visible = False
+        '
+        'ReservadoTipoMaterial
+        '
+        Me.ReservadoTipoMaterial.HeaderText = "Tipo Material"
+        Me.ReservadoTipoMaterial.Name = "ReservadoTipoMaterial"
+        Me.ReservadoTipoMaterial.Visible = False
+        '
+        'ReservadoCveTela
+        '
+        Me.ReservadoCveTela.HeaderText = "CveTela"
+        Me.ReservadoCveTela.Name = "ReservadoCveTela"
+        Me.ReservadoCveTela.Visible = False
+        '
+        'ReservadoCveGrupo
+        '
+        Me.ReservadoCveGrupo.HeaderText = "Cve. Grupo"
+        Me.ReservadoCveGrupo.Name = "ReservadoCveGrupo"
+        Me.ReservadoCveGrupo.Visible = False
+        '
+        'ReservadoCveHabilitacion
+        '
+        Me.ReservadoCveHabilitacion.HeaderText = "CveHabilitacion"
+        Me.ReservadoCveHabilitacion.Name = "ReservadoCveHabilitacion"
+        Me.ReservadoCveHabilitacion.Visible = False
+        '
+        'ReservadoTipoReservado
+        '
+        Me.ReservadoTipoReservado.HeaderText = "Tipo Reservado"
+        Me.ReservadoTipoReservado.Name = "ReservadoTipoReservado"
+        '
+        'ReservadoOrigenNo
+        '
+        Me.ReservadoOrigenNo.HeaderText = "No. Documento Origen"
+        Me.ReservadoOrigenNo.Name = "ReservadoOrigenNo"
+        '
+        'ReservadoNoDocumento
+        '
+        Me.ReservadoNoDocumento.HeaderText = "No. Documento"
+        Me.ReservadoNoDocumento.Name = "ReservadoNoDocumento"
+        Me.ReservadoNoDocumento.Visible = False
+        '
+        'ReservadoCantidadReservada
+        '
+        Me.ReservadoCantidadReservada.HeaderText = "Cantidad Reservada"
+        Me.ReservadoCantidadReservada.Name = "ReservadoCantidadReservada"
+        '
+        'ReservadoNoOP
+        '
+        Me.ReservadoNoOP.HeaderText = "No. OP"
+        Me.ReservadoNoOP.Name = "ReservadoNoOP"
+        '
         'DGVSugeridoCompra
         '
         Me.DGVSugeridoCompra.AllowUserToAddRows = False
         Me.DGVSugeridoCompra.AllowUserToDeleteRows = False
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVSugeridoCompra.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVSugeridoCompra.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVSugeridoCompra.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVSugeridoCompra.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DGVSugeridoCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVSugeridoCompra.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Seleccionar, Me.NoPedido, Me.TipoMaterial, Me.CveMaterial, Me.DescripcionMaterial, Me.Stock, Me.CantidadAComprar, Me.Unidad, Me.No_Op})
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVSugeridoCompra.DefaultCellStyle = DataGridViewCellStyle10
+        Me.DGVSugeridoCompra.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Seleccionar, Me.NoPedido, Me.TipoMaterial, Me.CveMaterial, Me.DescripcionMaterial, Me.Stock, Me.CantidadAComprar, Me.Unidad, Me.No_Op, Me.Consecutivo})
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVSugeridoCompra.DefaultCellStyle = DataGridViewCellStyle4
         Me.DGVSugeridoCompra.EnableHeadersVisualStyles = False
         Me.DGVSugeridoCompra.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DGVSugeridoCompra.Location = New System.Drawing.Point(10, 163)
         Me.DGVSugeridoCompra.Name = "DGVSugeridoCompra"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVSugeridoCompra.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGVSugeridoCompra.RowsDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVSugeridoCompra.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGVSugeridoCompra.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.DGVSugeridoCompra.Size = New System.Drawing.Size(968, 483)
         Me.DGVSugeridoCompra.TabIndex = 21
-        '
-        'Seleccionar
-        '
-        Me.Seleccionar.HeaderText = "Seleccionar"
-        Me.Seleccionar.Name = "Seleccionar"
-        Me.Seleccionar.Width = 70
-        '
-        'NoPedido
-        '
-        Me.NoPedido.HeaderText = "No. Pedido"
-        Me.NoPedido.Name = "NoPedido"
-        Me.NoPedido.ReadOnly = True
-        Me.NoPedido.Width = 60
-        '
-        'TipoMaterial
-        '
-        Me.TipoMaterial.HeaderText = "Tipo de Material"
-        Me.TipoMaterial.Name = "TipoMaterial"
-        Me.TipoMaterial.ReadOnly = True
-        Me.TipoMaterial.Width = 70
-        '
-        'CveMaterial
-        '
-        Me.CveMaterial.HeaderText = "Cve. Material"
-        Me.CveMaterial.Name = "CveMaterial"
-        Me.CveMaterial.ReadOnly = True
-        Me.CveMaterial.Width = 70
-        '
-        'DescripcionMaterial
-        '
-        Me.DescripcionMaterial.HeaderText = "Descripción"
-        Me.DescripcionMaterial.Name = "DescripcionMaterial"
-        Me.DescripcionMaterial.ReadOnly = True
-        Me.DescripcionMaterial.Width = 400
-        '
-        'Stock
-        '
-        Me.Stock.HeaderText = "Stock"
-        Me.Stock.Name = "Stock"
-        Me.Stock.ReadOnly = True
-        '
-        'CantidadAComprar
-        '
-        Me.CantidadAComprar.HeaderText = "Cantidad a Comprar"
-        Me.CantidadAComprar.Name = "CantidadAComprar"
-        Me.CantidadAComprar.ReadOnly = True
-        '
-        'Unidad
-        '
-        Me.Unidad.HeaderText = "Unidad"
-        Me.Unidad.Name = "Unidad"
-        Me.Unidad.ReadOnly = True
-        '
-        'No_Op
-        '
-        Me.No_Op.HeaderText = "Orden de Producción"
-        Me.No_Op.Name = "No_Op"
         '
         'BtnCrearOC
         '
@@ -360,67 +366,68 @@ Partial Class SugeridoCompra
         Me.LabelX1.TextLineAlignment = System.Drawing.StringAlignment.Near
         Me.LabelX1.WordWrap = True
         '
-        'ReservadoNoReservado
+        'Seleccionar
         '
-        Me.ReservadoNoReservado.HeaderText = "No. Reservado"
-        Me.ReservadoNoReservado.Name = "ReservadoNoReservado"
-        Me.ReservadoNoReservado.Visible = False
+        Me.Seleccionar.HeaderText = "Seleccionar"
+        Me.Seleccionar.Name = "Seleccionar"
+        Me.Seleccionar.Width = 70
         '
-        'ReservadoNoPedido
+        'NoPedido
         '
-        Me.ReservadoNoPedido.HeaderText = "No. Pedido"
-        Me.ReservadoNoPedido.Name = "ReservadoNoPedido"
-        Me.ReservadoNoPedido.Visible = False
+        Me.NoPedido.HeaderText = "No. Pedido"
+        Me.NoPedido.Name = "NoPedido"
+        Me.NoPedido.ReadOnly = True
+        Me.NoPedido.Width = 60
         '
-        'ReservadoTipoMaterial
+        'TipoMaterial
         '
-        Me.ReservadoTipoMaterial.HeaderText = "Tipo Material"
-        Me.ReservadoTipoMaterial.Name = "ReservadoTipoMaterial"
-        Me.ReservadoTipoMaterial.Visible = False
+        Me.TipoMaterial.HeaderText = "Tipo de Material"
+        Me.TipoMaterial.Name = "TipoMaterial"
+        Me.TipoMaterial.ReadOnly = True
+        Me.TipoMaterial.Width = 70
         '
-        'ReservadoCveTela
+        'CveMaterial
         '
-        Me.ReservadoCveTela.HeaderText = "CveTela"
-        Me.ReservadoCveTela.Name = "ReservadoCveTela"
-        Me.ReservadoCveTela.Visible = False
+        Me.CveMaterial.HeaderText = "Cve. Material"
+        Me.CveMaterial.Name = "CveMaterial"
+        Me.CveMaterial.ReadOnly = True
+        Me.CveMaterial.Width = 70
         '
-        'ReservadoCveGrupo
+        'DescripcionMaterial
         '
-        Me.ReservadoCveGrupo.HeaderText = "Cve. Grupo"
-        Me.ReservadoCveGrupo.Name = "ReservadoCveGrupo"
-        Me.ReservadoCveGrupo.Visible = False
+        Me.DescripcionMaterial.HeaderText = "Descripción"
+        Me.DescripcionMaterial.Name = "DescripcionMaterial"
+        Me.DescripcionMaterial.ReadOnly = True
+        Me.DescripcionMaterial.Width = 400
         '
-        'ReservadoCveHabilitacion
+        'Stock
         '
-        Me.ReservadoCveHabilitacion.HeaderText = "CveHabilitacion"
-        Me.ReservadoCveHabilitacion.Name = "ReservadoCveHabilitacion"
-        Me.ReservadoCveHabilitacion.Visible = False
+        Me.Stock.HeaderText = "Stock"
+        Me.Stock.Name = "Stock"
+        Me.Stock.ReadOnly = True
         '
-        'ReservadoTipoReservado
+        'CantidadAComprar
         '
-        Me.ReservadoTipoReservado.HeaderText = "Tipo Reservado"
-        Me.ReservadoTipoReservado.Name = "ReservadoTipoReservado"
+        Me.CantidadAComprar.HeaderText = "Cantidad a Comprar"
+        Me.CantidadAComprar.Name = "CantidadAComprar"
+        Me.CantidadAComprar.ReadOnly = True
         '
-        'ReservadoOrigenNo
+        'Unidad
         '
-        Me.ReservadoOrigenNo.HeaderText = "No. Documento Origen"
-        Me.ReservadoOrigenNo.Name = "ReservadoOrigenNo"
+        Me.Unidad.HeaderText = "Unidad"
+        Me.Unidad.Name = "Unidad"
+        Me.Unidad.ReadOnly = True
         '
-        'ReservadoNoDocumento
+        'No_Op
         '
-        Me.ReservadoNoDocumento.HeaderText = "No. Documento"
-        Me.ReservadoNoDocumento.Name = "ReservadoNoDocumento"
-        Me.ReservadoNoDocumento.Visible = False
+        Me.No_Op.HeaderText = "Orden de Producción"
+        Me.No_Op.Name = "No_Op"
         '
-        'ReservadoCantidadReservada
+        'Consecutivo
         '
-        Me.ReservadoCantidadReservada.HeaderText = "Cantidad Reservada"
-        Me.ReservadoCantidadReservada.Name = "ReservadoCantidadReservada"
-        '
-        'ReservadoNoOP
-        '
-        Me.ReservadoNoOP.HeaderText = "No. OP"
-        Me.ReservadoNoOP.Name = "ReservadoNoOP"
+        Me.Consecutivo.HeaderText = "Consecutivo"
+        Me.Consecutivo.Name = "Consecutivo"
+        Me.Consecutivo.Visible = False
         '
         'SugeridoCompra
         '
@@ -451,15 +458,6 @@ Partial Class SugeridoCompra
     Friend WithEvents BtnCerrar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LblCliente As DevComponents.DotNetBar.LabelX
     Friend WithEvents BtnGenerarRemision As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents Seleccionar As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents NoPedido As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents TipoMaterial As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CveMaterial As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DescripcionMaterial As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Stock As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CantidadAComprar As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Unidad As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents No_Op As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ReservadoNoReservado As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ReservadoNoPedido As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ReservadoTipoMaterial As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -471,4 +469,14 @@ Partial Class SugeridoCompra
     Friend WithEvents ReservadoNoDocumento As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ReservadoCantidadReservada As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ReservadoNoOP As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Seleccionar As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents NoPedido As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TipoMaterial As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CveMaterial As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DescripcionMaterial As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Stock As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CantidadAComprar As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Unidad As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents No_Op As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Consecutivo As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

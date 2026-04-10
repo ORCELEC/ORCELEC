@@ -40,13 +40,13 @@ Partial Class OrdenCompra
         Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OrdenCompra))
         Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanPrincipal = New DevComponents.DotNetBar.PanelEx()
         Me.PanDetalle = New DevComponents.DotNetBar.PanelEx()
         Me.BtnImprimirOC = New DevComponents.DotNetBar.ButtonX()
@@ -93,19 +93,6 @@ Partial Class OrdenCompra
         Me.BtnEliminarPartida = New DevComponents.DotNetBar.ButtonX()
         Me.BtnAgregarPartida = New DevComponents.DotNetBar.ButtonX()
         Me.DGVOrdenCompraPartidas = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.AltaPartida = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaNoPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaTipoMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaClaveMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaDescripcionMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaCantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaCveUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaFactorUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaPrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaSubtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaCantidadOriginal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AltaNo_OP = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LblCondicionesPago = New DevComponents.DotNetBar.LabelX()
         Me.LblViaEmbarque = New DevComponents.DotNetBar.LabelX()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
@@ -140,6 +127,20 @@ Partial Class OrdenCompra
         Me.MandarAAutorizar = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.BtnImprimir = New DevComponents.DotNetBar.ButtonX()
         Me.BtnMandarAAutorizarMasivo = New DevComponents.DotNetBar.ButtonX()
+        Me.AltaPartida = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaNoPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaTipoMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaClaveMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaDescripcionMaterial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaCantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaCveUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaFactorUnidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaPrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaSubtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaCantidadOriginal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AltaNo_OP = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ConsecutivoSugerido = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PanPrincipal.SuspendLayout()
         Me.PanDetalle.SuspendLayout()
         Me.PanIngresos.SuspendLayout()
@@ -751,7 +752,7 @@ Partial Class OrdenCompra
         DataGridViewCellStyle16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DGVOrdenCompraPartidas.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
         Me.DGVOrdenCompraPartidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVOrdenCompraPartidas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AltaPartida, Me.AltaNoPedido, Me.AltaTipoMaterial, Me.AltaClaveMaterial, Me.AltaDescripcionMaterial, Me.AltaCantidad, Me.AltaUnidad, Me.AltaCveUnidad, Me.AltaFactorUnidad, Me.AltaPrecioUnitario, Me.AltaSubtotal, Me.AltaCantidadOriginal, Me.AltaNo_OP})
+        Me.DGVOrdenCompraPartidas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AltaPartida, Me.AltaNoPedido, Me.AltaTipoMaterial, Me.AltaClaveMaterial, Me.AltaDescripcionMaterial, Me.AltaCantidad, Me.AltaUnidad, Me.AltaCveUnidad, Me.AltaFactorUnidad, Me.AltaPrecioUnitario, Me.AltaSubtotal, Me.AltaCantidadOriginal, Me.AltaNo_OP, Me.ConsecutivoSugerido})
         DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -771,103 +772,6 @@ Partial Class OrdenCompra
         Me.DGVOrdenCompraPartidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DGVOrdenCompraPartidas.Size = New System.Drawing.Size(950, 349)
         Me.DGVOrdenCompraPartidas.TabIndex = 32
-        '
-        'AltaPartida
-        '
-        Me.AltaPartida.HeaderText = "Partida"
-        Me.AltaPartida.Name = "AltaPartida"
-        Me.AltaPartida.ReadOnly = True
-        Me.AltaPartida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaPartida.Width = 60
-        '
-        'AltaNoPedido
-        '
-        Me.AltaNoPedido.HeaderText = "No. Pedido"
-        Me.AltaNoPedido.Name = "AltaNoPedido"
-        Me.AltaNoPedido.ReadOnly = True
-        Me.AltaNoPedido.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaNoPedido.Width = 70
-        '
-        'AltaTipoMaterial
-        '
-        Me.AltaTipoMaterial.HeaderText = "Tipo de Producto"
-        Me.AltaTipoMaterial.Name = "AltaTipoMaterial"
-        Me.AltaTipoMaterial.ReadOnly = True
-        Me.AltaTipoMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaTipoMaterial.Width = 80
-        '
-        'AltaClaveMaterial
-        '
-        Me.AltaClaveMaterial.HeaderText = "Clave de Producto"
-        Me.AltaClaveMaterial.Name = "AltaClaveMaterial"
-        Me.AltaClaveMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'AltaDescripcionMaterial
-        '
-        Me.AltaDescripcionMaterial.HeaderText = "Descripción"
-        Me.AltaDescripcionMaterial.Name = "AltaDescripcionMaterial"
-        Me.AltaDescripcionMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaDescripcionMaterial.Width = 500
-        '
-        'AltaCantidad
-        '
-        Me.AltaCantidad.HeaderText = "Cantidad"
-        Me.AltaCantidad.Name = "AltaCantidad"
-        Me.AltaCantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'AltaUnidad
-        '
-        Me.AltaUnidad.HeaderText = "Unidad"
-        Me.AltaUnidad.Name = "AltaUnidad"
-        Me.AltaUnidad.ReadOnly = True
-        Me.AltaUnidad.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.AltaUnidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'AltaCveUnidad
-        '
-        Me.AltaCveUnidad.HeaderText = "CveUnidad"
-        Me.AltaCveUnidad.Name = "AltaCveUnidad"
-        Me.AltaCveUnidad.ReadOnly = True
-        Me.AltaCveUnidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaCveUnidad.Visible = False
-        '
-        'AltaFactorUnidad
-        '
-        Me.AltaFactorUnidad.HeaderText = "FactorUnidad"
-        Me.AltaFactorUnidad.Name = "AltaFactorUnidad"
-        Me.AltaFactorUnidad.ReadOnly = True
-        Me.AltaFactorUnidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaFactorUnidad.Visible = False
-        '
-        'AltaPrecioUnitario
-        '
-        DataGridViewCellStyle17.Format = "C4"
-        DataGridViewCellStyle17.NullValue = Nothing
-        Me.AltaPrecioUnitario.DefaultCellStyle = DataGridViewCellStyle17
-        Me.AltaPrecioUnitario.HeaderText = "Precio Unitario"
-        Me.AltaPrecioUnitario.Name = "AltaPrecioUnitario"
-        Me.AltaPrecioUnitario.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'AltaSubtotal
-        '
-        Me.AltaSubtotal.HeaderText = "Subtotal"
-        Me.AltaSubtotal.Name = "AltaSubtotal"
-        Me.AltaSubtotal.ReadOnly = True
-        Me.AltaSubtotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'AltaCantidadOriginal
-        '
-        Me.AltaCantidadOriginal.HeaderText = "AltaCantidadOriginal"
-        Me.AltaCantidadOriginal.Name = "AltaCantidadOriginal"
-        Me.AltaCantidadOriginal.ReadOnly = True
-        Me.AltaCantidadOriginal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.AltaCantidadOriginal.Visible = False
-        '
-        'AltaNo_OP
-        '
-        Me.AltaNo_OP.HeaderText = "No. OP"
-        Me.AltaNo_OP.Name = "AltaNo_OP"
-        Me.AltaNo_OP.ReadOnly = True
         '
         'LblCondicionesPago
         '
@@ -1298,6 +1202,110 @@ Partial Class OrdenCompra
         Me.BtnMandarAAutorizarMasivo.TabIndex = 37
         Me.BtnMandarAAutorizarMasivo.Text = "Mandar a autorizar"
         '
+        'AltaPartida
+        '
+        Me.AltaPartida.HeaderText = "Partida"
+        Me.AltaPartida.Name = "AltaPartida"
+        Me.AltaPartida.ReadOnly = True
+        Me.AltaPartida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaPartida.Width = 60
+        '
+        'AltaNoPedido
+        '
+        Me.AltaNoPedido.HeaderText = "No. Pedido"
+        Me.AltaNoPedido.Name = "AltaNoPedido"
+        Me.AltaNoPedido.ReadOnly = True
+        Me.AltaNoPedido.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaNoPedido.Width = 70
+        '
+        'AltaTipoMaterial
+        '
+        Me.AltaTipoMaterial.HeaderText = "Tipo de Producto"
+        Me.AltaTipoMaterial.Name = "AltaTipoMaterial"
+        Me.AltaTipoMaterial.ReadOnly = True
+        Me.AltaTipoMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaTipoMaterial.Width = 80
+        '
+        'AltaClaveMaterial
+        '
+        Me.AltaClaveMaterial.HeaderText = "Clave de Producto"
+        Me.AltaClaveMaterial.Name = "AltaClaveMaterial"
+        Me.AltaClaveMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'AltaDescripcionMaterial
+        '
+        Me.AltaDescripcionMaterial.HeaderText = "Descripción"
+        Me.AltaDescripcionMaterial.Name = "AltaDescripcionMaterial"
+        Me.AltaDescripcionMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaDescripcionMaterial.Width = 500
+        '
+        'AltaCantidad
+        '
+        Me.AltaCantidad.HeaderText = "Cantidad"
+        Me.AltaCantidad.Name = "AltaCantidad"
+        Me.AltaCantidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'AltaUnidad
+        '
+        Me.AltaUnidad.HeaderText = "Unidad"
+        Me.AltaUnidad.Name = "AltaUnidad"
+        Me.AltaUnidad.ReadOnly = True
+        Me.AltaUnidad.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AltaUnidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'AltaCveUnidad
+        '
+        Me.AltaCveUnidad.HeaderText = "CveUnidad"
+        Me.AltaCveUnidad.Name = "AltaCveUnidad"
+        Me.AltaCveUnidad.ReadOnly = True
+        Me.AltaCveUnidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaCveUnidad.Visible = False
+        '
+        'AltaFactorUnidad
+        '
+        Me.AltaFactorUnidad.HeaderText = "FactorUnidad"
+        Me.AltaFactorUnidad.Name = "AltaFactorUnidad"
+        Me.AltaFactorUnidad.ReadOnly = True
+        Me.AltaFactorUnidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaFactorUnidad.Visible = False
+        '
+        'AltaPrecioUnitario
+        '
+        DataGridViewCellStyle17.Format = "C4"
+        DataGridViewCellStyle17.NullValue = Nothing
+        Me.AltaPrecioUnitario.DefaultCellStyle = DataGridViewCellStyle17
+        Me.AltaPrecioUnitario.HeaderText = "Precio Unitario"
+        Me.AltaPrecioUnitario.Name = "AltaPrecioUnitario"
+        Me.AltaPrecioUnitario.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'AltaSubtotal
+        '
+        Me.AltaSubtotal.HeaderText = "Subtotal"
+        Me.AltaSubtotal.Name = "AltaSubtotal"
+        Me.AltaSubtotal.ReadOnly = True
+        Me.AltaSubtotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'AltaCantidadOriginal
+        '
+        Me.AltaCantidadOriginal.HeaderText = "AltaCantidadOriginal"
+        Me.AltaCantidadOriginal.Name = "AltaCantidadOriginal"
+        Me.AltaCantidadOriginal.ReadOnly = True
+        Me.AltaCantidadOriginal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.AltaCantidadOriginal.Visible = False
+        '
+        'AltaNo_OP
+        '
+        Me.AltaNo_OP.HeaderText = "No. OP"
+        Me.AltaNo_OP.Name = "AltaNo_OP"
+        Me.AltaNo_OP.ReadOnly = True
+        '
+        'ConsecutivoSugerido
+        '
+        Me.ConsecutivoSugerido.HeaderText = "ConsecutivoSugerido"
+        Me.ConsecutivoSugerido.Name = "ConsecutivoSugerido"
+        Me.ConsecutivoSugerido.ReadOnly = True
+        Me.ConsecutivoSugerido.Visible = False
+        '
         'OrdenCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1416,4 +1424,5 @@ Partial Class OrdenCompra
     Friend WithEvents AltaSubtotal As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents AltaCantidadOriginal As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents AltaNo_OP As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ConsecutivoSugerido As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
