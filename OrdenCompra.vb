@@ -485,7 +485,15 @@ Public Class OrdenCompra
 
                 BDComando.Parameters.Clear()
                 BDComando.CommandType = CommandType.Text
-                BDComando.CommandText = "SELECT OC.* FROM ORDEN_COMPRA OC WHERE OC.EMPRESA = " & ConectaBD.Cve_Empresa & " AND OC.NO_ORDENCOMPRA = " & DGVOrdenCompra.CurrentRow.Cells("NOORDENCOMPRA").Value
+                BDComando.CommandText = "SELECT OC.*, ISNULL(SCOC.Consecutivo, 0) AS ConsecutivoSugerido " &
+                                        "FROM ORDEN_COMPRA OC " &
+                                        "LEFT JOIN SUGERIDO_COMPRA_ORDEN_COMPRA SCOC " &
+                                        "       ON SCOC.Empresa = OC.EMPRESA " &
+                                        "      AND SCOC.No_Pedido = OC.NO_PEDIDO " &
+                                        "      AND SCOC.No_OrdenCompra = OC.NO_ORDENCOMPRA " &
+                                        "      AND SCOC.Partida_OrdenCompra = OC.PARTIDA " &
+                                        "WHERE OC.EMPRESA = " & ConectaBD.Cve_Empresa &
+                                        "  AND OC.NO_ORDENCOMPRA = " & DGVOrdenCompra.CurrentRow.Cells("NOORDENCOMPRA").Value
 
                 Try
                     BDComando.Connection.Open()
@@ -498,7 +506,7 @@ Public Class OrdenCompra
                         LblViaEmbarque.Text = "Vía de Embarque: " & BDReader("PROVEEDORVIAEMBARQUE")
                         LblCondicionesPago.Text = "Condiciones de Pago: " & BDReader("PROVEEDORCONDICIONESPAGO")
                         CmbAltaLugarEntrega.Text = BDReader("LUGARENTREGANOMBRE") & " " & Format(BDReader("CVE_LUGARENTREGA"), "0000")
-                        DGVOrdenCompraPartidas.Rows.Add(BDReader("PARTIDA"), BDReader("NO_PEDIDO"), BDReader("TIPOMATERIAL"), BDReader("CVE_MATERIAL"), BDReader("DESCRIPCIONMATERIAL"), BDReader("CANTIDAD"), BDReader("DESCRIPCIONUNIDAD"), BDReader("CVE_UNIDAD"), BDReader("FACTOR"), BDReader("PRECIOUNITARIO"), Format(CDbl(BDReader("CANTIDAD")) * CDbl(BDReader("PRECIOUNITARIO")), "$ #,###,##0.0000"), BDReader("CANTIDADORIGINAL"), BDReader("No_OP"))
+                        DGVOrdenCompraPartidas.Rows.Add(BDReader("PARTIDA"), BDReader("NO_PEDIDO"), BDReader("TIPOMATERIAL"), BDReader("CVE_MATERIAL"), BDReader("DESCRIPCIONMATERIAL"), BDReader("CANTIDAD"), BDReader("DESCRIPCIONUNIDAD"), BDReader("CVE_UNIDAD"), BDReader("FACTOR"), BDReader("PRECIOUNITARIO"), Format(CDbl(BDReader("CANTIDAD")) * CDbl(BDReader("PRECIOUNITARIO")), "$ #,###,##0.0000"), BDReader("CANTIDADORIGINAL"), BDReader("No_OP"), If(IsDBNull(BDReader("ConsecutivoSugerido")), 0, BDReader("ConsecutivoSugerido")))
                         DGVOrdenCompraPartidas.Rows(DGVOrdenCompraPartidas.Rows.Count - 1).Height = 50
                         Subtotal = CDbl(TxtAltaSubtotal.Text) + (CDbl(BDReader("CANTIDAD")) * CDbl(BDReader("PRECIOUNITARIO")))
                         IVA = CDbl(TxtAltaIVA.Text) + (CDbl(BDReader("CANTIDAD")) * CDbl(BDReader("PRECIOUNITARIO")) * 0.16)
@@ -509,7 +517,7 @@ Public Class OrdenCompra
                             TxtCliente.Clear()
                         End If
                         While BDReader.Read
-                            DGVOrdenCompraPartidas.Rows.Add(BDReader("PARTIDA"), BDReader("NO_PEDIDO"), BDReader("TIPOMATERIAL"), BDReader("CVE_MATERIAL"), BDReader("DESCRIPCIONMATERIAL"), BDReader("CANTIDAD"), BDReader("DESCRIPCIONUNIDAD"), BDReader("CVE_UNIDAD"), BDReader("FACTOR"), BDReader("PRECIOUNITARIO"), Format(CDbl(BDReader("CANTIDAD")) * CDbl(BDReader("PRECIOUNITARIO")), "$ #,###,##0.0000"), BDReader("CANTIDADORIGINAL"), BDReader("No_OP"))
+                            DGVOrdenCompraPartidas.Rows.Add(BDReader("PARTIDA"), BDReader("NO_PEDIDO"), BDReader("TIPOMATERIAL"), BDReader("CVE_MATERIAL"), BDReader("DESCRIPCIONMATERIAL"), BDReader("CANTIDAD"), BDReader("DESCRIPCIONUNIDAD"), BDReader("CVE_UNIDAD"), BDReader("FACTOR"), BDReader("PRECIOUNITARIO"), Format(CDbl(BDReader("CANTIDAD")) * CDbl(BDReader("PRECIOUNITARIO")), "$ #,###,##0.0000"), BDReader("CANTIDADORIGINAL"), BDReader("No_OP"), If(IsDBNull(BDReader("ConsecutivoSugerido")), 0, BDReader("ConsecutivoSugerido")))
                             DGVOrdenCompraPartidas.Rows(DGVOrdenCompraPartidas.Rows.Count - 1).Height = 50
                             Subtotal += (BDReader("CANTIDAD") * BDReader("PRECIOUNITARIO"))
                             IVA += (BDReader("CANTIDAD") * BDReader("PRECIOUNITARIO") * 0.16)
