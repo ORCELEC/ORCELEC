@@ -301,6 +301,38 @@ Public Class OrdenCompra
         Return False
     End Function
 
+    Private Function ObtenerPedidosParaValidarEnCancelacion() As HashSet(Of Int64)
+        Dim pedidos As New HashSet(Of Int64)
+        Dim hayPartidas As Boolean = False
+
+        For Each fila As DataGridViewRow In DGVOrdenCompraPartidas.Rows
+            If fila.IsNewRow Then
+                Continue For
+            End If
+
+            hayPartidas = True
+
+            Dim tipoMaterial As String = If(fila.Cells("AltaTipoMaterial").Value, "").ToString().Trim().ToUpper()
+            If tipoMaterial <> "P" Then
+                Return New HashSet(Of Int64)
+            End If
+
+            Dim noPedido As Int64 = 0
+            Int64.TryParse(If(fila.Cells("AltaNoPedido").Value, "0").ToString(), noPedido)
+            If noPedido <= 0 Then
+                Return New HashSet(Of Int64)
+            End If
+
+            pedidos.Add(noPedido)
+        Next
+
+        If hayPartidas = False Then
+            Return New HashSet(Of Int64)
+        End If
+
+        Return pedidos
+    End Function
+
     Private Sub ConfigurarColumnasEdicionPartidas(ByVal soloColumnasPermitidas As Boolean)
         If DGVOrdenCompraPartidas.Columns.Count = 0 Then
             Exit Sub
@@ -2059,6 +2091,12 @@ CONTINUA:
                         BDComando.Connection.Close()
                     End If
                 End Try
+
+                Dim pedidosParaValidar As HashSet(Of Int64) = ObtenerPedidosParaValidarEnCancelacion()
+                If pedidosParaValidar.Count > 0 Then
+                    ActualizarCalculoOPSegunPendientes(pedidosParaValidar)
+                End If
+
                 MessageBox.Show("La Orden de Compra No. " & TxtAltaNoOrdenCompra.Text & ", se canceló correctamente.", "Cancelación de Orden de Compra", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 LimpiaControles()
                 LlenaProveedorPanPrincipal()
