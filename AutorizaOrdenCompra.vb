@@ -138,9 +138,9 @@ Public Class AutorizaOrdenCompra
             DGVOrdenCompraPartidas.Columns("NO_PEDIDO").HeaderText = "No. Pedido"
             DGVOrdenCompraPartidas.Columns("NO_PEDIDO").Width = 50
             DGVOrdenCompraPartidas.Columns("TIPOMATERIAL").Visible = False
-            DGVOrdenCompraPartidas.Columns("CVE_MATERIAL").HeaderText = "Cve. Tela o Habilitación"
+            DGVOrdenCompraPartidas.Columns("CVE_MATERIAL").HeaderText = "Cve. Tela, Habilitación o Prenda"
             DGVOrdenCompraPartidas.Columns("CVE_MATERIAL").Width = 100
-            DGVOrdenCompraPartidas.Columns("DESCRIPCIONMATERIAL").HeaderText = "Descripción de Tela o Habilitación"
+            DGVOrdenCompraPartidas.Columns("DESCRIPCIONMATERIAL").HeaderText = "Descripción de Tela, Habilitación o Prenda"
             DGVOrdenCompraPartidas.Columns("DESCRIPCIONMATERIAL").Width = 300
             DGVOrdenCompraPartidas.Columns("CVE_UNIDAD").Visible = False
             DGVOrdenCompraPartidas.Columns("DESCRIPCIONUNIDAD").HeaderText = "Unidad"
@@ -395,6 +395,7 @@ Public Class AutorizaOrdenCompra
 
                     ' Agregar los destinatarios (separados por coma)
                     Dim destinatarios As String() = {"ch@uet.mx", "amm@uet.mx", "dpa@uet.mx", "lmc@uet.mx"}
+                    'Dim destinatarios As String() = {"ch@uet.mx", "amm@uet.mx"}
                     For Each destinatario As String In destinatarios
                         mensaje.To.Add(MailboxAddress.Parse(destinatario))
                     Next
