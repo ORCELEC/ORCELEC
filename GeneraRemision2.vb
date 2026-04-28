@@ -75,12 +75,8 @@ Public Class GeneraRemision2
         RBGB4Partida.Checked = False
         RBGB4PartidaLibre.Checked = False
         GB1.Text = ""
-        GB2.Text = ""
-        GB3.Text = ""
         GB4.Text = ""
         GB1.Enabled = False
-        GB2.Enabled = False
-        GB3.Enabled = False
         GB4.Enabled = False
         CargaManualCantidades = False
         DGPrevioRemision.DataSource = Nothing
@@ -92,8 +88,6 @@ Public Class GeneraRemision2
 
     Private Sub HabilitarPrimerPaso()
         GB1.Enabled = True
-        GB2.Enabled = True
-        GB3.Enabled = True
         ActualizarSeleccionPrimerPaso()
     End Sub
 

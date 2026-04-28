@@ -35,6 +35,21 @@ Partial Class FrmPrincipal
         Me.RibbonTabItem1 = New DevComponents.DotNetBar.RibbonTabItem()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonControl1 = New DevComponents.DotNetBar.RibbonControl()
+        Me.RibbonPanel12 = New DevComponents.DotNetBar.RibbonPanel()
+        Me.RibbonBar12 = New DevComponents.DotNetBar.RibbonBar()
+        Me.ButtonItem170 = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmCatProv = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmCatLugEnt = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmCatHabili = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmOrdComUIC = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmSugCom = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmRecOrdCom = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmUnidConv = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmPedidoTipoPrendaCompra = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem175 = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmEntreOrdCom = New DevComponents.DotNetBar.ButtonItem()
+        Me.ButtonItem176 = New DevComponents.DotNetBar.ButtonItem()
+        Me.BtmCheStoOCRes = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonPanel11 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar11 = New DevComponents.DotNetBar.RibbonBar()
         Me.ButtonItem134 = New DevComponents.DotNetBar.ButtonItem()
@@ -93,21 +108,6 @@ Partial Class FrmPrincipal
         Me.BtmConOrdCom = New DevComponents.DotNetBar.ButtonItem()
         Me.BtmConFacReci = New DevComponents.DotNetBar.ButtonItem()
         Me.BtmFacElec = New DevComponents.DotNetBar.ButtonItem()
-        Me.RibbonPanel12 = New DevComponents.DotNetBar.RibbonPanel()
-        Me.RibbonBar12 = New DevComponents.DotNetBar.RibbonBar()
-        Me.ButtonItem170 = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmCatProv = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmCatLugEnt = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmCatHabili = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmOrdComUIC = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmSugCom = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmRecOrdCom = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmUnidConv = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmPedidoTipoPrendaCompra = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem175 = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmEntreOrdCom = New DevComponents.DotNetBar.ButtonItem()
-        Me.ButtonItem176 = New DevComponents.DotNetBar.ButtonItem()
-        Me.BtmCheStoOCRes = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonPanel6 = New DevComponents.DotNetBar.RibbonPanel()
         Me.RibbonBar7 = New DevComponents.DotNetBar.RibbonBar()
         Me.ButtonItem96 = New DevComponents.DotNetBar.ButtonItem()
@@ -276,11 +276,11 @@ Partial Class FrmPrincipal
         CType(Me.SBFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SBHora, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.RibbonControl1.SuspendLayout()
+        Me.RibbonPanel12.SuspendLayout()
         Me.RibbonPanel11.SuspendLayout()
         Me.RibbonPanel13.SuspendLayout()
         Me.RibbonPanel10.SuspendLayout()
         Me.RibbonPanel9.SuspendLayout()
-        Me.RibbonPanel12.SuspendLayout()
         Me.RibbonPanel6.SuspendLayout()
         Me.RibbonPanel5.SuspendLayout()
         Me.RibbonPanel4.SuspendLayout()
@@ -351,12 +351,12 @@ Partial Class FrmPrincipal
         Me.RibbonControl1.BackgroundStyle.Class = "RibbonGalleryContainer"
         Me.RibbonControl1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonControl1.CaptionVisible = True
+        Me.RibbonControl1.Controls.Add(Me.RibbonPanel6)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel12)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel11)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel13)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel10)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel9)
-        Me.RibbonControl1.Controls.Add(Me.RibbonPanel6)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel5)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel4)
         Me.RibbonControl1.Controls.Add(Me.RibbonPanel2)
@@ -395,6 +395,137 @@ Partial Class FrmPrincipal
         Me.RibbonControl1.TabGroupHeight = 1
         Me.RibbonControl1.TabIndex = 14
         Me.RibbonControl1.TitleText = "ORCELEC (Organizador Corporativo Electronico)"
+        '
+        'RibbonPanel12
+        '
+        Me.RibbonPanel12.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.RibbonPanel12.Controls.Add(Me.RibbonBar12)
+        Me.RibbonPanel12.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RibbonPanel12.Location = New System.Drawing.Point(0, 43)
+        Me.RibbonPanel12.Margin = New System.Windows.Forms.Padding(2)
+        Me.RibbonPanel12.Name = "RibbonPanel12"
+        Me.RibbonPanel12.Padding = New System.Windows.Forms.Padding(2, 0, 2, 2)
+        Me.RibbonPanel12.Size = New System.Drawing.Size(795, 56)
+        '
+        '
+        '
+        Me.RibbonPanel12.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonPanel12.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonPanel12.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonPanel12.TabIndex = 12
+        Me.RibbonPanel12.Visible = False
+        '
+        'RibbonBar12
+        '
+        Me.RibbonBar12.AutoOverflowEnabled = True
+        '
+        '
+        '
+        Me.RibbonBar12.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.RibbonBar12.ContainerControlProcessDialogKey = True
+        Me.RibbonBar12.Dock = System.Windows.Forms.DockStyle.Left
+        Me.RibbonBar12.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem170, Me.ButtonItem175, Me.ButtonItem176})
+        Me.RibbonBar12.Location = New System.Drawing.Point(2, 0)
+        Me.RibbonBar12.Margin = New System.Windows.Forms.Padding(2)
+        Me.RibbonBar12.Name = "RibbonBar12"
+        Me.RibbonBar12.Size = New System.Drawing.Size(826, 54)
+        Me.RibbonBar12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.RibbonBar12.TabIndex = 0
+        Me.RibbonBar12.Text = "Modulo de Compras"
+        '
+        '
+        '
+        Me.RibbonBar12.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.RibbonBar12.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'ButtonItem170
+        '
+        Me.ButtonItem170.AutoExpandOnClick = True
+        Me.ButtonItem170.Name = "ButtonItem170"
+        Me.ButtonItem170.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmCatProv, Me.BtmCatLugEnt, Me.BtmCatHabili, Me.BtmOrdComUIC, Me.BtmSugCom, Me.BtmRecOrdCom, Me.BtmUnidConv, Me.BtmPedidoTipoPrendaCompra})
+        Me.ButtonItem170.SubItemsExpandWidth = 14
+        Me.ButtonItem170.Text = "Compras"
+        '
+        'BtmCatProv
+        '
+        Me.BtmCatProv.Name = "BtmCatProv"
+        Me.BtmCatProv.Text = "Catálogo de Proveedores"
+        '
+        'BtmCatLugEnt
+        '
+        Me.BtmCatLugEnt.Name = "BtmCatLugEnt"
+        Me.BtmCatLugEnt.Text = "Catálogo de Lugar de Entrega"
+        '
+        'BtmCatHabili
+        '
+        Me.BtmCatHabili.Name = "BtmCatHabili"
+        Me.BtmCatHabili.Text = "Catálogo de Habilitaciones"
+        '
+        'BtmOrdComUIC
+        '
+        Me.BtmOrdComUIC.Name = "BtmOrdComUIC"
+        Me.BtmOrdComUIC.Text = "Ordenes de Compra UIC-F-07-17"
+        '
+        'BtmSugCom
+        '
+        Me.BtmSugCom.Name = "BtmSugCom"
+        Me.BtmSugCom.Text = "Sugerido Compra"
+        '
+        'BtmRecOrdCom
+        '
+        Me.BtmRecOrdCom.Name = "BtmRecOrdCom"
+        Me.BtmRecOrdCom.Text = "Recepción de Ordenes de Compra"
+        '
+        'BtmUnidConv
+        '
+        Me.BtmUnidConv.Name = "BtmUnidConv"
+        Me.BtmUnidConv.Text = "Unidades de Conversión"
+        '
+        'BtmPedidoTipoPrendaCompra
+        '
+        Me.BtmPedidoTipoPrendaCompra.Name = "BtmPedidoTipoPrendaCompra"
+        Me.BtmPedidoTipoPrendaCompra.Text = "Pedido de Compra"
+        '
+        'ButtonItem175
+        '
+        Me.ButtonItem175.AutoExpandOnClick = True
+        Me.ButtonItem175.Name = "ButtonItem175"
+        Me.ButtonItem175.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmEntreOrdCom})
+        Me.ButtonItem175.SubItemsExpandWidth = 14
+        Me.ButtonItem175.Text = "Consultas"
+        Me.ButtonItem175.Visible = False
+        '
+        'BtmEntreOrdCom
+        '
+        Me.BtmEntreOrdCom.Name = "BtmEntreOrdCom"
+        Me.BtmEntreOrdCom.Text = "Entrega de Ordenes de Compra"
+        '
+        'ButtonItem176
+        '
+        Me.ButtonItem176.AutoExpandOnClick = True
+        Me.ButtonItem176.Name = "ButtonItem176"
+        Me.ButtonItem176.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmCheStoOCRes})
+        Me.ButtonItem176.SubItemsExpandWidth = 14
+        Me.ButtonItem176.Text = "Procesos"
+        Me.ButtonItem176.Visible = False
+        '
+        'BtmCheStoOCRes
+        '
+        Me.BtmCheStoOCRes.Name = "BtmCheStoOCRes"
+        Me.BtmCheStoOCRes.Text = "Checar Stock de O.C. Reservados"
         '
         'RibbonPanel11
         '
@@ -899,136 +1030,6 @@ Partial Class FrmPrincipal
         Me.BtmFacElec.Text = "Facturación Electronica"
         Me.BtmFacElec.Visible = False
         '
-        'RibbonPanel12
-        '
-        Me.RibbonPanel12.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.RibbonPanel12.Controls.Add(Me.RibbonBar12)
-        Me.RibbonPanel12.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RibbonPanel12.Location = New System.Drawing.Point(0, 43)
-        Me.RibbonPanel12.Margin = New System.Windows.Forms.Padding(2)
-        Me.RibbonPanel12.Name = "RibbonPanel12"
-        Me.RibbonPanel12.Padding = New System.Windows.Forms.Padding(2, 0, 2, 2)
-        Me.RibbonPanel12.Size = New System.Drawing.Size(795, 56)
-        '
-        '
-        '
-        Me.RibbonPanel12.Style.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonPanel12.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonPanel12.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonPanel12.TabIndex = 12
-        '
-        'RibbonBar12
-        '
-        Me.RibbonBar12.AutoOverflowEnabled = True
-        '
-        '
-        '
-        Me.RibbonBar12.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonBar12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.RibbonBar12.ContainerControlProcessDialogKey = True
-        Me.RibbonBar12.Dock = System.Windows.Forms.DockStyle.Left
-        Me.RibbonBar12.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ButtonItem170, Me.ButtonItem175, Me.ButtonItem176})
-        Me.RibbonBar12.Location = New System.Drawing.Point(2, 0)
-        Me.RibbonBar12.Margin = New System.Windows.Forms.Padding(2)
-        Me.RibbonBar12.Name = "RibbonBar12"
-        Me.RibbonBar12.Size = New System.Drawing.Size(826, 54)
-        Me.RibbonBar12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.RibbonBar12.TabIndex = 0
-        Me.RibbonBar12.Text = "Modulo de Compras"
-        '
-        '
-        '
-        Me.RibbonBar12.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.RibbonBar12.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        'ButtonItem170
-        '
-        Me.ButtonItem170.AutoExpandOnClick = True
-        Me.ButtonItem170.Name = "ButtonItem170"
-        Me.ButtonItem170.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmCatProv, Me.BtmCatLugEnt, Me.BtmCatHabili, Me.BtmOrdComUIC, Me.BtmSugCom, Me.BtmRecOrdCom, Me.BtmUnidConv, Me.BtmPedidoTipoPrendaCompra})
-        Me.ButtonItem170.SubItemsExpandWidth = 14
-        Me.ButtonItem170.Text = "Compras"
-        '
-        'BtmCatProv
-        '
-        Me.BtmCatProv.Name = "BtmCatProv"
-        Me.BtmCatProv.Text = "Catálogo de Proveedores"
-        '
-        'BtmCatLugEnt
-        '
-        Me.BtmCatLugEnt.Name = "BtmCatLugEnt"
-        Me.BtmCatLugEnt.Text = "Catálogo de Lugar de Entrega"
-        '
-        'BtmCatHabili
-        '
-        Me.BtmCatHabili.Name = "BtmCatHabili"
-        Me.BtmCatHabili.Text = "Catálogo de Habilitaciones"
-        '
-        'BtmOrdComUIC
-        '
-        Me.BtmOrdComUIC.Name = "BtmOrdComUIC"
-        Me.BtmOrdComUIC.Text = "Ordenes de Compra UIC-F-07-17"
-        '
-        'BtmSugCom
-        '
-        Me.BtmSugCom.Name = "BtmSugCom"
-        Me.BtmSugCom.Text = "Sugerido Compra"
-        '
-        'BtmRecOrdCom
-        '
-        Me.BtmRecOrdCom.Name = "BtmRecOrdCom"
-        Me.BtmRecOrdCom.Text = "Recepción de Ordenes de Compra"
-        '
-        'BtmUnidConv
-        '
-        Me.BtmUnidConv.Name = "BtmUnidConv"
-        Me.BtmUnidConv.Text = "Unidades de Conversión"
-        '
-        'BtmPedidoTipoPrendaCompra
-        '
-        Me.BtmPedidoTipoPrendaCompra.Name = "BtmPedidoTipoPrendaCompra"
-        Me.BtmPedidoTipoPrendaCompra.Text = "Pedido de Compra"
-        '
-        'ButtonItem175
-        '
-        Me.ButtonItem175.AutoExpandOnClick = True
-        Me.ButtonItem175.Name = "ButtonItem175"
-        Me.ButtonItem175.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmEntreOrdCom})
-        Me.ButtonItem175.SubItemsExpandWidth = 14
-        Me.ButtonItem175.Text = "Consultas"
-        Me.ButtonItem175.Visible = False
-        '
-        'BtmEntreOrdCom
-        '
-        Me.BtmEntreOrdCom.Name = "BtmEntreOrdCom"
-        Me.BtmEntreOrdCom.Text = "Entrega de Ordenes de Compra"
-        '
-        'ButtonItem176
-        '
-        Me.ButtonItem176.AutoExpandOnClick = True
-        Me.ButtonItem176.Name = "ButtonItem176"
-        Me.ButtonItem176.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BtmCheStoOCRes})
-        Me.ButtonItem176.SubItemsExpandWidth = 14
-        Me.ButtonItem176.Text = "Procesos"
-        Me.ButtonItem176.Visible = False
-        '
-        'BtmCheStoOCRes
-        '
-        Me.BtmCheStoOCRes.Name = "BtmCheStoOCRes"
-        Me.BtmCheStoOCRes.Text = "Checar Stock de O.C. Reservados"
-        '
         'RibbonPanel6
         '
         Me.RibbonPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -1052,7 +1053,6 @@ Partial Class FrmPrincipal
         '
         Me.RibbonPanel6.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.RibbonPanel6.TabIndex = 6
-        Me.RibbonPanel6.Visible = False
         '
         'RibbonBar7
         '
@@ -2321,6 +2321,7 @@ Partial Class FrmPrincipal
         '
         'FacturaBar
         '
+        Me.FacturaBar.Checked = True
         Me.FacturaBar.Name = "FacturaBar"
         Me.FacturaBar.Panel = Me.RibbonPanel6
         Me.FacturaBar.Text = "Facturación"
@@ -2359,7 +2360,6 @@ Partial Class FrmPrincipal
         '
         'ComprasBar
         '
-        Me.ComprasBar.Checked = True
         Me.ComprasBar.Name = "ComprasBar"
         Me.ComprasBar.Panel = Me.RibbonPanel12
         Me.ComprasBar.Text = "Compras"
@@ -2399,11 +2399,11 @@ Partial Class FrmPrincipal
         CType(Me.SBHora, System.ComponentModel.ISupportInitialize).EndInit()
         Me.RibbonControl1.ResumeLayout(False)
         Me.RibbonControl1.PerformLayout()
+        Me.RibbonPanel12.ResumeLayout(False)
         Me.RibbonPanel11.ResumeLayout(False)
         Me.RibbonPanel13.ResumeLayout(False)
         Me.RibbonPanel10.ResumeLayout(False)
         Me.RibbonPanel9.ResumeLayout(False)
-        Me.RibbonPanel12.ResumeLayout(False)
         Me.RibbonPanel6.ResumeLayout(False)
         Me.RibbonPanel5.ResumeLayout(False)
         Me.RibbonPanel4.ResumeLayout(False)

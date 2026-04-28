@@ -798,7 +798,7 @@ Public Class GeneraFactura
                             DGPrevioFactura.CancelEdit()
                         End If
                     End If
-                ElseIf e.ColumnIndex = 5 Then ''PRECIO UNITARIO
+                ElseIf RBPartidaPorTalla.Checked And e.ColumnIndex = 5 Then ''PRECIO UNITARIO
                     If e.FormattedValue.ToString() <> "" Then
                         Dim valor As Decimal
                         If Not Decimal.TryParse(e.FormattedValue.ToString(), valor) Then

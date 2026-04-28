@@ -426,7 +426,6 @@ Public Class Control_Telas_Habilitaciones
                         DateTime.TryParse(fila("FechaProgramaDeFinalizacionOP").ToString(), FechaProgramaDeFinalizacionOPAnt)
                         Int64.TryParse(fila("CantidadPrendasOP").ToString(), CantidadPrendasOPAnt)
                         Double.TryParse(fila("ConsumoMaterialOP").ToString, ConsumoMaterialOPAnt)
-                        fila("No_OP") = DBNull.Value
                         fila("Cve_Maquilador") = DBNull.Value
                         fila("Nom_Maquilador") = DBNull.Value
                         fila("FechaProgramaDeFinalizacionOP") = DBNull.Value
