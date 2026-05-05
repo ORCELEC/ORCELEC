@@ -279,6 +279,117 @@ Public Class GeneraRemision2
         ActualizarSeleccionPrimerPaso()
     End Sub
 
+    Private Sub RBPartidaPorTalla_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RBPartidaPorTalla.CheckedChanged
+        If RBGB1SI.Checked AndAlso RBPartidaPorTalla.Checked Then
+            CargarPrevioRemisionPartidaPorTalla()
+        End If
+    End Sub
+
+    Private Sub CargarPrevioRemisionPartidaPorTalla()
+        Dim consulta As String = "SELECT " & _
+                                "PIT.LugarDeEntrega, PIT.NombreLugarDeEntrega, PIT.Partida, " & _
+                                "ISNULL(TG.Partida, 0) AS PartidaOrden, " & _
+                                "PIT.Cve_Prenda, PIT.DescripcionPrenda, PIT.ObservacionesPartidaFacturacion, PIT.Talla, " & _
+                                "(PIT.Cantidad - ISNULL(RM.CantidadRemisionada, 0) - ISNULL(FC.CantidadFacturada, 0)) AS Cantidad, " & _
+                                "PIT.PrecioUnitario " & _
+                                "FROM PEDIDO_INTERNO_TALLAS PIT " & _
+                                "LEFT JOIN TALLAS_GENERALES TG ON PIT.Talla = TG.Talla " & _
+                                "LEFT JOIN (" & _
+                                "   SELECT Empresa, No_Pedido, Cve_Prenda, LugarDeEntrega, Prioridad, Talla, SUM(Cantidad) AS CantidadRemisionada " & _
+                                "   FROM PEDIDO_INTERNO_REMISION " & _
+                                "   WHERE RemisionEstatus = 'AUTORIZADA' " & _
+                                "   GROUP BY Empresa, No_Pedido, Cve_Prenda, LugarDeEntrega, Prioridad, Talla" & _
+                                ") RM ON PIT.Empresa = RM.Empresa AND PIT.No_Pedido = RM.No_Pedido AND PIT.Cve_Prenda = RM.Cve_Prenda " & _
+                                "   AND PIT.LugarDeEntrega = RM.LugarDeEntrega AND PIT.Prioridad = RM.Prioridad AND PIT.Talla = RM.Talla " & _
+                                "LEFT JOIN (" & _
+                                "   SELECT Empresa, No_Pedido, Cve_Prenda, LugarDeEntrega, Prioridad, Talla, SUM(Cantidad) AS CantidadFacturada " & _
+                                "   FROM PEDIDO_INTERNO_FACTURA " & _
+                                "   WHERE FacturaEstatus = 'AUTORIZADA' " & _
+                                "   GROUP BY Empresa, No_Pedido, Cve_Prenda, LugarDeEntrega, Prioridad, Talla" & _
+                                ") FC ON PIT.Empresa = FC.Empresa AND PIT.No_Pedido = FC.No_Pedido AND PIT.Cve_Prenda = FC.Cve_Prenda " & _
+                                "   AND PIT.LugarDeEntrega = FC.LugarDeEntrega AND PIT.Prioridad = FC.Prioridad AND PIT.Talla = FC.Talla " & _
+                                "WHERE PIT.Empresa = @Empresa AND PIT.No_Pedido = @NoPedido " & _
+                                "AND (PIT.Cantidad - ISNULL(RM.CantidadRemisionada, 0) - ISNULL(FC.CantidadFacturada, 0)) > 0 " & _
+                                "ORDER BY PIT.LugarDeEntrega, PIT.Partida, ISNULL(TG.Partida, 0)"
+
+        Dim dtRemision As New DataTable
+        Try
+            Using comando As New SqlCommand(consulta, ConectaBD.BDConexion)
+                comando.Parameters.Add("@Empresa", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
+                comando.Parameters.Add("@NoPedido", SqlDbType.BigInt).Value = Val(TxtNoPedido.Text)
+
+                Using adaptador As New SqlDataAdapter(comando)
+                    adaptador.Fill(dtRemision)
+                End Using
+            End Using
+
+            DGPrevioRemision.DataSource = dtRemision
+            ConfigurarColumnasPrevioRemision()
+            BtnGuardar.Enabled = dtRemision.Rows.Count > 0
+        Catch ex As Exception
+            MessageBox.Show("Se genero un error al cargar el previo de remisión por talla, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Pedido Interno a remisionar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End Try
+    End Sub
+
+    Private Sub ConfigurarColumnasPrevioRemision()
+        If DGPrevioRemision.Columns.Contains("PartidaOrden") Then
+            DGPrevioRemision.Columns("PartidaOrden").Visible = False
+        End If
+
+        If DGPrevioRemision.Columns.Contains("CantidadARemisionar") = False Then
+            Dim colCantidad As New DataGridViewTextBoxColumn
+            colCantidad.Name = "CantidadARemisionar"
+            colCantidad.HeaderText = "CantidadARemisionar"
+            DGPrevioRemision.Columns.Insert(DGPrevioRemision.Columns("PrecioUnitario").Index, colCantidad)
+        End If
+
+        If DGPrevioRemision.Columns.Contains("DescripcionPartida") = False Then
+            Dim colDescripcion As New DataGridViewTextBoxColumn
+            colDescripcion.Name = "DescripcionPartida"
+            colDescripcion.HeaderText = "DescripcionPartida"
+            DGPrevioRemision.Columns.Insert(DGPrevioRemision.Columns("PrecioUnitario").Index, colDescripcion)
+        End If
+
+        If DGPrevioRemision.Columns.Contains("Subtotal") = False Then
+            Dim colSubtotal As New DataGridViewTextBoxColumn
+            colSubtotal.Name = "Subtotal"
+            colSubtotal.HeaderText = "Subtotal"
+            DGPrevioRemision.Columns.Insert(DGPrevioRemision.Columns("PrecioUnitario").Index + 1, colSubtotal)
+        End If
+
+        If DGPrevioRemision.Columns.Contains("CveArticuloCliente") = False Then
+            Dim colCveArticulo As New DataGridViewTextBoxColumn
+            colCveArticulo.Name = "CveArticuloCliente"
+            colCveArticulo.HeaderText = "CveArticuloCliente"
+            DGPrevioRemision.Columns.Insert(DGPrevioRemision.Columns("PrecioUnitario").Index + 2, colCveArticulo)
+        End If
+
+        If DGPrevioRemision.Columns.Contains("UnidadDeMedida") = False Then
+            Dim colUnidad As New DataGridViewComboBoxColumn
+            colUnidad.Name = "UnidadDeMedida"
+            colUnidad.HeaderText = "UnidadDeMedida"
+            CargarOpcionesUnidadDeMedida(colUnidad)
+            DGPrevioRemision.Columns.Insert(DGPrevioRemision.Columns("PrecioUnitario").Index + 3, colUnidad)
+        End If
+    End Sub
+
+    Private Sub CargarOpcionesUnidadDeMedida(ByVal columna As DataGridViewComboBoxColumn)
+        Dim dtUnidad As New DataTable
+        Dim consulta As String = "SELECT c_ClaveUnidad, Nombre FROM c_ClaveUnidad ORDER BY Nombre"
+
+        Using comando As New SqlCommand(consulta, ConectaBD.BDConexion)
+            Using adaptador As New SqlDataAdapter(comando)
+                adaptador.Fill(dtUnidad)
+            End Using
+        End Using
+
+        columna.Items.Clear()
+        columna.Items.Add("")
+        For Each fila As DataRow In dtUnidad.Rows
+            columna.Items.Add(ObtenerTextoBD(fila("Nombre")) & " " & ObtenerTextoBD(fila("c_ClaveUnidad")))
+        Next
+    End Sub
+
 
 
     Private Sub DGPrevioRemision_EditingControlShowing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DGPrevioRemision.EditingControlShowing
