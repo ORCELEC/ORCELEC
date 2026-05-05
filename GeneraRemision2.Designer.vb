@@ -22,25 +22,25 @@ Partial Class GeneraRemision2
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GeneraRemision2))
         Dim SuperTabItemColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemColorTable()
         Dim SuperTabColorStates1 As DevComponents.DotNetBar.Rendering.SuperTabColorStates = New DevComponents.DotNetBar.Rendering.SuperTabColorStates()
         Dim SuperTabItemStateColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemStateColorTable()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PanPrincipal = New DevComponents.DotNetBar.PanelEx()
+        Me.GB5 = New System.Windows.Forms.GroupBox()
+        Me.RBGB4PartidaLibre = New System.Windows.Forms.RadioButton()
+        Me.RBPartidaTodaslasTallas = New System.Windows.Forms.RadioButton()
+        Me.RBPartidaPorTalla = New System.Windows.Forms.RadioButton()
+        Me.LabelX31 = New DevComponents.DotNetBar.LabelX()
         Me.BtnCancelarRemision = New DevComponents.DotNetBar.ButtonX()
         Me.TxtCveRemision = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.BtnMuestraRemision = New DevComponents.DotNetBar.ButtonX()
         Me.BtnGuardar = New DevComponents.DotNetBar.ButtonX()
-        Me.GB4 = New System.Windows.Forms.GroupBox()
-        Me.RBGB4PartidaLibre = New System.Windows.Forms.RadioButton()
-        Me.RBGB4Partida = New System.Windows.Forms.RadioButton()
-        Me.RBGB4LugarEntrega = New System.Windows.Forms.RadioButton()
-        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.GB1 = New System.Windows.Forms.GroupBox()
         Me.RBGB3SI = New System.Windows.Forms.RadioButton()
         Me.RBGB2SI = New System.Windows.Forms.RadioButton()
@@ -51,6 +51,11 @@ Partial Class GeneraRemision2
         Me.TxtNoPedido = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.BtnInicio = New DevComponents.DotNetBar.ButtonX()
         Me.TabPrincipal = New DevComponents.DotNetBar.SuperTabControl()
+        Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.PanDetallePartida = New DevComponents.DotNetBar.PanelEx()
+        Me.BtnCerrarDetPartida = New DevComponents.DotNetBar.ButtonX()
+        Me.DGPrevioRemision = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.TabDatosPedido = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.GPDatosBasicos = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.CmbIVA = New DevComponents.DotNetBar.Controls.ComboBoxEx()
@@ -119,11 +124,6 @@ Partial Class GeneraRemision2
         Me.LabelX27 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX32 = New DevComponents.DotNetBar.LabelX()
         Me.TabFolio = New DevComponents.DotNetBar.SuperTabItem()
-        Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.PanDetallePartida = New DevComponents.DotNetBar.PanelEx()
-        Me.BtnCerrarDetPartida = New DevComponents.DotNetBar.ButtonX()
-        Me.DGPrevioRemision = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.TabDatosPedido = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel9 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.LabelX58 = New DevComponents.DotNetBar.LabelX()
@@ -133,24 +133,19 @@ Partial Class GeneraRemision2
         Me.TabNotas = New DevComponents.DotNetBar.SuperTabItem()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.ReflectionLabel1 = New DevComponents.DotNetBar.Controls.ReflectionLabel()
-        Me.GB5 = New System.Windows.Forms.GroupBox()
-        Me.RBPartidaTodaslasTallas = New System.Windows.Forms.RadioButton()
-        Me.RBPartidaPorTalla = New System.Windows.Forms.RadioButton()
-        Me.LabelX31 = New DevComponents.DotNetBar.LabelX()
         Me.PanPrincipal.SuspendLayout()
-        Me.GB4.SuspendLayout()
+        Me.GB5.SuspendLayout()
         Me.GB1.SuspendLayout()
         CType(Me.TabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPrincipal.SuspendLayout()
-        Me.SuperTabControlPanel1.SuspendLayout()
-        Me.GPDatosBasicos.SuspendLayout()
-        Me.GPDatosCliente.SuspendLayout()
         Me.SuperTabControlPanel3.SuspendLayout()
         Me.PanDetallePartida.SuspendLayout()
         CType(Me.DGPrevioRemision, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuperTabControlPanel1.SuspendLayout()
+        Me.GPDatosBasicos.SuspendLayout()
+        Me.GPDatosCliente.SuspendLayout()
         Me.SuperTabControlPanel9.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
-        Me.GB5.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanPrincipal
@@ -162,7 +157,6 @@ Partial Class GeneraRemision2
         Me.PanPrincipal.Controls.Add(Me.TxtCveRemision)
         Me.PanPrincipal.Controls.Add(Me.BtnMuestraRemision)
         Me.PanPrincipal.Controls.Add(Me.BtnGuardar)
-        Me.PanPrincipal.Controls.Add(Me.GB4)
         Me.PanPrincipal.Controls.Add(Me.GB1)
         Me.PanPrincipal.Controls.Add(Me.TxtNoPedido)
         Me.PanPrincipal.Controls.Add(Me.BtnInicio)
@@ -180,6 +174,68 @@ Partial Class GeneraRemision2
         Me.PanPrincipal.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
         Me.PanPrincipal.Style.GradientAngle = 90
         Me.PanPrincipal.TabIndex = 2
+        '
+        'GB5
+        '
+        Me.GB5.Controls.Add(Me.RBGB4PartidaLibre)
+        Me.GB5.Controls.Add(Me.RBPartidaTodaslasTallas)
+        Me.GB5.Controls.Add(Me.RBPartidaPorTalla)
+        Me.GB5.Controls.Add(Me.LabelX31)
+        Me.GB5.Enabled = False
+        Me.GB5.Location = New System.Drawing.Point(12, 169)
+        Me.GB5.Name = "GB5"
+        Me.GB5.Size = New System.Drawing.Size(945, 33)
+        Me.GB5.TabIndex = 99
+        Me.GB5.TabStop = False
+        '
+        'RBGB4PartidaLibre
+        '
+        Me.RBGB4PartidaLibre.AutoSize = True
+        Me.RBGB4PartidaLibre.Location = New System.Drawing.Point(577, 10)
+        Me.RBGB4PartidaLibre.Name = "RBGB4PartidaLibre"
+        Me.RBGB4PartidaLibre.Size = New System.Drawing.Size(84, 17)
+        Me.RBGB4PartidaLibre.TabIndex = 90
+        Me.RBGB4PartidaLibre.TabStop = True
+        Me.RBGB4PartidaLibre.Text = "Partida Libre"
+        Me.RBGB4PartidaLibre.UseVisualStyleBackColor = True
+        '
+        'RBPartidaTodaslasTallas
+        '
+        Me.RBPartidaTodaslasTallas.AutoSize = True
+        Me.RBPartidaTodaslasTallas.Location = New System.Drawing.Point(374, 10)
+        Me.RBPartidaTodaslasTallas.Name = "RBPartidaTodaslasTallas"
+        Me.RBPartidaTodaslasTallas.Size = New System.Drawing.Size(176, 17)
+        Me.RBPartidaTodaslasTallas.TabIndex = 89
+        Me.RBPartidaTodaslasTallas.TabStop = True
+        Me.RBPartidaTodaslasTallas.Text = "Una partida para todas las tallas"
+        Me.RBPartidaTodaslasTallas.UseVisualStyleBackColor = True
+        '
+        'RBPartidaPorTalla
+        '
+        Me.RBPartidaPorTalla.AutoSize = True
+        Me.RBPartidaPorTalla.Location = New System.Drawing.Point(247, 10)
+        Me.RBPartidaPorTalla.Name = "RBPartidaPorTalla"
+        Me.RBPartidaPorTalla.Size = New System.Drawing.Size(98, 17)
+        Me.RBPartidaPorTalla.TabIndex = 88
+        Me.RBPartidaPorTalla.TabStop = True
+        Me.RBPartidaPorTalla.Text = "Partida por talla"
+        Me.RBPartidaPorTalla.UseVisualStyleBackColor = True
+        '
+        'LabelX31
+        '
+        '
+        '
+        '
+        Me.LabelX31.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX31.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX31.Location = New System.Drawing.Point(6, 10)
+        Me.LabelX31.Name = "LabelX31"
+        Me.LabelX31.Size = New System.Drawing.Size(235, 22)
+        Me.LabelX31.TabIndex = 87
+        Me.LabelX31.Text = "Tipo de partida:"
+        Me.LabelX31.TextLineAlignment = System.Drawing.StringAlignment.Near
+        Me.LabelX31.VerticalTextTopUp = False
+        Me.LabelX31.WordWrap = True
         '
         'BtnCancelarRemision
         '
@@ -232,67 +288,6 @@ Partial Class GeneraRemision2
         Me.BtnGuardar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.BtnGuardar.TabIndex = 93
         Me.BtnGuardar.Text = "Guardar Remisiones"
-        '
-        'GB4
-        '
-        Me.GB4.Controls.Add(Me.RBGB4Partida)
-        Me.GB4.Controls.Add(Me.RBGB4LugarEntrega)
-        Me.GB4.Controls.Add(Me.LabelX5)
-        Me.GB4.Enabled = False
-        Me.GB4.Location = New System.Drawing.Point(12, 137)
-        Me.GB4.Name = "GB4"
-        Me.GB4.Size = New System.Drawing.Size(945, 33)
-        Me.GB4.TabIndex = 91
-        Me.GB4.TabStop = False
-        '
-        'RBGB4PartidaLibre
-        '
-        Me.RBGB4PartidaLibre.AutoSize = True
-        Me.RBGB4PartidaLibre.Location = New System.Drawing.Point(577, 10)
-        Me.RBGB4PartidaLibre.Name = "RBGB4PartidaLibre"
-        Me.RBGB4PartidaLibre.Size = New System.Drawing.Size(84, 17)
-        Me.RBGB4PartidaLibre.TabIndex = 90
-        Me.RBGB4PartidaLibre.TabStop = True
-        Me.RBGB4PartidaLibre.Text = "Partida Libre"
-        Me.RBGB4PartidaLibre.UseVisualStyleBackColor = True
-        '
-        'RBGB4Partida
-        '
-        Me.RBGB4Partida.AutoSize = True
-        Me.RBGB4Partida.Location = New System.Drawing.Point(456, 10)
-        Me.RBGB4Partida.Name = "RBGB4Partida"
-        Me.RBGB4Partida.Size = New System.Drawing.Size(58, 17)
-        Me.RBGB4Partida.TabIndex = 89
-        Me.RBGB4Partida.TabStop = True
-        Me.RBGB4Partida.Text = "Partida"
-        Me.RBGB4Partida.UseVisualStyleBackColor = True
-        '
-        'RBGB4LugarEntrega
-        '
-        Me.RBGB4LugarEntrega.AutoSize = True
-        Me.RBGB4LugarEntrega.Location = New System.Drawing.Point(329, 10)
-        Me.RBGB4LugarEntrega.Name = "RBGB4LugarEntrega"
-        Me.RBGB4LugarEntrega.Size = New System.Drawing.Size(106, 17)
-        Me.RBGB4LugarEntrega.TabIndex = 88
-        Me.RBGB4LugarEntrega.TabStop = True
-        Me.RBGB4LugarEntrega.Text = "Lugar de entrega"
-        Me.RBGB4LugarEntrega.UseVisualStyleBackColor = True
-        '
-        'LabelX5
-        '
-        '
-        '
-        '
-        Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX5.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX5.Location = New System.Drawing.Point(6, 10)
-        Me.LabelX5.Name = "LabelX5"
-        Me.LabelX5.Size = New System.Drawing.Size(284, 22)
-        Me.LabelX5.TabIndex = 87
-        Me.LabelX5.Text = "Lugar de entrega, partida o partida libre:"
-        Me.LabelX5.TextLineAlignment = System.Drawing.StringAlignment.Near
-        Me.LabelX5.VerticalTextTopUp = False
-        Me.LabelX5.WordWrap = True
         '
         'GB1
         '
@@ -432,8 +427,8 @@ Partial Class GeneraRemision2
         Me.TabPrincipal.ControlBox.MenuBox.Name = ""
         Me.TabPrincipal.ControlBox.Name = ""
         Me.TabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TabPrincipal.ControlBox.MenuBox, Me.TabPrincipal.ControlBox.CloseBox})
-        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel3)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel1)
+        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel3)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel9)
         Me.TabPrincipal.Location = New System.Drawing.Point(12, 208)
         Me.TabPrincipal.Name = "TabPrincipal"
@@ -444,6 +439,96 @@ Partial Class GeneraRemision2
         Me.TabPrincipal.TabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabPrincipal.TabIndex = 45
         Me.TabPrincipal.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TabFolio, Me.TabNotas, Me.TabDatosPedido})
+        '
+        'SuperTabControlPanel3
+        '
+        Me.SuperTabControlPanel3.Controls.Add(Me.PanDetallePartida)
+        Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 0)
+        Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
+        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(954, 380)
+        Me.SuperTabControlPanel3.TabIndex = 1
+        Me.SuperTabControlPanel3.TabItem = Me.TabDatosPedido
+        '
+        'PanDetallePartida
+        '
+        Me.PanDetallePartida.CanvasColor = System.Drawing.SystemColors.Control
+        Me.PanDetallePartida.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.PanDetallePartida.Controls.Add(Me.BtnCerrarDetPartida)
+        Me.PanDetallePartida.Controls.Add(Me.DGPrevioRemision)
+        Me.PanDetallePartida.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PanDetallePartida.Location = New System.Drawing.Point(0, 3)
+        Me.PanDetallePartida.Name = "PanDetallePartida"
+        Me.PanDetallePartida.Size = New System.Drawing.Size(951, 353)
+        Me.PanDetallePartida.Style.Alignment = System.Drawing.StringAlignment.Center
+        Me.PanDetallePartida.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.PanDetallePartida.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.PanDetallePartida.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
+        Me.PanDetallePartida.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
+        Me.PanDetallePartida.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
+        Me.PanDetallePartida.Style.GradientAngle = 90
+        Me.PanDetallePartida.Style.LineAlignment = System.Drawing.StringAlignment.Near
+        Me.PanDetallePartida.TabIndex = 0
+        Me.PanDetallePartida.Text = "Detalle de Partida"
+        '
+        'BtnCerrarDetPartida
+        '
+        Me.BtnCerrarDetPartida.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.BtnCerrarDetPartida.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.BtnCerrarDetPartida.Location = New System.Drawing.Point(668, 6)
+        Me.BtnCerrarDetPartida.Name = "BtnCerrarDetPartida"
+        Me.BtnCerrarDetPartida.Size = New System.Drawing.Size(267, 22)
+        Me.BtnCerrarDetPartida.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.BtnCerrarDetPartida.TabIndex = 9
+        Me.BtnCerrarDetPartida.Text = "Cerrar Descripción de Prenda"
+        Me.BtnCerrarDetPartida.Visible = False
+        '
+        'DGPrevioRemision
+        '
+        Me.DGPrevioRemision.AllowUserToAddRows = False
+        Me.DGPrevioRemision.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGPrevioRemision.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGPrevioRemision.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DGPrevioRemision.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGPrevioRemision.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DGPrevioRemision.EnableHeadersVisualStyles = False
+        Me.DGPrevioRemision.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.DGPrevioRemision.Location = New System.Drawing.Point(13, 34)
+        Me.DGPrevioRemision.Name = "DGPrevioRemision"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGPrevioRemision.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGPrevioRemision.RowsDefaultCellStyle = DataGridViewCellStyle5
+        Me.DGPrevioRemision.Size = New System.Drawing.Size(925, 315)
+        Me.DGPrevioRemision.TabIndex = 11
+        '
+        'TabDatosPedido
+        '
+        Me.TabDatosPedido.AttachedControl = Me.SuperTabControlPanel3
+        Me.TabDatosPedido.GlobalItem = False
+        Me.TabDatosPedido.Name = "TabDatosPedido"
+        Me.TabDatosPedido.Text = "Remisión"
         '
         'SuperTabControlPanel1
         '
@@ -1517,96 +1602,6 @@ Partial Class GeneraRemision2
         Me.TabFolio.TabColor = SuperTabItemColorTable1
         Me.TabFolio.Text = "Datos Generales"
         '
-        'SuperTabControlPanel3
-        '
-        Me.SuperTabControlPanel3.Controls.Add(Me.PanDetallePartida)
-        Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 25)
-        Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
-        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(954, 355)
-        Me.SuperTabControlPanel3.TabIndex = 1
-        Me.SuperTabControlPanel3.TabItem = Me.TabDatosPedido
-        '
-        'PanDetallePartida
-        '
-        Me.PanDetallePartida.CanvasColor = System.Drawing.SystemColors.Control
-        Me.PanDetallePartida.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.PanDetallePartida.Controls.Add(Me.BtnCerrarDetPartida)
-        Me.PanDetallePartida.Controls.Add(Me.DGPrevioRemision)
-        Me.PanDetallePartida.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PanDetallePartida.Location = New System.Drawing.Point(0, 3)
-        Me.PanDetallePartida.Name = "PanDetallePartida"
-        Me.PanDetallePartida.Size = New System.Drawing.Size(951, 353)
-        Me.PanDetallePartida.Style.Alignment = System.Drawing.StringAlignment.Center
-        Me.PanDetallePartida.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-        Me.PanDetallePartida.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-        Me.PanDetallePartida.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.PanDetallePartida.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-        Me.PanDetallePartida.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
-        Me.PanDetallePartida.Style.GradientAngle = 90
-        Me.PanDetallePartida.Style.LineAlignment = System.Drawing.StringAlignment.Near
-        Me.PanDetallePartida.TabIndex = 0
-        Me.PanDetallePartida.Text = "Detalle de Partida"
-        '
-        'BtnCerrarDetPartida
-        '
-        Me.BtnCerrarDetPartida.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.BtnCerrarDetPartida.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.BtnCerrarDetPartida.Location = New System.Drawing.Point(668, 6)
-        Me.BtnCerrarDetPartida.Name = "BtnCerrarDetPartida"
-        Me.BtnCerrarDetPartida.Size = New System.Drawing.Size(267, 22)
-        Me.BtnCerrarDetPartida.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.BtnCerrarDetPartida.TabIndex = 9
-        Me.BtnCerrarDetPartida.Text = "Cerrar Descripción de Prenda"
-        Me.BtnCerrarDetPartida.Visible = False
-        '
-        'DGPrevioRemision
-        '
-        Me.DGPrevioRemision.AllowUserToAddRows = False
-        Me.DGPrevioRemision.AllowUserToDeleteRows = False
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGPrevioRemision.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGPrevioRemision.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
-        Me.DGPrevioRemision.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGPrevioRemision.DefaultCellStyle = DataGridViewCellStyle13
-        Me.DGPrevioRemision.EnableHeadersVisualStyles = False
-        Me.DGPrevioRemision.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.DGPrevioRemision.Location = New System.Drawing.Point(13, 34)
-        Me.DGPrevioRemision.Name = "DGPrevioRemision"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGPrevioRemision.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGPrevioRemision.RowsDefaultCellStyle = DataGridViewCellStyle15
-        Me.DGPrevioRemision.Size = New System.Drawing.Size(925, 315)
-        Me.DGPrevioRemision.TabIndex = 11
-        '
-        'TabDatosPedido
-        '
-        Me.TabDatosPedido.AttachedControl = Me.SuperTabControlPanel3
-        Me.TabDatosPedido.GlobalItem = False
-        Me.TabDatosPedido.Name = "TabDatosPedido"
-        Me.TabDatosPedido.Text = "Remisión"
-        '
         'SuperTabControlPanel9
         '
         Me.SuperTabControlPanel9.Controls.Add(Me.GroupPanel1)
@@ -1757,57 +1752,6 @@ Partial Class GeneraRemision2
         Me.ReflectionLabel1.TabIndex = 2
         Me.ReflectionLabel1.Text = "<b><font size=""+6""><i>REMISIÓN DE PEDIDO</i></font></b>"
         '
-        'GB5
-        '
-        Me.GB5.Controls.Add(Me.RBGB4PartidaLibre)
-        Me.GB5.Controls.Add(Me.RBPartidaTodaslasTallas)
-        Me.GB5.Controls.Add(Me.RBPartidaPorTalla)
-        Me.GB5.Controls.Add(Me.LabelX31)
-        Me.GB5.Enabled = False
-        Me.GB5.Location = New System.Drawing.Point(12, 169)
-        Me.GB5.Name = "GB5"
-        Me.GB5.Size = New System.Drawing.Size(945, 33)
-        Me.GB5.TabIndex = 99
-        Me.GB5.TabStop = False
-        '
-        'RBPartidaTodaslasTallas
-        '
-        Me.RBPartidaTodaslasTallas.AutoSize = True
-        Me.RBPartidaTodaslasTallas.Location = New System.Drawing.Point(374, 10)
-        Me.RBPartidaTodaslasTallas.Name = "RBPartidaTodaslasTallas"
-        Me.RBPartidaTodaslasTallas.Size = New System.Drawing.Size(176, 17)
-        Me.RBPartidaTodaslasTallas.TabIndex = 89
-        Me.RBPartidaTodaslasTallas.TabStop = True
-        Me.RBPartidaTodaslasTallas.Text = "Una partida para todas las tallas"
-        Me.RBPartidaTodaslasTallas.UseVisualStyleBackColor = True
-        '
-        'RBPartidaPorTalla
-        '
-        Me.RBPartidaPorTalla.AutoSize = True
-        Me.RBPartidaPorTalla.Location = New System.Drawing.Point(247, 10)
-        Me.RBPartidaPorTalla.Name = "RBPartidaPorTalla"
-        Me.RBPartidaPorTalla.Size = New System.Drawing.Size(98, 17)
-        Me.RBPartidaPorTalla.TabIndex = 88
-        Me.RBPartidaPorTalla.TabStop = True
-        Me.RBPartidaPorTalla.Text = "Partida por talla"
-        Me.RBPartidaPorTalla.UseVisualStyleBackColor = True
-        '
-        'LabelX31
-        '
-        '
-        '
-        '
-        Me.LabelX31.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX31.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX31.Location = New System.Drawing.Point(6, 10)
-        Me.LabelX31.Name = "LabelX31"
-        Me.LabelX31.Size = New System.Drawing.Size(235, 22)
-        Me.LabelX31.TabIndex = 87
-        Me.LabelX31.Text = "Tipo de partida:"
-        Me.LabelX31.TextLineAlignment = System.Drawing.StringAlignment.Near
-        Me.LabelX31.VerticalTextTopUp = False
-        Me.LabelX31.WordWrap = True
-        '
         'GeneraRemision2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1817,22 +1761,20 @@ Partial Class GeneraRemision2
         Me.Name = "GeneraRemision2"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.PanPrincipal.ResumeLayout(False)
-        Me.GB4.ResumeLayout(False)
-        Me.GB4.PerformLayout()
+        Me.GB5.ResumeLayout(False)
+        Me.GB5.PerformLayout()
         Me.GB1.ResumeLayout(False)
         Me.GB1.PerformLayout()
         CType(Me.TabPrincipal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPrincipal.ResumeLayout(False)
-        Me.SuperTabControlPanel1.ResumeLayout(False)
-        Me.GPDatosBasicos.ResumeLayout(False)
-        Me.GPDatosCliente.ResumeLayout(False)
         Me.SuperTabControlPanel3.ResumeLayout(False)
         Me.PanDetallePartida.ResumeLayout(False)
         CType(Me.DGPrevioRemision, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SuperTabControlPanel1.ResumeLayout(False)
+        Me.GPDatosBasicos.ResumeLayout(False)
+        Me.GPDatosCliente.ResumeLayout(False)
         Me.SuperTabControlPanel9.ResumeLayout(False)
         Me.GroupPanel1.ResumeLayout(False)
-        Me.GB5.ResumeLayout(False)
-        Me.GB5.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1863,10 +1805,6 @@ Partial Class GeneraRemision2
     Friend WithEvents RBGB1SI As System.Windows.Forms.RadioButton
     Friend WithEvents RBGB3SI As System.Windows.Forms.RadioButton
     Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents GB4 As System.Windows.Forms.GroupBox
-    Friend WithEvents RBGB4Partida As System.Windows.Forms.RadioButton
-    Friend WithEvents RBGB4LugarEntrega As System.Windows.Forms.RadioButton
-    Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Friend WithEvents BtnGuardar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents TxtCveRemision As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents BtnMuestraRemision As DevComponents.DotNetBar.ButtonX

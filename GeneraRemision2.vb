@@ -71,13 +71,10 @@ Public Class GeneraRemision2
         RBGB1SI.Checked = False
         RBGB2SI.Checked = False
         RBGB3SI.Checked = False
-        RBGB4LugarEntrega.Checked = False
-        RBGB4Partida.Checked = False
         RBGB4PartidaLibre.Checked = False
         GB1.Text = ""
-        GB4.Text = ""
         GB1.Enabled = False
-        GB4.Enabled = False
+        GB5.Enabled = False
         CargaManualCantidades = False
         DGPrevioRemision.DataSource = Nothing
         DGPrevioRemision.Rows.Clear()
@@ -104,10 +101,8 @@ Public Class GeneraRemision2
         End If
 
         Dim primerPasoSeleccionado As Boolean = RBGB1SI.Checked Or RBGB2SI.Checked Or RBGB3SI.Checked
-        GB4.Enabled = primerPasoSeleccionado
+        GB5.Enabled = primerPasoSeleccionado
         If primerPasoSeleccionado = False Then
-            RBGB4LugarEntrega.Checked = False
-            RBGB4Partida.Checked = False
             RBGB4PartidaLibre.Checked = False
         End If
     End Sub
@@ -124,13 +119,7 @@ Public Class GeneraRemision2
         ActualizarSeleccionPrimerPaso()
     End Sub
 
-    Private Sub RBGB4LugarEntrega_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RBGB4LugarEntrega.CheckedChanged
-        
-    End Sub
 
-    Private Sub RBGB4Partida_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RBGB4Partida.CheckedChanged
-        
-    End Sub
 
     Private Sub DGPrevioRemision_EditingControlShowing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DGPrevioRemision.EditingControlShowing
         AddHandler e.Control.KeyPress, AddressOf DGPrevioRemisionTextBox_KeyPress
