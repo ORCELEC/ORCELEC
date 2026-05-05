@@ -22,11 +22,11 @@ Partial Class GeneraRemision2
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GeneraRemision2))
         Dim SuperTabItemColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemColorTable()
         Dim SuperTabColorStates1 As DevComponents.DotNetBar.Rendering.SuperTabColorStates = New DevComponents.DotNetBar.Rendering.SuperTabColorStates()
@@ -427,9 +427,9 @@ Partial Class GeneraRemision2
         Me.TabPrincipal.ControlBox.MenuBox.Name = ""
         Me.TabPrincipal.ControlBox.Name = ""
         Me.TabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TabPrincipal.ControlBox.MenuBox, Me.TabPrincipal.ControlBox.CloseBox})
+        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel9)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel1)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel3)
-        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel9)
         Me.TabPrincipal.Location = New System.Drawing.Point(12, 208)
         Me.TabPrincipal.Name = "TabPrincipal"
         Me.TabPrincipal.ReorderTabsEnabled = True
@@ -487,39 +487,39 @@ Partial Class GeneraRemision2
         '
         Me.DGPrevioRemision.AllowUserToAddRows = False
         Me.DGPrevioRemision.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGPrevioRemision.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGPrevioRemision.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGPrevioRemision.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGPrevioRemision.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.DGPrevioRemision.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGPrevioRemision.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGPrevioRemision.DefaultCellStyle = DataGridViewCellStyle13
         Me.DGPrevioRemision.EnableHeadersVisualStyles = False
         Me.DGPrevioRemision.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DGPrevioRemision.Location = New System.Drawing.Point(13, 34)
         Me.DGPrevioRemision.Name = "DGPrevioRemision"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGPrevioRemision.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGPrevioRemision.RowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGPrevioRemision.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGPrevioRemision.RowsDefaultCellStyle = DataGridViewCellStyle15
         Me.DGPrevioRemision.Size = New System.Drawing.Size(925, 315)
         Me.DGPrevioRemision.TabIndex = 11
         '
@@ -715,7 +715,7 @@ Partial Class GeneraRemision2
         Me.GPDatosCliente.Controls.Add(Me.LabelX11)
         Me.GPDatosCliente.Location = New System.Drawing.Point(176, 49)
         Me.GPDatosCliente.Name = "GPDatosCliente"
-        Me.GPDatosCliente.Size = New System.Drawing.Size(408, 29)
+        Me.GPDatosCliente.Size = New System.Drawing.Size(367, 19)
         '
         '
         '
@@ -1606,9 +1606,9 @@ Partial Class GeneraRemision2
         '
         Me.SuperTabControlPanel9.Controls.Add(Me.GroupPanel1)
         Me.SuperTabControlPanel9.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 0)
+        Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 25)
         Me.SuperTabControlPanel9.Name = "SuperTabControlPanel9"
-        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 380)
+        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 355)
         Me.SuperTabControlPanel9.TabIndex = 0
         Me.SuperTabControlPanel9.TabItem = Me.TabNotas
         '
@@ -1620,9 +1620,9 @@ Partial Class GeneraRemision2
         Me.GroupPanel1.Controls.Add(Me.TxtNotasAlAutorizarCancelar)
         Me.GroupPanel1.Controls.Add(Me.TxtNotasPedido)
         Me.GroupPanel1.Controls.Add(Me.LblNotasAlPedido)
-        Me.GroupPanel1.Location = New System.Drawing.Point(16, 17)
+        Me.GroupPanel1.Location = New System.Drawing.Point(6, 3)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(923, 415)
+        Me.GroupPanel1.Size = New System.Drawing.Size(923, 339)
         '
         '
         '
@@ -1660,7 +1660,7 @@ Partial Class GeneraRemision2
         '
         '
         Me.LabelX58.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX58.Location = New System.Drawing.Point(3, 168)
+        Me.LabelX58.Location = New System.Drawing.Point(3, 171)
         Me.LabelX58.Name = "LabelX58"
         Me.LabelX58.Size = New System.Drawing.Size(89, 44)
         Me.LabelX58.TabIndex = 97
@@ -1677,7 +1677,7 @@ Partial Class GeneraRemision2
         Me.TxtNotasAlAutorizarCancelar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtNotasAlAutorizarCancelar.FocusHighlightEnabled = True
         Me.TxtNotasAlAutorizarCancelar.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtNotasAlAutorizarCancelar.Location = New System.Drawing.Point(98, 168)
+        Me.TxtNotasAlAutorizarCancelar.Location = New System.Drawing.Point(98, 171)
         Me.TxtNotasAlAutorizarCancelar.Multiline = True
         Me.TxtNotasAlAutorizarCancelar.Name = "TxtNotasAlAutorizarCancelar"
         Me.TxtNotasAlAutorizarCancelar.ReadOnly = True
@@ -1698,7 +1698,7 @@ Partial Class GeneraRemision2
         Me.TxtNotasPedido.Multiline = True
         Me.TxtNotasPedido.Name = "TxtNotasPedido"
         Me.TxtNotasPedido.ReadOnly = True
-        Me.TxtNotasPedido.Size = New System.Drawing.Size(807, 143)
+        Me.TxtNotasPedido.Size = New System.Drawing.Size(807, 146)
         Me.TxtNotasPedido.TabIndex = 85
         '
         'LblNotasAlPedido
@@ -1713,7 +1713,7 @@ Partial Class GeneraRemision2
         Me.LblNotasAlPedido.Name = "LblNotasAlPedido"
         Me.LblNotasAlPedido.Size = New System.Drawing.Size(89, 48)
         Me.LblNotasAlPedido.TabIndex = 84
-        Me.LblNotasAlPedido.Text = "Notas al Pedido:"
+        Me.LblNotasAlPedido.Text = "Notas Generales al Pedido:"
         Me.LblNotasAlPedido.WordWrap = True
         '
         'TabNotas
