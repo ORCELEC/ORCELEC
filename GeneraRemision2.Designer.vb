@@ -22,11 +22,11 @@ Partial Class GeneraRemision2
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GeneraRemision2))
         Dim SuperTabItemColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabItemColorTable = New DevComponents.DotNetBar.Rendering.SuperTabItemColorTable()
         Dim SuperTabColorStates1 As DevComponents.DotNetBar.Rendering.SuperTabColorStates = New DevComponents.DotNetBar.Rendering.SuperTabColorStates()
@@ -133,6 +133,14 @@ Partial Class GeneraRemision2
         Me.TabNotas = New DevComponents.DotNetBar.SuperTabItem()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.ReflectionLabel1 = New DevComponents.DotNetBar.Controls.ReflectionLabel()
+        Me.TxtTotalPrendasRemisionadas = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LblTotalPrendasRemisionadas = New DevComponents.DotNetBar.LabelX()
+        Me.TxtSubtotalRemisionado = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LblSubtotalRemisionado = New DevComponents.DotNetBar.LabelX()
+        Me.TxtIVARemisionado = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LblIVARemisionado = New DevComponents.DotNetBar.LabelX()
+        Me.TxtTotalRemisionado = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LblTotalRemisionado = New DevComponents.DotNetBar.LabelX()
         Me.PanPrincipal.SuspendLayout()
         Me.GB5.SuspendLayout()
         Me.GB1.SuspendLayout()
@@ -163,9 +171,10 @@ Partial Class GeneraRemision2
         Me.PanPrincipal.Controls.Add(Me.TabPrincipal)
         Me.PanPrincipal.Controls.Add(Me.LabelX3)
         Me.PanPrincipal.Controls.Add(Me.ReflectionLabel1)
+        Me.PanPrincipal.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.PanPrincipal.Name = "PanPrincipal"
-        Me.PanPrincipal.Size = New System.Drawing.Size(969, 600)
+        Me.PanPrincipal.Size = New System.Drawing.Size(969, 653)
         Me.PanPrincipal.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanPrincipal.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
         Me.PanPrincipal.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
@@ -427,15 +436,15 @@ Partial Class GeneraRemision2
         Me.TabPrincipal.ControlBox.MenuBox.Name = ""
         Me.TabPrincipal.ControlBox.Name = ""
         Me.TabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TabPrincipal.ControlBox.MenuBox, Me.TabPrincipal.ControlBox.CloseBox})
-        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel9)
-        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel1)
         Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel3)
+        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel1)
+        Me.TabPrincipal.Controls.Add(Me.SuperTabControlPanel9)
         Me.TabPrincipal.Location = New System.Drawing.Point(12, 208)
         Me.TabPrincipal.Name = "TabPrincipal"
         Me.TabPrincipal.ReorderTabsEnabled = True
         Me.TabPrincipal.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold)
         Me.TabPrincipal.SelectedTabIndex = 2
-        Me.TabPrincipal.Size = New System.Drawing.Size(954, 380)
+        Me.TabPrincipal.Size = New System.Drawing.Size(954, 433)
         Me.TabPrincipal.TabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabPrincipal.TabIndex = 45
         Me.TabPrincipal.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.TabFolio, Me.TabNotas, Me.TabDatosPedido})
@@ -444,9 +453,9 @@ Partial Class GeneraRemision2
         '
         Me.SuperTabControlPanel3.Controls.Add(Me.PanDetallePartida)
         Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 0)
+        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 25)
         Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
-        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(954, 380)
+        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(954, 408)
         Me.SuperTabControlPanel3.TabIndex = 1
         Me.SuperTabControlPanel3.TabItem = Me.TabDatosPedido
         '
@@ -454,12 +463,20 @@ Partial Class GeneraRemision2
         '
         Me.PanDetallePartida.CanvasColor = System.Drawing.SystemColors.Control
         Me.PanDetallePartida.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.PanDetallePartida.Controls.Add(Me.TxtTotalRemisionado)
+        Me.PanDetallePartida.Controls.Add(Me.LblTotalRemisionado)
+        Me.PanDetallePartida.Controls.Add(Me.TxtIVARemisionado)
+        Me.PanDetallePartida.Controls.Add(Me.LblIVARemisionado)
+        Me.PanDetallePartida.Controls.Add(Me.TxtSubtotalRemisionado)
+        Me.PanDetallePartida.Controls.Add(Me.LblSubtotalRemisionado)
+        Me.PanDetallePartida.Controls.Add(Me.TxtTotalPrendasRemisionadas)
+        Me.PanDetallePartida.Controls.Add(Me.LblTotalPrendasRemisionadas)
         Me.PanDetallePartida.Controls.Add(Me.BtnCerrarDetPartida)
         Me.PanDetallePartida.Controls.Add(Me.DGPrevioRemision)
         Me.PanDetallePartida.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PanDetallePartida.Location = New System.Drawing.Point(0, 3)
         Me.PanDetallePartida.Name = "PanDetallePartida"
-        Me.PanDetallePartida.Size = New System.Drawing.Size(951, 353)
+        Me.PanDetallePartida.Size = New System.Drawing.Size(951, 405)
         Me.PanDetallePartida.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanDetallePartida.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
         Me.PanDetallePartida.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
@@ -487,39 +504,39 @@ Partial Class GeneraRemision2
         '
         Me.DGPrevioRemision.AllowUserToAddRows = False
         Me.DGPrevioRemision.AllowUserToDeleteRows = False
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGPrevioRemision.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGPrevioRemision.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGPrevioRemision.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGPrevioRemision.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DGPrevioRemision.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGPrevioRemision.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGPrevioRemision.DefaultCellStyle = DataGridViewCellStyle3
         Me.DGPrevioRemision.EnableHeadersVisualStyles = False
         Me.DGPrevioRemision.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.DGPrevioRemision.Location = New System.Drawing.Point(13, 34)
         Me.DGPrevioRemision.Name = "DGPrevioRemision"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGPrevioRemision.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DGPrevioRemision.RowsDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGPrevioRemision.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DGPrevioRemision.RowsDefaultCellStyle = DataGridViewCellStyle5
         Me.DGPrevioRemision.Size = New System.Drawing.Size(925, 315)
         Me.DGPrevioRemision.TabIndex = 11
         '
@@ -536,7 +553,7 @@ Partial Class GeneraRemision2
         Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel1.Location = New System.Drawing.Point(0, 25)
         Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
-        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(954, 355)
+        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(954, 408)
         Me.SuperTabControlPanel1.TabIndex = 1
         Me.SuperTabControlPanel1.TabItem = Me.TabFolio
         '
@@ -1608,7 +1625,7 @@ Partial Class GeneraRemision2
         Me.SuperTabControlPanel9.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 25)
         Me.SuperTabControlPanel9.Name = "SuperTabControlPanel9"
-        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 355)
+        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 408)
         Me.SuperTabControlPanel9.TabIndex = 0
         Me.SuperTabControlPanel9.TabItem = Me.TabNotas
         '
@@ -1752,11 +1769,135 @@ Partial Class GeneraRemision2
         Me.ReflectionLabel1.TabIndex = 2
         Me.ReflectionLabel1.Text = "<b><font size=""+6""><i>REMISIÓN DE PEDIDO</i></font></b>"
         '
+        'TxtTotalPrendasRemisionadas
+        '
+        '
+        '
+        '
+        Me.TxtTotalPrendasRemisionadas.Border.Class = "TextBoxBorder"
+        Me.TxtTotalPrendasRemisionadas.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtTotalPrendasRemisionadas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtTotalPrendasRemisionadas.FocusHighlightEnabled = True
+        Me.TxtTotalPrendasRemisionadas.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTotalPrendasRemisionadas.Location = New System.Drawing.Point(230, 355)
+        Me.TxtTotalPrendasRemisionadas.Name = "TxtTotalPrendasRemisionadas"
+        Me.TxtTotalPrendasRemisionadas.Size = New System.Drawing.Size(127, 21)
+        Me.TxtTotalPrendasRemisionadas.TabIndex = 88
+        '
+        'LblTotalPrendasRemisionadas
+        '
+        '
+        '
+        '
+        Me.LblTotalPrendasRemisionadas.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LblTotalPrendasRemisionadas.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotalPrendasRemisionadas.Location = New System.Drawing.Point(122, 355)
+        Me.LblTotalPrendasRemisionadas.Name = "LblTotalPrendasRemisionadas"
+        Me.LblTotalPrendasRemisionadas.Size = New System.Drawing.Size(115, 25)
+        Me.LblTotalPrendasRemisionadas.TabIndex = 87
+        Me.LblTotalPrendasRemisionadas.Text = "Total Prendas:"
+        Me.LblTotalPrendasRemisionadas.TextLineAlignment = System.Drawing.StringAlignment.Near
+        Me.LblTotalPrendasRemisionadas.VerticalTextTopUp = False
+        Me.LblTotalPrendasRemisionadas.WordWrap = True
+        '
+        'TxtSubtotalRemisionado
+        '
+        '
+        '
+        '
+        Me.TxtSubtotalRemisionado.Border.Class = "TextBoxBorder"
+        Me.TxtSubtotalRemisionado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtSubtotalRemisionado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtSubtotalRemisionado.FocusHighlightEnabled = True
+        Me.TxtSubtotalRemisionado.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtSubtotalRemisionado.Location = New System.Drawing.Point(442, 355)
+        Me.TxtSubtotalRemisionado.Name = "TxtSubtotalRemisionado"
+        Me.TxtSubtotalRemisionado.Size = New System.Drawing.Size(127, 21)
+        Me.TxtSubtotalRemisionado.TabIndex = 90
+        '
+        'LblSubtotalRemisionado
+        '
+        '
+        '
+        '
+        Me.LblSubtotalRemisionado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LblSubtotalRemisionado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSubtotalRemisionado.Location = New System.Drawing.Point(369, 355)
+        Me.LblSubtotalRemisionado.Name = "LblSubtotalRemisionado"
+        Me.LblSubtotalRemisionado.Size = New System.Drawing.Size(72, 25)
+        Me.LblSubtotalRemisionado.TabIndex = 89
+        Me.LblSubtotalRemisionado.Text = "Subtotal:"
+        Me.LblSubtotalRemisionado.TextLineAlignment = System.Drawing.StringAlignment.Near
+        Me.LblSubtotalRemisionado.VerticalTextTopUp = False
+        Me.LblSubtotalRemisionado.WordWrap = True
+        '
+        'TxtIVARemisionado
+        '
+        '
+        '
+        '
+        Me.TxtIVARemisionado.Border.Class = "TextBoxBorder"
+        Me.TxtIVARemisionado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtIVARemisionado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtIVARemisionado.FocusHighlightEnabled = True
+        Me.TxtIVARemisionado.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtIVARemisionado.Location = New System.Drawing.Point(622, 355)
+        Me.TxtIVARemisionado.Name = "TxtIVARemisionado"
+        Me.TxtIVARemisionado.Size = New System.Drawing.Size(127, 21)
+        Me.TxtIVARemisionado.TabIndex = 92
+        '
+        'LblIVARemisionado
+        '
+        '
+        '
+        '
+        Me.LblIVARemisionado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LblIVARemisionado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblIVARemisionado.Location = New System.Drawing.Point(584, 355)
+        Me.LblIVARemisionado.Name = "LblIVARemisionado"
+        Me.LblIVARemisionado.Size = New System.Drawing.Size(36, 25)
+        Me.LblIVARemisionado.TabIndex = 91
+        Me.LblIVARemisionado.Text = "IVA:"
+        Me.LblIVARemisionado.TextLineAlignment = System.Drawing.StringAlignment.Near
+        Me.LblIVARemisionado.VerticalTextTopUp = False
+        Me.LblIVARemisionado.WordWrap = True
+        '
+        'TxtTotalRemisionado
+        '
+        '
+        '
+        '
+        Me.TxtTotalRemisionado.Border.Class = "TextBoxBorder"
+        Me.TxtTotalRemisionado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtTotalRemisionado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtTotalRemisionado.FocusHighlightEnabled = True
+        Me.TxtTotalRemisionado.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTotalRemisionado.Location = New System.Drawing.Point(812, 355)
+        Me.TxtTotalRemisionado.Name = "TxtTotalRemisionado"
+        Me.TxtTotalRemisionado.Size = New System.Drawing.Size(127, 21)
+        Me.TxtTotalRemisionado.TabIndex = 94
+        '
+        'LblTotalRemisionado
+        '
+        '
+        '
+        '
+        Me.LblTotalRemisionado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LblTotalRemisionado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotalRemisionado.Location = New System.Drawing.Point(753, 355)
+        Me.LblTotalRemisionado.Name = "LblTotalRemisionado"
+        Me.LblTotalRemisionado.Size = New System.Drawing.Size(59, 25)
+        Me.LblTotalRemisionado.TabIndex = 93
+        Me.LblTotalRemisionado.Text = "Total:"
+        Me.LblTotalRemisionado.TextLineAlignment = System.Drawing.StringAlignment.Near
+        Me.LblTotalRemisionado.VerticalTextTopUp = False
+        Me.LblTotalRemisionado.WordWrap = True
+        '
         'GeneraRemision2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(969, 601)
+        Me.ClientSize = New System.Drawing.Size(969, 653)
         Me.Controls.Add(Me.PanPrincipal)
         Me.Name = "GeneraRemision2"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -1880,4 +2021,12 @@ Partial Class GeneraRemision2
     Friend WithEvents RBPartidaTodaslasTallas As System.Windows.Forms.RadioButton
     Friend WithEvents RBPartidaPorTalla As System.Windows.Forms.RadioButton
     Friend WithEvents LabelX31 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtTotalRemisionado As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LblTotalRemisionado As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtIVARemisionado As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LblIVARemisionado As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtSubtotalRemisionado As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LblSubtotalRemisionado As DevComponents.DotNetBar.LabelX
+    Friend WithEvents TxtTotalPrendasRemisionadas As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LblTotalPrendasRemisionadas As DevComponents.DotNetBar.LabelX
 End Class

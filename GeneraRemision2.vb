@@ -20,6 +20,7 @@ Public Class GeneraRemision2
         BDAdapter = New SqlDataAdapter("", ConectaBD.BDConexion)
         BDComando = New SqlCommand
         BDComando.Connection = ConectaBD.BDConexion
+        ConfigurarControlesPedidoSoloLectura()
         ReiniciarSeleccion()
     End Sub
 
@@ -30,21 +31,34 @@ Public Class GeneraRemision2
                 MessageBox.Show("El No. de Pedido debe ser un número.", "Pedido Interno a remisionar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 Exit Sub
             Else
-                'VALIDAR QUE EL PEDIDO EXISTA Y ESTE AUTORIZADO
+                'VALIDAR QUE EL PEDIDO EXISTA, ESTE AUTORIZADO Y CARGAR SUS DATOS GENERALES
                 BDComando.Parameters.Clear()
                 BDComando.CommandType = CommandType.Text
-                BDComando.CommandText = "SELECT * FROM PEDIDO_INTERNO WHERE EMPRESA = " & ConectaBD.Cve_Empresa & " AND NO_PEDIDO = " & TxtNoPedido.Text
+                BDComando.CommandText = "SELECT " & _
+                                        "PI.Status, PI.Num_Folio, PI.Nom_Cliente, " & _
+                                        "C.RFC, C.Calle, C.NoExterior, C.NoInterior, C.Colonia, C.CP, C.Ciudad, C.Municipio, C.Telefono, C.Estado, C.Email, C.Fax, C.Contacto, C.TelContacto, " & _
+                                        "FA.Cve_Proveedor, PI.CondicionesPagoDias, PI.CondicionesPagoTipoDias, PI.CondicionesPagoCondicion, " & _
+                                        "FA.Cve_PedCliente, FA.Contrato_Cliente, FA.Orden_Surtimiento, " & _
+                                        "PI.PorcentajeIVA, PI.RegimenFiscal, PI.UsoCFDI, PI.MetodoPago, PI.FormaPago, PI.CuentaPago, PI.BancoPago, " & _
+                                        "PI.DocumentacionEntrega, PI.ObservacionesGeneralesFacturacion, PI.ObservacionesAlAutorizar " & _
+                                        "FROM PEDIDO_INTERNO PI " & _
+                                        "LEFT JOIN CLIENTES C ON PI.Cve_Cliente = C.Cve_Cliente " & _
+                                        "LEFT JOIN FOLIOS_ADMINISTRACION FA ON PI.Empresa = FA.Empresa AND PI.Num_Folio = FA.Num_Folio " & _
+                                        "WHERE PI.Empresa = @Empresa AND PI.No_Pedido = @NoPedido"
+                BDComando.Parameters.Add("@Empresa", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
+                BDComando.Parameters.Add("@NoPedido", SqlDbType.BigInt).Value = Val(TxtNoPedido.Text)
                 Try
                     BDComando.Connection.Open()
                     BDReader = BDComando.ExecuteReader
                     If BDReader.HasRows = True Then
                         BDReader.Read()
-                        If BDReader("STATUS") <> "AUTORIZADO" Then
+                        If Trim(ObtenerTextoBD(BDReader("Status"))) <> "AUTORIZADO" Then
                             BDReader.Close()
                             BDComando.Connection.Close()
                             MessageBox.Show("El Pedido Interno tiene un estatus diferente a autorizado, favor de verificar.", "Pedido Interno a remisionar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                             Exit Sub
                         End If
+                        CargarDatosPedidoAutorizado()
                     Else
                         MessageBox.Show("El Pedido Interno no existe, favor de verificar.", "Pedido Interno a remisionar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                         Exit Sub
@@ -68,6 +82,7 @@ Public Class GeneraRemision2
     End Sub
 
     Private Sub ReiniciarSeleccion()
+        LimpiarControlesPedido()
         RBGB1SI.Checked = False
         RBGB2SI.Checked = False
         RBGB3SI.Checked = False
@@ -76,11 +91,156 @@ Public Class GeneraRemision2
         GB1.Enabled = False
         GB5.Enabled = False
         CargaManualCantidades = False
+        BtnGuardar.Enabled = False
+        Zonas = ""
+    End Sub
+
+
+    Private Sub ConfigurarControlesPedidoSoloLectura()
+        TxtFolio.ReadOnly = True
+        TxtCliente.ReadOnly = True
+        TxtRFC.ReadOnly = True
+        TxtCalle.ReadOnly = True
+        TxtNoExterior.ReadOnly = True
+        TxtNoInterior.ReadOnly = True
+        TxtColonia.ReadOnly = True
+        TxtCP.ReadOnly = True
+        TxtCiudad.ReadOnly = True
+        TxtDelMun.ReadOnly = True
+        TxtTelefono.ReadOnly = True
+        TxtEstado.ReadOnly = True
+        TxtEmail.ReadOnly = True
+        TxtFax.ReadOnly = True
+        TxtContacto.ReadOnly = True
+        TxtTelContacto.ReadOnly = True
+        TxtCveProveedor.ReadOnly = True
+        CmbCondPagoDias.Enabled = False
+        CmbCondPagoTipoDia.Enabled = False
+        CmbCondPagoCondicion.Enabled = False
+        TxtPedCliente.ReadOnly = True
+        TxtContratoCliente.ReadOnly = True
+        TxtOrdenSurtimiento.ReadOnly = True
+        CmbIVA.Enabled = False
+        TxtRegimenFiscal.ReadOnly = True
+        TxtUsoCFDI.ReadOnly = True
+        TxtMetodoPago.ReadOnly = True
+        TxtFormaPago.ReadOnly = True
+        TxtCuentaPago.ReadOnly = True
+        TxtBancoPago.ReadOnly = True
+        TxtInstruccionesEntrega.ReadOnly = True
+        TxtNotasPedido.ReadOnly = True
+        TxtNotasAlAutorizarCancelar.ReadOnly = True
+    End Sub
+
+    Private Sub LimpiarControlesPedido()
+        TxtFolio.Clear()
+        TxtCliente.Clear()
+        TxtRFC.Clear()
+        TxtCalle.Clear()
+        TxtNoExterior.Clear()
+        TxtNoInterior.Clear()
+        TxtColonia.Clear()
+        TxtCP.Clear()
+        TxtCiudad.Clear()
+        TxtDelMun.Clear()
+        TxtTelefono.Clear()
+        TxtEstado.Clear()
+        TxtEmail.Clear()
+        TxtFax.Clear()
+        TxtContacto.Clear()
+        TxtTelContacto.Clear()
+        TxtCveProveedor.Clear()
+        CmbCondPagoDias.SelectedIndex = -1
+        CmbCondPagoTipoDia.SelectedIndex = -1
+        CmbCondPagoCondicion.SelectedIndex = -1
+        TxtPedCliente.Clear()
+        TxtContratoCliente.Clear()
+        TxtOrdenSurtimiento.Clear()
+        CmbIVA.SelectedIndex = -1
+        TxtRegimenFiscal.Clear()
+        TxtUsoCFDI.Clear()
+        TxtMetodoPago.Clear()
+        TxtFormaPago.Clear()
+        TxtCuentaPago.Clear()
+        TxtBancoPago.Clear()
+        TxtInstruccionesEntrega.Clear()
+        TxtNotasPedido.Clear()
+        TxtNotasAlAutorizarCancelar.Clear()
         DGPrevioRemision.DataSource = Nothing
         DGPrevioRemision.Rows.Clear()
         DGPrevioRemision.Columns.Clear()
-        BtnGuardar.Enabled = False
-        Zonas = ""
+    End Sub
+
+    Private Sub CargarDatosPedidoAutorizado()
+        TxtFolio.Text = ObtenerTextoBD(BDReader("Num_Folio"))
+        TxtCliente.Text = ObtenerTextoBD(BDReader("Nom_Cliente"))
+        TxtRFC.Text = ObtenerTextoBD(BDReader("RFC"))
+        TxtCalle.Text = ObtenerTextoBD(BDReader("Calle"))
+        TxtNoExterior.Text = ObtenerTextoBD(BDReader("NoExterior"))
+        TxtNoInterior.Text = ObtenerTextoBD(BDReader("NoInterior"))
+        TxtColonia.Text = ObtenerTextoBD(BDReader("Colonia"))
+        TxtCP.Text = ObtenerTextoBD(BDReader("CP"))
+        TxtCiudad.Text = ObtenerTextoBD(BDReader("Ciudad"))
+        TxtDelMun.Text = ObtenerTextoBD(BDReader("Municipio"))
+        TxtTelefono.Text = ObtenerTextoBD(BDReader("Telefono"))
+        TxtEstado.Text = ObtenerTextoBD(BDReader("Estado"))
+        TxtEmail.Text = ObtenerTextoBD(BDReader("Email"))
+        TxtFax.Text = ObtenerTextoBD(BDReader("Fax"))
+        TxtContacto.Text = ObtenerTextoBD(BDReader("Contacto"))
+        TxtTelContacto.Text = ObtenerTextoBD(BDReader("TelContacto"))
+        TxtCveProveedor.Text = ObtenerTextoBD(BDReader("Cve_Proveedor"))
+        SeleccionarValorCombo(CmbCondPagoDias, BDReader("CondicionesPagoDias"))
+        SeleccionarValorCombo(CmbCondPagoTipoDia, BDReader("CondicionesPagoTipoDias"))
+        SeleccionarValorCombo(CmbCondPagoCondicion, BDReader("CondicionesPagoCondicion"))
+        TxtPedCliente.Text = ObtenerTextoBD(BDReader("Cve_PedCliente"))
+        TxtContratoCliente.Text = ObtenerTextoBD(BDReader("Contrato_Cliente"))
+        TxtOrdenSurtimiento.Text = ObtenerTextoBD(BDReader("Orden_Surtimiento"))
+        SeleccionarIVA(BDReader("PorcentajeIVA"))
+        TxtRegimenFiscal.Text = ObtenerTextoBD(BDReader("RegimenFiscal"))
+        TxtUsoCFDI.Text = ObtenerTextoBD(BDReader("UsoCFDI"))
+        TxtMetodoPago.Text = ObtenerTextoBD(BDReader("MetodoPago"))
+        TxtFormaPago.Text = ObtenerTextoBD(BDReader("FormaPago"))
+        TxtCuentaPago.Text = ObtenerTextoBD(BDReader("CuentaPago"))
+        TxtBancoPago.Text = ObtenerTextoBD(BDReader("BancoPago"))
+        TxtInstruccionesEntrega.Text = ObtenerTextoBD(BDReader("DocumentacionEntrega"))
+        TxtNotasPedido.Text = ObtenerTextoBD(BDReader("ObservacionesGeneralesFacturacion"))
+        TxtNotasAlAutorizarCancelar.Text = ObtenerTextoBD(BDReader("ObservacionesAlAutorizar"))
+    End Sub
+
+    Private Function ObtenerTextoBD(ByVal valor As Object) As String
+        If valor Is Nothing OrElse IsDBNull(valor) Then
+            Return ""
+        End If
+        Return Convert.ToString(valor)
+    End Function
+
+    Private Sub SeleccionarValorCombo(ByVal combo As DevComponents.DotNetBar.Controls.ComboBoxEx, ByVal valor As Object)
+        Dim texto As String = ObtenerTextoBD(valor)
+        If texto = "" Then
+            combo.SelectedIndex = -1
+            Return
+        End If
+
+        If combo.Items.Contains(texto) = False Then
+            combo.Items.Add(texto)
+        End If
+        combo.SelectedItem = texto
+    End Sub
+
+    Private Sub SeleccionarIVA(ByVal valor As Object)
+        Dim texto As String = ObtenerTextoBD(valor)
+        If texto = "" Then
+            CmbIVA.SelectedIndex = -1
+            Return
+        End If
+
+        If texto = "16" OrElse texto = "16.0" OrElse texto = "16.00" Then
+            CmbIVA.SelectedIndex = 1
+        ElseIf texto = "0" OrElse texto = "0.0" OrElse texto = "0.00" Then
+            CmbIVA.SelectedIndex = 0
+        Else
+            SeleccionarValorCombo(CmbIVA, texto & " %")
+        End If
     End Sub
 
     Private Sub HabilitarPrimerPaso()
