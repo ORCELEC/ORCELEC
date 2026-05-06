@@ -53,6 +53,14 @@ Partial Class GeneraRemision2
         Me.TabPrincipal = New DevComponents.DotNetBar.SuperTabControl()
         Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.PanDetallePartida = New DevComponents.DotNetBar.PanelEx()
+        Me.TxtTotalRemisionado = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LblTotalRemisionado = New DevComponents.DotNetBar.LabelX()
+        Me.TxtIVARemisionado = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LblIVARemisionado = New DevComponents.DotNetBar.LabelX()
+        Me.TxtSubtotalRemisionado = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LblSubtotalRemisionado = New DevComponents.DotNetBar.LabelX()
+        Me.TxtTotalPrendasRemisionadas = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LblTotalPrendasRemisionadas = New DevComponents.DotNetBar.LabelX()
         Me.BtnCerrarDetPartida = New DevComponents.DotNetBar.ButtonX()
         Me.DGPrevioRemision = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.TabDatosPedido = New DevComponents.DotNetBar.SuperTabItem()
@@ -133,14 +141,6 @@ Partial Class GeneraRemision2
         Me.TabNotas = New DevComponents.DotNetBar.SuperTabItem()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.ReflectionLabel1 = New DevComponents.DotNetBar.Controls.ReflectionLabel()
-        Me.TxtTotalPrendasRemisionadas = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LblTotalPrendasRemisionadas = New DevComponents.DotNetBar.LabelX()
-        Me.TxtSubtotalRemisionado = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LblSubtotalRemisionado = New DevComponents.DotNetBar.LabelX()
-        Me.TxtIVARemisionado = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LblIVARemisionado = New DevComponents.DotNetBar.LabelX()
-        Me.TxtTotalRemisionado = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LblTotalRemisionado = New DevComponents.DotNetBar.LabelX()
         Me.PanPrincipal.SuspendLayout()
         Me.GB5.SuspendLayout()
         Me.GB1.SuspendLayout()
@@ -487,6 +487,130 @@ Partial Class GeneraRemision2
         Me.PanDetallePartida.Style.LineAlignment = System.Drawing.StringAlignment.Near
         Me.PanDetallePartida.TabIndex = 0
         Me.PanDetallePartida.Text = "Detalle de Partida"
+        '
+        'TxtTotalRemisionado
+        '
+        '
+        '
+        '
+        Me.TxtTotalRemisionado.Border.Class = "TextBoxBorder"
+        Me.TxtTotalRemisionado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtTotalRemisionado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtTotalRemisionado.FocusHighlightEnabled = True
+        Me.TxtTotalRemisionado.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTotalRemisionado.Location = New System.Drawing.Point(812, 355)
+        Me.TxtTotalRemisionado.Name = "TxtTotalRemisionado"
+        Me.TxtTotalRemisionado.Size = New System.Drawing.Size(127, 21)
+        Me.TxtTotalRemisionado.TabIndex = 94
+        '
+        'LblTotalRemisionado
+        '
+        '
+        '
+        '
+        Me.LblTotalRemisionado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LblTotalRemisionado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotalRemisionado.Location = New System.Drawing.Point(753, 355)
+        Me.LblTotalRemisionado.Name = "LblTotalRemisionado"
+        Me.LblTotalRemisionado.Size = New System.Drawing.Size(59, 25)
+        Me.LblTotalRemisionado.TabIndex = 93
+        Me.LblTotalRemisionado.Text = "Total:"
+        Me.LblTotalRemisionado.TextLineAlignment = System.Drawing.StringAlignment.Near
+        Me.LblTotalRemisionado.VerticalTextTopUp = False
+        Me.LblTotalRemisionado.WordWrap = True
+        '
+        'TxtIVARemisionado
+        '
+        '
+        '
+        '
+        Me.TxtIVARemisionado.Border.Class = "TextBoxBorder"
+        Me.TxtIVARemisionado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtIVARemisionado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtIVARemisionado.FocusHighlightEnabled = True
+        Me.TxtIVARemisionado.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtIVARemisionado.Location = New System.Drawing.Point(622, 355)
+        Me.TxtIVARemisionado.Name = "TxtIVARemisionado"
+        Me.TxtIVARemisionado.Size = New System.Drawing.Size(127, 21)
+        Me.TxtIVARemisionado.TabIndex = 92
+        '
+        'LblIVARemisionado
+        '
+        '
+        '
+        '
+        Me.LblIVARemisionado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LblIVARemisionado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblIVARemisionado.Location = New System.Drawing.Point(584, 355)
+        Me.LblIVARemisionado.Name = "LblIVARemisionado"
+        Me.LblIVARemisionado.Size = New System.Drawing.Size(36, 25)
+        Me.LblIVARemisionado.TabIndex = 91
+        Me.LblIVARemisionado.Text = "IVA:"
+        Me.LblIVARemisionado.TextLineAlignment = System.Drawing.StringAlignment.Near
+        Me.LblIVARemisionado.VerticalTextTopUp = False
+        Me.LblIVARemisionado.WordWrap = True
+        '
+        'TxtSubtotalRemisionado
+        '
+        '
+        '
+        '
+        Me.TxtSubtotalRemisionado.Border.Class = "TextBoxBorder"
+        Me.TxtSubtotalRemisionado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtSubtotalRemisionado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtSubtotalRemisionado.FocusHighlightEnabled = True
+        Me.TxtSubtotalRemisionado.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtSubtotalRemisionado.Location = New System.Drawing.Point(442, 355)
+        Me.TxtSubtotalRemisionado.Name = "TxtSubtotalRemisionado"
+        Me.TxtSubtotalRemisionado.Size = New System.Drawing.Size(127, 21)
+        Me.TxtSubtotalRemisionado.TabIndex = 90
+        '
+        'LblSubtotalRemisionado
+        '
+        '
+        '
+        '
+        Me.LblSubtotalRemisionado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LblSubtotalRemisionado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSubtotalRemisionado.Location = New System.Drawing.Point(369, 355)
+        Me.LblSubtotalRemisionado.Name = "LblSubtotalRemisionado"
+        Me.LblSubtotalRemisionado.Size = New System.Drawing.Size(72, 25)
+        Me.LblSubtotalRemisionado.TabIndex = 89
+        Me.LblSubtotalRemisionado.Text = "Subtotal:"
+        Me.LblSubtotalRemisionado.TextLineAlignment = System.Drawing.StringAlignment.Near
+        Me.LblSubtotalRemisionado.VerticalTextTopUp = False
+        Me.LblSubtotalRemisionado.WordWrap = True
+        '
+        'TxtTotalPrendasRemisionadas
+        '
+        '
+        '
+        '
+        Me.TxtTotalPrendasRemisionadas.Border.Class = "TextBoxBorder"
+        Me.TxtTotalPrendasRemisionadas.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TxtTotalPrendasRemisionadas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TxtTotalPrendasRemisionadas.FocusHighlightEnabled = True
+        Me.TxtTotalPrendasRemisionadas.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTotalPrendasRemisionadas.Location = New System.Drawing.Point(230, 355)
+        Me.TxtTotalPrendasRemisionadas.Name = "TxtTotalPrendasRemisionadas"
+        Me.TxtTotalPrendasRemisionadas.Size = New System.Drawing.Size(127, 21)
+        Me.TxtTotalPrendasRemisionadas.TabIndex = 88
+        '
+        'LblTotalPrendasRemisionadas
+        '
+        '
+        '
+        '
+        Me.LblTotalPrendasRemisionadas.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LblTotalPrendasRemisionadas.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotalPrendasRemisionadas.Location = New System.Drawing.Point(122, 355)
+        Me.LblTotalPrendasRemisionadas.Name = "LblTotalPrendasRemisionadas"
+        Me.LblTotalPrendasRemisionadas.Size = New System.Drawing.Size(115, 25)
+        Me.LblTotalPrendasRemisionadas.TabIndex = 87
+        Me.LblTotalPrendasRemisionadas.Text = "Total Prendas:"
+        Me.LblTotalPrendasRemisionadas.TextLineAlignment = System.Drawing.StringAlignment.Near
+        Me.LblTotalPrendasRemisionadas.VerticalTextTopUp = False
+        Me.LblTotalPrendasRemisionadas.WordWrap = True
         '
         'BtnCerrarDetPartida
         '
@@ -1623,9 +1747,9 @@ Partial Class GeneraRemision2
         '
         Me.SuperTabControlPanel9.Controls.Add(Me.GroupPanel1)
         Me.SuperTabControlPanel9.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 25)
+        Me.SuperTabControlPanel9.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControlPanel9.Name = "SuperTabControlPanel9"
-        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 408)
+        Me.SuperTabControlPanel9.Size = New System.Drawing.Size(954, 433)
         Me.SuperTabControlPanel9.TabIndex = 0
         Me.SuperTabControlPanel9.TabItem = Me.TabNotas
         '
@@ -1768,130 +1892,6 @@ Partial Class GeneraRemision2
         Me.ReflectionLabel1.Size = New System.Drawing.Size(969, 39)
         Me.ReflectionLabel1.TabIndex = 2
         Me.ReflectionLabel1.Text = "<b><font size=""+6""><i>REMISIÓN DE PEDIDO</i></font></b>"
-        '
-        'TxtTotalPrendasRemisionadas
-        '
-        '
-        '
-        '
-        Me.TxtTotalPrendasRemisionadas.Border.Class = "TextBoxBorder"
-        Me.TxtTotalPrendasRemisionadas.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtTotalPrendasRemisionadas.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtTotalPrendasRemisionadas.FocusHighlightEnabled = True
-        Me.TxtTotalPrendasRemisionadas.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtTotalPrendasRemisionadas.Location = New System.Drawing.Point(230, 355)
-        Me.TxtTotalPrendasRemisionadas.Name = "TxtTotalPrendasRemisionadas"
-        Me.TxtTotalPrendasRemisionadas.Size = New System.Drawing.Size(127, 21)
-        Me.TxtTotalPrendasRemisionadas.TabIndex = 88
-        '
-        'LblTotalPrendasRemisionadas
-        '
-        '
-        '
-        '
-        Me.LblTotalPrendasRemisionadas.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LblTotalPrendasRemisionadas.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTotalPrendasRemisionadas.Location = New System.Drawing.Point(122, 355)
-        Me.LblTotalPrendasRemisionadas.Name = "LblTotalPrendasRemisionadas"
-        Me.LblTotalPrendasRemisionadas.Size = New System.Drawing.Size(115, 25)
-        Me.LblTotalPrendasRemisionadas.TabIndex = 87
-        Me.LblTotalPrendasRemisionadas.Text = "Total Prendas:"
-        Me.LblTotalPrendasRemisionadas.TextLineAlignment = System.Drawing.StringAlignment.Near
-        Me.LblTotalPrendasRemisionadas.VerticalTextTopUp = False
-        Me.LblTotalPrendasRemisionadas.WordWrap = True
-        '
-        'TxtSubtotalRemisionado
-        '
-        '
-        '
-        '
-        Me.TxtSubtotalRemisionado.Border.Class = "TextBoxBorder"
-        Me.TxtSubtotalRemisionado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtSubtotalRemisionado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtSubtotalRemisionado.FocusHighlightEnabled = True
-        Me.TxtSubtotalRemisionado.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtSubtotalRemisionado.Location = New System.Drawing.Point(442, 355)
-        Me.TxtSubtotalRemisionado.Name = "TxtSubtotalRemisionado"
-        Me.TxtSubtotalRemisionado.Size = New System.Drawing.Size(127, 21)
-        Me.TxtSubtotalRemisionado.TabIndex = 90
-        '
-        'LblSubtotalRemisionado
-        '
-        '
-        '
-        '
-        Me.LblSubtotalRemisionado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LblSubtotalRemisionado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblSubtotalRemisionado.Location = New System.Drawing.Point(369, 355)
-        Me.LblSubtotalRemisionado.Name = "LblSubtotalRemisionado"
-        Me.LblSubtotalRemisionado.Size = New System.Drawing.Size(72, 25)
-        Me.LblSubtotalRemisionado.TabIndex = 89
-        Me.LblSubtotalRemisionado.Text = "Subtotal:"
-        Me.LblSubtotalRemisionado.TextLineAlignment = System.Drawing.StringAlignment.Near
-        Me.LblSubtotalRemisionado.VerticalTextTopUp = False
-        Me.LblSubtotalRemisionado.WordWrap = True
-        '
-        'TxtIVARemisionado
-        '
-        '
-        '
-        '
-        Me.TxtIVARemisionado.Border.Class = "TextBoxBorder"
-        Me.TxtIVARemisionado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtIVARemisionado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtIVARemisionado.FocusHighlightEnabled = True
-        Me.TxtIVARemisionado.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtIVARemisionado.Location = New System.Drawing.Point(622, 355)
-        Me.TxtIVARemisionado.Name = "TxtIVARemisionado"
-        Me.TxtIVARemisionado.Size = New System.Drawing.Size(127, 21)
-        Me.TxtIVARemisionado.TabIndex = 92
-        '
-        'LblIVARemisionado
-        '
-        '
-        '
-        '
-        Me.LblIVARemisionado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LblIVARemisionado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblIVARemisionado.Location = New System.Drawing.Point(584, 355)
-        Me.LblIVARemisionado.Name = "LblIVARemisionado"
-        Me.LblIVARemisionado.Size = New System.Drawing.Size(36, 25)
-        Me.LblIVARemisionado.TabIndex = 91
-        Me.LblIVARemisionado.Text = "IVA:"
-        Me.LblIVARemisionado.TextLineAlignment = System.Drawing.StringAlignment.Near
-        Me.LblIVARemisionado.VerticalTextTopUp = False
-        Me.LblIVARemisionado.WordWrap = True
-        '
-        'TxtTotalRemisionado
-        '
-        '
-        '
-        '
-        Me.TxtTotalRemisionado.Border.Class = "TextBoxBorder"
-        Me.TxtTotalRemisionado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TxtTotalRemisionado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtTotalRemisionado.FocusHighlightEnabled = True
-        Me.TxtTotalRemisionado.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtTotalRemisionado.Location = New System.Drawing.Point(812, 355)
-        Me.TxtTotalRemisionado.Name = "TxtTotalRemisionado"
-        Me.TxtTotalRemisionado.Size = New System.Drawing.Size(127, 21)
-        Me.TxtTotalRemisionado.TabIndex = 94
-        '
-        'LblTotalRemisionado
-        '
-        '
-        '
-        '
-        Me.LblTotalRemisionado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LblTotalRemisionado.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTotalRemisionado.Location = New System.Drawing.Point(753, 355)
-        Me.LblTotalRemisionado.Name = "LblTotalRemisionado"
-        Me.LblTotalRemisionado.Size = New System.Drawing.Size(59, 25)
-        Me.LblTotalRemisionado.TabIndex = 93
-        Me.LblTotalRemisionado.Text = "Total:"
-        Me.LblTotalRemisionado.TextLineAlignment = System.Drawing.StringAlignment.Near
-        Me.LblTotalRemisionado.VerticalTextTopUp = False
-        Me.LblTotalRemisionado.WordWrap = True
         '
         'GeneraRemision2
         '

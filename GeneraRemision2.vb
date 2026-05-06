@@ -86,6 +86,8 @@ Public Class GeneraRemision2
         RBGB1SI.Checked = False
         RBGB2SI.Checked = False
         RBGB3SI.Checked = False
+        RBPartidaPorTalla.Checked = False
+        RBPartidaTodaslasTallas.Checked = False
         RBGB4PartidaLibre.Checked = False
         GB1.Text = ""
         GB1.Enabled = False
