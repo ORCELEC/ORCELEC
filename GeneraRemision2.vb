@@ -373,6 +373,48 @@ Public Class GeneraRemision2
             CargarOpcionesUnidadDeMedida(colUnidad)
             DGPrevioRemision.Columns.Insert(DGPrevioRemision.Columns("PrecioUnitario").Index + 3, colUnidad)
         End If
+
+        ConfigurarDetalleColumnasYEdicion()
+    End Sub
+
+    Private Sub ConfigurarDetalleColumnasYEdicion()
+        DGPrevioRemision.Font = New Font(DGPrevioRemision.Font.FontFamily, 8.0F, DGPrevioRemision.Font.Style)
+        ConfigurarColumna("LugarDeEntrega", "Cve. Lugar de Entrega", 50, False)
+        ConfigurarColumna("NombreLugarDeEntrega", "Lugar de Entrega", 200, False)
+        ConfigurarColumna("Partida", "Partida del Pedido", 50, False)
+        ConfigurarColumna("Cve_Prenda", "Cve. de Prenda", 50, False)
+        ConfigurarColumna("DescripcionPrenda", "Descripción de Prenda", 200, False)
+        ConfigurarColumna("ObservacionesPartidaFacturacion", "Notas de Partida para Facturación", 250, False)
+        ConfigurarColumna("Talla", "Talla", 50, False)
+        ConfigurarColumna("Cantidad", "Cantidad", 50, False)
+        ConfigurarColumna("PrecioUnitario", "Precio Unitario", 70, True)
+        ConfigurarColumna("CantidadARemisionar", "Cantidad a Remisionar", 70, True)
+        ConfigurarColumna("DescripcionPartida", "Descripción de la partida", 300, True)
+        ConfigurarColumna("CveArticuloCliente", "Cve. de Articulo Cliente", 70, True)
+        ConfigurarColumna("UnidadDeMedida", "UnidadDeMedida", 100, True)
+        ConfigurarColumna("Subtotal", "Subtotal", 90, False)
+        ConfigurarColumnaMultilinea("NombreLugarDeEntrega")
+        ConfigurarColumnaMultilinea("DescripcionPrenda")
+        ConfigurarColumnaMultilinea("DescripcionPartida")
+        DGPrevioRemision.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+    End Sub
+
+    Private Sub ConfigurarColumna(ByVal nombre As String, ByVal encabezado As String, ByVal ancho As Integer, ByVal esEditable As Boolean)
+        If DGPrevioRemision.Columns.Contains(nombre) = False Then
+            Return
+        End If
+
+        DGPrevioRemision.Columns(nombre).HeaderText = encabezado
+        DGPrevioRemision.Columns(nombre).Width = ancho
+        DGPrevioRemision.Columns(nombre).ReadOnly = Not esEditable
+    End Sub
+
+    Private Sub ConfigurarColumnaMultilinea(ByVal nombre As String)
+        If DGPrevioRemision.Columns.Contains(nombre) = False Then
+            Return
+        End If
+
+        DGPrevioRemision.Columns(nombre).DefaultCellStyle.WrapMode = DataGridViewTriState.True
     End Sub
 
     Private Sub CargarOpcionesUnidadDeMedida(ByVal columna As DataGridViewComboBoxColumn)
@@ -399,12 +441,163 @@ Public Class GeneraRemision2
     End Sub
 
     Private Sub DGPrevioRemisionTextBox_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs)
-        
+        If DGPrevioRemision.CurrentCell Is Nothing Then
+            Return
+        End If
+
+        Dim nombreColumna As String = DGPrevioRemision.Columns(DGPrevioRemision.CurrentCell.ColumnIndex).Name
+        If nombreColumna = "CantidadARemisionar" OrElse nombreColumna = "PrecioUnitario" Then
+            If Char.IsControl(e.KeyChar) Then
+                Return
+            End If
+
+            If Char.IsDigit(e.KeyChar) Then
+                Return
+            End If
+
+            If e.KeyChar = "."c Then
+                Dim txt As TextBox = TryCast(sender, TextBox)
+                If txt IsNot Nothing AndAlso txt.Text.Contains(".") = False Then
+                    Return
+                End If
+            End If
+
+            e.Handled = True
+        End If
     End Sub
 
     Private Sub DGPrevioRemision_CellValidating(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellValidatingEventArgs) Handles DGPrevioRemision.CellValidating
-        
+        If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then
+            Return
+        End If
+
+        If RBGB1SI.Checked = False OrElse RBPartidaPorTalla.Checked = False Then
+            Return
+        End If
+
+        Dim nombreColumna As String = DGPrevioRemision.Columns(e.ColumnIndex).Name
+        If nombreColumna = "CantidadARemisionar" Then
+            ValidarCantidadARemisionar(e)
+        ElseIf nombreColumna = "PrecioUnitario" Then
+            ValidarPrecioUnitario(e)
+        End If
     End Sub
+
+    Private Sub DGPrevioRemision_CellEndEdit(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DGPrevioRemision.CellEndEdit
+        If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then
+            Return
+        End If
+
+        If RBGB1SI.Checked = False OrElse RBPartidaPorTalla.Checked = False Then
+            Return
+        End If
+
+        Dim nombreColumna As String = DGPrevioRemision.Columns(e.ColumnIndex).Name
+        If nombreColumna = "CantidadARemisionar" OrElse nombreColumna = "PrecioUnitario" Then
+            RecalcularSubtotalFila(e.RowIndex)
+            ActualizarTotalesRemision()
+        End If
+    End Sub
+
+    Private Sub ValidarCantidadARemisionar(ByVal e As DataGridViewCellValidatingEventArgs)
+        Dim texto As String = Trim(Convert.ToString(e.FormattedValue))
+        If texto = "" Then
+            Return
+        End If
+
+        Dim cantidad As Decimal
+        If Decimal.TryParse(texto, cantidad) = False Then
+            MessageBox.Show("La Cantidad a Remisionar debe ser un número válido.", "Pedido Interno a remisionar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            e.Cancel = True
+            Return
+        End If
+
+        Dim maximo As Decimal = ObtenerDecimalCelda(e.RowIndex, "Cantidad")
+        If cantidad > maximo Then
+            MessageBox.Show("La Cantidad a Remisionar no puede ser mayor a la Cantidad disponible.", "Pedido Interno a remisionar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            e.Cancel = True
+        End If
+    End Sub
+
+    Private Sub ValidarPrecioUnitario(ByVal e As DataGridViewCellValidatingEventArgs)
+        Dim texto As String = Trim(Convert.ToString(e.FormattedValue))
+        If texto = "" Then
+            Return
+        End If
+
+        Dim precio As Decimal
+        If Decimal.TryParse(texto, precio) = False Then
+            MessageBox.Show("El Precio Unitario debe ser un número válido.", "Pedido Interno a remisionar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            e.Cancel = True
+        End If
+    End Sub
+
+    Private Sub RecalcularSubtotalFila(ByVal rowIndex As Integer)
+        If rowIndex < 0 OrElse rowIndex >= DGPrevioRemision.Rows.Count Then
+            Return
+        End If
+
+        Dim cantidad As Decimal = ObtenerDecimalCelda(rowIndex, "CantidadARemisionar")
+        Dim precio As Decimal = ObtenerDecimalCelda(rowIndex, "PrecioUnitario")
+        DGPrevioRemision.Rows(rowIndex).Cells("Subtotal").Value = Math.Round(cantidad * precio, 2)
+    End Sub
+
+    Private Sub ActualizarTotalesRemision()
+        Dim totalPrendas As Decimal = 0D
+        Dim subtotal As Decimal = 0D
+        Dim ivaFactor As Decimal = ObtenerIVASeleccionado() / 100D
+
+        For Each fila As DataGridViewRow In DGPrevioRemision.Rows
+            If fila.IsNewRow Then
+                Continue For
+            End If
+
+            Dim cantidad As Decimal = ObtenerDecimalCelda(fila.Index, "CantidadARemisionar")
+            If cantidad > 0D Then
+                Dim precio As Decimal = ObtenerDecimalCelda(fila.Index, "PrecioUnitario")
+                Dim importe As Decimal = cantidad * precio
+                totalPrendas += cantidad
+                subtotal += importe
+            End If
+        Next
+
+        Dim iva As Decimal = subtotal * ivaFactor
+        Dim total As Decimal = subtotal * (1D + ivaFactor)
+
+        TxtTotalPrendasRemisionadas.Text = totalPrendas.ToString("0.##")
+        TxtSubtotalRemisionado.Text = subtotal.ToString("0.00")
+        TxtIVARemisionado.Text = iva.ToString("0.00")
+        TxtTotalRemisionado.Text = total.ToString("0.00")
+    End Sub
+
+    Private Function ObtenerDecimalCelda(ByVal rowIndex As Integer, ByVal nombreColumna As String) As Decimal
+        If DGPrevioRemision.Columns.Contains(nombreColumna) = False Then
+            Return 0D
+        End If
+        Dim valor As Object = DGPrevioRemision.Rows(rowIndex).Cells(nombreColumna).Value
+        If valor Is Nothing OrElse IsDBNull(valor) Then
+            Return 0D
+        End If
+
+        Dim resultado As Decimal
+        If Decimal.TryParse(Convert.ToString(valor), resultado) Then
+            Return resultado
+        End If
+        Return 0D
+    End Function
+
+    Private Function ObtenerIVASeleccionado() As Decimal
+        If CmbIVA.SelectedItem Is Nothing Then
+            Return 0D
+        End If
+
+        Dim texto As String = CmbIVA.SelectedItem.ToString().Replace("%", "").Trim()
+        Dim iva As Decimal
+        If Decimal.TryParse(texto, iva) Then
+            Return iva
+        End If
+        Return 0D
+    End Function
 
     Private Sub BtnRemisionar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         
