@@ -432,7 +432,7 @@ Public Class GeneraRemision2
             captura("Partida") = g.k3
             captura("Cve_Prenda") = g.k4
             captura("DescripcionPrenda") = g.k5
-            captura("ObservacionesPartidaFacturacion") = "Remisionar"
+            captura("ObservacionesPartidaFacturacion") = ""
             captura("FilaTipo") = FILA_TIPO_CAPTURA
             captura("PrecioUnitario") = g.k7
             salida.Rows.Add(captura)
@@ -448,7 +448,11 @@ Public Class GeneraRemision2
             DGPrevioRemision.Columns("PartidaOrden").Visible = False
         End If
 
-        If DGPrevioRemision.Columns.Contains("CantidadARemisionar") = False Then
+        If RBGB1SI.Checked AndAlso RBPartidaTodaslasTallas.Checked Then
+            If DGPrevioRemision.Columns.Contains("CantidadARemisionar") Then
+                DGPrevioRemision.Columns.Remove("CantidadARemisionar")
+            End If
+        ElseIf DGPrevioRemision.Columns.Contains("CantidadARemisionar") = False Then
             Dim colCantidad As New DataGridViewTextBoxColumn
             colCantidad.Name = "CantidadARemisionar"
             colCantidad.HeaderText = "CantidadARemisionar"
@@ -487,6 +491,7 @@ Public Class GeneraRemision2
         ConfigurarDetalleColumnasYEdicion()
     End Sub
 
+
     Private Sub ConfigurarDetalleColumnasYEdicion()
         DGPrevioRemision.Font = New Font(DGPrevioRemision.Font.FontFamily, 8.0F, DGPrevioRemision.Font.Style)
         ConfigurarColumna("LugarDeEntrega", "Cve. Lugar de Entrega", 50, False)
@@ -495,6 +500,7 @@ Public Class GeneraRemision2
         ConfigurarColumna("Cve_Prenda", "Cve. de Prenda", 50, False)
         ConfigurarColumna("DescripcionPrenda", "Descripción de Prenda", 200, False)
         ConfigurarColumna("ObservacionesPartidaFacturacion", "Notas de Partida para Facturación", 250, False)
+        ConfigurarColumna("FilaTipo", "Tipo Fila", 70, False)
         If DGPrevioRemision.Columns.Contains("Talla") Then ConfigurarColumna("Talla", "Talla", 50, False)
         If DGPrevioRemision.Columns.Contains("Cantidad") Then ConfigurarColumna("Cantidad", "Cantidad", 50, False)
         ConfigurarColumna("PrecioUnitario", "Precio Unitario", 70, True)
