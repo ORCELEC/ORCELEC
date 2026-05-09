@@ -99,7 +99,6 @@ Public Class GeneraRemision2
         Zonas = ""
     End Sub
 
-
     Private Sub ConfigurarControlesPedidoSoloLectura()
         TxtFolio.ReadOnly = True
         TxtCliente.ReadOnly = True
@@ -480,7 +479,9 @@ Public Class GeneraRemision2
             DGPrevioRemision.Columns.Insert(DGPrevioRemision.Columns("PrecioUnitario").Index + 2, colCveArticulo)
         End If
 
-        If DGPrevioRemision.Columns.Contains("UnidadDeMedida") = False Then
+        If RBGB1SI.Checked AndAlso RBPartidaTodaslasTallas.Checked Then
+            ConfigurarColumnaUnidadDeMedidaComoCombo()
+        ElseIf DGPrevioRemision.Columns.Contains("UnidadDeMedida") = False Then
             Dim colUnidad As New DataGridViewComboBoxColumn
             colUnidad.Name = "UnidadDeMedida"
             colUnidad.HeaderText = "UnidadDeMedida"
@@ -491,6 +492,21 @@ Public Class GeneraRemision2
         ConfigurarDetalleColumnasYEdicion()
     End Sub
 
+    Private Sub ConfigurarColumnaUnidadDeMedidaComoCombo()
+        Dim indice As Integer = DGPrevioRemision.Columns("PrecioUnitario").Index + 3
+        If DGPrevioRemision.Columns.Contains("UnidadDeMedida") Then
+            indice = DGPrevioRemision.Columns("UnidadDeMedida").Index
+            DGPrevioRemision.Columns.Remove("UnidadDeMedida")
+        End If
+
+        Dim colUnidad As New DataGridViewComboBoxColumn
+        colUnidad.Name = "UnidadDeMedida"
+        colUnidad.HeaderText = "UnidadDeMedida"
+        colUnidad.DataPropertyName = "UnidadDeMedida"
+        colUnidad.DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton
+        CargarOpcionesUnidadDeMedida(colUnidad)
+        DGPrevioRemision.Columns.Insert(indice, colUnidad)
+    End Sub
 
     Private Sub ConfigurarDetalleColumnasYEdicion()
         DGPrevioRemision.Font = New Font(DGPrevioRemision.Font.FontFamily, 8.0F, DGPrevioRemision.Font.Style)
@@ -507,7 +523,7 @@ Public Class GeneraRemision2
         If DGPrevioRemision.Columns.Contains("CantidadARemisionar") Then ConfigurarColumna("CantidadARemisionar", "Cantidad a Remisionar", 70, True)
         ConfigurarColumna("DescripcionPartida", "Descripción de la partida", 300, True)
         ConfigurarColumna("CveArticuloCliente", "Cve. de Articulo Cliente", 70, True)
-        ConfigurarColumna("UnidadDeMedida", "Unidad de Medida", 70, True)
+        ConfigurarColumna("UnidadDeMedida", "Unidad de Medida", 100, True)
         ConfigurarColumna("TotalPrendasPartida", "Total a Remisionar", 70, False)
         ConfigurarColumna("Subtotal", "Subtotal", 90, False)
         ConfigurarColumnaMultilinea("NombreLugarDeEntrega")
@@ -550,8 +566,6 @@ Public Class GeneraRemision2
             columna.Items.Add(ObtenerTextoBD(fila("Nombre")) & " " & ObtenerTextoBD(fila("c_ClaveUnidad")))
         Next
     End Sub
-
-
 
     Private Sub DGPrevioRemision_EditingControlShowing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DGPrevioRemision.EditingControlShowing
         AddHandler e.Control.KeyPress, AddressOf DGPrevioRemisionTextBox_KeyPress
@@ -740,7 +754,6 @@ Public Class GeneraRemision2
         End If
         Return 0D
     End Function
-
 
     Private Sub RecalcularFilaCapturaTodasLasTallas(ByVal rowIndex As Integer)
         If rowIndex <= 0 Then Return
