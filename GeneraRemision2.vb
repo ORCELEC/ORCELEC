@@ -15,6 +15,8 @@ Public Class GeneraRemision2
     Private DataSet As New DataSet
     Private CargaManualCantidades As Boolean = False
     Private Zonas As String = ""
+    Private Const FILA_TIPO_CAPTURA As String = "CAPTURA"
+    Private Const FILA_TIPO_DISPONIBLE As String = "DISPONIBLE"
 
     Private Sub GeneraRemision2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         BDAdapter = New SqlDataAdapter("", ConectaBD.BDConexion)
@@ -287,6 +289,12 @@ Public Class GeneraRemision2
         End If
     End Sub
 
+    Private Sub RBPartidaTodaslasTallas_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RBPartidaTodaslasTallas.CheckedChanged
+        If RBGB1SI.Checked AndAlso RBPartidaTodaslasTallas.Checked Then
+            CargarPrevioRemisionPartidaTodasLasTallas()
+        End If
+    End Sub
+
     Private Sub CargarPrevioRemisionPartidaPorTalla()
         Dim consulta As String = "SELECT " & _
                                 "PIT.LugarDeEntrega, PIT.NombreLugarDeEntrega, PIT.Partida, " & _
@@ -331,6 +339,108 @@ Public Class GeneraRemision2
         Catch ex As Exception
             MessageBox.Show("Se genero un error al cargar el previo de remisión por talla, contactar a sistemas y dar como referencia el siguiente mensaje." & vbCrLf & "-" & ex.Message, "Pedido Interno a remisionar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End Try
+    End Sub
+
+    Private Sub CargarPrevioRemisionPartidaTodasLasTallas()
+        Dim consulta As String = "SELECT " & _
+                                "PIT.LugarDeEntrega, PIT.NombreLugarDeEntrega, PIT.Partida, " & _
+                                "ISNULL(TG.Partida, 0) AS PartidaOrden, " & _
+                                "PIT.Cve_Prenda, PIT.DescripcionPrenda, PIT.ObservacionesPartidaFacturacion, PIT.Talla, " & _
+                                "(PIT.Cantidad - ISNULL(RM.CantidadRemisionada, 0) - ISNULL(FC.CantidadFacturada, 0)) AS CantidadDisponible, " & _
+                                "PIT.PrecioUnitario " & _
+                                "FROM PEDIDO_INTERNO_TALLAS PIT " & _
+                                "LEFT JOIN TALLAS_GENERALES TG ON PIT.Talla = TG.Talla " & _
+                                "LEFT JOIN (" & _
+                                "   SELECT Empresa, No_Pedido, Cve_Prenda, LugarDeEntrega, Prioridad, Talla, SUM(Cantidad) AS CantidadRemisionada " & _
+                                "   FROM PEDIDO_INTERNO_REMISION WHERE RemisionEstatus = 'AUTORIZADA' " & _
+                                "   GROUP BY Empresa, No_Pedido, Cve_Prenda, LugarDeEntrega, Prioridad, Talla" & _
+                                ") RM ON PIT.Empresa = RM.Empresa AND PIT.No_Pedido = RM.No_Pedido AND PIT.Cve_Prenda = RM.Cve_Prenda " & _
+                                "   AND PIT.LugarDeEntrega = RM.LugarDeEntrega AND PIT.Prioridad = RM.Prioridad AND PIT.Talla = RM.Talla " & _
+                                "LEFT JOIN (" & _
+                                "   SELECT Empresa, No_Pedido, Cve_Prenda, LugarDeEntrega, Prioridad, Talla, SUM(Cantidad) AS CantidadFacturada " & _
+                                "   FROM PEDIDO_INTERNO_FACTURA WHERE FacturaEstatus = 'AUTORIZADA' " & _
+                                "   GROUP BY Empresa, No_Pedido, Cve_Prenda, LugarDeEntrega, Prioridad, Talla" & _
+                                ") FC ON PIT.Empresa = FC.Empresa AND PIT.No_Pedido = FC.No_Pedido AND PIT.Cve_Prenda = FC.Cve_Prenda " & _
+                                "   AND PIT.LugarDeEntrega = FC.LugarDeEntrega AND PIT.Prioridad = FC.Prioridad AND PIT.Talla = FC.Talla " & _
+                                "WHERE PIT.Empresa = @Empresa AND PIT.No_Pedido = @NoPedido " & _
+                                "AND (PIT.Cantidad - ISNULL(RM.CantidadRemisionada, 0) - ISNULL(FC.CantidadFacturada, 0)) > 0 " & _
+                                "ORDER BY PIT.LugarDeEntrega, PIT.Partida, ISNULL(TG.Partida, 0)"
+
+        Dim dt As New DataTable
+        Using comando As New SqlCommand(consulta, ConectaBD.BDConexion)
+            comando.Parameters.Add("@Empresa", SqlDbType.BigInt).Value = ConectaBD.Cve_Empresa
+            comando.Parameters.Add("@NoPedido", SqlDbType.BigInt).Value = Val(TxtNoPedido.Text)
+            Using ad As New SqlDataAdapter(comando)
+                ad.Fill(dt)
+            End Using
+        End Using
+
+        Dim tallas = (From r As DataRow In dt.Rows
+                      Select Talla = ObtenerTextoBD(r("Talla")), PartidaOrden = Convert.ToInt32(If(IsDBNull(r("PartidaOrden")), 0, r("PartidaOrden")))
+                      Where Talla <> ""
+                      Group By Talla Into MinOrden = Min(PartidaOrden)
+                      Order By MinOrden
+                      Select Talla).ToList()
+
+        Dim salida As New DataTable
+        salida.Columns.Add("LugarDeEntrega", GetType(String))
+        salida.Columns.Add("NombreLugarDeEntrega", GetType(String))
+        salida.Columns.Add("Partida", GetType(String))
+        salida.Columns.Add("Cve_Prenda", GetType(String))
+        salida.Columns.Add("DescripcionPrenda", GetType(String))
+        salida.Columns.Add("ObservacionesPartidaFacturacion", GetType(String))
+        salida.Columns.Add("FilaTipo", GetType(String))
+        For Each t As String In tallas
+            salida.Columns.Add(t, GetType(Decimal))
+        Next
+        salida.Columns.Add("PrecioUnitario", GetType(Decimal))
+        salida.Columns.Add("TotalPrendasPartida", GetType(Decimal))
+        salida.Columns.Add("DescripcionPartida", GetType(String))
+        salida.Columns.Add("Subtotal", GetType(Decimal))
+        salida.Columns.Add("CveArticuloCliente", GetType(String))
+        salida.Columns.Add("UnidadDeMedida", GetType(String))
+
+        Dim grupos = From r As DataRow In dt.Rows
+                     Group r By k1 = ObtenerTextoBD(r("LugarDeEntrega")),
+                                k2 = ObtenerTextoBD(r("NombreLugarDeEntrega")),
+                                k3 = ObtenerTextoBD(r("Partida")),
+                                k4 = ObtenerTextoBD(r("Cve_Prenda")),
+                                k5 = ObtenerTextoBD(r("DescripcionPrenda")),
+                                k6 = ObtenerTextoBD(r("ObservacionesPartidaFacturacion")),
+                                k7 = Convert.ToDecimal(If(IsDBNull(r("PrecioUnitario")), 0D, r("PrecioUnitario")))
+                     Into Filas = Group
+                     Order By k1, k3
+
+        For Each g In grupos
+            Dim disponible = salida.NewRow()
+            disponible("LugarDeEntrega") = g.k1
+            disponible("NombreLugarDeEntrega") = g.k2
+            disponible("Partida") = g.k3
+            disponible("Cve_Prenda") = g.k4
+            disponible("DescripcionPrenda") = g.k5
+            disponible("ObservacionesPartidaFacturacion") = g.k6
+            disponible("FilaTipo") = FILA_TIPO_DISPONIBLE
+            disponible("PrecioUnitario") = g.k7
+            For Each f As DataRow In g.Filas
+                disponible(ObtenerTextoBD(f("Talla"))) = Convert.ToDecimal(f("CantidadDisponible"))
+            Next
+            salida.Rows.Add(disponible)
+
+            Dim captura = salida.NewRow()
+            captura("LugarDeEntrega") = g.k1
+            captura("NombreLugarDeEntrega") = g.k2
+            captura("Partida") = g.k3
+            captura("Cve_Prenda") = g.k4
+            captura("DescripcionPrenda") = g.k5
+            captura("ObservacionesPartidaFacturacion") = "Remisionar"
+            captura("FilaTipo") = FILA_TIPO_CAPTURA
+            captura("PrecioUnitario") = g.k7
+            salida.Rows.Add(captura)
+        Next
+
+        DGPrevioRemision.DataSource = salida
+        ConfigurarColumnasPrevioRemision()
+        BtnGuardar.Enabled = salida.Rows.Count > 0
     End Sub
 
     Private Sub ConfigurarColumnasPrevioRemision()
@@ -385,13 +495,14 @@ Public Class GeneraRemision2
         ConfigurarColumna("Cve_Prenda", "Cve. de Prenda", 50, False)
         ConfigurarColumna("DescripcionPrenda", "Descripción de Prenda", 200, False)
         ConfigurarColumna("ObservacionesPartidaFacturacion", "Notas de Partida para Facturación", 250, False)
-        ConfigurarColumna("Talla", "Talla", 50, False)
-        ConfigurarColumna("Cantidad", "Cantidad", 50, False)
+        If DGPrevioRemision.Columns.Contains("Talla") Then ConfigurarColumna("Talla", "Talla", 50, False)
+        If DGPrevioRemision.Columns.Contains("Cantidad") Then ConfigurarColumna("Cantidad", "Cantidad", 50, False)
         ConfigurarColumna("PrecioUnitario", "Precio Unitario", 70, True)
-        ConfigurarColumna("CantidadARemisionar", "Cantidad a Remisionar", 70, True)
+        If DGPrevioRemision.Columns.Contains("CantidadARemisionar") Then ConfigurarColumna("CantidadARemisionar", "Cantidad a Remisionar", 70, True)
         ConfigurarColumna("DescripcionPartida", "Descripción de la partida", 300, True)
         ConfigurarColumna("CveArticuloCliente", "Cve. de Articulo Cliente", 70, True)
-        ConfigurarColumna("UnidadDeMedida", "UnidadDeMedida", 100, True)
+        ConfigurarColumna("UnidadDeMedida", "Unidad de Medida", 70, True)
+        ConfigurarColumna("TotalPrendasPartida", "Total a Remisionar", 70, False)
         ConfigurarColumna("Subtotal", "Subtotal", 90, False)
         ConfigurarColumnaMultilinea("NombreLugarDeEntrega")
         ConfigurarColumnaMultilinea("DescripcionPrenda")
@@ -466,12 +577,22 @@ Public Class GeneraRemision2
         End If
     End Sub
 
+    Private Sub DGPrevioRemision_CellBeginEdit(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DGPrevioRemision.CellBeginEdit
+        If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then Return
+        If RBPartidaTodaslasTallas.Checked Then
+            Dim tipo As String = ObtenerTextoBD(DGPrevioRemision.Rows(e.RowIndex).Cells("FilaTipo").Value)
+            Dim col As String = DGPrevioRemision.Columns(e.ColumnIndex).Name
+            Dim editable As Boolean = (tipo = FILA_TIPO_CAPTURA AndAlso (col = "PrecioUnitario" OrElse col = "DescripcionPartida" OrElse col = "CveArticuloCliente" OrElse col = "UnidadDeMedida" OrElse (col <> "LugarDeEntrega" AndAlso col <> "NombreLugarDeEntrega" AndAlso col <> "Partida" AndAlso col <> "Cve_Prenda" AndAlso col <> "DescripcionPrenda" AndAlso col <> "ObservacionesPartidaFacturacion" AndAlso col <> "FilaTipo" AndAlso col <> "TotalPrendasPartida" AndAlso col <> "Subtotal")))
+            e.Cancel = Not editable
+        End If
+    End Sub
+
     Private Sub DGPrevioRemision_CellValidating(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellValidatingEventArgs) Handles DGPrevioRemision.CellValidating
         If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then
             Return
         End If
 
-        If RBGB1SI.Checked = False OrElse RBPartidaPorTalla.Checked = False Then
+        If RBGB1SI.Checked = False Then
             Return
         End If
 
@@ -488,12 +609,15 @@ Public Class GeneraRemision2
             Return
         End If
 
-        If RBGB1SI.Checked = False OrElse RBPartidaPorTalla.Checked = False Then
+        If RBGB1SI.Checked = False Then
             Return
         End If
 
         Dim nombreColumna As String = DGPrevioRemision.Columns(e.ColumnIndex).Name
-        If nombreColumna = "CantidadARemisionar" OrElse nombreColumna = "PrecioUnitario" Then
+        If RBPartidaTodaslasTallas.Checked Then
+            RecalcularFilaCapturaTodasLasTallas(e.RowIndex)
+            ActualizarTotalesRemision()
+        ElseIf nombreColumna = "CantidadARemisionar" OrElse nombreColumna = "PrecioUnitario" Then
             RecalcularSubtotalFila(e.RowIndex)
             ActualizarTotalesRemision()
         End If
@@ -552,7 +676,19 @@ Public Class GeneraRemision2
                 Continue For
             End If
 
-            Dim cantidad As Decimal = ObtenerDecimalCelda(fila.Index, "CantidadARemisionar")
+            Dim cantidad As Decimal = 0D
+            If RBPartidaTodaslasTallas.Checked AndAlso DGPrevioRemision.Columns.Contains("TotalPrendasPartida") Then
+                Dim tipo As String = ""
+                If DGPrevioRemision.Columns.Contains("FilaTipo") Then
+                    tipo = ObtenerTextoBD(fila.Cells("FilaTipo").Value)
+                End If
+                If tipo = FILA_TIPO_CAPTURA Then
+                    cantidad = ObtenerDecimalCelda(fila.Index, "TotalPrendasPartida")
+                End If
+            Else
+                cantidad = ObtenerDecimalCelda(fila.Index, "CantidadARemisionar")
+            End If
+
             If cantidad > 0D Then
                 Dim precio As Decimal = ObtenerDecimalCelda(fila.Index, "PrecioUnitario")
                 Dim importe As Decimal = cantidad * precio
@@ -598,6 +734,32 @@ Public Class GeneraRemision2
         End If
         Return 0D
     End Function
+
+
+    Private Sub RecalcularFilaCapturaTodasLasTallas(ByVal rowIndex As Integer)
+        If rowIndex <= 0 Then Return
+        Dim fila As DataGridViewRow = DGPrevioRemision.Rows(rowIndex)
+        If ObtenerTextoBD(fila.Cells("FilaTipo").Value) <> FILA_TIPO_CAPTURA Then Return
+        Dim filaDisp As DataGridViewRow = DGPrevioRemision.Rows(rowIndex - 1)
+        Dim total As Decimal = 0D
+        For Each col As DataGridViewColumn In DGPrevioRemision.Columns
+            Dim n As String = col.Name
+            If n = "LugarDeEntrega" OrElse n = "NombreLugarDeEntrega" OrElse n = "Partida" OrElse n = "Cve_Prenda" OrElse n = "DescripcionPrenda" OrElse n = "ObservacionesPartidaFacturacion" OrElse n = "FilaTipo" OrElse n = "PrecioUnitario" OrElse n = "TotalPrendasPartida" OrElse n = "DescripcionPartida" OrElse n = "Subtotal" OrElse n = "CveArticuloCliente" OrElse n = "UnidadDeMedida" Then Continue For
+            Dim cap As Decimal = 0D
+            Decimal.TryParse(ObtenerTextoBD(fila.Cells(n).Value), cap)
+            Dim maxd As Decimal = 0D
+            Decimal.TryParse(ObtenerTextoBD(filaDisp.Cells(n).Value), maxd)
+            If cap > maxd Then
+                fila.Cells(n).Value = maxd
+                cap = maxd
+            End If
+            If cap < 0D Then fila.Cells(n).Value = 0D : cap = 0D
+            total += cap
+        Next
+        fila.Cells("TotalPrendasPartida").Value = total
+        Dim precio As Decimal = ObtenerDecimalCelda(rowIndex, "PrecioUnitario")
+        fila.Cells("Subtotal").Value = Math.Round(total * precio, 2)
+    End Sub
 
     Private Sub BtnRemisionar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         
