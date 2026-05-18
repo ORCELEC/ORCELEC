@@ -32,7 +32,7 @@ Public Class DistribucionOrdenesCompraPedido
         DGVDistribucionOCLugarEntregaAgrupacion.Rows.Clear()
         BDComando.Parameters.Clear()
         BDComando.CommandType = CommandType.Text
-        BDComando.CommandText = "SELECT PI.No_Pedido FROM PEDIDO_INTERNO PI,FOLIOS_ADMINISTRACION FA WHERE PI.Empresa = 1 AND PI.STATUS = 'AUTORIZADO' AND PI.Num_Folio = FA.Num_Folio AND FA.TipoPedido = 'N' AND PI.ListoCalculoOP = 1 AND PI.CalculoOP = 0 ORDER BY NO_PEDIDO"
+        BDComando.CommandText = "SELECT PI.No_Pedido FROM PEDIDO_INTERNO PI,FOLIOS_ADMINISTRACION FA WHERE PI.Empresa = 1 AND PI.STATUS = 'AUTORIZADO' AND PI.Num_Folio = FA.Num_Folio AND FA.TipoPedido IN ('M', 'N') AND PI.ListoCalculoOP = 1 AND PI.CalculoOP = 0 ORDER BY NO_PEDIDO"
         ListPedido.Items.Clear()
         Try
             BDComando.Connection.Open()

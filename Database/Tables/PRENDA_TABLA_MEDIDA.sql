@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[PRENDA_TABLA_MEDIDA]    Script Date: 09/07/2025 02:35:50 p. m. ******/
+/****** Object:  Table [dbo].[PRENDA_TABLA_MEDIDA]    Script Date: 15/05/2026 03:20:06 p. m. ******/
 SET ANSI_NULLS ON
 GO
 

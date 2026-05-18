@@ -1171,7 +1171,7 @@ Public Class FrmPedidoAltaEdicion
                                 End If
 
                                 'SE VALIDA ESTRUCTURA DE MATERIALES
-                                If TipoPedido <> "COMPRA" Then
+                                If TipoPedido <> "COMPRA" AndAlso TipoPedido <> "FACTURACIÓN" Then
                                     For Columna As Int32 = 12 To UltimaColumnaConDatos - 4
                                         Dim celdaValor = ExcelHoja.Cells(Fila, Columna).Value
                                         Dim numero As Int32

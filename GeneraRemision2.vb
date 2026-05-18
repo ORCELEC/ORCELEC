@@ -516,10 +516,13 @@ Public Class GeneraRemision2
         ConfigurarColumna("Cve_Prenda", "Cve. de Prenda", 50, False)
         ConfigurarColumna("DescripcionPrenda", "Descripción de Prenda", 200, False)
         ConfigurarColumna("ObservacionesPartidaFacturacion", "Notas de Partida para Facturación", 250, False)
-        ConfigurarColumna("FilaTipo", "Tipo Fila", 70, False)
+        ConfigurarColumna("FilaTipo", "Tipo Fila", 90, False)
         If DGPrevioRemision.Columns.Contains("Talla") Then ConfigurarColumna("Talla", "Talla", 50, False)
         If DGPrevioRemision.Columns.Contains("Cantidad") Then ConfigurarColumna("Cantidad", "Cantidad", 50, False)
         ConfigurarColumna("PrecioUnitario", "Precio Unitario", 70, True)
+        If RBGB1SI.Checked AndAlso RBPartidaTodaslasTallas.Checked Then
+            AjustarAnchoColumnasEntreFilaTipoYPrecioUnitario(50)
+        End If
         If DGPrevioRemision.Columns.Contains("CantidadARemisionar") Then ConfigurarColumna("CantidadARemisionar", "Cantidad a Remisionar", 70, True)
         ConfigurarColumna("DescripcionPartida", "Descripción de la partida", 300, True)
         ConfigurarColumna("CveArticuloCliente", "Cve. de Articulo Cliente", 70, True)
@@ -530,6 +533,22 @@ Public Class GeneraRemision2
         ConfigurarColumnaMultilinea("DescripcionPrenda")
         ConfigurarColumnaMultilinea("DescripcionPartida")
         DGPrevioRemision.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+    End Sub
+
+    Private Sub AjustarAnchoColumnasEntreFilaTipoYPrecioUnitario(ByVal ancho As Integer)
+        If DGPrevioRemision.Columns.Contains("FilaTipo") = False OrElse DGPrevioRemision.Columns.Contains("PrecioUnitario") = False Then
+            Exit Sub
+        End If
+
+        Dim indiceFilaTipo As Integer = DGPrevioRemision.Columns("FilaTipo").Index
+        Dim indicePrecioUnitario As Integer = DGPrevioRemision.Columns("PrecioUnitario").Index
+        If indiceFilaTipo >= indicePrecioUnitario - 1 Then
+            Exit Sub
+        End If
+
+        For i As Integer = indiceFilaTipo + 1 To indicePrecioUnitario - 1
+            DGPrevioRemision.Columns(i).Width = ancho
+        Next
     End Sub
 
     Private Sub ConfigurarColumna(ByVal nombre As String, ByVal encabezado As String, ByVal ancho As Integer, ByVal esEditable As Boolean)

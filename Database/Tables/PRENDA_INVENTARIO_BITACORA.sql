@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[PRENDA_INVENTARIO_BITACORA]    Script Date: 05/03/2026 05:57:02 p. m. ******/
+/****** Object:  Table [dbo].[PRENDA_INVENTARIO_BITACORA]    Script Date: 15/05/2026 06:20:30 p. m. ******/
 SET ANSI_NULLS ON
 GO
 

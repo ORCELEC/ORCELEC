@@ -1,7 +1,7 @@
 USE [NORCELEC]
 GO
 
-/****** Object:  Table [dbo].[PRENDA_ESTRUCTURA_MATERIALES_DETALLE]    Script Date: 20/01/2026 12:46:19 p. m. ******/
+/****** Object:  Table [dbo].[PRENDA_ESTRUCTURA_MATERIALES_DETALLE]    Script Date: 15/05/2026 03:21:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
